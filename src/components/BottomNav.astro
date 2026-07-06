@@ -1,0 +1,26 @@
+---
+import Icon from "./Icon.astro";
+import { categories } from "../config/site";
+
+const path = Astro.url.pathname;
+const links = [
+  { href: "/", label: "Beranda", icon: "home", active: path === "/" },
+  {
+    href: `/kategori/${categories[0].slug}/`,
+    label: "Kategori",
+    icon: "category",
+    active: path.startsWith("/kategori/"),
+  },
+  { href: "/tentang/", label: "Tentang", icon: "bookmark", active: path.startsWith("/tentang") },
+  { href: "/kontak/", label: "Kontak", icon: "person", active: path.startsWith("/kontak") },
+];
+---
+
+<nav class="bottom-nav" aria-label="Navigasi bawah">
+  {links.map((link) => (
+    <a href={link.href} aria-current={link.active ? "page" : undefined}>
+      <Icon name={link.icon} />
+      <span>{link.label}</span>
+    </a>
+  ))}
+</nav>

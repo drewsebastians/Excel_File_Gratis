@@ -1,0 +1,32 @@
+---
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Kebijakan Privasi";
+const description =
+  "Kebijakan privasi ExcelGratis.id mengenai data pengunjung, unduhan template, cookie, dan penggunaan iklan.";
+---
+
+<BaseLayout title={title} description={description} path="/privasi/">
+  <section class="info-layout narrow-container">
+    <header class="info-header">
+      <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: "Kebijakan Privasi" }]} />
+      <h1>Kebijakan Privasi</h1>
+      <p>Kami menjaga pengalaman download tetap sederhana, aman, dan transparan bagi pengunjung ExcelGratis.id.</p>
+    </header>
+
+    <div class="info-content">
+      <h2>Data yang Kami Kumpulkan</h2>
+      <p>ExcelGratis.id tidak meminta pendaftaran akun untuk mengunduh template. Data pribadi hanya dikirim ketika Anda menghubungi kami melalui email atau formulir kontak.</p>
+
+      <h2>Cookie dan Analitik</h2>
+      <p>Di masa depan, situs ini dapat menggunakan cookie untuk analitik trafik dan iklan seperti Google AdSense. Cookie membantu memahami halaman yang paling berguna bagi pengunjung.</p>
+
+      <h2>File Download</h2>
+      <p>File template disediakan dalam format Excel dan dapat diunduh langsung. Kami berupaya memastikan file yang dibagikan bersih, sederhana, dan tidak membutuhkan instalasi tambahan.</p>
+
+      <h2>Kontak</h2>
+      <p>Jika Anda memiliki pertanyaan mengenai privasi atau penggunaan data, silakan hubungi kami melalui halaman kontak.</p>
+    </div>
+  </section>
+</BaseLayout>

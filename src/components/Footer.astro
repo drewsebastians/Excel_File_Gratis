@@ -1,0 +1,40 @@
+---
+import AdSlot from "./AdSlot.astro";
+import Icon from "./Icon.astro";
+import { categories, siteConfig } from "../config/site";
+---
+
+<footer class="site-footer">
+  <div class="site-footer__grid container">
+    <div>
+      <a class="logo" href="/">
+        <Icon name="table_chart" />
+        <span>{siteConfig.name}</span>
+      </a>
+      <p>&copy; 2026 {siteConfig.name}. Semua hak dilindungi undang-undang.</p>
+    </div>
+
+    <div>
+      <h2>Perusahaan</h2>
+      <ul>
+        <li><a href="/tentang/">Tentang</a></li>
+        <li><a href="/privasi/">Kebijakan Privasi</a></li>
+        <li><a href="/kontak/">Kontak</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Kategori Utama</h2>
+      <ul>
+        {categories.slice(0, 4).map((category) => (
+          <li><a href={`/kategori/${category.slug}/`}>{category.name}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2>Iklan</h2>
+      <AdSlot size="small" />
+    </div>
+  </div>
+</footer>

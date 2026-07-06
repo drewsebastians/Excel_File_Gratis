@@ -1,0 +1,88 @@
+---
+import { getCollection } from "astro:content";
+import AdSlot from "../components/AdSlot.astro";
+import Icon from "../components/Icon.astro";
+import TemplateCard from "../components/TemplateCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { categories, siteConfig } from "../config/site";
+import { imageAlt, templateImages } from "../config/images";
+import {
+  getDownloadPath,
+  getExcerpt,
+  getTemplateImage,
+  getTemplateImageAlt,
+  getTemplateUrl,
+  showcaseTemplates,
+  sortTemplates,
+} from "../lib/templates";
+
+const templates = sortTemplates(await getCollection("templates"));
+const latest = templates.slice(0, 1);
+const heroSearchTarget = `/kategori/${categories[0].slug}/`;
+const title = "Template Excel Gratis, Siap Pakai";
+const description = siteConfig.description;
+---
+
+<BaseLayout title={title} description={description} path="/" ogImage={templateImages.budgetHero}>
+  <section class="hero container">
+    <h1>Template Excel Gratis, <span>Siap Pakai</span></h1>
+    <p>Ratusan template Excel untuk keuangan, bisnis, dan produktivitas - download gratis, tanpa perlu daftar.</p>
+    <form class="search-panel" action={heroSearchTarget} method="get" role="search">
+      <Icon name="search" />
+      <input name="q" type="search" placeholder="Cari template... misal: anggaran bulanan" aria-label="Cari template" />
+      <button class="button" type="submit">Cari</button>
+    </form>
+  </section>
+
+  <div class="container">
+    <AdSlot size="banner" />
+  </div>
+
+  <section class="section container" aria-labelledby="popular-category-heading">
+    <div class="section-heading">
+      <h2 id="popular-category-heading">Kategori Populer</h2>
+    </div>
+    <div class="category-grid">
+      {categories.map((category) => (
+        <a class="category-card" href={`/kategori/${category.slug}/`}>
+          <span class="category-card__icon"><Icon name={category.icon} /></span>
+          <span>{category.name}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section container" aria-labelledby="latest-template-heading">
+    <div class="section-heading">
+      <h2 id="latest-template-heading">Template Terbaru</h2>
+      <a href={`/kategori/${categories[0].slug}/`}>
+        Lihat Semua <Icon name="arrow_forward" />
+      </a>
+    </div>
+    <div class="template-grid">
+      {latest.map((entry) => (
+        <TemplateCard
+          title={entry.data.title}
+          excerpt={getExcerpt(entry.body)}
+          category={categories.find((category) => category.slug === entry.data.category)?.shortName || "Template"}
+          href={getTemplateUrl(entry)}
+          image={getTemplateImage(entry)}
+          imageAlt={getTemplateImageAlt(entry)}
+          downloadHref={getDownloadPath(entry)}
+          downloads="Download langsung"
+        />
+      ))}
+      {showcaseTemplates.map((template) => (
+        <TemplateCard
+          title={template.title}
+          excerpt={template.excerpt}
+          category={template.category}
+          href={template.href}
+          image={template.image}
+          imageAlt={template.imageAlt}
+          ctaLabel={template.ctaLabel}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

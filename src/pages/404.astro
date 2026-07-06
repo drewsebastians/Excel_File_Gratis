@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Halaman Tidak Ditemukan";
+const description = "Halaman yang Anda cari tidak ditemukan di ExcelGratis.id.";
+---
+
+<BaseLayout title={title} description={description} path="/404/">
+  <section class="not-found container">
+    <div>
+      <h1>404</h1>
+      <p>Halaman yang Anda cari tidak tersedia. Mulai lagi dari beranda atau lihat kategori template yang sudah tersedia.</p>
+      <a class="button" href="/">Kembali ke Beranda</a>
+    </div>
+  </section>
+</BaseLayout>

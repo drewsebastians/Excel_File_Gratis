@@ -1,0 +1,153 @@
+---
+import { getCollection } from "astro:content";
+import AdSlot from "../../../../components/AdSlot.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import Icon from "../../../../components/Icon.astro";
+import TemplateCard from "../../../../components/TemplateCard.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getCategory, siteConfig } from "../../../../config/site";
+import { templateImages } from "../../../../config/images";
+import { markdownToHtml, splitArticleAndFaq, stripHtml } from "../../../../lib/markdown";
+import {
+  getDownloadPath,
+  getTemplateImage,
+  getTemplateImageAlt,
+  getTemplateUrl,
+  showcaseTemplates,
+  sortTemplates,
+} from "../../../../lib/templates";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("templates");
+  return entries.map((entry) => ({
+    params: {
+      category: entry.data.category,
+      slug: entry.data.slug,
+    },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const category = getCategory(entry.data.category);
+const downloadPath = getDownloadPath(entry);
+const downloadUrl = new URL(downloadPath, siteConfig.url).toString();
+const pagePath = getTemplateUrl(entry);
+const image = getTemplateImage(entry);
+const imageAlt = getTemplateImageAlt(entry);
+const { articleMarkdown, faqHeading, faqItems, closingMarkdown } = splitArticleAndFaq(entry.body || "");
+const articleHtml = markdownToHtml(articleMarkdown);
+const closingHtml = closingMarkdown ? markdownToHtml(closingMarkdown) : "";
+const related = showcaseTemplates.slice(0, 3);
+const creativeWorkSchema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: entry.data.title,
+  description: entry.data.meta_description,
+  inLanguage: "id-ID",
+  isAccessibleForFree: true,
+  contentUrl: downloadUrl,
+  fileFormat: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  datePublished: entry.data.date.toISOString().slice(0, 10),
+  about: category.name,
+  publisher: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+};
+const faqSchema =
+  faqItems.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: stripHtml(item.answerHtml),
+          },
+        })),
+      }
+    : undefined;
+const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchema];
+---
+
+<BaseLayout
+  title={entry.data.meta_title}
+  description={entry.data.meta_description}
+  path={pagePath}
+  ogImage={image}
+  ogType="article"
+  structuredData={schemas}
+>
+  <article class="narrow-container">
+    <header class="article-header">
+      <Breadcrumbs
+        items={[
+          { label: "Beranda", href: "/" },
+          { label: category.name, href: `/kategori/${category.slug}/` },
+          { label: entry.data.title },
+        ]}
+      />
+      <h1>{entry.data.suggested_h1 || entry.data.title}</h1>
+      <div class="article-hero-image">
+        <img src={image} alt={imageAlt} loading="eager" />
+      </div>
+      <div class="download-panel">
+        <a class="button" href={downloadPath} download>
+          <Icon name="download" />
+          <span>Download Gratis (.xlsx)</span>
+        </a>
+        <p>Ukuran file: {entry.data.file_size} | Tanpa daftar</p>
+      </div>
+    </header>
+
+    <AdSlot size="banner" />
+
+    <div class="article-content" set:html={articleHtml} />
+
+    <AdSlot size="rectangle" class="section" />
+
+    {faqItems.length > 0 && (
+      <section class="faq-section" aria-labelledby="faq-heading">
+        <h2 id="faq-heading">{faqHeading}</h2>
+        {faqItems.map((item, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary>{item.question}</summary>
+            <div class="faq-item__answer" set:html={item.answerHtml} />
+          </details>
+        ))}
+      </section>
+    )}
+
+    {closingHtml && <div class="closing-note" set:html={closingHtml} />}
+
+    <section class="related-section" aria-labelledby="related-heading">
+      <h2 id="related-heading">Template Lainnya</h2>
+      <div class="template-grid template-grid--related">
+        {related.map((template) => (
+          <TemplateCard
+            title={template.title}
+            excerpt={template.excerpt}
+            category={template.category}
+            href={template.href}
+            image={template.image}
+            imageAlt={template.imageAlt}
+            ctaLabel={template.ctaLabel}
+            variant="related"
+          />
+        ))}
+      </div>
+    </section>
+  </article>
+
+  <div class="mobile-download">
+    <a class="button" href={downloadPath} download>
+      <Icon name="download" />
+      <span>Download Gratis (.xlsx)</span>
+    </a>
+    <span>{entry.data.file_size}</span>
+  </div>
+</BaseLayout>

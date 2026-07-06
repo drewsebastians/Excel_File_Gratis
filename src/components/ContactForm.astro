@@ -1,0 +1,23 @@
+---
+import { siteConfig } from "../config/site";
+---
+
+<section class="contact-panel" aria-labelledby="contact-heading">
+  <h2 id="contact-heading">Hubungi Kami</h2>
+  <p>Punya pertanyaan atau saran mengenai template kami? Silakan tinggalkan pesan di bawah ini.</p>
+  <form class="form-grid" action={`mailto:${siteConfig.contactEmail}`} method="post" enctype="text/plain">
+    <div class="field">
+      <label for="name">Nama</label>
+      <input id="name" name="name" type="text" placeholder="Masukkan nama Anda" autocomplete="name" required />
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="nama@email.com" autocomplete="email" required />
+    </div>
+    <div class="field">
+      <label for="message">Pesan</label>
+      <textarea id="message" name="message" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+    </div>
+    <button class="button" type="submit">Kirim Pesan</button>
+  </form>
+</section>

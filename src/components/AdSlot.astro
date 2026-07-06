@@ -1,0 +1,10 @@
+---
+interface Props {
+  size?: "banner" | "rectangle" | "small" | "infeed";
+  class?: string;
+}
+
+const { size = "banner", class: className = "" } = Astro.props;
+---
+
+<div class={`ad-slot ad-slot--${size} ${className}`} aria-hidden="true"></div>

@@ -1,0 +1,39 @@
+export const templateImages = {
+  budgetHero:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuB7tt68GRcOls9Ov2ZW7nPsCqtqg14ix_iarekCZlVh21iKNu8Yz3PaFtwGHDHeDO_AZbKRTREf4Yn3Zf99C0y51ByugZr78dqEmtu4f_Cen-rQ-yExhvOHImsp5u1ydmDaPE0Yf75neCyO-PXesL3q3dj9unMQhCbbclkL0MvWKChvI8JJRvV83YMxhkxe__m9REn1OtJaslL9bkmM8QzaEouTNCIxcxFbxqKcH1IOsGvwWHvEnWguTV0ue-cKdwN5rnt60ZrDRA",
+  budgetCard:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAfF_-6Bk4xod6274gn_OUWvXw7zTED3JfdRvZvjVhlA8IbdtsUCnYwVyRTj2JnTh3o_quSDjZL3cdpwcjT5k_d5ukGKlLBRe1iSNij58a0FcGP4Ju6Zu-rvbJX0VOKHGz_yU47uo-mWfhuMxzJFSIQTL-XJsQBtwjXyBSDyPbzJYIoizbNY7cFBm3RcXmKij6cXfD7PdKJjkwhZxDinczIJc_v2Tyko7i1INJFG00eOMah9wS4yAqTAzgUQRBmJuCWePN6OnAGcQ",
+  expenseTracker:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuC3iHfyhcPeH86h2u_AmO5017By3YPOP_8ENhgDi_eGTuA9yFhHXeFVbDrpI9tbukARX_MrUezJ7Pwrv35OPF3cKp-TrkJbxwBryZFZfjgcgu3PQ7lpJUvVyB85aXi1DkmgeLU78ph9fcJyDpMDk4HET6M-ZNINZITZQdwCPVBQi7-5LcYmsueooYq896CFl2q4VTgNb2YC_bfGhhiCj0hHf8PlGkQ0PNqG0OFlryJVKFAM8hCO6muPLT9okoZQSI4nXWDlaC5bKw",
+  savingsPlan:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuD_zUUU5mnd85dXPF62xX-sszsEzqvt-nK37LCmlEGEn4q38k5mCgh04kI4-QZzs_26ULKviR5MTN7aqZ0VkT079bhQ-3FewISPn8jJLIYtmIft3pjEoRd9cClqJvGKfV1N2VdpmcN5NlDJnnO75yWr5T0l1e-i9CHEQwwHVGjAdzDDqZnaZfReNBjCNOQ7qd8bw1fXuQ6bLwAb21SDRD8mZOhdkVtFbn6MNOnT3SUTNuet_ESqYkE38KhBTn7xhKprfkZIG2QI8g",
+  profitLoss:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBRHePkAam4LvA68hv7iHfep1aqsYpZqS0qnoZyGvFSVRN-heKIFbtQcwpuOdeUQzD-JFI3NGaOl8Hn9r2kvH5v4AJeG_p-islOmOEhReesSv69hL8m2u09naAGziFhmvNEczJd245RpelAl9cFDm6CIqX8-GYCkRPUS7U7KQqrHYA_nL11rl9kDsvZKlsl49xiXQSLwHxKkeAc5LAzCf6XagUfsHlFo9uY72GrDwqzOXmJ5tMowJHtVkGmENMh_fFuKL-p2oJtlg",
+  weeklySchedule:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDuoD6ptfkBRs_GRl4BP-1LXbmr8zo24qd_-3_GeqOG5hrMZ9ug4DSE3vWhw16VCUVLCN-VtgyUU03YBpwubT695yNVwWkzZ5fN8jyxfYhwnEKrLkor-XAJ14pBOHkJhTTDAC8aEWCz6aK1DKaYt86xmlWN_87pkelHhlszCyYWH5gZtMJdOpWZPG8vAN5ULuxuETRmJSD7hpBURY4csrBaH_G1CWzbwG0L_z27L6tLhiaVQetOgQHxzBMM4XUzcpPbsHGGjk0Stg",
+  projectTracker:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAJDsTPQbPcag8XX3Z9Uj3ri_nht_ttDKIqaOBUDQermWT6N05OeMugVp48naqDnVHwqlJDfK1khAgZcM3gvuwV4FIpwoEKFlEWz_ka9Q_QPIKUlPqJXe8KpIw-a8rv70PHUCPiQ87Nv_phYruBia2QqU1XmYk41nuyScxK01L6vP8HxRNNIvUAnW5lic51RZ8sj8PPhqt8S4dAQO0mB8mZIxD5GjybUQsk4ZWBtRSce43ADKdR-VYqz9I5ATvdC7fm3eiXU8_Hmw",
+  householdBudget:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDYGWkXD_eCDmdlZ-nqEN9Fto9wb-8qUvwQil2v0Y0G_EgGjsSqw0oENEAI6JLLv21q2CmJxBvh5mMLSlj6oZ5pnwn9lwBrgNKAerCQNzD5PNT10eOSOfkpf78G3KY7eTkPBx035TAVATVe7sEpR8IVXBbJ2YNanVZNVcYXjJNRGtwJj0c-dbn1_vTjvsHbUIYMZCfqEQAO54S-jCwLE09WGlMgrto4uZXw5Q8pXY9S0tucDLOLYVKaaLoqMUUhPl6YdP_xRgBq5w",
+  debtCalculator:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBeR59e87Yh7sy9zkwLZDy8p867pnDFi92pDDGQrK61Ghh7YZfEeZo_YRGDRkB2sJKNATMDe5ZF7h_HE0CX34Wu1qwY8lE4-IsSYD28aMUNoR0Em0uq7tZdROMZRAsU-rJAcO4thGHNHhpgPLidBfgk50ASH-6ss8CPQeQIxDu1AuvcSpiYnDgerfRzkVqrdON6sIePu-kT37nNp_z6y-d1IAuSX6hucjHTwGmPKIGBXuOZGsWr4Z030PvHtpN-NbnepgS7tBzcaw",
+  sinkingFunds:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAhGEGVOKEOHWWAdY2J3Z7KgaZVOsUwTkU0XrKl3a9_EOPaObcGEmDhHheGdhD8Dq9kyAPhwY_5Nwy8Oe2d8DI0rcGj2rsrca9DmCciDe0HqsBryomPTP9ymE6blj6f3zyaah_BEll6CXn81aRF1alKvnbdIeRbFlnN_LDrd4w9eWOBKCaa2OdxstfvGgbFGChJPQKZp6wJhoW7TEDn6qDEFLA-W9Oq5P2z2KBoUa4LUN2hvyH3jaonCIa8jI8UZkZVyKsP38_hqQ",
+};
+
+export const defaultOgImage = templateImages.budgetHero;
+
+export const imageAlt = {
+  budgetHero:
+    "Preview template anggaran bulanan Excel di layar laptop dengan tabel rupiah dan aksen hijau.",
+  budgetCard:
+    "Preview template anggaran bulanan keluarga di Excel pada layar laptop.",
+  profitLoss:
+    "Preview spreadsheet laporan laba rugi dengan tabel keuangan profesional.",
+  weeklySchedule:
+    "Preview jadwal kerja mingguan dengan grid shift dan warna pastel.",
+  projectTracker:
+    "Preview project tracker timeline dengan visual Gantt sederhana.",
+  householdBudget:
+    "Preview anggaran bulanan rumah tangga dengan grafik dan daftar pengeluaran.",
+};

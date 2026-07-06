@@ -1,0 +1,80 @@
+---
+import { getCollection } from "astro:content";
+import AdSlot from "../../../components/AdSlot.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import TemplateCard from "../../../components/TemplateCard.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { categories, getCategory } from "../../../config/site";
+import {
+  getDownloadPath,
+  getExcerpt,
+  getTemplateImage,
+  getTemplateImageAlt,
+  getTemplateUrl,
+  sortTemplates,
+} from "../../../lib/templates";
+
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { category: category.slug },
+    props: { categorySlug: category.slug },
+  }));
+}
+
+const { categorySlug } = Astro.props;
+const category = getCategory(categorySlug);
+const allTemplates = sortTemplates(await getCollection("templates"));
+const templates = allTemplates.filter((entry) => entry.data.category === category.slug);
+const countLabel = `${templates.length} template tersedia`;
+const title = `Template Excel ${category.name}`;
+const description = category.description;
+---
+
+<BaseLayout title={title} description={description} path={`/kategori/${category.slug}/`}>
+  <section class="category-hero container">
+    <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: category.name }]} />
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </section>
+
+  <section class="container">
+    <div class="listing-toolbar">
+      <label>{countLabel}</label>
+      <select aria-label="Urutkan template">
+        <option>Urutkan: Terbaru</option>
+        <option>Urutkan: Paling populer</option>
+      </select>
+    </div>
+
+    {templates.length > 0 ? (
+      <div class="template-grid template-grid--listing">
+        {templates.map((entry, index) => (
+          <>
+            <TemplateCard
+              title={entry.data.title}
+              excerpt={getExcerpt(entry.body)}
+              category={category.shortName}
+              href={getTemplateUrl(entry)}
+              image={getTemplateImage(entry)}
+              imageAlt={getTemplateImageAlt(entry)}
+              downloadHref={getDownloadPath(entry)}
+              downloads={`${entry.data.file_size} - Unduhan gratis`}
+              variant="list"
+            />
+            {(index + 1) % 6 === 0 && <AdSlot size="infeed" />}
+          </>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <h2>Template di kategori ini segera hadir</h2>
+        <p>Kami sedang menyiapkan koleksi untuk {category.name}. Sementara itu, cek template keuangan pribadi yang sudah tersedia.</p>
+        <a class="button-outline" href="/kategori/keuangan-pribadi/">Lihat template tersedia</a>
+      </div>
+    )}
+
+    <div class="section">
+      <AdSlot size="banner" />
+    </div>
+  </section>
+</BaseLayout>

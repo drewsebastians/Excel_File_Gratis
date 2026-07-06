@@ -1,0 +1,22 @@
+---
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import ContactForm from "../components/ContactForm.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
+
+const title = "Kontak";
+const description =
+  "Hubungi ExcelGratis.id untuk pertanyaan, masukan, atau usulan template Excel gratis baru.";
+---
+
+<BaseLayout title={title} description={description} path="/kontak/">
+  <section class="info-layout narrow-container">
+    <header class="info-header">
+      <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: "Kontak" }]} />
+      <h1>Kontak</h1>
+      <p>Kirim masukan, laporan masalah, atau ide template baru. Kami membaca pesan yang masuk melalui email {siteConfig.contactEmail}.</p>
+    </header>
+
+    <ContactForm />
+  </section>
+</BaseLayout>
