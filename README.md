@@ -56,10 +56,10 @@ Project ini ditujukan untuk Cloudflare Workers Builds dengan static assets:
 
 - Node version: `22`
 - Package manager: `pnpm@11.7.0`
-- Deploy command: `pnpm run deploy`
+- Deploy command: `pnpm run deploy` atau default `npx wrangler deploy`
 - Assets directory: `dist`
 
-Script `deploy` menjalankan `pnpm run build` sebelum `wrangler deploy`, sehingga build tetap berjalan walaupun pengaturan Build command di dashboard dikosongkan. Branch `main` terhubung ke Cloudflare, jadi push ke `main` akan memicu deployment otomatis.
+Wrangler dikonfigurasi untuk menjalankan `pnpm run build` sebelum deploy, sehingga `dist` tetap dibuat saat Cloudflare menjalankan deploy command. Branch `main` terhubung ke Cloudflare, jadi push ke `main` akan memicu deployment otomatis.
 
 ## SEO
 
