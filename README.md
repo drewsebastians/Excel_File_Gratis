@@ -5,14 +5,14 @@ Website statis Astro untuk membagikan template Excel gratis bagi pengguna Indone
 ## Menjalankan lokal
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Build produksi:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 Output build ada di folder `dist`.
@@ -52,13 +52,14 @@ Base URL download dikonfigurasi di `src/config/site.ts` melalui `downloadBaseUrl
 
 ## Deployment
 
-Project ini ditujukan untuk Cloudflare Pages dengan pengaturan:
+Project ini ditujukan untuk Cloudflare Workers Builds dengan static assets:
 
-- Framework preset: Astro
-- Build command: `npm run build`
-- Output directory: `dist`
+- Node version: `22`
+- Package manager: `pnpm@11.7.0`
+- Deploy command: `pnpm run deploy`
+- Assets directory: `dist`
 
-Branch `main` terhubung ke Cloudflare Pages, jadi push ke `main` akan memicu deployment otomatis.
+Script `deploy` menjalankan `pnpm run build` sebelum `wrangler deploy`, sehingga build tetap berjalan walaupun pengaturan Build command di dashboard dikosongkan. Branch `main` terhubung ke Cloudflare, jadi push ke `main` akan memicu deployment otomatis.
 
 ## SEO
 
