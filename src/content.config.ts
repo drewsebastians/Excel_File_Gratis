@@ -2,6 +2,7 @@ import { defineCollection } from "astro/content/config";
 import { z } from "astro/zod";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { categorySlugs } from "./config/site";
 
 const templates = defineCollection({
@@ -13,13 +14,14 @@ const templates = defineCollection({
       const files = await readdir(base);
 
       for (const file of files.filter((name) => name.endsWith(".md"))) {
-        const filePath = path.join(base, file);
-        const source = await readFile(filePath, "utf8");
+        const absoluteFilePath = path.join(base, file);
+        const filePath = path.relative(process.cwd(), absoluteFilePath).replace(/\\/g, "/");
+        const source = await readFile(absoluteFilePath, "utf8");
         const { data, body } = parseMarkdownFile(source);
         const id = file.replace(/\.md$/, "");
         const parsedData = await context.parseData({ id, data, filePath });
         const rendered = await context.renderMarkdown(body, {
-          fileURL: new URL(`file://${filePath.replace(/\\/g, "/")}`),
+          fileURL: pathToFileURL(absoluteFilePath),
         });
 
         context.store.set({
