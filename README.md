@@ -55,7 +55,7 @@ Base URL download dikonfigurasi di `src/config/site.ts` melalui `downloadBaseUrl
 Project ini ditujukan untuk Cloudflare Workers Builds dengan static assets:
 
 - Node version: `22`
-- Package manager: `pnpm@11.7.0`
+- Package manager: `pnpm@10.11.1`
 - Deploy command: `pnpm run deploy` atau default `npx wrangler deploy`
 - Assets directory: `dist`
 
