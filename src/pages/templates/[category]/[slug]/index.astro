@@ -6,14 +6,12 @@ import Icon from "../../../../components/Icon.astro";
 import TemplateCard from "../../../../components/TemplateCard.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { getCategory, siteConfig } from "../../../../config/site";
-import { templateImages } from "../../../../config/images";
 import { markdownToHtml, splitArticleAndFaq, stripHtml } from "../../../../lib/markdown";
 import {
   getDownloadPath,
   getTemplateImage,
   getTemplateImageAlt,
   getTemplateUrl,
-  showcaseTemplates,
   sortTemplates,
 } from "../../../../lib/templates";
 
@@ -38,7 +36,9 @@ const imageAlt = getTemplateImageAlt(entry);
 const { articleMarkdown, faqHeading, faqItems, closingMarkdown } = splitArticleAndFaq(entry.body || "");
 const articleHtml = markdownToHtml(articleMarkdown);
 const closingHtml = closingMarkdown ? markdownToHtml(closingMarkdown) : "";
-const related = showcaseTemplates.slice(0, 3);
+const related = sortTemplates(await getCollection("templates"))
+  .filter((template) => template.data.slug !== entry.data.slug)
+  .slice(0, 3);
 const creativeWorkSchema = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
@@ -124,23 +124,25 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
 
     {closingHtml && <div class="closing-note" set:html={closingHtml} />}
 
-    <section class="related-section" aria-labelledby="related-heading">
-      <h2 id="related-heading">Template Lainnya</h2>
-      <div class="template-grid template-grid--related">
-        {related.map((template) => (
-          <TemplateCard
-            title={template.title}
-            excerpt={template.excerpt}
-            category={template.category}
-            href={template.href}
-            image={template.image}
-            imageAlt={template.imageAlt}
-            ctaLabel={template.ctaLabel}
-            variant="related"
-          />
-        ))}
-      </div>
-    </section>
+    {related.length > 0 && (
+      <section class="related-section" aria-labelledby="related-heading">
+        <h2 id="related-heading">Template Lainnya</h2>
+        <div class="template-grid template-grid--related">
+          {related.map((template) => (
+            <TemplateCard
+              title={template.data.title}
+              excerpt={template.data.meta_description}
+              category={getCategory(template.data.category)?.shortName || "Template"}
+              href={getTemplateUrl(template)}
+              image={getTemplateImage(template)}
+              imageAlt={getTemplateImageAlt(template)}
+              downloadHref={getDownloadPath(template)}
+              variant="related"
+            />
+          ))}
+        </div>
+      </section>
+    )}
   </article>
 
   <div class="mobile-download">

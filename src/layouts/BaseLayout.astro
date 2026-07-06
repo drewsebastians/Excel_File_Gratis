@@ -62,7 +62,7 @@ const jsonLd = structuredData
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
-    {jsonLd.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+    {jsonLd.map((item) => <script type="application/ld+json" is:inline set:html={JSON.stringify(item)} />)}
   </head>
   <body class={`has-mobile-nav ${bodyClass}`}>
     <Header />

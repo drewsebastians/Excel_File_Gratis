@@ -26,7 +26,7 @@ import { categories, siteConfig } from "../config/site";
     <div>
       <h2>Kategori Utama</h2>
       <ul>
-        {categories.slice(0, 4).map((category) => (
+        {categories.map((category) => (
           <li><a href={`/kategori/${category.slug}/`}>{category.name}</a></li>
         ))}
       </ul>

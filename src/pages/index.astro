@@ -5,14 +5,13 @@ import Icon from "../components/Icon.astro";
 import TemplateCard from "../components/TemplateCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { categories, siteConfig } from "../config/site";
-import { imageAlt, templateImages } from "../config/images";
+import { templateImages } from "../config/images";
 import {
   getDownloadPath,
   getExcerpt,
   getTemplateImage,
   getTemplateImageAlt,
   getTemplateUrl,
-  showcaseTemplates,
   sortTemplates,
 } from "../lib/templates";
 
@@ -70,17 +69,6 @@ const description = siteConfig.description;
           imageAlt={getTemplateImageAlt(entry)}
           downloadHref={getDownloadPath(entry)}
           downloads="Download langsung"
-        />
-      ))}
-      {showcaseTemplates.map((template) => (
-        <TemplateCard
-          title={template.title}
-          excerpt={template.excerpt}
-          category={template.category}
-          href={template.href}
-          image={template.image}
-          imageAlt={template.imageAlt}
-          ctaLabel={template.ctaLabel}
         />
       ))}
     </div>

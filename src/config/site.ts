@@ -1,8 +1,9 @@
 const env = (import.meta as ImportMeta & { env?: Record<string, string> }).env ?? {};
+const defaultSiteUrl = "https://excelfilegratis.andrew-sebastian91.workers.dev";
 
 export const siteConfig = {
   name: "ExcelGratis.id",
-  url: env.PUBLIC_SITE_URL || "https://excelfilegratis.pages.dev",
+  url: env.PUBLIC_SITE_URL || defaultSiteUrl,
   description:
     "Download template Excel gratis untuk keuangan pribadi, bisnis UMKM, produktivitas kerja, pendidikan, dan kebutuhan rumah tangga.",
   downloadBaseUrl: env.PUBLIC_DOWNLOAD_BASE_URL || "/downloads",
