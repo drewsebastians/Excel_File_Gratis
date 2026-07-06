@@ -29,8 +29,9 @@ const {
 } = Astro.props;
 
 const pageTitle = title.includes(siteConfig.name) ? title : `${title} - ${siteConfig.name}`;
-const canonicalUrl = new URL(path, siteConfig.url).toString();
-const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, siteConfig.url).toString();
+const baseUrl = Astro.site?.toString() || siteConfig.url;
+const canonicalUrl = new URL(path, baseUrl).toString();
+const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, baseUrl).toString();
 const jsonLd = structuredData
   ? Array.isArray(structuredData)
     ? structuredData

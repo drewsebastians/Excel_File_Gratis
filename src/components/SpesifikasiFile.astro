@@ -1,0 +1,29 @@
+---
+interface Props {
+  sheets: number;
+  macro: boolean;
+  format: string;
+  kompatibilitas: string;
+}
+
+const { sheets, macro, format, kompatibilitas } = Astro.props;
+---
+
+<dl class="file-spec">
+  <div>
+    <dt>Jumlah sheet</dt>
+    <dd>{sheets}</dd>
+  </div>
+  <div>
+    <dt>Format</dt>
+    <dd>{format}</dd>
+  </div>
+  <div>
+    <dt>Macro</dt>
+    <dd>{macro ? "Ada macro" : "Tanpa macro"}</dd>
+  </div>
+  <div>
+    <dt>Kompatibilitas</dt>
+    <dd>{kompatibilitas}</dd>
+  </div>
+</dl>

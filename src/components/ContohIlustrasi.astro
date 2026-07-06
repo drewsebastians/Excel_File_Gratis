@@ -1,0 +1,16 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "Contoh Ilustrasi" } = Astro.props;
+---
+
+<section class="illustration-example" aria-label={`${title} fiktif`}>
+  <div class="illustration-example__badge">
+    {title} - skenario fiktif untuk membantu pemahaman
+  </div>
+  <div class="illustration-example__content">
+    <slot />
+  </div>
+</section>

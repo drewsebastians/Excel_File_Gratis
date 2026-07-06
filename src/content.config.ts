@@ -3,6 +3,7 @@ import { z } from "astro/zod";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { parse as parseYaml } from "yaml";
 import { categorySlugs } from "./config/site";
 
 const templates = defineCollection({
@@ -46,6 +47,23 @@ const templates = defineCollection({
     file_name: z.string(),
     file_size: z.string(),
     suggested_h1: z.string().optional(),
+    ringkasan_singkat: z.string().optional(),
+    file_spec: z
+      .object({
+        sheets: z.coerce.number(),
+        has_macro: z.coerce.boolean(),
+        format: z.string(),
+        kompatibilitas: z.string(),
+      })
+      .optional(),
+    batasan: z.union([z.string(), z.array(z.string())]).optional(),
+    interactive_tool: z
+      .object({
+        type: z.enum(["chart", "calculator"]),
+        title: z.string(),
+        config: z.record(z.string(), z.unknown()).optional().default({}),
+      })
+      .optional(),
   }),
 });
 
@@ -64,41 +82,8 @@ function parseMarkdownFile(source: string) {
 }
 
 function parseFrontmatter(frontmatter: string) {
-  const data: Record<string, unknown> = {};
-
-  for (const rawLine of frontmatter.split(/\r?\n/)) {
-    const line = rawLine.trim();
-    if (!line || line.startsWith("#")) continue;
-    const separator = line.indexOf(":");
-    if (separator === -1) continue;
-
-    const key = line.slice(0, separator).trim();
-    const rawValue = line.slice(separator + 1).trim();
-    data[key] = parseFrontmatterValue(rawValue);
-  }
-
-  return data;
-}
-
-function parseFrontmatterValue(value: string): unknown {
-  if (value.startsWith("[") && value.endsWith("]")) {
-    return value
-      .slice(1, -1)
-      .split(",")
-      .map((item) => parseFrontmatterValue(item.trim()))
-      .filter((item) => item !== "");
-  }
-
-  if (
-    (value.startsWith('"') && value.endsWith('"')) ||
-    (value.startsWith("'") && value.endsWith("'"))
-  ) {
-    return value.slice(1, -1);
-  }
-
-  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-    return value;
-  }
-
-  return value;
+  const parsed = parseYaml(frontmatter);
+  return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+    ? (parsed as Record<string, unknown>)
+    : {};
 }

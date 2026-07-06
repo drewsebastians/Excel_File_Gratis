@@ -9,6 +9,9 @@ date: 2026-07-05
 file_name: "Template-Anggaran-Bulanan-Sederhana.xlsx"
 file_size: "8 KB"
 suggested_h1: "Template Anggaran Bulanan Gratis: Cara Mudah Atur Uang Tanpa Ribet"
+ringkasan_singkat: "Template ini cocok untuk pemula yang ingin mencatat pemasukan, pengeluaran, dan sisa saldo bulanan dalam satu file sederhana."
+file_spec: { sheets: 1, has_macro: false, format: ".xlsx", kompatibilitas: "Microsoft Excel, Google Sheets, dan LibreOffice Calc" }
+batasan: ["Belum cocok untuk pencatatan multi-akun yang kompleks.", "Belum menyediakan dashboard investasi atau perhitungan pajak.", "Perlu penyesuaian manual kalau kategori pengeluaran kamu sangat banyak."]
 ---
 
 Pernah nggak, di tanggal 25 tiba-tiba mikir, "lho, gajian baru dua minggu lalu, kok saldo udah tinggal recehan?" Kalau iya, kamu nggak sendirian. Masalahnya biasanya bukan karena kamu boros — tapi karena uang keluar tanpa pernah benar-benar tercatat.

@@ -1,0 +1,33 @@
+---
+interface Props {
+  title?: string;
+  type?: "chart" | "calculator";
+  config?: Record<string, unknown>;
+}
+
+const {
+  title = "Coba alat interaktif",
+  type = "calculator",
+  config = {},
+} = Astro.props;
+const configEntries = Object.entries(config);
+---
+
+<details class="interactive-tool">
+  <summary>{title}</summary>
+  <div class="interactive-tool__body">
+    <p>
+      Slot {type === "chart" ? "chart" : "kalkulator"} ini disiapkan untuk konfigurasi konten template.
+    </p>
+    {configEntries.length > 0 && (
+      <dl>
+        {configEntries.map(([key, value]) => (
+          <div>
+            <dt>{key}</dt>
+            <dd>{typeof value === "object" ? JSON.stringify(value) : String(value)}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+  </div>
+</details>

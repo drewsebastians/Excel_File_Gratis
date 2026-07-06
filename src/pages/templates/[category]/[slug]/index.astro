@@ -2,7 +2,10 @@
 import { getCollection } from "astro:content";
 import AdSlot from "../../../../components/AdSlot.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import ContohIlustrasi from "../../../../components/ContohIlustrasi.astro";
 import Icon from "../../../../components/Icon.astro";
+import InteractiveToolSlot from "../../../../components/InteractiveToolSlot.astro";
+import SpesifikasiFile from "../../../../components/SpesifikasiFile.astro";
 import TemplateCard from "../../../../components/TemplateCard.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { getCategory, siteConfig } from "../../../../config/site";
@@ -26,6 +29,60 @@ export async function getStaticPaths() {
   }));
 }
 
+type MarkdownSection = {
+  heading: string;
+  content: string;
+};
+
+function splitMarkdownSections(markdown: string) {
+  const matches = [...markdown.matchAll(/^##\s+(.+)$/gm)];
+  if (matches.length === 0) {
+    return { intro: markdown.trim(), sections: [] as MarkdownSection[] };
+  }
+
+  const intro = markdown.slice(0, matches[0].index).trim();
+  const sections = matches.map((match, index) => {
+    const start = (match.index || 0) + match[0].length;
+    const end = matches[index + 1]?.index ?? markdown.length;
+    return {
+      heading: match[1].trim(),
+      content: markdown.slice(start, end).trim(),
+    };
+  });
+
+  return { intro, sections };
+}
+
+function findSection(sections: MarkdownSection[], keywords: string[]) {
+  return sections.find((section) => {
+    const heading = section.heading.toLowerCase();
+    return keywords.some((keyword) => heading.includes(keyword));
+  });
+}
+
+function getExampleRows(slug: string) {
+  if (slug === "template-anggaran-bulanan-gratis") {
+    return {
+      headers: ["Kategori", "Anggaran", "Aktual", "Selisih"],
+      rows: [
+        ["Makan & belanja", "Rp2.000.000", "Rp1.850.000", "Rp150.000"],
+        ["Transportasi", "Rp600.000", "Rp640.000", "-Rp40.000"],
+        ["Tabungan", "Rp1.000.000", "Rp1.000.000", "Rp0"],
+        ["Hiburan", "Rp500.000", "Rp420.000", "Rp80.000"],
+      ],
+    };
+  }
+
+  return {
+    headers: ["Kolom 1", "Kolom 2", "Kolom 3"],
+    rows: [
+      ["Contoh A", "Nilai 1", "Catatan singkat"],
+      ["Contoh B", "Nilai 2", "Catatan singkat"],
+      ["Contoh C", "Nilai 3", "Catatan singkat"],
+    ],
+  };
+}
+
 const { entry } = Astro.props;
 const category = getCategory(entry.data.category);
 const downloadPath = getDownloadPath(entry);
@@ -34,8 +91,28 @@ const pagePath = getTemplateUrl(entry);
 const image = getTemplateImage(entry);
 const imageAlt = getTemplateImageAlt(entry);
 const { articleMarkdown, faqHeading, faqItems, closingMarkdown } = splitArticleAndFaq(entry.body || "");
-const articleHtml = markdownToHtml(articleMarkdown);
 const closingHtml = closingMarkdown ? markdownToHtml(closingMarkdown) : "";
+const articleParts = splitMarkdownSections(articleMarkdown);
+const contentSection = findSection(articleParts.sections, ["apa isi", "isi template"]);
+const usageSection = findSection(articleParts.sections, ["cara pakai"]);
+const tipsSection = findSection(articleParts.sections, ["tips", "modifikasi"]);
+const illustrationSection = findSection(articleParts.sections, ["contoh"]);
+const summaryText =
+  entry.data.ringkasan_singkat ||
+  stripHtml(markdownToHtml(articleParts.intro)).split(/(?<=[.!?])\s+/).slice(0, 2).join(" ") ||
+  entry.data.meta_description;
+const fileSpec = entry.data.file_spec || {
+  sheets: 1,
+  has_macro: false,
+  format: ".xlsx",
+  kompatibilitas: "Microsoft Excel dan Google Sheets",
+};
+const batasan = Array.isArray(entry.data.batasan)
+  ? entry.data.batasan
+  : entry.data.batasan
+    ? [entry.data.batasan]
+    : ["Template ini dibuat untuk kebutuhan sederhana dan mungkin perlu penyesuaian untuk kasus yang lebih kompleks."];
+const exampleRows = getExampleRows(entry.data.slug);
 const related = sortTemplates(await getCollection("templates"))
   .filter((template) => template.data.slug !== entry.data.slug)
   .slice(0, 3);
@@ -92,9 +169,22 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
         ]}
       />
       <h1>{entry.data.suggested_h1 || entry.data.title}</h1>
+    </header>
+
+    <section class="detail-section detail-section--summary" aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Ringkasan Singkat</h2>
+      <p>{summaryText}</p>
+    </section>
+
+    <section class="detail-section" aria-labelledby="preview-heading">
+      <h2 id="preview-heading">Preview Visual File</h2>
       <div class="article-hero-image">
         <img src={image} alt={imageAlt} loading="eager" />
       </div>
+    </section>
+
+    <section class="detail-section detail-section--download" aria-labelledby="download-heading">
+      <h2 id="download-heading">Download Template</h2>
       <div class="download-panel">
         <a class="button" href={downloadPath} download>
           <Icon name="download" />
@@ -102,16 +192,79 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
         </a>
         <p>Ukuran file: {entry.data.file_size} | Tanpa daftar</p>
       </div>
-    </header>
+    </section>
 
-    <AdSlot size="banner" />
+    <section class="detail-section" aria-labelledby="spec-heading">
+      <h2 id="spec-heading">Spesifikasi File</h2>
+      <SpesifikasiFile
+        sheets={fileSpec.sheets}
+        macro={fileSpec.has_macro}
+        format={fileSpec.format}
+        kompatibilitas={fileSpec.kompatibilitas}
+      />
+      {contentSection && <div class="article-content" set:html={markdownToHtml(contentSection.content)} />}
+    </section>
 
-    <div class="article-content" set:html={articleHtml} />
+    {illustrationSection && (
+      <ContohIlustrasi>
+        <div class="article-content" set:html={markdownToHtml(`## ${illustrationSection.heading}\n\n${illustrationSection.content}`)} />
+      </ContohIlustrasi>
+    )}
 
-    <AdSlot size="rectangle" class="section" />
+    <section class="detail-section" aria-labelledby="usage-heading">
+      <h2 id="usage-heading">Cara Pakai</h2>
+      {usageSection ? (
+        <div class="article-content" set:html={markdownToHtml(usageSection.content)} />
+      ) : (
+        <ol>
+          <li>Download file template Excel.</li>
+          <li>Buka file di Excel atau Google Sheets.</li>
+          <li>Isi kolom contoh dengan data kebutuhanmu.</li>
+          <li>Cek ringkasan atau total otomatis sebelum dipakai rutin.</li>
+        </ol>
+      )}
+    </section>
+
+    <section class="detail-section" aria-labelledby="example-data-heading">
+      <h2 id="example-data-heading">Contoh Isian Data</h2>
+      <div class="example-table-wrap">
+        <table class="example-table">
+          <thead>
+            <tr>
+              {exampleRows.headers.map((header) => <th>{header}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {exampleRows.rows.map((row) => (
+              <tr>
+                {row.map((cell) => <td>{cell}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <AdSlot size="rectangle" class="section detail-ad detail-ad--after-usage" />
+
+    <section class="detail-section" aria-labelledby="tips-heading">
+      <h2 id="tips-heading">Tips Modifikasi</h2>
+      {tipsSection ? (
+        <div class="article-content" set:html={markdownToHtml(tipsSection.content)} />
+      ) : (
+        <p>Ubah nama kategori, tambah baris seperlunya, dan cek ulang formula total setelah menambah kolom atau sheet baru.</p>
+      )}
+    </section>
+
+    <section class="detail-section" aria-labelledby="limit-heading">
+      <h2 id="limit-heading">Batasan Template</h2>
+      <ul>
+        {batasan.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
 
     {faqItems.length > 0 && (
-      <section class="faq-section" aria-labelledby="faq-heading">
+      <section class="faq-section detail-section" aria-labelledby="faq-heading">
         <h2 id="faq-heading">{faqHeading}</h2>
         {faqItems.map((item, index) => (
           <details class="faq-item" open={index === 0}>
@@ -124,9 +277,9 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
 
     {closingHtml && <div class="closing-note" set:html={closingHtml} />}
 
-    {related.length > 0 && (
-      <section class="related-section" aria-labelledby="related-heading">
-        <h2 id="related-heading">Template Lainnya</h2>
+    <section class="related-section detail-section" aria-labelledby="related-heading">
+      <h2 id="related-heading">Related Templates</h2>
+      {related.length > 0 ? (
         <div class="template-grid template-grid--related">
           {related.map((template) => (
             <TemplateCard
@@ -141,8 +294,26 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
             />
           ))}
         </div>
+      ) : (
+        <div class="related-empty">
+          <p>Template sejenis akan ditambahkan bertahap. Untuk sekarang, lihat kategori {category.name} agar struktur URL internal tetap rapi.</p>
+          <a class="button-outline" href={`/kategori/${category.slug}/`}>Lihat kategori {category.shortName}</a>
+        </div>
+      )}
+    </section>
+
+    {entry.data.interactive_tool && (
+      <section class="detail-section" aria-labelledby="interactive-heading">
+        <h2 id="interactive-heading">Chart atau Tool Interaktif</h2>
+        <InteractiveToolSlot
+          title={entry.data.interactive_tool.title}
+          type={entry.data.interactive_tool.type}
+          config={entry.data.interactive_tool.config}
+        />
       </section>
     )}
+
+    <AdSlot size="banner" class="section detail-ad detail-ad--after-related" />
   </article>
 
   <div class="mobile-download">

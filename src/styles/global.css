@@ -645,13 +645,13 @@ textarea {
 }
 
 .article-header {
-  padding-block: 28px 16px;
+  padding-block: 28px 8px;
 }
 
 .article-header h1 {
   font-size: 28px;
   line-height: 1.28;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .article-hero-image {
@@ -683,6 +683,178 @@ textarea {
   margin: 8px 0 0;
   color: var(--text-muted);
   font-size: 14px;
+}
+
+.detail-section {
+  margin-top: 28px;
+}
+
+.detail-section h2,
+.illustration-example h2,
+.interactive-tool summary {
+  font-family: "Plus Jakarta Sans", Inter, Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+.detail-section h2 {
+  margin: 0 0 14px;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.detail-section--summary p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 17px;
+}
+
+.detail-section--download {
+  margin-top: 20px;
+}
+
+.detail-ad {
+  margin-top: 32px;
+}
+
+.file-spec {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 0 0 18px;
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--surface-lowest);
+}
+
+.file-spec div {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 12px;
+  padding: 12px 14px;
+}
+
+.file-spec div + div {
+  border-top: 1px solid var(--outline);
+}
+
+.file-spec dt {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.file-spec dd {
+  margin: 0;
+}
+
+.illustration-example {
+  margin-top: 28px;
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-card);
+  background: var(--surface-lowest);
+  overflow: hidden;
+}
+
+.illustration-example__badge {
+  border-bottom: 1px solid var(--outline);
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 10px 14px;
+}
+
+.illustration-example__content {
+  padding: 18px;
+}
+
+.illustration-example__content h2 {
+  margin-top: 0;
+}
+
+.example-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-card);
+  background: var(--surface-lowest);
+}
+
+.example-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+}
+
+.example-table th,
+.example-table td {
+  border-bottom: 1px solid var(--outline);
+  padding: 11px 12px;
+  text-align: left;
+}
+
+.example-table th {
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.example-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.related-empty {
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-card);
+  background: var(--surface-lowest);
+  padding: 18px;
+}
+
+.related-empty p {
+  margin: 0 0 14px;
+  color: var(--text-muted);
+}
+
+.interactive-tool {
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-card);
+  background: var(--surface-lowest);
+}
+
+.interactive-tool summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 16px;
+  font-weight: 700;
+}
+
+.interactive-tool summary::-webkit-details-marker {
+  display: none;
+}
+
+.interactive-tool summary::after {
+  content: "expand_more";
+  float: right;
+  font-family: "Material Symbols Outlined";
+  color: var(--text-muted);
+}
+
+.interactive-tool[open] summary::after {
+  content: "expand_less";
+}
+
+.interactive-tool__body {
+  border-top: 1px solid var(--outline);
+  padding: 16px;
+}
+
+.interactive-tool__body p {
+  margin: 0 0 12px;
+  color: var(--text-muted);
 }
 
 .article-content {
@@ -926,7 +1098,7 @@ textarea {
   }
 
   .site-footer__grid {
-    grid-template-columns: 1fr 1fr 1fr 1.2fr;
+    grid-template-columns: 1.4fr 1fr 1fr;
   }
 
   .bottom-nav {
