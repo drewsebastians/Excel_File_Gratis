@@ -1,5 +1,5 @@
 const env = (import.meta as ImportMeta & { env?: Record<string, string> }).env ?? {};
-const defaultSiteUrl = "https://excelfilegratis.andrew-sebastian91.workers.dev";
+const defaultSiteUrl = "https://excelgratis.my.id";
 
 export const siteConfig = {
   name: "ExcelGratis.id",

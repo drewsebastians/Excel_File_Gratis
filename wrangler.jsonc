@@ -6,6 +6,12 @@
   "build": {
     "command": "pnpm run build"
   },
+  "routes": [
+    {
+      "pattern": "excelgratis.my.id",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
