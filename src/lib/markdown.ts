@@ -30,8 +30,11 @@ export function splitArticleAndFaq(markdown: string) {
 
   const articleMarkdown = markdown.slice(0, match.index).trim();
   const afterHeading = markdown.slice(match.index + match[0].length).trim();
-  const [faqMarkdown, closingMarkdown = ""] = afterHeading.split(/\n---\n/);
-  const faqItems = extractFaqItems(faqMarkdown);
+  const [faqMarkdown, explicitClosingMarkdown = ""] = afterHeading.split(/\n---\n/);
+  const { items: faqItems, trailingMarkdown } = extractFaqItems(faqMarkdown);
+  const closingMarkdown = [trailingMarkdown, explicitClosingMarkdown]
+    .filter(Boolean)
+    .join("\n\n");
 
   return {
     articleMarkdown,
@@ -41,23 +44,48 @@ export function splitArticleAndFaq(markdown: string) {
   };
 }
 
-function extractFaqItems(markdown: string): FaqItem[] {
-  const itemPattern = /\*\*(.+?)\*\*\s*\n([\s\S]*?)(?=\n\*\*|$)/g;
+function extractFaqItems(markdown: string) {
+  const itemPattern = /^\*\*(.+?)\*\*\s*$/gm;
+  const matches = [...markdown.matchAll(itemPattern)];
   const items: FaqItem[] = [];
-  let match: RegExpExecArray | null;
+  let trailingMarkdown = "";
 
-  while ((match = itemPattern.exec(markdown)) !== null) {
+  matches.forEach((match, index) => {
     const question = match[1].trim();
-    const answer = match[2].trim();
-    if (!question || !answer) continue;
+    const answerStart = (match.index || 0) + match[0].length;
+    const answerEnd = matches[index + 1]?.index ?? markdown.length;
+    let answer = markdown.slice(answerStart, answerEnd).trim();
+
+    if (index === matches.length - 1) {
+      const splitAnswer = splitClosingFromAnswer(answer);
+      answer = splitAnswer.answer;
+      trailingMarkdown = splitAnswer.closing;
+    }
+
+    if (!question || !answer) return;
     items.push({
       question,
       answer,
       answerHtml: markdownToHtml(answer),
     });
+  });
+
+  return { items, trailingMarkdown };
+}
+
+function splitClosingFromAnswer(answer: string) {
+  const closingMatch = answer.match(
+    /\n{2,}(?=(?:\*?Siap coba|Yuk|Punya banyak|Langsung)\b)/i,
+  );
+
+  if (!closingMatch || closingMatch.index === undefined) {
+    return { answer, closing: "" };
   }
 
-  return items;
+  return {
+    answer: answer.slice(0, closingMatch.index).trim(),
+    closing: answer.slice(closingMatch.index).trim(),
+  };
 }
 
 export function stripHtml(html: string) {

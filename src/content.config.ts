@@ -3,7 +3,6 @@ import { z } from "astro/zod";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { parse as parseYaml } from "yaml";
 import { categorySlugs } from "./config/site";
 
 const templates = defineCollection({
@@ -41,6 +40,8 @@ const templates = defineCollection({
     meta_title: z.string(),
     meta_description: z.string().max(170),
     slug: z.string(),
+    focus_keyword: z.string().optional(),
+    preview_alt: z.string().optional(),
     category: z.enum(categorySlugs),
     tags: z.array(z.string()).default([]),
     date: z.coerce.date(),
@@ -82,8 +83,175 @@ function parseMarkdownFile(source: string) {
 }
 
 function parseFrontmatter(frontmatter: string) {
-  const parsed = parseYaml(frontmatter);
+  const lines = frontmatter
+    .replace(/\r\n/g, "\n")
+    .split("\n")
+    .filter((line) => line.trim() && !line.trim().startsWith("#"));
+  const [parsed] = parseYamlMap(lines, 0, 0);
+
   return parsed && typeof parsed === "object" && !Array.isArray(parsed)
-    ? (parsed as Record<string, unknown>)
+    ? parsed
     : {};
+}
+
+function parseYamlMap(
+  lines: string[],
+  startIndex: number,
+  indent: number,
+): [Record<string, unknown>, number] {
+  const output: Record<string, unknown> = {};
+  let index = startIndex;
+
+  while (index < lines.length) {
+    const line = lines[index];
+    const lineIndent = countIndent(line);
+    const trimmed = line.trim();
+
+    if (lineIndent < indent || trimmed.startsWith("- ")) break;
+    if (lineIndent > indent) {
+      index += 1;
+      continue;
+    }
+
+    const separatorIndex = trimmed.indexOf(":");
+    if (separatorIndex === -1) {
+      index += 1;
+      continue;
+    }
+
+    const key = trimmed.slice(0, separatorIndex).trim();
+    let rawValue = trimmed.slice(separatorIndex + 1).trim();
+
+    if (rawValue.startsWith("{") && !rawValue.endsWith("}")) {
+      const jsonLines = [rawValue];
+      let depth = braceDepth(rawValue);
+      index += 1;
+
+      while (index < lines.length && depth > 0) {
+        const nextLine = lines[index].trim();
+        jsonLines.push(nextLine);
+        depth += braceDepth(nextLine);
+        index += 1;
+      }
+
+      output[key] = parseYamlScalar(jsonLines.join("\n"));
+      continue;
+    }
+
+    if (!rawValue) {
+      const nextIndent = getNextIndent(lines, index + 1, indent + 2);
+      const [nested, nextIndex] = parseYamlNode(lines, index + 1, nextIndent);
+      output[key] = nested;
+      index = nextIndex;
+      continue;
+    }
+
+    output[key] = parseYamlScalar(rawValue);
+    index += 1;
+  }
+
+  return [output, index];
+}
+
+function parseYamlNode(
+  lines: string[],
+  startIndex: number,
+  indent: number,
+): [unknown, number] {
+  const firstLine = lines[startIndex];
+  if (!firstLine) return [{}, startIndex];
+
+  if (countIndent(firstLine) === indent && firstLine.trim().startsWith("- ")) {
+    return parseYamlList(lines, startIndex, indent);
+  }
+
+  return parseYamlMap(lines, startIndex, indent);
+}
+
+function parseYamlList(
+  lines: string[],
+  startIndex: number,
+  indent: number,
+): [unknown[], number] {
+  const output: unknown[] = [];
+  let index = startIndex;
+
+  while (index < lines.length) {
+    const line = lines[index];
+    const lineIndent = countIndent(line);
+    const trimmed = line.trim();
+
+    if (lineIndent !== indent || !trimmed.startsWith("- ")) break;
+
+    const itemValue = trimmed.slice(2).trim();
+    if (!itemValue) {
+      const nextIndent = getNextIndent(lines, index + 1, indent + 2);
+      const [nested, nextIndex] = parseYamlNode(lines, index + 1, nextIndent);
+      output.push(nested);
+      index = nextIndex;
+      continue;
+    }
+
+    const separatorIndex = itemValue.indexOf(":");
+    if (separatorIndex > 0) {
+      const item: Record<string, unknown> = {};
+      const key = itemValue.slice(0, separatorIndex).trim();
+      const rawValue = itemValue.slice(separatorIndex + 1).trim();
+      item[key] = rawValue ? parseYamlScalar(rawValue) : {};
+
+      const [rest, nextIndex] = parseYamlMap(lines, index + 1, indent + 2);
+      output.push({ ...item, ...rest });
+      index = nextIndex;
+      continue;
+    }
+
+    output.push(parseYamlScalar(itemValue));
+    index += 1;
+  }
+
+  return [output, index];
+}
+
+function parseYamlScalar(value: string) {
+  const trimmed = value.trim().replace(/,$/, "");
+
+  if (
+    (trimmed.startsWith("\"") && trimmed.endsWith("\"")) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return trimmed.slice(1, -1);
+  }
+
+  if (trimmed.startsWith("[") || trimmed.startsWith("{")) {
+    return parseInlineCollection(trimmed);
+  }
+
+  if (trimmed === "true") return true;
+  if (trimmed === "false") return false;
+  if (/^-?\d+(\.\d+)?$/.test(trimmed)) return Number(trimmed);
+
+  return trimmed;
+}
+
+function countIndent(line: string) {
+  return line.length - line.trimStart().length;
+}
+
+function getNextIndent(lines: string[], index: number, fallback: number) {
+  const nextLine = lines[index];
+  return nextLine ? countIndent(nextLine) : fallback;
+}
+
+function braceDepth(value: string) {
+  return (value.match(/{/g)?.length || 0) - (value.match(/}/g)?.length || 0);
+}
+
+function parseInlineCollection(value: string) {
+  try {
+    return JSON.parse(value);
+  } catch {
+    return JSON.parse(
+      value.replace(/([{,]\s*)([A-Za-z_][\w-]*)\s*:/g, '$1"$2":'),
+    );
+  }
 }

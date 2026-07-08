@@ -93,10 +93,12 @@ const imageAlt = getTemplateImageAlt(entry);
 const { articleMarkdown, faqHeading, faqItems, closingMarkdown } = splitArticleAndFaq(entry.body || "");
 const closingHtml = closingMarkdown ? markdownToHtml(closingMarkdown) : "";
 const articleParts = splitMarkdownSections(articleMarkdown);
-const contentSection = findSection(articleParts.sections, ["apa isi", "isi template"]);
+const whySection = findSection(articleParts.sections, ["kenapa"]);
+const specSection = findSection(articleParts.sections, ["spesifikasi file", "apa isi", "isi template"]);
 const usageSection = findSection(articleParts.sections, ["cara pakai"]);
 const tipsSection = findSection(articleParts.sections, ["tips", "modifikasi"]);
-const illustrationSection = findSection(articleParts.sections, ["contoh"]);
+const illustrationSection = findSection(articleParts.sections, ["contoh ilustrasi"]);
+const exampleDataSection = findSection(articleParts.sections, ["contoh isian data"]);
 const summaryText =
   entry.data.ringkasan_singkat ||
   stripHtml(markdownToHtml(articleParts.intro)).split(/(?<=[.!?])\s+/).slice(0, 2).join(" ") ||
@@ -174,6 +176,7 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
     <section class="detail-section detail-section--summary" aria-labelledby="summary-heading">
       <h2 id="summary-heading">Ringkasan Singkat</h2>
       <p>{summaryText}</p>
+      {whySection && <div class="article-content" set:html={markdownToHtml(whySection.content)} />}
     </section>
 
     <section class="detail-section" aria-labelledby="preview-heading">
@@ -202,7 +205,7 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
         format={fileSpec.format}
         kompatibilitas={fileSpec.kompatibilitas}
       />
-      {contentSection && <div class="article-content" set:html={markdownToHtml(contentSection.content)} />}
+      {specSection && <div class="article-content" set:html={markdownToHtml(specSection.content)} />}
     </section>
 
     {illustrationSection && (
@@ -227,22 +230,26 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
 
     <section class="detail-section" aria-labelledby="example-data-heading">
       <h2 id="example-data-heading">Contoh Isian Data</h2>
-      <div class="example-table-wrap">
-        <table class="example-table">
-          <thead>
-            <tr>
-              {exampleRows.headers.map((header) => <th>{header}</th>)}
-            </tr>
-          </thead>
-          <tbody>
-            {exampleRows.rows.map((row) => (
+      {exampleDataSection ? (
+        <div class="article-content" set:html={markdownToHtml(exampleDataSection.content)} />
+      ) : (
+        <div class="example-table-wrap">
+          <table class="example-table">
+            <thead>
               <tr>
-                {row.map((cell) => <td>{cell}</td>)}
+                {exampleRows.headers.map((header) => <th>{header}</th>)}
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {exampleRows.rows.map((row) => (
+                <tr>
+                  {row.map((cell) => <td>{cell}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </section>
 
     <AdSlot size="rectangle" class="section detail-ad detail-ad--after-usage" />

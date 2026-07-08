@@ -27,6 +27,10 @@ export function getTemplateImage(entry: TemplateEntry) {
 }
 
 export function getTemplateImageAlt(entry: TemplateEntry) {
+  if (entry.data.preview_alt) {
+    return entry.data.preview_alt;
+  }
+
   if (entry.data.slug === "template-anggaran-bulanan-gratis") {
     return imageAlt.budgetHero;
   }

@@ -5,29 +5,143 @@ interface Props {
   config?: Record<string, unknown>;
 }
 
+type ToolInput = {
+  id: string;
+  label: string;
+  type?: string;
+  default?: number;
+};
+
 const {
   title = "Coba alat interaktif",
   type = "calculator",
   config = {},
 } = Astro.props;
-const configEntries = Object.entries(config);
+
+function asStringArray(value: unknown) {
+  return Array.isArray(value) ? value.map((item) => String(item)) : [];
+}
+
+function asNumberArray(value: unknown) {
+  return Array.isArray(value)
+    ? value.map((item) => Number(item)).filter((item) => Number.isFinite(item))
+    : [];
+}
+
+function asInputs(value: unknown): ToolInput[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => {
+      if (!item || typeof item !== "object") return undefined;
+      const input = item as Record<string, unknown>;
+      const id = String(input.id || "");
+      const label = String(input.label || id);
+      if (!id || !label) return undefined;
+
+      return {
+        id,
+        label,
+        type: String(input.type || "number"),
+        default: Number(input.default || 0),
+      };
+    })
+    .filter((item): item is ToolInput => Boolean(item));
+}
+
+const chartLabels = asStringArray(config.labels || config.categories);
+const chartValues = asNumberArray(config.target || config.values);
+const chartRows = chartLabels.map((label, index) => ({
+  label,
+  value: chartValues[index] || 0,
+}));
+const chartMax = Math.max(...chartRows.map((row) => row.value), 1);
+const chartUnit = typeof config.unit === "string" ? config.unit : "";
+const calculatorInputs = asInputs(config.inputs);
+const outputLabel =
+  typeof config.output_label === "string"
+    ? config.output_label
+    : "Hasil simulasi";
+const formulaText = typeof config.formula === "string" ? config.formula : "";
+
+function formatValue(value: number) {
+  if (chartUnit.toLowerCase() === "rp") {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      maximumFractionDigits: 0,
+    }).format(value);
+  }
+
+  return new Intl.NumberFormat("id-ID").format(value);
+}
 ---
 
-<details class="interactive-tool">
+<details class="interactive-tool" open>
   <summary>{title}</summary>
   <div class="interactive-tool__body">
-    <p>
-      Slot {type === "chart" ? "chart" : "kalkulator"} ini disiapkan untuk konfigurasi konten template.
-    </p>
-    {configEntries.length > 0 && (
-      <dl>
-        {configEntries.map(([key, value]) => (
-          <div>
-            <dt>{key}</dt>
-            <dd>{typeof value === "object" ? JSON.stringify(value) : String(value)}</dd>
+    {type === "chart" && chartRows.length > 0 && (
+      <div class="interactive-chart" role="img" aria-label={title}>
+        {chartRows.map((row) => (
+          <div class="interactive-chart__row">
+            <div class="interactive-chart__label">{row.label}</div>
+            <div class="interactive-chart__track">
+              <span style={`width: ${Math.max((row.value / chartMax) * 100, 3)}%`}></span>
+            </div>
+            <div class="interactive-chart__value">{formatValue(row.value)}</div>
           </div>
         ))}
-      </dl>
+      </div>
+    )}
+
+    {type === "calculator" && calculatorInputs.length > 0 && (
+      <div class="interactive-calculator" data-reorder-calculator data-formula={formulaText}>
+        <div class="interactive-calculator__inputs">
+          {calculatorInputs.map((input) => (
+            <label>
+              <span>{input.label}</span>
+              <input
+                type={input.type || "number"}
+                name={input.id}
+                value={input.default || 0}
+                min="0"
+                inputmode="decimal"
+                data-calc-input
+              />
+            </label>
+          ))}
+        </div>
+        <div class="interactive-calculator__result" aria-live="polite">
+          <span>{outputLabel}</span>
+          <strong data-calc-output>0</strong>
+        </div>
+      </div>
     )}
   </div>
 </details>
+
+{type === "calculator" && (
+  <script is:inline>
+    (() => {
+      document.querySelectorAll("[data-reorder-calculator]").forEach((tool) => {
+        const output = tool.querySelector("[data-calc-output]");
+        const inputs = Array.from(tool.querySelectorAll("[data-calc-input]"));
+
+        const calculate = () => {
+          const values = Object.fromEntries(
+            inputs.map((input) => [input.name, Number(input.value) || 0]),
+          );
+          const result =
+            (values.pemakaian_harian || 0) * (values.lead_time || 0) +
+            (values.safety_stock || 0);
+
+          if (output) {
+            output.textContent = new Intl.NumberFormat("id-ID").format(result);
+          }
+        };
+
+        inputs.forEach((input) => input.addEventListener("input", calculate));
+        calculate();
+      });
+    })();
+  </script>
+)}
