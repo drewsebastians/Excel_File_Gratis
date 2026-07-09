@@ -42,6 +42,9 @@ export function getSpreadsheetMimeType(entry: TemplateEntry) {
 }
 
 export function getTemplateImage(entry: TemplateEntry) {
+  const image = templateImageBySlug[entry.data.slug];
+  if (image) return image;
+
   return templateImages.profitLoss;
 }
 
@@ -52,6 +55,13 @@ export function getTemplateImageAlt(entry: TemplateEntry) {
 
   return "Preview template Excel dengan tabel profesional dan aksen hijau.";
 }
+
+const templateImageBySlug: Record<string, string> = {
+  "template-budget-bulanan": "/assets/templates/template-budget-bulanan.jpg",
+  "template-follow-up-pelanggan-excel": "/assets/templates/template-follow-up-pelanggan-excel.jpg",
+  "template-kalender-planner-2026": "/assets/templates/template-kalender-planner-2026.jpg",
+  "template-stok-barang-excel-gratis": "/assets/templates/template-stok-barang-excel-gratis.jpg",
+};
 
 export function getExcerpt(body = "", maxLength = 140) {
   const firstParagraph =
