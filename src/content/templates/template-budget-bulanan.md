@@ -23,14 +23,6 @@ batasan:
   - "Template ini dirancang untuk pencatatan satu bulan aktif; kalau mau riwayat multi-bulan, kamu perlu duplikat sheet setiap bulan secara manual"
   - "Kategori pengeluaran dibuat generik untuk kebutuhan umum, jadi mungkin perlu disesuaikan lagi kalau pengeluaranmu sangat spesifik (misal cicilan bisnis atau investasi saham detail)"
   - "Dropdown kategori hanya membaca daftar di sheet Anggaran Bulanan, jadi kategori baru harus ditambahkan di sana dulu sebelum muncul di Catatan Transaksi"
-interactive_tool:
-  type: "chart"
-  title: "Simulasi Alokasi Anggaran Bulanan per Kategori"
-  config: {
-    "labels": ["Makanan & Minuman", "Tempat Tinggal", "Tagihan", "Transportasi", "Pendidikan", "Kesehatan", "Hiburan", "Tabungan/Investasi", "Lain-lain"],
-    "target": [1500000, 1200000, 400000, 500000, 300000, 200000, 300000, 600000, 200000],
-    "unit": "Rp"
-  }
 ---
 
 Gajian sering habis sebelum akhir bulan padahal tidak merasa boros? Biasanya bukan karena boros, tapi karena tidak ada gambaran jelas ke mana uang itu pergi. Template budget bulanan ini membantu kamu melihat itu dalam hitungan menit, tanpa perlu jago Excel atau paham istilah akuntansi.

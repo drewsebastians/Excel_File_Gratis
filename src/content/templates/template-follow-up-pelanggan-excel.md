@@ -23,12 +23,6 @@ batasan:
   - "Belum ada pengingat otomatis lewat WhatsApp atau email — status keterlambatan hanya terlihat kalau file dibuka dan sheet Ringkasan dicek."
   - "Deteksi 'Terlambat' murni berdasarkan tanggal, jadi kalau lupa mengubah status ke 'Deal' atau 'Batal' setelah closing, pelanggan tersebut bisa saja masih tampil sebagai terlambat."
   - "Untuk tim sales dengan ratusan prospek aktif dan banyak orang yang harus mengisi data bersamaan secara real-time, template Excel ini akan mulai terasa kurang praktis dibanding aplikasi CRM khusus."
-interactive_tool:
-  type: "chart"
-  title: "Distribusi Status Follow-Up Pelanggan"
-  config:
-    categories: ["Belum Dihubungi", "Sudah Dihubungi", "Menunggu Respon", "Deal", "Batal"]
-    values: [3, 4, 4, 2, 2]
 ---
 
 Prospek yang sudah susah payah didapat kadang berakhir sia-sia bukan karena ditolak, tapi karena lupa di-follow-up tepat waktu. Template Excel follow up pelanggan ini dibuat supaya setiap kontak, kebutuhan, dan jadwal follow-up berikutnya tercatat rapi di satu tempat — tanpa perlu aplikasi CRM berbayar.

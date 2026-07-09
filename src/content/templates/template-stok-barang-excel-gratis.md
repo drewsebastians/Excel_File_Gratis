@@ -22,25 +22,6 @@ file_spec:
 batasan:
   - "Perhitungan stok akhir sepenuhnya bergantung pada kedisiplinan mencatat di sheet Log Transaksi — kalau ada transaksi yang lupa dicatat, angkanya otomatis meleset."
   - "Untuk UMKM dengan ratusan jenis barang, banyak cabang, atau kebutuhan integrasi kasir otomatis, template ini akan terasa terbatas dan lebih cocok digantikan software inventory khusus."
-interactive_tool:
-  type: "calculator"
-  title: "Simulasi Titik Pemesanan Ulang (Reorder Point)"
-  config:
-    inputs:
-      - id: "pemakaian_harian"
-        label: "Rata-rata pemakaian/penjualan harian"
-        type: "number"
-        default: 10
-      - id: "lead_time"
-        label: "Lead time pengiriman dari supplier (hari)"
-        type: "number"
-        default: 5
-      - id: "safety_stock"
-        label: "Stok pengaman (safety stock)"
-        type: "number"
-        default: 20
-    formula: "reorder_point = (pemakaian_harian * lead_time) + safety_stock"
-    output_label: "Titik Pemesanan Ulang (Reorder Point)"
 ---
 
 Kalau selama ini stok barang cuma dicatat di buku tulis atau diingat-ingat saja, wajar kalau sering kejadian barang laris tiba-tiba habis atau sebaliknya menumpuk kelamaan di rak. Template stok barang Excel ini dibuat supaya UMKM bisa mencatat barang masuk, keluar, dan retur dengan rapi, lalu stok akhir serta nilai persediaan terhitung otomatis — tanpa perlu langganan aplikasi kasir atau software gudang.
