@@ -1,6 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import { siteConfig } from "../config/site";
-import { templateImages, imageAlt } from "../config/images";
+import { templateImages } from "../config/images";
 
 export type TemplateEntry = CollectionEntry<"templates">;
 
@@ -20,9 +20,6 @@ export function getDownloadPath(entry: TemplateEntry) {
 }
 
 export function getTemplateImage(entry: TemplateEntry) {
-  if (entry.data.slug === "template-anggaran-bulanan-gratis") {
-    return templateImages.budgetHero;
-  }
   return templateImages.profitLoss;
 }
 
@@ -31,9 +28,6 @@ export function getTemplateImageAlt(entry: TemplateEntry) {
     return entry.data.preview_alt;
   }
 
-  if (entry.data.slug === "template-anggaran-bulanan-gratis") {
-    return imageAlt.budgetHero;
-  }
   return "Preview template Excel dengan tabel profesional dan aksen hijau.";
 }
 

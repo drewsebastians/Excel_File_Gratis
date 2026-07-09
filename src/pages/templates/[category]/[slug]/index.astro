@@ -61,18 +61,6 @@ function findSection(sections: MarkdownSection[], keywords: string[]) {
 }
 
 function getExampleRows(slug: string) {
-  if (slug === "template-anggaran-bulanan-gratis") {
-    return {
-      headers: ["Kategori", "Anggaran", "Aktual", "Selisih"],
-      rows: [
-        ["Makan & belanja", "Rp2.000.000", "Rp1.850.000", "Rp150.000"],
-        ["Transportasi", "Rp600.000", "Rp640.000", "-Rp40.000"],
-        ["Tabungan", "Rp1.000.000", "Rp1.000.000", "Rp0"],
-        ["Hiburan", "Rp500.000", "Rp420.000", "Rp80.000"],
-      ],
-    };
-  }
-
   return {
     headers: ["Kolom 1", "Kolom 2", "Kolom 3"],
     rows: [
