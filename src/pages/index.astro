@@ -8,6 +8,7 @@ import { categories, siteConfig } from "../config/site";
 import { templateImages } from "../config/images";
 import {
   getExcerpt,
+  getTemplateFileBadge,
   getTemplateImage,
   getTemplateImageAlt,
   getTemplateUrl,
@@ -67,6 +68,7 @@ const description = siteConfig.description;
           image={getTemplateImage(entry)}
           imageAlt={getTemplateImageAlt(entry)}
           downloads="Detail template"
+          fileType={getTemplateFileBadge(entry)}
         />
       ))}
     </div>

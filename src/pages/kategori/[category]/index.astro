@@ -7,6 +7,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { categories, getCategory } from "../../../config/site";
 import {
   getExcerpt,
+  getTemplateFileBadge,
   getTemplateImage,
   getTemplateImageAlt,
   getTemplateUrl,
@@ -57,6 +58,7 @@ const description = category.description;
               image={getTemplateImage(entry)}
               imageAlt={getTemplateImageAlt(entry)}
               downloads={`${entry.data.file_size} - Detail template`}
+              fileType={getTemplateFileBadge(entry)}
               variant="list"
             />
             {(index + 1) % 6 === 0 && <AdSlot size="infeed" />}

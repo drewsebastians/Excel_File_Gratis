@@ -9,6 +9,7 @@ interface Props {
   image: string;
   imageAlt: string;
   downloads?: string;
+  fileType?: string;
   variant?: "grid" | "list" | "related";
 }
 
@@ -20,14 +21,17 @@ const {
   image,
   imageAlt,
   downloads,
+  fileType = "xlsx",
   variant = "grid",
 } = Astro.props;
+
+const fileBadge = fileType.startsWith(".") ? fileType : `.${fileType}`;
 ---
 
 <article class={`template-card template-card--${variant}`}>
   <a class="template-card__media" href={href} aria-label={title}>
     <img src={image} alt={imageAlt} loading="lazy" />
-    <span class="file-badge"><Icon name="table_chart" /> .xlsx</span>
+    <span class="file-badge"><Icon name="table_chart" /> {fileBadge}</span>
   </a>
   <div class="template-card__body">
     <span class="chip">{category}</span>

@@ -12,6 +12,8 @@ import { getCategory, siteConfig } from "../../../../config/site";
 import { markdownToHtml, splitArticleAndFaq, stripHtml } from "../../../../lib/markdown";
 import {
   getDownloadPath,
+  getSpreadsheetMimeType,
+  getTemplateFileBadge,
   getTemplateImage,
   getTemplateImageAlt,
   getTemplateUrl,
@@ -75,6 +77,7 @@ const { entry } = Astro.props;
 const category = getCategory(entry.data.category);
 const downloadPath = getDownloadPath(entry);
 const downloadUrl = new URL(downloadPath, siteConfig.url).toString();
+const fileBadge = getTemplateFileBadge(entry);
 const pagePath = getTemplateUrl(entry);
 const image = getTemplateImage(entry);
 const imageAlt = getTemplateImageAlt(entry);
@@ -117,7 +120,7 @@ const creativeWorkSchema = {
   inLanguage: "id-ID",
   isAccessibleForFree: true,
   contentUrl: downloadUrl,
-  fileFormat: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  fileFormat: getSpreadsheetMimeType(entry),
   datePublished: entry.data.date.toISOString().slice(0, 10),
   about: category.name,
   publisher: {
@@ -182,7 +185,7 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
       <div class="download-panel">
         <a class="button" href={downloadPath} download>
           <Icon name="download" />
-          <span>Download Gratis (.xlsx)</span>
+          <span>Download Gratis ({fileBadge})</span>
         </a>
         <p>Ukuran file: {entry.data.file_size} | Tanpa daftar</p>
       </div>
@@ -287,6 +290,7 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
               href={getTemplateUrl(template)}
               image={getTemplateImage(template)}
               imageAlt={getTemplateImageAlt(template)}
+              fileType={getTemplateFileBadge(template)}
               variant="related"
             />
           ))}
@@ -316,7 +320,7 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
   <div class="mobile-download">
     <a class="button" href={downloadPath} download>
       <Icon name="download" />
-      <span>Download Gratis (.xlsx)</span>
+      <span>Download Gratis ({fileBadge})</span>
     </a>
     <span>{entry.data.file_size}</span>
   </div>

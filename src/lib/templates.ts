@@ -16,7 +16,29 @@ export function getTemplateUrl(entry: TemplateEntry) {
 
 export function getDownloadPath(entry: TemplateEntry) {
   const base = siteConfig.downloadBaseUrl.replace(/\/$/, "");
-  return `${base}/${entry.data.slug}.xlsx`;
+  return `${base}/${getTemplateFileName(entry)}`;
+}
+
+export function getTemplateFileName(entry: TemplateEntry) {
+  return entry.data.file_name || `${entry.data.slug}.xlsx`;
+}
+
+export function getTemplateFileType(entry: TemplateEntry) {
+  const fileNameExtension = getTemplateFileName(entry).match(/\.([A-Za-z0-9]+)$/)?.[1];
+  const specFormat = entry.data.file_spec?.format;
+  const format = fileNameExtension || specFormat || "xlsx";
+
+  return format.replace(/^\./, "").toLowerCase();
+}
+
+export function getTemplateFileBadge(entry: TemplateEntry) {
+  return `.${getTemplateFileType(entry)}`;
+}
+
+export function getSpreadsheetMimeType(entry: TemplateEntry) {
+  return getTemplateFileType(entry) === "xlsm"
+    ? "application/vnd.ms-excel.sheet.macroEnabled.12"
+    : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 }
 
 export function getTemplateImage(entry: TemplateEntry) {
