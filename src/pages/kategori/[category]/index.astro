@@ -6,7 +6,6 @@ import TemplateCard from "../../../components/TemplateCard.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { categories, getCategory } from "../../../config/site";
 import {
-  getDownloadPath,
   getExcerpt,
   getTemplateImage,
   getTemplateImageAlt,
@@ -57,8 +56,7 @@ const description = category.description;
               href={getTemplateUrl(entry)}
               image={getTemplateImage(entry)}
               imageAlt={getTemplateImageAlt(entry)}
-              downloadHref={getDownloadPath(entry)}
-              downloads={`${entry.data.file_size} - Unduhan gratis`}
+              downloads={`${entry.data.file_size} - Detail template`}
               variant="list"
             />
             {(index + 1) % 6 === 0 && <AdSlot size="infeed" />}

@@ -450,16 +450,6 @@ textarea {
   font-size: 12px;
 }
 
-.template-card__actions {
-  margin-top: auto;
-  padding-top: 8px;
-}
-
-.template-card__actions .button,
-.template-card__actions .button-outline {
-  width: 100%;
-}
-
 .template-card--list {
   display: grid;
   grid-template-columns: 1fr;

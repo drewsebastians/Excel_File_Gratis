@@ -1,4 +1,4 @@
-# ExcelGratis.id
+# ExcelGratis
 
 Website statis Astro untuk membagikan template Excel gratis bagi pengguna Indonesia. Situs ini memakai Astro Content Collections, tanpa backend dan tanpa database.
 

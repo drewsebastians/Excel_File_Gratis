@@ -1,6 +1,6 @@
 ---
 title: "Template Excel Follow-Up Pelanggan: Agar Tidak Ada Prospek yang Terlewat"
-meta_title: "Template Excel Follow-Up Pelanggan Gratis - ExcelGratis.id"
+meta_title: "Template Excel Follow-Up Pelanggan Gratis - ExcelGratis"
 meta_description: "Template Excel follow up pelanggan gratis, lengkap dashboard otomatis & status keterlambatan. Download gratis, langsung pakai untuk sales dan UMKM kamu."
 slug: "template-follow-up-pelanggan-excel"
 focus_keyword: "follow up pelanggan"
@@ -40,7 +40,7 @@ Follow-up yang konsisten justru sering jadi pembeda antara closing dan kehilanga
 
 Template ini terdiri dari 4 sheet yang saling terhubung:
 
-- **Sheet "Tentang"** — perkenalan singkat ExcelGratis.id dan daftar kategori template lain yang tersedia.
+- **Sheet "Tentang"** — perkenalan singkat ExcelGratis dan daftar kategori template lain yang tersedia.
 - **Sheet "Cara Pakai"** — panduan singkat 4 langkah untuk mulai memakai template.
 - **Sheet "Data Pelanggan"** — tabel utama (dalam bentuk Excel Table) berisi 15 baris contoh data yang bisa langsung diganti, dengan kolom Nama Pelanggan, Kontak, Kebutuhan/Minat, Tanggal Kontak Terakhir, Status Follow-Up (dropdown), Prioritas (dropdown), Jadwal Follow-Up Berikutnya, Catatan, serta dua kolom otomatis: Hari Sejak Kontak Terakhir dan Status Keterlambatan.
 - **Sheet "Ringkasan"** — dashboard otomatis berisi total pelanggan, rekap per status, jumlah follow-up yang terlambat, jumlah yang perlu di-follow-up dalam 7 hari ke depan, dan grafik pie distribusi status.
@@ -93,7 +93,7 @@ Ya, template ini gratis untuk didownload dan dipakai, termasuk untuk keperluan b
 Bisa. Tabel, dropdown, formula, dan grafiknya tetap berfungsi normal setelah diunggah ke Google Sheets.
 
 **Apakah data pelanggan saya aman kalau pakai template ini?**
-File ini murni bekerja secara lokal di komputer atau akun Google Drive-mu sendiri — tidak ada data yang dikirim ke server ExcelGratis.id.
+File ini murni bekerja secara lokal di komputer atau akun Google Drive-mu sendiri — tidak ada data yang dikirim ke server ExcelGratis.
 
 **Bagaimana kalau jumlah pelanggan saya sudah lebih dari 15 baris?**
 Tinggal tambahkan baris baru di bawah baris terakhir tabel, Excel Table akan otomatis meluas dan ikut menghitung formula serta dropdown-nya.

@@ -2,7 +2,7 @@ const env = (import.meta as ImportMeta & { env?: Record<string, string> }).env ?
 const defaultSiteUrl = "https://excelgratis.my.id";
 
 export const siteConfig = {
-  name: "ExcelGratis.id",
+  name: "ExcelGratis",
   url: env.PUBLIC_SITE_URL || defaultSiteUrl,
   description:
     "Download template Excel gratis untuk keuangan pribadi, bisnis UMKM, produktivitas kerja, pendidikan, dan kebutuhan rumah tangga.",

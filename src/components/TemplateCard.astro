@@ -8,8 +8,6 @@ interface Props {
   href: string;
   image: string;
   imageAlt: string;
-  ctaLabel?: string;
-  downloadHref?: string;
   downloads?: string;
   variant?: "grid" | "list" | "related";
 }
@@ -21,14 +19,9 @@ const {
   href,
   image,
   imageAlt,
-  ctaLabel = "Lihat Template",
-  downloadHref,
   downloads,
   variant = "grid",
 } = Astro.props;
-
-const actionHref = downloadHref || href;
-const actionLabel = downloadHref ? "Download Gratis" : ctaLabel;
 ---
 
 <article class={`template-card template-card--${variant}`}>
@@ -45,15 +38,5 @@ const actionLabel = downloadHref ? "Download Gratis" : ctaLabel;
         <span><Icon name="download" /> {downloads}</span>
       </div>
     )}
-    <div class="template-card__actions">
-      <a
-        class={downloadHref ? "button" : "button-outline"}
-        href={actionHref}
-        download={downloadHref ? true : undefined}
-      >
-        <Icon name={downloadHref ? "download" : "arrow_forward"} />
-        <span>{actionLabel}</span>
-      </a>
-    </div>
   </div>
 </article>

@@ -7,7 +7,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { categories, siteConfig } from "../config/site";
 import { templateImages } from "../config/images";
 import {
-  getDownloadPath,
   getExcerpt,
   getTemplateImage,
   getTemplateImageAlt,
@@ -67,8 +66,7 @@ const description = siteConfig.description;
           href={getTemplateUrl(entry)}
           image={getTemplateImage(entry)}
           imageAlt={getTemplateImageAlt(entry)}
-          downloadHref={getDownloadPath(entry)}
-          downloads="Download langsung"
+          downloads="Detail template"
         />
       ))}
     </div>
