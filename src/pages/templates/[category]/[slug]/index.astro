@@ -103,6 +103,9 @@ const summaryText =
   entry.data.ringkasan_singkat ||
   stripHtml(markdownToHtml(articleParts.intro)).split(/(?<=[.!?])\s+/).slice(0, 2).join(" ") ||
   entry.data.meta_description;
+const summaryHtml = markdownToHtml(summaryText);
+const previewHeading = entry.data.preview_heading || "Preview Visual File";
+const usageHeading = entry.data.usage_heading || "Cara Pakai";
 const fileSpec = entry.data.file_spec || {
   sheets: 1,
   has_macro: false,
@@ -175,12 +178,12 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
 
     <section class="detail-section detail-section--summary" aria-labelledby="summary-heading">
       <h2 id="summary-heading">Ringkasan Singkat</h2>
-      <p>{summaryText}</p>
-      {whySection && <div class="article-content" set:html={markdownToHtml(whySection.content)} />}
+      <div class="article-content" set:html={summaryHtml} />
+      {!entry.data.ringkasan_singkat && whySection && <div class="article-content" set:html={markdownToHtml(whySection.content)} />}
     </section>
 
     <section class="detail-section" aria-labelledby="preview-heading">
-      <h2 id="preview-heading">Preview Visual File</h2>
+      <h2 id="preview-heading">{previewHeading}</h2>
       <div class="article-hero-image">
         <img src={image} alt={imageAlt} loading="eager" />
       </div>
@@ -215,7 +218,7 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
     )}
 
     <section class="detail-section" aria-labelledby="usage-heading">
-      <h2 id="usage-heading">Cara Pakai</h2>
+      <h2 id="usage-heading">{usageHeading}</h2>
       {usageSection ? (
         <div class="article-content" set:html={markdownToHtml(usageSection.content)} />
       ) : (

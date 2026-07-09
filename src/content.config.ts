@@ -48,6 +48,8 @@ const templates = defineCollection({
     file_name: z.string(),
     file_size: z.string(),
     suggested_h1: z.string().optional(),
+    preview_heading: z.string().optional(),
+    usage_heading: z.string().optional(),
     ringkasan_singkat: z.string().optional(),
     file_spec: z
       .object({
@@ -219,7 +221,7 @@ function parseYamlScalar(value: string) {
     (trimmed.startsWith("\"") && trimmed.endsWith("\"")) ||
     (trimmed.startsWith("'") && trimmed.endsWith("'"))
   ) {
-    return trimmed.slice(1, -1);
+    return trimmed.slice(1, -1).replace(/\\n/g, "\n").replace(/\\"/g, "\"");
   }
 
   if (trimmed.startsWith("[") || trimmed.startsWith("{")) {

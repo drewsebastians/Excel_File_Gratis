@@ -1,16 +1,19 @@
 ---
-title: "Template Stok Barang Excel Gratis: Otomatis Hitung Stok & Nilai Persediaan"
-meta_title: "Template Stok Barang Excel Gratis untuk UMKM"
-meta_description: "Kelola stok barang UMKM tanpa ribet dengan template Excel gratis ini. Otomatis hitung stok masuk, keluar, retur, dan nilai persediaan. Download gratis sekarang!"
+title: "Template Stok Barang Excel Gratis untuk UMKM, Toko & Inventory Sederhana"
+meta_title: "Template Stok Barang Excel Gratis untuk UMKM & Inventory Toko"
+meta_description: "Download template stok barang Excel gratis untuk mencatat stok masuk, stok keluar, retur, minimum stock, status restock, dan nilai persediaan UMKM."
 slug: "template-stok-barang-excel-gratis"
 focus_keyword: "stok barang"
-preview_alt: "Tampilan template Excel stok barang UMKM dengan dashboard nilai persediaan dan grafik kategori"
+preview_alt: "Dashboard template stok barang Excel gratis untuk UMKM dengan stok masuk, stok keluar, status restock, dan nilai persediaan"
 category: "bisnis-umkm"
 tags: ["stok barang", "inventaris umkm", "template excel gratis", "manajemen stok"]
 date: "2026-07-07"
 file_name: "template-stok-barang-excel-gratis.xlsx"
 file_size: "54 KB"
-ringkasan_singkat: "Template Excel gratis untuk pemilik UMKM yang ingin mencatat stok masuk, keluar, dan retur secara rapi, sekaligus memantau nilai persediaan tanpa harus berlangganan software kasir atau inventory berbayar."
+suggested_h1: "Template Stok Barang Excel Gratis untuk UMKM, Toko & Inventory Sederhana"
+preview_heading: "Preview Dashboard Template Stok Barang Excel"
+usage_heading: "Cara Menggunakan Template Stok Barang Excel"
+ringkasan_singkat: "Download template stok barang Excel gratis untuk mencatat stok masuk, stok keluar, retur, stok akhir, minimum stock, status restock, dan nilai persediaan secara otomatis. Template ini cocok untuk UMKM, toko sembako, toko online, usaha makanan, reseller, dan bisnis kecil yang ingin mengelola inventory tanpa software berbayar.\n\nCukup isi master barang, stok awal, minimum stock, harga beli, dan transaksi harian di sheet Log Transaksi. Dashboard otomatis akan membantu melihat total nilai persediaan, barang yang perlu direstock, serta distribusi nilai stok per kategori. Misalnya, toko sembako yang menjual beras, gula, minyak goreng, dan deterjen bisa langsung mengetahui saat deterjen masuk status \"Stok Menipis\", sehingga pemilik toko dapat memutuskan barang mana yang perlu dipesan ulang tanpa menghitung manual satu per satu."
 file_spec:
   sheets: 4
   has_macro: false
@@ -56,10 +59,6 @@ Template ini terdiri dari 4 sheet yang saling terhubung:
 - **Ringkasan Dashboard** — ringkasan total nilai persediaan, jumlah barang yang perlu direstock, dan grafik distribusi nilai persediaan per kategori
 
 Fitur teknis yang sudah tertanam: rumus SUMIFS untuk agregasi transaksi per barang, VLOOKUP untuk auto-isi nama barang dari kode, dropdown kategori dan jenis transaksi supaya input tetap konsisten, conditional formatting warna merah/hijau untuk status stok, grafik bar dan pie chart otomatis, serta proteksi ringan pada sel berisi rumus agar tidak sengaja terhapus. Format currency sudah diatur ke Rupiah dan kompatibel dibuka di Microsoft Excel maupun Google Sheets.
-
-## Contoh Ilustrasi
-
-**Contoh Ilustrasi — skenario fiktif untuk membantu pemahaman:** Sebuah toko sembako kecil bernama "Toko Berkah" menjual beras, gula, minyak goreng, dan kebutuhan dapur lain. Pemiliknya mulai mencatat setiap kali ada barang masuk dari distributor dan setiap penjualan harian di sheet Log Transaksi. Setelah dua minggu, dashboard menunjukkan bahwa deterjen bubuk sudah masuk status "Stok Menipis" karena stok akhir sudah di bawah batas minimum yang ditetapkan, sementara beras dan gula masih dalam status "Aman". Berkat ringkasan ini, pemilik toko bisa langsung memutuskan barang mana yang perlu dipesan ulang minggu itu juga, tanpa harus menghitung manual satu per satu.
 
 ## Cara Pakai
 
@@ -109,4 +108,10 @@ Cukup edit baris transaksi yang salah di sheet Log Transaksi — seluruh perhitu
 **Apakah perlu tahu rumus Excel untuk memakai template ini?**
 Tidak perlu. Semua rumus sudah disiapkan; kamu hanya perlu mengisi kolom berwarna biru dan mencatat transaksi seperti biasa.
 
-Yuk unduh template stok barang gratis ini sekarang dan mulai kelola stok UMKM kamu lebih rapi hari ini juga.
+**Apakah template stok barang ini bisa dipakai untuk toko online?**
+Bisa. Template ini dapat digunakan untuk mencatat stok produk toko online, reseller, atau usaha kecil selama transaksi masuk dan keluar dicatat secara konsisten.
+
+**Apakah template ini bisa menghitung nilai persediaan?**
+Bisa. Nilai persediaan dihitung dari stok akhir dan harga beli per unit yang diisi di master data barang.
+
+Download template stok barang Excel gratis ini dan mulai pantau stok masuk, stok keluar, barang menipis, dan nilai persediaan UMKM-mu dengan lebih rapi.

@@ -1,16 +1,19 @@
 ---
-title: "Template Budget Bulanan Excel Gratis: Kelola Pengeluaran & Tabungan Otomatis"
-meta_title: "Template Budget Bulanan Excel Gratis & Auto Grafik"
-meta_description: "Template budget bulanan gratis format Excel untuk atur pengeluaran, target, sisa uang, dan tabungan. Ada grafik otomatis. Download gratis, langsung pakai."
+title: "Template Budget Bulanan Excel Gratis untuk Atur Pengeluaran & Tabungan"
+meta_title: "Template Budget Bulanan Excel Gratis untuk Pengeluaran & Tabungan"
+meta_description: "Download template budget bulanan Excel gratis dengan dashboard otomatis, grafik pengeluaran, target anggaran, tabungan, sisa uang, dan status realisasi."
 slug: "template-budget-bulanan"
 focus_keyword: "template budget bulanan"
-preview_alt: "Tampilan dashboard template budget bulanan Excel dengan tabel realisasi per kategori dan grafik target vs pengeluaran"
+preview_alt: "Dashboard template budget bulanan Excel gratis dengan grafik target vs realisasi dan rincian pengeluaran per kategori"
 category: "keuangan-pribadi"
 tags: ["template budget bulanan", "expense tracker", "keuangan pribadi", "tabungan", "excel gratis"]
 date: "2026-07-08"
 file_name: "template-budget-bulanan.xlsx"
 file_size: "21 KB"
-ringkasan_singkat: "Template Excel gratis untuk karyawan, mahasiswa, freelancer, dan keluarga yang mau mengatur budget bulanan, memantau pengeluaran per kategori, dan menyisihkan tabungan tanpa ribet."
+suggested_h1: "Template Budget Bulanan Excel Gratis untuk Atur Pengeluaran & Tabungan"
+preview_heading: "Preview Dashboard Template Budget Bulanan Excel"
+usage_heading: "Cara Menggunakan Template Budget Bulanan Excel"
+ringkasan_singkat: "Download template budget bulanan Excel gratis untuk mengatur pemasukan, pengeluaran, tabungan, dan sisa uang bulanan dalam satu dashboard otomatis. Template ini cocok untuk karyawan, mahasiswa, freelancer, anak kos, pasangan, dan keluarga yang ingin mencatat transaksi harian tanpa ribet di Excel atau Google Sheets.\n\nCukup isi target anggaran dan transaksi harian, lalu dashboard otomatis menampilkan realisasi per kategori, status aman/mendekati batas/lebih anggaran, serta grafik target vs realisasi. Sebagai ilustrasi, jika pemasukan bulanan Rp6.500.000 dengan target makan-minum Rp1.500.000, sewa kos Rp1.200.000, dan tabungan Rp600.000, template ini membantu melihat pos mana yang masih aman, sudah mendekati batas, atau perlu dikontrol lebih awal."
 file_spec:
   sheets: 4
   has_macro: false
@@ -56,10 +59,6 @@ Template ini terdiri dari 4 sheet yang saling terhubung:
 Format angka sudah pakai "Rp #,##0", sel input berwarna biru dan sel rumus berwarna hitam supaya kamu tahu mana yang boleh diedit, dan sheet-nya sudah diproteksi ringan (tanpa password) supaya rumus dan header tidak sengaja terhapus saat kamu mengetik data.
 
 Di balik layar, rekap di Dashboard Ringkasan dihitung memakai kombinasi rumus SUMIFS (untuk menjumlahkan transaksi per kategori dan per jenis) dan IF bertingkat (untuk menentukan status "Aman", "Mendekati Batas", atau "Lebih dari Anggaran"). Sheet Catatan Transaksi dan Anggaran Bulanan juga sudah dibuat dalam bentuk Excel Table, jadi kamu bisa mengurutkan atau memfilter datanya kapan saja tanpa merusak rumus di sheet lain.
-
-## Contoh Ilustrasi
-
-**Contoh Ilustrasi — skenario fiktif untuk membantu pemahaman:** Misalnya seseorang punya pemasukan Rp6.500.000 per bulan dari gaji. Ia menetapkan target Rp1.500.000 untuk makan-minum, Rp1.200.000 untuk sewa kos, dan Rp600.000 untuk ditabung. Setelah mencatat transaksi harian selama sebulan, dashboard menunjukkan bahwa realisasi makan-minumnya baru Rp350.000 (masih "Aman"), sementara sewa kos dan tabungan sudah tepat 100% terpakai (berstatus "Mendekati Batas"). Sisa uang yang belum teralokasi otomatis terlihat di bagian Ringkasan Utama, sehingga ia tahu masih ada dana bebas yang bisa dialokasikan lagi.
 
 ## Cara Pakai
 
@@ -120,4 +119,10 @@ Template ini dirancang khusus untuk keuangan pribadi atau rumah tangga, bukan un
 **Apakah tabungan dihitung terpisah dari pengeluaran?**
 Dalam template ini, uang yang kamu sisihkan untuk ditabung dicatat sebagai kategori "Tabungan/Investasi" dengan jenis "Pengeluaran" — pendekatan ini sengaja dipakai supaya tabungan diperlakukan sebagai pos yang wajib dianggarkan di awal, bukan sisa uang yang kebetulan tidak terpakai di akhir bulan.
 
-Yuk, download template budget bulanan ini sekarang dan mulai pantau pengeluaranmu dari bulan ini juga.
+**Apakah template ini bisa dipakai untuk mencatat pengeluaran harian?**
+Bisa. Template ini dapat digunakan untuk mencatat transaksi harian seperti makan-minum, transportasi, tagihan, hiburan, tabungan, dan pengeluaran lainnya.
+
+**Apakah template ini bisa dipakai setiap bulan?**
+Bisa. Untuk bulan berikutnya, kamu bisa menduplikasi sheet atau file, lalu menghapus contoh transaksi lama agar dashboard kembali kosong.
+
+Download template budget bulanan Excel gratis ini sekarang dan mulai pantau pemasukan, pengeluaran, tabungan, serta sisa uang bulananmu dengan lebih mudah.

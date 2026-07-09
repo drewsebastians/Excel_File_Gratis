@@ -75,7 +75,7 @@ function extractFaqItems(markdown: string) {
 
 function splitClosingFromAnswer(answer: string) {
   const closingMatch = answer.match(
-    /\n{2,}(?=(?:\*?Siap coba|Yuk|Punya banyak|Langsung)\b)/i,
+    /\n{2,}(?=(?:\*?Siap coba|Yuk|Punya banyak|Langsung|Download)\b)/i,
   );
 
   if (!closingMatch || closingMatch.index === undefined) {
