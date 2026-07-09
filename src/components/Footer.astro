@@ -1,5 +1,4 @@
 ---
-import Icon from "./Icon.astro";
 import { categories, siteConfig } from "../config/site";
 ---
 
@@ -7,8 +6,7 @@ import { categories, siteConfig } from "../config/site";
   <div class="site-footer__grid container">
     <div>
       <a class="logo" href="/">
-        <Icon name="table_chart" />
-        <span>{siteConfig.name}</span>
+        <img src="/assets/brand/main-icon.png" alt={siteConfig.name} width="180" height="60" loading="lazy" />
       </a>
       <p>&copy; 2026 {siteConfig.name}. Semua hak dilindungi undang-undang.</p>
     </div>

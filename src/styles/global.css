@@ -122,6 +122,13 @@ textarea {
   white-space: nowrap;
 }
 
+.logo img {
+  width: 180px;
+  height: auto;
+  max-height: 42px;
+  object-fit: contain;
+}
+
 .material-symbols-outlined {
   font-size: 22px;
   line-height: 1;
