@@ -1,5 +1,9 @@
 ---
-import { categories, siteConfig } from "../config/site";
+import { getCollection } from "astro:content";
+import { siteConfig } from "../config/site";
+import { getCategoryUrl, getPopulatedCategories } from "../lib/templates";
+
+const populatedCategories = getPopulatedCategories(await getCollection("templates"));
 ---
 
 <footer class="site-footer">
@@ -12,20 +16,32 @@ import { categories, siteConfig } from "../config/site";
     </div>
 
     <div>
-      <h2>Perusahaan</h2>
+      <h2>Template</h2>
+      <ul>
+        <li><a href="/templates/">Semua Template</a></li>
+        <li><a href="/kategori/">Semua Kategori</a></li>
+        {populatedCategories.map((category) => (
+          <li><a href={getCategoryUrl(category.slug)}>{category.name}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2>Tentang</h2>
       <ul>
         <li><a href="/tentang/">Tentang</a></li>
-        <li><a href="/privasi/">Kebijakan Privasi</a></li>
         <li><a href="/disclaimer/">Disclaimer</a></li>
       </ul>
     </div>
 
     <div>
-      <h2>Kategori Utama</h2>
+      <h2>Legal</h2>
       <ul>
-        {categories.map((category) => (
-          <li><a href={`/kategori/${category.slug}/`}>{category.name}</a></li>
-        ))}
+        <li><a href="/privasi/">Kebijakan Privasi</a></li>
+      </ul>
+      <h2 class="footer-subheading">Discovery</h2>
+      <ul>
+        <li><a href="/sitemap/">HTML Sitemap</a></li>
       </ul>
     </div>
   </div>

@@ -7,6 +7,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { categories, getCategory } from "../../../config/site";
 import {
   getExcerpt,
+  getPublishedTemplates,
   getTemplateFileBadge,
   getTemplateImage,
   getTemplateImageAlt,
@@ -23,16 +24,22 @@ export function getStaticPaths() {
 
 const { categorySlug } = Astro.props;
 const category = getCategory(categorySlug);
-const allTemplates = sortTemplates(await getCollection("templates"));
+const allTemplates = sortTemplates(getPublishedTemplates(await getCollection("templates")));
 const templates = allTemplates.filter((entry) => entry.data.category === category.slug);
 const countLabel = `${templates.length} template tersedia`;
 const title = `Template Excel ${category.name}`;
 const description = category.description;
+const isEmpty = templates.length === 0;
 ---
 
-<BaseLayout title={title} description={description} path={`/kategori/${category.slug}/`}>
+<BaseLayout
+  title={title}
+  description={description}
+  path={`/kategori/${category.slug}/`}
+  robots={isEmpty ? "noindex, follow" : "index, follow"}
+>
   <section class="category-hero container">
-    <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: category.name }]} />
+    <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: "Semua Kategori", href: "/kategori/" }, { label: category.name }]} />
     <h1>{title}</h1>
     <p>{description}</p>
   </section>
@@ -40,14 +47,14 @@ const description = category.description;
   <section class="container">
     <div class="listing-toolbar">
       <label>{countLabel}</label>
-      <select aria-label="Urutkan template">
-        <option>Urutkan: Terbaru</option>
-        <option>Urutkan: Paling populer</option>
+      <select id="category-sort" aria-label="Urutkan template" data-category={category.slug}>
+        <option value="newest">Urutkan: Terbaru</option>
+        <option value="title-asc">Urutkan: Judul A-Z</option>
       </select>
     </div>
 
     {templates.length > 0 ? (
-      <div class="template-grid template-grid--listing">
+      <div class="template-grid template-grid--listing" id="category-template-results">
         {templates.map((entry, index) => (
           <>
             <TemplateCard
@@ -60,6 +67,8 @@ const description = category.description;
               downloads={`${entry.data.file_size} - Detail template`}
               fileType={getTemplateFileBadge(entry)}
               variant="list"
+              data-title={entry.data.title}
+              data-date={entry.data.date.toISOString()}
             />
             {(index + 1) % 6 === 0 && <AdSlot size="infeed" />}
           </>
@@ -67,14 +76,39 @@ const description = category.description;
       </div>
     ) : (
       <div class="empty-state">
-        <h2>Template di kategori ini segera hadir</h2>
-        <p>Kami sedang menyiapkan koleksi untuk {category.name}. Sementara itu, cek template keuangan pribadi yang sudah tersedia.</p>
-        <a class="button-outline" href="/kategori/keuangan-pribadi/">Lihat template tersedia</a>
+        <h2>Belum ada template yang cocok untuk kategori ini</h2>
+        <p>Silakan telusuri semua template yang sudah tersedia atau kembali ke direktori kategori.</p>
+        <a class="button-outline" href="/templates/">Lihat semua template</a>
       </div>
     )}
 
-    <div class="section">
-      <AdSlot size="banner" />
-    </div>
+    {!isEmpty && (
+      <div class="section">
+        <AdSlot size="banner" />
+      </div>
+    )}
   </section>
+
+  {!isEmpty && (
+    <script is:inline>
+      const categorySort = document.getElementById("category-sort");
+      const categoryGrid = document.getElementById("category-template-results");
+      const categoryCards = [...document.querySelectorAll("#category-template-results .template-card")];
+
+      categorySort?.addEventListener("change", () => {
+        const sorted = [...categoryCards].sort((a, b) => {
+          if (categorySort.value === "title-asc") return a.dataset.title.localeCompare(b.dataset.title, "id-ID");
+          return new Date(b.dataset.date) - new Date(a.dataset.date);
+        });
+        for (const card of sorted) categoryGrid.append(card);
+        if (window.ExcelGratisEvents) {
+          window.ExcelGratisEvents.push("template_sort", {
+            category: categorySort.dataset.category || "",
+            sort: categorySort.value,
+            result_count: categoryCards.length,
+          });
+        }
+      });
+    </script>
+  )}
 </BaseLayout>

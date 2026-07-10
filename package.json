@@ -12,7 +12,8 @@
     "build": "astro build",
     "deploy": "wrangler deploy",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "validate": "node scripts/validate-build.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

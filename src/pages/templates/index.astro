@@ -1,0 +1,215 @@
+---
+import { getCollection } from "astro:content";
+import Icon from "../../components/Icon.astro";
+import TemplateCard from "../../components/TemplateCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { categories } from "../../config/site";
+import {
+  getExcerpt,
+  getPublishedTemplates,
+  getTemplateFileBadge,
+  getTemplateImage,
+  getTemplateImageAlt,
+  getTemplateUrl,
+  sortTemplates,
+} from "../../lib/templates";
+
+const templates = sortTemplates(getPublishedTemplates(await getCollection("templates")));
+const formats = Array.from(
+  new Set(templates.map((entry) => entry.data.file_spec?.format || getTemplateFileBadge(entry).replace(".", ""))),
+).sort();
+const populatedCategorySlugs = new Set(templates.map((entry) => entry.data.category));
+const availableCategories = categories.filter((category) => populatedCategorySlugs.has(category.slug));
+const title = "Semua Template Excel Gratis";
+const description =
+  "Cari, filter, dan download semua template Excel gratis yang tersedia di ExcelGratis untuk keuangan, UMKM, produktivitas, pendidikan, dan kebutuhan harian.";
+---
+
+<BaseLayout title={title} description={description} path="/templates/">
+  <section class="category-hero container">
+    <h1>{title}</h1>
+    <p>Temukan template Excel siap pakai berdasarkan kata kunci, kategori, format file, atau urutan tanggal publikasi.</p>
+  </section>
+
+  <section class="container template-directory" aria-labelledby="template-directory-heading">
+    <h2 id="template-directory-heading" class="visually-hidden">Daftar template</h2>
+    <form class="filter-panel" id="template-filter-form" action="/templates/" method="get" role="search">
+      <div class="field">
+        <label for="template-search">Cari template</label>
+        <input id="template-search" name="q" type="search" placeholder="Misal: stok, budget, kalender" />
+      </div>
+      <div class="field">
+        <label for="category-filter">Kategori</label>
+        <select id="category-filter" name="category">
+          <option value="">Semua kategori</option>
+          {availableCategories.map((category) => (
+            <option value={category.slug}>{category.name}</option>
+          ))}
+        </select>
+      </div>
+      <div class="field">
+        <label for="format-filter">Format</label>
+        <select id="format-filter" name="format">
+          <option value="">Semua format</option>
+          {formats.map((format) => <option value={format}>{format.toUpperCase()}</option>)}
+        </select>
+      </div>
+      <div class="field">
+        <label for="sort-filter">Urutkan</label>
+        <select id="sort-filter" name="sort">
+          <option value="newest">Terbaru</option>
+          <option value="oldest">Terlama</option>
+          <option value="title-asc">Judul A-Z</option>
+          <option value="title-desc">Judul Z-A</option>
+        </select>
+      </div>
+      <div class="filter-panel__actions">
+        <button class="button" type="submit"><Icon name="search" /> Cari</button>
+        <a class="button-outline" id="reset-filters" href="/templates/">Reset filter</a>
+      </div>
+    </form>
+
+    <p class="result-count" id="template-result-count" aria-live="polite">{templates.length} template tersedia</p>
+
+    <div class="template-grid template-grid--listing" id="template-results">
+      {templates.map((entry) => {
+        const category = categories.find((item) => item.slug === entry.data.category);
+        const format = entry.data.file_spec?.format || getTemplateFileBadge(entry).replace(".", "");
+        const searchText = [
+          entry.data.title,
+          entry.data.meta_description,
+          entry.data.category,
+          category?.name,
+          entry.data.focus_keyword,
+          ...(entry.data.tags || []),
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+
+        return (
+          <TemplateCard
+            title={entry.data.title}
+            excerpt={getExcerpt(entry.body)}
+            category={category?.shortName || "Template"}
+            href={getTemplateUrl(entry)}
+            image={getTemplateImage(entry)}
+            imageAlt={getTemplateImageAlt(entry)}
+            downloads={`${entry.data.file_size} - Detail template`}
+            fileType={getTemplateFileBadge(entry)}
+            variant="list"
+            data-search={searchText}
+            data-category={entry.data.category}
+            data-format={format}
+            data-title={entry.data.title}
+            data-date={entry.data.date.toISOString()}
+          />
+        );
+      })}
+    </div>
+
+    <div class="empty-state" id="template-empty-state" hidden>
+      <h2>Tidak ada template yang cocok</h2>
+      <p>Coba kurangi kata kunci atau pilih kategori lain.</p>
+      <a class="button-outline" href="/templates/">Reset filter</a>
+    </div>
+  </section>
+
+  <script is:inline>
+    const form = document.getElementById("template-filter-form");
+    const resultCount = document.getElementById("template-result-count");
+    const results = [...document.querySelectorAll("#template-results .template-card")];
+    const emptyState = document.getElementById("template-empty-state");
+    const grid = document.getElementById("template-results");
+    const params = new URLSearchParams(window.location.search);
+
+    for (const element of form.elements) {
+      if (!element.name) continue;
+      const value = params.get(element.name);
+      if (value !== null) element.value = value;
+    }
+
+    function normalize(value) {
+      return (value || "").trim().toLowerCase();
+    }
+
+    function syncUrl() {
+      const next = new URLSearchParams();
+      for (const element of form.elements) {
+        if (!element.name || !element.value) continue;
+        if (element.name === "sort" && element.value === "newest") continue;
+        next.set(element.name, element.value);
+      }
+      const query = next.toString();
+      history.pushState(null, "", query ? `/templates/?${query}` : "/templates/");
+    }
+
+    function sendEvent(name, params) {
+      if (window.ExcelGratisEvents) window.ExcelGratisEvents.push(name, params);
+    }
+
+    function applyFilters(updateUrl = true) {
+      const q = normalize(form.q.value);
+      const category = form.category.value;
+      const format = form.format.value;
+      const sort = form.sort.value || "newest";
+      let visible = results.filter((card) => {
+        const matchesSearch = !q || card.dataset.search.includes(q);
+        const matchesCategory = !category || card.dataset.category === category;
+        const matchesFormat = !format || card.dataset.format === format;
+        return matchesSearch && matchesCategory && matchesFormat;
+      });
+
+      visible.sort((a, b) => {
+        if (sort === "oldest") return new Date(a.dataset.date) - new Date(b.dataset.date);
+        if (sort === "title-asc") return a.dataset.title.localeCompare(b.dataset.title, "id-ID");
+        if (sort === "title-desc") return b.dataset.title.localeCompare(a.dataset.title, "id-ID");
+        return new Date(b.dataset.date) - new Date(a.dataset.date);
+      });
+
+      for (const card of results) card.hidden = !visible.includes(card);
+      for (const card of visible) grid.append(card);
+      resultCount.textContent = `${visible.length} dari ${results.length} template ditampilkan`;
+      form.dataset.resultCount = String(visible.length);
+      emptyState.hidden = visible.length > 0;
+      if (updateUrl) syncUrl();
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      applyFilters();
+      sendEvent("template_search", { result_count: Number(form.dataset.resultCount || 0) });
+    });
+
+    form.addEventListener("input", (event) => {
+      if (event.target.name === "q") {
+        applyFilters();
+        sendEvent("template_search", { result_count: Number(form.dataset.resultCount || 0) });
+      }
+    });
+
+    form.addEventListener("change", (event) => {
+      applyFilters();
+      if (event.target.name === "sort") {
+        sendEvent("template_sort", { sort: form.sort.value, result_count: Number(form.dataset.resultCount || 0) });
+      } else {
+        sendEvent("template_filter", {
+          category: form.category.value,
+          format: form.format.value,
+          result_count: Number(form.dataset.resultCount || 0),
+        });
+      }
+    });
+
+    window.addEventListener("popstate", () => {
+      const nextParams = new URLSearchParams(window.location.search);
+      for (const element of form.elements) {
+        if (!element.name) continue;
+        element.value = nextParams.get(element.name) || (element.name === "sort" ? "newest" : "");
+      }
+      applyFilters(false);
+    });
+
+    applyFilters(false);
+  </script>
+</BaseLayout>

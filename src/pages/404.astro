@@ -1,16 +1,34 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getPopulatedCategories } from "../lib/templates";
 
 const title = "Halaman Tidak Ditemukan";
 const description = "Halaman yang Anda cari tidak ditemukan di ExcelGratis.";
+const populatedCategories = getPopulatedCategories(await getCollection("templates")).slice(0, 4);
 ---
 
-<BaseLayout title={title} description={description} path="/404/">
+<BaseLayout title={title} description={description} path="/404/" robots="noindex, follow">
   <section class="not-found container">
     <div>
       <h1>404</h1>
-      <p>Halaman yang Anda cari tidak tersedia. Mulai lagi dari beranda atau lihat kategori template yang sudah tersedia.</p>
-      <a class="button" href="/">Kembali ke Beranda</a>
+      <p>Halaman yang Anda cari tidak tersedia. Mulai lagi dari beranda, telusuri semua template, atau cari berdasarkan kata kunci.</p>
+      <form class="search-panel" action="/templates/" method="get" role="search">
+        <input name="q" type="search" placeholder="Cari template Excel" aria-label="Cari template Excel" />
+        <button class="button" type="submit">Cari</button>
+      </form>
+      <div class="not-found__actions">
+        <a class="button" href="/">Beranda</a>
+        <a class="button-outline" href="/templates/">Semua Template</a>
+        <a class="button-outline" href="/kategori/">Semua Kategori</a>
+      </div>
+      {populatedCategories.length > 0 && (
+        <ul class="inline-link-list" aria-label="Kategori tersedia">
+          {populatedCategories.map((category) => (
+            <li><a href={`/kategori/${category.slug}/`}>{category.name}</a></li>
+          ))}
+        </ul>
+      )}
     </div>
   </section>
 </BaseLayout>

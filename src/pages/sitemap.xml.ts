@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
-import { categories, siteConfig } from "../config/site";
+import { siteConfig } from "../config/site";
+import { getPopulatedCategories, getPublishedTemplates, getTemplateUrl } from "../lib/templates";
 
 function escapeXml(value: string) {
   return value
@@ -11,14 +12,19 @@ function escapeXml(value: string) {
 }
 
 export async function GET() {
-  const templates = await getCollection("templates");
+  const allTemplates = await getCollection("templates");
+  const templates = getPublishedTemplates(allTemplates);
+  const populatedCategories = getPopulatedCategories(allTemplates);
   const paths = [
     "/",
+    "/templates/",
+    "/kategori/",
     "/tentang/",
     "/privasi/",
     "/disclaimer/",
-    ...categories.map((category) => `/kategori/${category.slug}/`),
-    ...templates.map((entry) => `/templates/${entry.data.category}/${entry.data.slug}/`),
+    "/sitemap/",
+    ...populatedCategories.map((category) => `/kategori/${category.slug}/`),
+    ...templates.map(getTemplateUrl),
   ];
   const urls = paths
     .map((path) => {

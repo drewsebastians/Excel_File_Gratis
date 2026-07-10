@@ -13,6 +13,23 @@ CMS ini menyimpan konten sebagai Markdown di `src/content/templates` dan file Ex
 - Editorial workflow aktif, jadi perubahan bisa masuk sebagai draft/review sebelum publish.
 - Upload file Excel diarahkan ke `public/downloads`.
 - Upload media umum diarahkan ke `public/assets/uploads`.
+- Upload preview template opsional diarahkan ke `public/assets/templates` dan dipakai lewat field `preview_image`.
+
+## Field Template Baru
+
+- `preview_image`: gambar preview opsional. Jika kosong, website tetap memakai mapping gambar berdasarkan slug yang sudah ada. Jangan memakai CMS untuk mengatur crop, filter, watermark, overlay, atau style gambar; tampilan mengikuti komponen website.
+- `preview_alt`: teks alternatif gambar. Di CMS field ini wajib untuk editing baru, tetapi schema website tetap menerima konten lama yang belum memilikinya dan memakai fallback aman.
+- `featured`: centang jika template ingin diprioritaskan di section Template Pilihan homepage. Jika tidak ada template featured, homepage otomatis memakai template terbaru.
+- `updated_date`: tanggal terakhir diperbarui. Field ini tidak mengganti `date` sebagai tanggal publish awal.
+- `related_templates`: pilihan template terkait berdasarkan slug. Jika kosong, website otomatis mencari template dari kategori yang sama, tag yang sama, lalu fallback template lain.
+
+## Backward Compatibility
+
+Konten Markdown lama tetap bisa dibuild tanpa migrasi massal. Field baru bersifat opsional di schema, sehingga template existing yang hanya memiliki field lama tetap valid. Mapping gambar lama untuk empat template existing tetap dipertahankan selama `preview_image` belum diisi.
+
+## Catatan Editorial
+
+Gunakan Bahasa Indonesia untuk judul, ringkasan, alt text, dan isi artikel. Jangan membuat klaim jumlah download, rating, popularitas, atau angka lain yang belum punya data. Kategori kosong boleh tetap tersedia di konfigurasi CMS untuk kebutuhan publishing mendatang, tetapi tidak akan dipromosikan di website sampai memiliki template published.
 
 ## Yang Perlu Anda Set Di GitHub
 
@@ -24,3 +41,5 @@ Decap CMS dengan backend GitHub butuh autentikasi OAuth. Buat GitHub OAuth App:
 Untuk Cloudflare Pages, kita perlu OAuth proxy/serverless auth kecil agar Decap bisa login ke GitHub. Setelah client id/secret tersedia, simpan sebagai environment variable di Cloudflare, lalu hubungkan `base_url` di `public/admin/config.yml` ke endpoint OAuth tersebut.
 
 Tanpa langkah OAuth ini, halaman `/admin/` sudah terbuka, tetapi belum bisa login ke GitHub.
+
+Editorial workflow tetap memakai konfigurasi GitHub Decap CMS yang sudah ada. Batch ini tidak mengubah worker auth, credential OAuth, secret Cloudflare, atau flow login.

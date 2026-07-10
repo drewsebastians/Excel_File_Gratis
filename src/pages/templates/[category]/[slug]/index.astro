@@ -12,16 +12,17 @@ import { getCategory, siteConfig } from "../../../../config/site";
 import { markdownToHtml, splitArticleAndFaq, stripHtml } from "../../../../lib/markdown";
 import {
   getDownloadPath,
+  getPublishedTemplates,
+  getRelatedTemplates,
   getSpreadsheetMimeType,
   getTemplateFileBadge,
   getTemplateImage,
   getTemplateImageAlt,
   getTemplateUrl,
-  sortTemplates,
 } from "../../../../lib/templates";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("templates");
+  const entries = getPublishedTemplates(await getCollection("templates"));
   return entries.map((entry) => ({
     params: {
       category: entry.data.category,
@@ -62,7 +63,7 @@ function findSection(sections: MarkdownSection[], keywords: string[]) {
   });
 }
 
-function getExampleRows(slug: string) {
+function getExampleRows() {
   return {
     headers: ["Kolom 1", "Kolom 2", "Kolom 3"],
     rows: [
@@ -107,10 +108,8 @@ const batasan = Array.isArray(entry.data.batasan)
   : entry.data.batasan
     ? [entry.data.batasan]
     : ["Template ini dibuat untuk kebutuhan sederhana dan mungkin perlu penyesuaian untuk kasus yang lebih kompleks."];
-const exampleRows = getExampleRows(entry.data.slug);
-const related = sortTemplates(await getCollection("templates"))
-  .filter((template) => template.data.slug !== entry.data.slug)
-  .slice(0, 3);
+const exampleRows = getExampleRows();
+const related = getRelatedTemplates(entry, await getCollection("templates"), 3);
 const creativeWorkSchema = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
@@ -121,6 +120,9 @@ const creativeWorkSchema = {
   contentUrl: downloadUrl,
   fileFormat: getSpreadsheetMimeType(entry),
   datePublished: entry.data.date.toISOString().slice(0, 10),
+  ...(entry.data.updated_date
+    ? { dateModified: entry.data.updated_date.toISOString().slice(0, 10) }
+    : {}),
   about: category.name,
   publisher: {
     "@type": "Organization",
@@ -144,6 +146,17 @@ const faqSchema =
       }
     : undefined;
 const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchema];
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Beranda", item: new URL("/", siteConfig.url).toString() },
+    { "@type": "ListItem", position: 2, name: "Semua Template", item: new URL("/templates/", siteConfig.url).toString() },
+    { "@type": "ListItem", position: 3, name: category.name, item: new URL(`/kategori/${category.slug}/`, siteConfig.url).toString() },
+    { "@type": "ListItem", position: 4, name: entry.data.title, item: new URL(pagePath, siteConfig.url).toString() },
+  ],
+};
+const allSchemas = [...schemas, breadcrumbSchema];
 ---
 
 <BaseLayout
@@ -152,13 +165,14 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
   path={pagePath}
   ogImage={image}
   ogType="article"
-  structuredData={schemas}
+  structuredData={allSchemas}
 >
   <article class="narrow-container">
     <header class="article-header">
       <Breadcrumbs
         items={[
           { label: "Beranda", href: "/" },
+          { label: "Semua Template", href: "/templates/" },
           { label: category.name, href: `/kategori/${category.slug}/` },
           { label: entry.data.title },
         ]}
@@ -181,7 +195,14 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
     <section class="detail-section detail-section--download" aria-labelledby="download-heading">
       <h2 id="download-heading">Download Template</h2>
       <div class="download-panel">
-        <a class="button" href={downloadPath} download>
+        <a
+          class="button"
+          href={downloadPath}
+          download
+          data-event="template_download_click"
+          data-event-param-template-slug={entry.data.slug}
+          data-event-param-category-slug={category.slug}
+        >
           <Icon name="download" />
           <span>Download Gratis ({fileBadge})</span>
         </a>
@@ -277,7 +298,7 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
     {closingHtml && <div class="closing-note" set:html={closingHtml} />}
 
     <section class="related-section detail-section" aria-labelledby="related-heading">
-      <h2 id="related-heading">Related Templates</h2>
+      <h2 id="related-heading">Template Terkait</h2>
       {related.length > 0 ? (
         <div class="template-grid template-grid--related">
           {related.map((template) => (
@@ -290,6 +311,8 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
               imageAlt={getTemplateImageAlt(template)}
               fileType={getTemplateFileBadge(template)}
               variant="related"
+              eventName="related_template_click"
+              eventTemplateSlug={template.data.slug}
             />
           ))}
         </div>
@@ -316,7 +339,14 @@ const schemas = faqSchema ? [creativeWorkSchema, faqSchema] : [creativeWorkSchem
   </article>
 
   <div class="mobile-download">
-    <a class="button" href={downloadPath} download>
+    <a
+      class="button"
+      href={downloadPath}
+      download
+      data-event="template_download_click"
+      data-event-param-template-slug={entry.data.slug}
+      data-event-param-category-slug={category.slug}
+    >
       <Icon name="download" />
       <span>Download Gratis ({fileBadge})</span>
     </a>
