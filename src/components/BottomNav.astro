@@ -1,17 +1,17 @@
 ---
 import Icon from "./Icon.astro";
-import { categories } from "../config/site";
 
 const path = Astro.url.pathname;
 const links = [
   { href: "/", label: "Beranda", icon: "home", active: path === "/" },
+  { href: "/templates/", label: "Template", icon: "table_chart", active: path.startsWith("/templates/") },
+  { href: "/templates/#template-search", label: "Cari", icon: "search", active: false },
   {
-    href: `/kategori/${categories[0].slug}/`,
+    href: "/kategori/",
     label: "Kategori",
     icon: "category",
     active: path.startsWith("/kategori/"),
   },
-  { href: "/tentang/", label: "Tentang", icon: "bookmark", active: path.startsWith("/tentang") },
 ];
 ---
 

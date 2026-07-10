@@ -11,6 +11,9 @@ interface Props {
   downloads?: string;
   fileType?: string;
   variant?: "grid" | "list" | "related";
+  eventName?: string;
+  eventTemplateSlug?: string;
+  [key: string]: unknown;
 }
 
 const {
@@ -23,19 +26,37 @@ const {
   downloads,
   fileType = "xlsx",
   variant = "grid",
+  eventName = "template_card_click",
+  eventTemplateSlug,
+  ...attrs
 } = Astro.props;
 
 const fileBadge = fileType.startsWith(".") ? fileType : `.${fileType}`;
+const templateSlug = eventTemplateSlug || href.split("/").filter(Boolean).at(-1);
 ---
 
-<article class={`template-card template-card--${variant}`}>
-  <a class="template-card__media" href={href} aria-label={title}>
+<article class={`template-card template-card--${variant}`} {...attrs}>
+  <a
+    class="template-card__media"
+    href={href}
+    aria-label={title}
+    data-event={eventName}
+    data-event-param-template-slug={templateSlug}
+  >
     <img src={image} alt={imageAlt} loading="lazy" />
     <span class="file-badge"><Icon name="table_chart" /> {fileBadge}</span>
   </a>
   <div class="template-card__body">
     <span class="chip">{category}</span>
-    <h3><a href={href}>{title}</a></h3>
+    <h3>
+      <a
+        href={href}
+        data-event={eventName}
+        data-event-param-template-slug={templateSlug}
+      >
+        {title}
+      </a>
+    </h3>
     <p>{excerpt}</p>
     {downloads && (
       <div class="template-card__meta">

@@ -56,7 +56,9 @@ collections:
       - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
       - { label: Focus Keyword, name: focus_keyword, widget: string, required: false }
       - { label: H1, name: suggested_h1, widget: string, required: false }
-      - { label: Alt Text Gambar, name: preview_alt, widget: string, required: false }
+      - { label: Preview Image, name: preview_image, widget: image, required: false, media_folder: public/assets/templates, public_folder: /assets/templates, hint: Opsional. Jika kosong, website memakai mapping gambar template lama. Jangan ubah style/crop gambar dari CMS. }
+      - { label: Alt Text Gambar, name: preview_alt, widget: string, required: true, hint: Jelaskan isi preview gambar secara singkat dan bermakna. }
+      - { label: Featured di Homepage, name: featured, widget: boolean, required: false, default: false }
       - label: Kategori
         name: category
         widget: select
@@ -68,6 +70,7 @@ collections:
           - { label: Rumah Tangga & Acara, value: rumah-tangga-acara }
       - { label: Tags, name: tags, widget: list, required: false, field: { label: Tag, name: tag, widget: string } }
       - { label: Tanggal Publish, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Tanggal Update, name: updated_date, widget: datetime, required: false, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: Nama File Excel, name: file_name, widget: file, media_folder: public/downloads, public_folder: /downloads, media_library: { config: { multiple: false } } }
       - { label: Ukuran File, name: file_size, widget: string, hint: "Contoh: 21 KB" }
       - { label: Ringkasan Singkat, name: ringkasan_singkat, widget: text, required: false }
@@ -82,4 +85,13 @@ collections:
           - { label: Format, name: format, widget: select, options: [xlsx, xlsm, xls, csv], default: xlsx }
           - { label: Kompatibilitas, name: kompatibilitas, widget: string, default: "Microsoft Excel & Google Sheets" }
       - { label: Batasan Template, name: batasan, widget: list, required: false, field: { label: Batasan, name: batasan_item, widget: string } }
+      - label: Related Templates
+        name: related_templates
+        widget: relation
+        required: false
+        collection: templates
+        multiple: true
+        search_fields: [title, slug, category]
+        value_field: slug
+        display_fields: [title, category]
       - { label: Isi Artikel, name: body, widget: markdown }

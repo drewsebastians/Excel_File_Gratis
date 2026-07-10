@@ -1,0 +1,25 @@
+<script is:inline>
+  window.ExcelGratisEvents = window.ExcelGratisEvents || {
+    push(eventName, params) {
+      if (!eventName) return;
+      const payload = { event: eventName, ...(params || {}) };
+      if (Array.isArray(window.dataLayer)) {
+        window.dataLayer.push(payload);
+      }
+    },
+  };
+
+  document.addEventListener("click", (event) => {
+    const target = event.target.closest("[data-event]");
+    if (!target || !window.ExcelGratisEvents) return;
+
+    const params = {};
+    for (const attribute of target.attributes) {
+      if (!attribute.name.startsWith("data-event-param-")) continue;
+      const key = attribute.name.replace("data-event-param-", "").replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+      params[key] = attribute.value;
+    }
+
+    window.ExcelGratisEvents.push(target.dataset.event, params);
+  });
+</script>

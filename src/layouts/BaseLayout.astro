@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BottomNav from "../components/BottomNav.astro";
+import EventLayer from "../components/EventLayer.astro";
 import { defaultOgImage } from "../config/images";
 import { siteConfig } from "../config/site";
 import "../styles/global.css";
@@ -15,6 +16,7 @@ interface Props {
   ogImage?: string;
   ogType?: "website" | "article";
   structuredData?: StructuredData;
+  robots?: string;
   bodyClass?: string;
 }
 
@@ -25,12 +27,14 @@ const {
   ogImage = defaultOgImage,
   ogType = "website",
   structuredData,
+  robots = "index, follow",
   bodyClass = "",
 } = Astro.props;
 
 const pageTitle = title.includes(siteConfig.name) ? title : `${title} - ${siteConfig.name}`;
 const baseUrl = Astro.site?.toString() || siteConfig.url;
-const canonicalUrl = new URL(path, baseUrl).toString();
+const canonicalPath = path.split("?")[0] || "/";
+const canonicalUrl = new URL(canonicalPath, baseUrl).toString();
 const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, baseUrl).toString();
 const jsonLd = structuredData
   ? Array.isArray(structuredData)
@@ -46,6 +50,7 @@ const jsonLd = structuredData
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" sizes="642x642" href="/favicon.png" />
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
@@ -71,11 +76,13 @@ const jsonLd = structuredData
     {jsonLd.map((item) => <script type="application/ld+json" is:inline set:html={JSON.stringify(item)} />)}
   </head>
   <body class={`has-mobile-nav ${bodyClass}`}>
+    <a class="skip-link" href="#content">Lewati ke konten utama</a>
     <Header />
     <main id="content">
       <slot />
     </main>
     <Footer />
     <BottomNav />
+    <EventLayer />
   </body>
 </html>

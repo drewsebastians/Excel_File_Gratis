@@ -1,11 +1,11 @@
 ---
 import Icon from "./Icon.astro";
-import { categories, siteConfig } from "../config/site";
+import { siteConfig } from "../config/site";
 
 const path = Astro.url.pathname;
-const kategoriHref = `/kategori/${categories[0].slug}/`;
 const isCategory = path.startsWith("/kategori/");
-const isInfo = path.startsWith("/tentang") || path.startsWith("/privasi");
+const isTemplate = path.startsWith("/templates/");
+const isInfo = path.startsWith("/tentang");
 ---
 
 <header class="site-header">
@@ -15,17 +15,19 @@ const isInfo = path.startsWith("/tentang") || path.startsWith("/privasi");
     </a>
 
     <nav class="desktop-nav" aria-label="Navigasi utama">
-      <a href={kategoriHref} aria-current={isCategory ? "page" : undefined}>Kategori</a>
+      <a href="/templates/" aria-current={isTemplate ? "page" : undefined}>Template</a>
+      <a href="/kategori/" aria-current={isCategory ? "page" : undefined}>Kategori</a>
       <a href="/tentang/" aria-current={isInfo ? "page" : undefined}>Tentang</a>
+      <a href="/templates/#template-search">Cari</a>
     </nav>
 
     <div class="header-actions">
-      <form class="header-search" action={kategoriHref} method="get" role="search">
+      <form class="header-search" action="/templates/" method="get" role="search">
         <Icon name="search" />
         <input name="q" type="search" placeholder="Cari template..." aria-label="Cari template" />
       </form>
-      <a class="icon-link mobile-only" href={kategoriHref} aria-label="Buka kategori">
-        <Icon name="menu" />
+      <a class="icon-link mobile-only" href="/templates/#template-search" aria-label="Cari template">
+        <Icon name="search" />
       </a>
     </div>
   </div>

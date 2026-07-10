@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import Icon from "../../components/Icon.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCategoryUrl, getPopulatedCategories, getTemplateImage, getTemplateImageAlt } from "../../lib/templates";
+
+const populatedCategories = getPopulatedCategories(await getCollection("templates"));
+const title = "Semua Kategori Template Excel";
+const description =
+  "Lihat kategori template Excel gratis yang sudah tersedia di ExcelGratis, lengkap dengan jumlah template dan preview per kategori.";
+---
+
+<BaseLayout title={title} description={description} path="/kategori/">
+  <section class="category-hero container">
+    <h1>{title}</h1>
+    <p>Pilih kategori yang sesuai dengan kebutuhanmu. Hanya kategori yang sudah memiliki template terbit yang ditampilkan di halaman ini.</p>
+  </section>
+
+  <section class="container section" aria-labelledby="category-directory-heading">
+    <h2 id="category-directory-heading" class="visually-hidden">Daftar kategori</h2>
+    <div class="category-directory-grid">
+      {populatedCategories.map((category) => (
+        <article class="category-directory-card">
+          {category.representative && (
+            <a class="template-card__media" href={getCategoryUrl(category.slug)} aria-label={`Lihat kategori ${category.name}`}>
+              <img
+                src={getTemplateImage(category.representative)}
+                alt={getTemplateImageAlt(category.representative)}
+                loading="lazy"
+              />
+            </a>
+          )}
+          <div class="category-directory-card__body">
+            <span class="category-card__icon"><Icon name={category.icon} /></span>
+            <h2><a href={getCategoryUrl(category.slug)}>{category.name}</a></h2>
+            <p>{category.description}</p>
+            <p class="category-directory-card__count">{category.count} template tersedia</p>
+            <a
+              class="button-outline"
+              href={getCategoryUrl(category.slug)}
+              data-event="category_click"
+              data-event-param-category-slug={category.slug}
+            >
+              Lihat kategori
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

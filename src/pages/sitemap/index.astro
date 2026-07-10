@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPopulatedCategories, getPublishedTemplates, getTemplateUrl, sortTemplates } from "../../lib/templates";
+
+const allTemplates = await getCollection("templates");
+const templates = sortTemplates(getPublishedTemplates(allTemplates));
+const populatedCategories = getPopulatedCategories(allTemplates);
+const title = "Sitemap HTML";
+const description = "Daftar halaman utama, kategori, dan template Excel gratis yang tersedia di ExcelGratis.";
+---
+
+<BaseLayout title={title} description={description} path="/sitemap/">
+  <section class="info-layout container">
+    <header class="info-header">
+      <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: "Sitemap HTML" }]} />
+      <h1>Sitemap HTML</h1>
+      <p>Gunakan halaman ini untuk menemukan halaman utama, kategori, dan template yang sudah tersedia.</p>
+    </header>
+
+    <div class="sitemap-grid">
+      <section>
+        <h2>Halaman Utama</h2>
+        <ul>
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/templates/">Semua Template</a></li>
+          <li><a href="/kategori/">Semua Kategori</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Kategori</h2>
+        <ul>
+          {populatedCategories.map((category) => (
+            <li><a href={`/kategori/${category.slug}/`}>{category.name}</a></li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Template</h2>
+        <ul>
+          {templates.map((entry) => (
+            <li><a href={getTemplateUrl(entry)}>{entry.data.title}</a></li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Tentang dan Legal</h2>
+        <ul>
+          <li><a href="/tentang/">Tentang</a></li>
+          <li><a href="/privasi/">Kebijakan Privasi</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+        </ul>
+      </section>
+    </div>
+  </section>
+</BaseLayout>

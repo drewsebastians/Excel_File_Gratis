@@ -5,6 +5,15 @@ interface Props {
 }
 
 const { size = "banner", class: className = "" } = Astro.props;
+const env = (import.meta as ImportMeta & { env?: Record<string, string | boolean> }).env ?? {};
+const adsEnabled = env.PUBLIC_ADS_ENABLED === "true";
+const showDevelopmentPlaceholder = !adsEnabled && env.DEV === true;
 ---
 
-<div class={`ad-slot ad-slot--${size} ${className}`} aria-hidden="true"></div>
+{adsEnabled ? (
+  <div class={`ad-slot ad-slot--${size} ${className}`} data-ad-slot={size} aria-label="Area iklan"></div>
+) : showDevelopmentPlaceholder ? (
+  <div class={`ad-slot ad-slot--${size} ad-slot--placeholder ${className}`} aria-hidden="true">
+    <span>Internal ad placeholder</span>
+  </div>
+) : null}
