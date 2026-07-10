@@ -4,13 +4,13 @@
   "icons": [
     {
       "src": "/assets/brand/icon-192.png",
-      "sizes": "192x192",
+      "sizes": "642x642",
       "type": "image/png",
       "purpose": "any"
     },
     {
       "src": "/assets/brand/icon-512.png",
-      "sizes": "512x512",
+      "sizes": "642x642",
       "type": "image/png",
       "purpose": "any"
     }
