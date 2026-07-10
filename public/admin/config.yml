@@ -1,0 +1,79 @@
+backend:
+  name: github
+  repo: drewsebastians/Excel_File_Gratis
+  branch: main
+
+site_url: https://excelgratis.my.id
+display_url: https://excelgratis.my.id
+logo_url: /assets/brand/main-icon.png
+locale: id
+publish_mode: editorial_workflow
+
+media_folder: public/assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: templates
+    label: Template Excel
+    label_singular: Template
+    folder: src/content/templates
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    preview_path: "templates/{{category}}/{{slug}}/"
+    summary: "{{title}}"
+    sortable_fields:
+      - date
+      - title
+      - category
+    view_filters:
+      - label: Keuangan Pribadi
+        field: category
+        pattern: keuangan-pribadi
+      - label: Bisnis & UMKM
+        field: category
+        pattern: bisnis-umkm
+      - label: Produktivitas Kerja
+        field: category
+        pattern: produktivitas-kerja
+      - label: Pendidikan
+        field: category
+        pattern: pendidikan
+      - label: Rumah Tangga & Acara
+        field: category
+        pattern: rumah-tangga-acara
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: SEO Title, name: meta_title, widget: string }
+      - { label: Meta Description, name: meta_description, widget: text, hint: Maksimal 170 karakter. }
+      - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
+      - { label: Focus Keyword, name: focus_keyword, widget: string, required: false }
+      - { label: H1, name: suggested_h1, widget: string, required: false }
+      - { label: Alt Text Gambar, name: preview_alt, widget: string, required: false }
+      - label: Kategori
+        name: category
+        widget: select
+        options:
+          - { label: Keuangan Pribadi, value: keuangan-pribadi }
+          - { label: Bisnis & UMKM, value: bisnis-umkm }
+          - { label: Produktivitas Kerja, value: produktivitas-kerja }
+          - { label: Pendidikan, value: pendidikan }
+          - { label: Rumah Tangga & Acara, value: rumah-tangga-acara }
+      - { label: Tags, name: tags, widget: list, required: false, field: { label: Tag, name: tag, widget: string } }
+      - { label: Tanggal Publish, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Nama File Excel, name: file_name, widget: file, media_folder: public/downloads, public_folder: /downloads, media_library: { config: { multiple: false } } }
+      - { label: Ukuran File, name: file_size, widget: string, hint: "Contoh: 21 KB" }
+      - { label: Ringkasan Singkat, name: ringkasan_singkat, widget: text, required: false }
+      - { label: Heading Cara Pakai, name: usage_heading, widget: string, required: false }
+      - label: Spesifikasi File
+        name: file_spec
+        widget: object
+        required: false
+        fields:
+          - { label: Jumlah Sheet, name: sheets, widget: number, value_type: int, min: 1 }
+          - { label: Ada Macro, name: has_macro, widget: boolean, default: false }
+          - { label: Format, name: format, widget: select, options: [xlsx, xlsm, xls, csv], default: xlsx }
+          - { label: Kompatibilitas, name: kompatibilitas, widget: string, default: "Microsoft Excel & Google Sheets" }
+      - { label: Batasan Template, name: batasan, widget: list, required: false, field: { label: Batasan, name: batasan_item, widget: string } }
+      - { label: Isi Artikel, name: body, widget: markdown }

@@ -16,7 +16,13 @@ export function getTemplateUrl(entry: TemplateEntry) {
 
 export function getDownloadPath(entry: TemplateEntry) {
   const base = siteConfig.downloadBaseUrl.replace(/\/$/, "");
-  return `${base}/${getTemplateFileName(entry)}`;
+  const fileName = getTemplateFileName(entry);
+
+  if (/^https?:\/\//i.test(fileName) || fileName.startsWith("/")) {
+    return fileName;
+  }
+
+  return `${base}/${fileName}`;
 }
 
 export function getTemplateFileName(entry: TemplateEntry) {
