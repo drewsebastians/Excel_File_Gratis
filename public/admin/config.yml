@@ -2,6 +2,9 @@ backend:
   name: github
   repo: drewsebastians/Excel_File_Gratis
   branch: main
+  site_domain: https://excelgratis.my.id
+  base_url: https://excelgratis.my.id
+  auth_endpoint: /api/auth
 
 site_url: https://excelgratis.my.id
 display_url: https://excelgratis.my.id
@@ -18,6 +21,7 @@ collections:
     label_singular: Template
     folder: src/content/templates
     create: true
+    delete: true
     slug: "{{slug}}"
     extension: md
     format: frontmatter
@@ -43,6 +47,8 @@ collections:
       - label: Rumah Tangga & Acara
         field: category
         pattern: rumah-tangga-acara
+    editor:
+      preview: false
     fields:
       - { label: Judul, name: title, widget: string }
       - { label: SEO Title, name: meta_title, widget: string }
