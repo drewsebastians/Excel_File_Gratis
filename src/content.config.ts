@@ -3,15 +3,20 @@ import { z } from "astro/zod";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { categorySlugs } from "./config/site";
+import {
+  categorySlugs,
+  formulaCategorySlugs,
+  guideCategorySlugs,
+  troubleshootingCategorySlugs,
+} from "./config/site";
 
-const templates = defineCollection({
-  loader: {
-    name: "excelgratis-markdown-loader",
-    async load(context) {
-      const base = path.join(process.cwd(), "src", "content", "templates");
+function markdownLoader(directory: string, emptyDraft?: Record<string, unknown>) {
+  return {
+    name: `excelgratis-markdown-loader-${directory}`,
+    async load(context: any) {
+      const base = path.join(process.cwd(), "src", "content", directory);
       context.store.clear();
-      const files = await readdir(base);
+      const files = await readdir(base).catch(() => [] as string[]);
 
       for (const file of files.filter((name) => name.endsWith(".md"))) {
         const absoluteFilePath = path.join(base, file);
@@ -20,21 +25,24 @@ const templates = defineCollection({
         const { data, body } = parseMarkdownFile(source);
         const id = file.replace(/\.md$/, "");
         const parsedData = await context.parseData({ id, data, filePath });
-        const rendered = await context.renderMarkdown(body, {
-          fileURL: pathToFileURL(absoluteFilePath),
-        });
+        const rendered = await context.renderMarkdown(body, { fileURL: pathToFileURL(absoluteFilePath) });
 
-        context.store.set({
-          id,
-          data: parsedData,
-          filePath,
-          body,
-          rendered,
-          digest: context.generateDigest(source),
-        });
+        context.store.set({ id, data: parsedData, filePath, body, rendered, digest: context.generateDigest(source) });
+      }
+
+      if (files.length === 0 && emptyDraft) {
+        const id = "__internal_empty__";
+        const filePath = `src/content/${directory}/.internal-empty.md`;
+        const parsedData = await context.parseData({ id, data: emptyDraft, filePath });
+        const rendered = await context.renderMarkdown("", { fileURL: pathToFileURL(base) });
+        context.store.set({ id, data: parsedData, filePath, body: "", rendered, digest: context.generateDigest(directory) });
       }
     },
-  },
+  };
+}
+
+const templates = defineCollection({
+  loader: markdownLoader("templates"),
   schema: z.object({
     title: z.string(),
     meta_title: z.string(),
@@ -75,7 +83,102 @@ const templates = defineCollection({
   }),
 });
 
-export const collections = { templates };
+const sitePages = defineCollection({
+  loader: markdownLoader("site-pages"),
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string(),
+    meta_description: z.string().max(170),
+    updated_date: z.coerce.date(),
+    summary: z.string().optional(),
+  }),
+});
+
+const commonResourceFields = {
+  title: z.string(),
+  meta_title: z.string(),
+  meta_description: z.string().max(170),
+  slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  summary: z.string(),
+  date: z.coerce.date(),
+  updated_date: z.coerce.date().optional(),
+  tags: z.array(z.string()).optional().default([]),
+  featured: z.coerce.boolean().optional().default(false),
+  draft: z.coerce.boolean().optional().default(false),
+  related_templates: z.array(z.string()).optional().default([]),
+  related_guides: z.array(z.string()).optional().default([]),
+  related_formulas: z.array(z.string()).optional().default([]),
+  related_troubleshooting: z.array(z.string()).optional().default([]),
+};
+
+const guides = defineCollection({
+  loader: markdownLoader("guides", {
+    title: "Internal empty guide", meta_title: "Internal empty guide", meta_description: "Internal draft.",
+    slug: "internal-empty-guide", summary: "Internal draft.", date: "2026-01-01", category: "dasar-excel", difficulty: "pemula", draft: true,
+  }),
+  schema: z.object({
+    ...commonResourceFields,
+    category: z.enum(guideCategorySlugs),
+    difficulty: z.enum(["pemula", "menengah", "lanjutan"]),
+    estimated_time: z.string().optional(),
+    prerequisites: z.array(z.string()).optional().default([]),
+    excel_versions: z.array(z.string()).optional().default([]),
+  }),
+});
+
+const formulas = defineCollection({
+  loader: markdownLoader("formulas", {
+    title: "Internal empty formula", formula_name: "INTERNAL", meta_title: "Internal empty formula", meta_description: "Internal draft.",
+    slug: "internal-empty-formula", summary: "Internal draft.", syntax: "=INTERNAL()", date: "2026-01-01", category: "logika", difficulty: "pemula", draft: true,
+  }),
+  schema: z.object({
+    ...commonResourceFields,
+    category: z.enum(formulaCategorySlugs),
+    formula_name: z.string(),
+    syntax: z.string(),
+    difficulty: z.enum(["pemula", "menengah", "lanjutan"]),
+    excel_versions: z.array(z.string()).optional().default([]),
+  }),
+});
+
+const troubleshooting = defineCollection({
+  loader: markdownLoader("troubleshooting", {
+    title: "Internal empty troubleshooting", meta_title: "Internal empty troubleshooting", meta_description: "Internal draft.",
+    slug: "internal-empty-troubleshooting", summary: "Internal draft.", date: "2026-01-01", category: "formula", draft: true,
+  }),
+  schema: z.object({
+    ...commonResourceFields,
+    category: z.enum(troubleshootingCategorySlugs),
+    symptoms: z.array(z.string()).optional().default([]),
+    excel_versions: z.array(z.string()).optional().default([]),
+  }),
+});
+
+const resourceCollections = defineCollection({
+  loader: markdownLoader("collections", {
+    title: "Internal empty collection", meta_title: "Internal empty collection", meta_description: "Internal draft.",
+    slug: "internal-empty-collection", summary: "Internal draft.", date: "2026-01-01", draft: true,
+  }),
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string(),
+    meta_description: z.string().max(170),
+    slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+    summary: z.string(),
+    date: z.coerce.date(),
+    updated_date: z.coerce.date().optional(),
+    audience: z.string().optional(),
+    use_case: z.string().optional(),
+    featured: z.coerce.boolean().optional().default(false),
+    draft: z.coerce.boolean().optional().default(false),
+    templates: z.array(z.string()).optional().default([]),
+    guides: z.array(z.string()).optional().default([]),
+    formulas: z.array(z.string()).optional().default([]),
+    troubleshooting: z.array(z.string()).optional().default([]),
+  }),
+});
+
+export const collections = { templates, sitePages, guides, formulas, troubleshooting, resourceCollections };
 
 function parseMarkdownFile(source: string) {
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);

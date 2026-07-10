@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from "astro:content";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import ContactForm from "../components/ContactForm.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("sitePages");
+  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props as { page: any };
+const { Content } = await render(page);
+const isContact = page.id === "kontak";
+const isRequest = page.id === "request-template";
+const robots = isRequest ? "noindex, follow" : "index, follow";
+---
+
+<BaseLayout title={page.data.meta_title} description={page.data.meta_description} path={`/${page.id}/`} robots={robots}>
+  <section class="info-layout narrow-container">
+    <header class="info-header">
+      <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: page.data.title }]} />
+      <h1>{page.data.title}</h1>
+      {page.data.summary && <p>{page.data.summary}</p>}
+      <p class="content-updated">Terakhir diperbarui: {page.data.updated_date.toLocaleDateString("id-ID")}</p>
+    </header>
+    <article class="info-content article-content"><Content /></article>
+    {isContact && <ContactForm variant="contact" />}
+    {isRequest && <ContactForm variant="request" />}
+  </section>
+</BaseLayout>

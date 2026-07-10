@@ -1,11 +1,21 @@
 ---
 import Icon from "./Icon.astro";
+import { getCollection } from "astro:content";
 import { siteConfig } from "../config/site";
+import { getPublishedResources, getResourceHubUrl, resourceNavigationAvailable, type ResourceKind } from "../lib/resources";
 
 const path = Astro.url.pathname;
 const isCategory = path.startsWith("/kategori/");
 const isTemplate = path.startsWith("/templates/");
 const isInfo = path.startsWith("/tentang");
+const resources = {
+  guides: getPublishedResources(await getCollection("guides")),
+  formulas: getPublishedResources(await getCollection("formulas")),
+  troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
+  resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
+} as Record<ResourceKind, never[]>;
+const learningAvailable = resourceNavigationAvailable(resources).filter((kind) => kind !== "resourceCollections").length > 0;
+const learningHub = (["guides", "formulas", "troubleshooting"] as const).find((kind) => resources[kind].length > 0);
 ---
 
 <header class="site-header">
@@ -17,6 +27,7 @@ const isInfo = path.startsWith("/tentang");
     <nav class="desktop-nav" aria-label="Navigasi utama">
       <a href="/templates/" aria-current={isTemplate ? "page" : undefined}>Template</a>
       <a href="/kategori/" aria-current={isCategory ? "page" : undefined}>Kategori</a>
+      {learningAvailable && learningHub && <a href={getResourceHubUrl(learningHub)} aria-current={path.startsWith("/panduan/") || path.startsWith("/rumus-excel/") || path.startsWith("/masalah-excel/") ? "page" : undefined}>Belajar Excel</a>}
       <a href="/tentang/" aria-current={isInfo ? "page" : undefined}>Tentang</a>
       <a href="/templates/#template-search">Cari</a>
     </nav>

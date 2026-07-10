@@ -64,3 +64,7 @@ Wrangler dikonfigurasi untuk menjalankan `pnpm run build` sebelum deploy, sehing
 ## SEO
 
 Build menghasilkan halaman statis lengkap dengan title unik, meta description, canonical URL, Open Graph tags, `robots.txt`, `sitemap.xml`, dan JSON-LD untuk halaman detail template.
+
+## Content dan trust pages
+
+Halaman tetap dikelola dari `src/content/site-pages/`, sementara fondasi Panduan, Rumus Excel, Masalah Excel, dan Koleksi berada di `src/content/`. Resource belum dipublikasikan pada Batch 2 sehingga hub tetap noindex dan tidak muncul di navigasi sampai content published tersedia. Dokumentasi editorial, legal review, serta inventory layanan ada di `docs/`.

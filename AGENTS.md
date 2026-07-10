@@ -18,3 +18,7 @@ Project ini adalah website statis Astro untuk ExcelGratis.my.id. Output build be
 - Batch foundation tidak boleh mengaktifkan AdSense production script, publisher ID, analytics eksternal, cookies, atau pixel.
 - XML sitemap harus tunggal, canonical harus absolute, query parameter tidak masuk canonical/sitemap, dan robots harus mengizinkan public assets serta mengecualikan admin/API.
 - Required checks sebelum selesai: `pnpm install --frozen-lockfile`, `pnpm run check`, `pnpm run build`, dan `pnpm run validate`.
+- Halaman legal, trust, Kontak, dan Request Template tidak memiliki AdSlot; Request Template selalu `noindex, follow`.
+- Hub resource kosong selalu `noindex, follow`, tidak masuk sitemap atau navigation, dan tidak boleh menjadi halaman public sample.
+- Fixed CMS pages tidak boleh mengubah slug/route; target relation harus ada dan resource navigation ditentukan oleh content published.
+- Inventory layanan eksternal dan Privacy Policy harus diperbarui setiap kali integrasi berubah.

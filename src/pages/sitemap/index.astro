@@ -3,10 +3,18 @@ import { getCollection } from "astro:content";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getPopulatedCategories, getPublishedTemplates, getTemplateUrl, sortTemplates } from "../../lib/templates";
+import { getPublishedResources, getResourceHubUrl, resourceKinds, resourceNavigationAvailable, type ResourceKind } from "../../lib/resources";
 
 const allTemplates = await getCollection("templates");
 const templates = sortTemplates(getPublishedTemplates(allTemplates));
 const populatedCategories = getPopulatedCategories(allTemplates);
+const resources = {
+  guides: getPublishedResources(await getCollection("guides")),
+  formulas: getPublishedResources(await getCollection("formulas")),
+  troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
+  resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
+} as Record<ResourceKind, never[]>;
+const availableResources = resourceNavigationAvailable(resources);
 const title = "Sitemap HTML";
 const description = "Daftar halaman utama, kategori, dan template Excel gratis yang tersedia di ExcelGratis.";
 ---
@@ -26,6 +34,7 @@ const description = "Daftar halaman utama, kategori, dan template Excel gratis y
           <li><a href="/">Beranda</a></li>
           <li><a href="/templates/">Semua Template</a></li>
           <li><a href="/kategori/">Semua Kategori</a></li>
+          {availableResources.map((kind) => <li><a href={getResourceHubUrl(kind)}>{resourceKinds[kind].label}</a></li>)}
         </ul>
       </section>
 
@@ -51,7 +60,13 @@ const description = "Daftar halaman utama, kategori, dan template Excel gratis y
         <h2>Tentang dan Legal</h2>
         <ul>
           <li><a href="/tentang/">Tentang</a></li>
+          <li><a href="/kontak/">Kontak</a></li>
+          <li><a href="/kebijakan-editorial/">Kebijakan Editorial</a></li>
+          <li><a href="/cara-kami-menguji-template/">Cara Kami Menguji Template</a></li>
+          <li><a href="/lisensi-template/">Lisensi Template</a></li>
+          <li><a href="/syarat-ketentuan/">Syarat dan Ketentuan</a></li>
           <li><a href="/privasi/">Kebijakan Privasi</a></li>
+          <li><a href="/kebijakan-cookie/">Kebijakan Cookie</a></li>
           <li><a href="/disclaimer/">Disclaimer</a></li>
         </ul>
       </section>

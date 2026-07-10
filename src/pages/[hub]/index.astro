@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import ResourceHubLayout from "../../components/ResourceHubLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPublishedResources, resourceKinds, type ResourceKind, sortResources } from "../../lib/resources";
+
+export async function getStaticPaths() {
+  const hubKinds = Object.entries(resourceKinds).map(([kind, config]) => ({ kind: kind as ResourceKind, hub: config.hub }));
+  return hubKinds.map(({ kind, hub }) => ({ params: { hub }, props: { kind } }));
+}
+const { kind } = Astro.props as { kind: ResourceKind };
+const entries = sortResources(getPublishedResources(await getCollection(kind)));
+const config = resourceKinds[kind];
+const descriptions: Record<ResourceKind, string> = {
+  guides: "Halaman ini menampilkan panduan Excel praktis yang telah melalui proses publikasi.",
+  formulas: "Halaman ini menampilkan referensi rumus Excel yang telah melalui proses publikasi.",
+  troubleshooting: "Halaman ini menampilkan panduan penyelesaian masalah Excel yang telah melalui proses publikasi.",
+  resourceCollections: "Halaman ini menampilkan koleksi resource berdasarkan kebutuhan pengguna yang telah dipublikasikan.",
+};
+---
+
+<BaseLayout title={config.label} description={descriptions[kind]} path={`/${config.hub}/`} robots={entries.length ? "index, follow" : "noindex, follow"}>
+  <ResourceHubLayout kind={kind} title={config.label} description={descriptions[kind]} entries={entries} />
+</BaseLayout>

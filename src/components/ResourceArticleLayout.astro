@@ -1,0 +1,48 @@
+---
+import { render } from "astro:content";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import ResourceCard from "./ResourceCard.astro";
+import type { ResourceEntry, ResourceKind } from "../lib/resources";
+import { getResourceDate, getResourceHubUrl, getResourceCategoryName, getResourceSummary, resourceKinds } from "../lib/resources";
+
+interface Props {
+  kind: Exclude<ResourceKind, "resourceCollections">;
+  entry: ResourceEntry;
+  related: Array<{ kind: ResourceKind | "templates"; entry: ResourceEntry }>;
+}
+
+const { kind, entry, related } = Astro.props;
+const { Content } = await render(entry);
+const updated = getResourceDate(entry);
+const categoryName = getResourceCategoryName(kind, entry.data.category);
+const summary = getResourceSummary(entry);
+---
+
+<section class="article-layout narrow-container">
+  <header class="article-header">
+    <Breadcrumbs items={[
+      { label: "Beranda", href: "/" },
+      { label: resourceKinds[kind].label, href: getResourceHubUrl(kind) },
+      { label: categoryName, href: `${getResourceHubUrl(kind)}${entry.data.category}/` },
+      { label: entry.data.title },
+    ]} />
+    <h1>{entry.data.title}</h1>
+    <p>{summary}</p>
+    <dl class="resource-meta">
+      <div><dt>Diperbarui</dt><dd>{updated.toLocaleDateString("id-ID")}</dd></div>
+      {"difficulty" in entry.data && <div><dt>Tingkat</dt><dd>{entry.data.difficulty}</dd></div>}
+      {"estimated_time" in entry.data && entry.data.estimated_time && <div><dt>Estimasi</dt><dd>{entry.data.estimated_time}</dd></div>}
+      {"formula_name" in entry.data && <div><dt>Rumus</dt><dd>{entry.data.formula_name}</dd></div>}
+      {"syntax" in entry.data && <div><dt>Sintaks</dt><dd><code>{entry.data.syntax}</code></dd></div>}
+    </dl>
+  </header>
+  <article class="article-content"><Content /></article>
+  {related.length > 0 && (
+    <section class="related-section" aria-labelledby="related-resource-title">
+      <h2 id="related-resource-title">Resource terkait</h2>
+      <div class="resource-grid resource-grid--related">
+        {related.map((item) => <ResourceCard entry={item.entry} kind={item.kind} />)}
+      </div>
+    </section>
+  )}
+</section>
