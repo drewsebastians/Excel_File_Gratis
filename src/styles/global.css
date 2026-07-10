@@ -1158,6 +1158,29 @@ textarea {
   resize: vertical;
 }
 
+.field select {
+  width: 100%;
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-control);
+  background: var(--surface-lowest);
+  color: var(--text);
+  padding: 10px 12px;
+}
+
+#contact-result {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#contact-result.form-success {
+  color: var(--success, #1a7f37);
+}
+
+#contact-result.form-error {
+  color: var(--error, #c81e1e);
+}
+
 .not-found {
   min-height: 58vh;
   display: grid;

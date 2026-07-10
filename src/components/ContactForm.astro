@@ -1,11 +1,10 @@
----
-import { siteConfig } from "../config/site";
----
-
 <section class="contact-panel" aria-labelledby="contact-heading">
   <h2 id="contact-heading">Hubungi Kami</h2>
-  <p>Punya pertanyaan atau saran mengenai template kami? Silakan tinggalkan pesan di bawah ini.</p>
-  <form class="form-grid" action={`mailto:${siteConfig.contactEmail}`} method="post" enctype="text/plain">
+  <p>Kirim pertanyaan, masukan, laporan masalah, atau usulan template Excel baru yang kamu butuhkan.</p>
+  <form id="contact-form" class="form-grid">
+    <input type="hidden" name="access_key" value="0a112699-e322-49a0-ba61-33b851079562" />
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
     <div class="field">
       <label for="name">Nama</label>
       <input id="name" name="name" type="text" placeholder="Masukkan nama Anda" autocomplete="name" required />
@@ -15,9 +14,64 @@ import { siteConfig } from "../config/site";
       <input id="email" name="email" type="email" placeholder="nama@email.com" autocomplete="email" required />
     </div>
     <div class="field">
-      <label for="message">Pesan</label>
-      <textarea id="message" name="message" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+      <label for="message_type">Jenis Pesan</label>
+      <select id="message_type" name="message_type" required>
+        <option value="" disabled selected>Pilih jenis pesan</option>
+        <option value="Pertanyaan">Pertanyaan</option>
+        <option value="Masukan / Ide">Masukan / Ide</option>
+        <option value="Request Template Baru">Request Template Baru</option>
+        <option value="Laporan Masalah">Laporan Masalah</option>
+      </select>
     </div>
-    <button class="button" type="submit">Kirim Pesan</button>
+    <div class="field">
+      <label for="message">Pesan</label>
+      <textarea id="message" name="message" placeholder="Tuliskan pertanyaan, masukan, atau template Excel apa yang ingin kamu minta..." required></textarea>
+    </div>
+
+    <button class="button" type="submit" id="contact-submit">Kirim Pesan</button>
+    <p id="contact-result" role="status" aria-live="polite"></p>
   </form>
 </section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const result = document.getElementById("contact-result") as HTMLParagraphElement;
+  const submitBtn = document.getElementById("contact-submit") as HTMLButtonElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Mengirim...";
+    result.textContent = "";
+    result.className = "";
+
+    const formData = new FormData(form);
+    const jenisPesan = formData.get("message_type");
+    if (jenisPesan) {
+      formData.set("subject", `[${jenisPesan}] Pesan baru dari ExcelGratis.id`);
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+      const data = await response.json();
+      if (data.success) {
+        result.textContent = "Terima kasih! Pesan kamu sudah terkirim.";
+        result.className = "form-success";
+        form.reset();
+      } else {
+        result.textContent = "Maaf, terjadi kesalahan. Silakan coba lagi.";
+        result.className = "form-error";
+      }
+    } catch {
+      result.textContent = "Maaf, terjadi kesalahan koneksi. Silakan coba lagi.";
+      result.className = "form-error";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Kirim Pesan";
+    }
+  });
+</script>

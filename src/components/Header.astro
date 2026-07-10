@@ -5,7 +5,7 @@ import { categories, siteConfig } from "../config/site";
 const path = Astro.url.pathname;
 const kategoriHref = `/kategori/${categories[0].slug}/`;
 const isCategory = path.startsWith("/kategori/");
-const isInfo = path.startsWith("/tentang") || path.startsWith("/privasi") || path.startsWith("/kontak");
+const isInfo = path.startsWith("/tentang") || path.startsWith("/privasi");
 ---
 
 <header class="site-header">

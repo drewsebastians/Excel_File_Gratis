@@ -17,7 +17,6 @@ export async function GET() {
     "/tentang/",
     "/privasi/",
     "/disclaimer/",
-    "/kontak/",
     ...categories.map((category) => `/kategori/${category.slug}/`),
     ...templates.map((entry) => `/templates/${entry.data.category}/${entry.data.slug}/`),
   ];

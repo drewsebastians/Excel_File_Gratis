@@ -7,7 +7,6 @@ export const siteConfig = {
   description:
     "Download template Excel gratis untuk keuangan pribadi, bisnis UMKM, produktivitas kerja, pendidikan, dan kebutuhan rumah tangga.",
   downloadBaseUrl: env.PUBLIC_DOWNLOAD_BASE_URL || "/downloads",
-  contactEmail: "halo@excelgratis.my.id",
 };
 
 export const categories = [
