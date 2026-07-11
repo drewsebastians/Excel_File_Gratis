@@ -2,18 +2,18 @@
 import Icon from "./Icon.astro";
 import { getCollection } from "astro:content";
 import { siteConfig } from "../config/site";
-import { getPublishedResources, getResourceHubUrl, resourceNavigationAvailable, type ResourceKind } from "../lib/resources";
+import { getPublishedResources, getResourceHubUrl, resourceNavigationAvailable, type ResourceEntries } from "../lib/resources";
 
 const path = Astro.url.pathname;
 const isCategory = path.startsWith("/kategori/");
 const isTemplate = path.startsWith("/templates/");
 const isInfo = path.startsWith("/tentang");
-const resources = {
+const resources: ResourceEntries = {
   guides: getPublishedResources(await getCollection("guides")),
   formulas: getPublishedResources(await getCollection("formulas")),
   troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
   resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
-} as Record<ResourceKind, never[]>;
+};
 const learningAvailable = resourceNavigationAvailable(resources).filter((kind) => kind !== "resourceCollections").length > 0;
 const learningHub = (["guides", "formulas", "troubleshooting"] as const).find((kind) => resources[kind].length > 0);
 ---

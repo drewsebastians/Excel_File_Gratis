@@ -1,4 +1,5 @@
 import { defineCollection } from "astro/content/config";
+import type { Loader } from "astro/loaders";
 import { z } from "astro/zod";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
@@ -9,11 +10,12 @@ import {
   guideCategorySlugs,
   troubleshootingCategorySlugs,
 } from "./config/site";
+import { resourceSlugPattern } from "./lib/resource-model.ts";
 
-function markdownLoader(directory: string, emptyDraft?: Record<string, unknown>) {
+function markdownLoader(directory: string, emptyDraft?: Record<string, unknown>): Loader {
   return {
     name: `excelgratis-markdown-loader-${directory}`,
-    async load(context: any) {
+    async load(context) {
       const base = path.join(process.cwd(), "src", "content", directory);
       context.store.clear();
       const files = await readdir(base).catch(() => [] as string[]);
@@ -98,7 +100,7 @@ const commonResourceFields = {
   title: z.string(),
   meta_title: z.string(),
   meta_description: z.string().max(170),
-  slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  slug: z.string().regex(resourceSlugPattern),
   summary: z.string(),
   date: z.coerce.date(),
   updated_date: z.coerce.date().optional(),
@@ -163,7 +165,7 @@ const resourceCollections = defineCollection({
     title: z.string(),
     meta_title: z.string(),
     meta_description: z.string().max(170),
-    slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+    slug: z.string().regex(resourceSlugPattern),
     summary: z.string(),
     date: z.coerce.date(),
     updated_date: z.coerce.date().optional(),

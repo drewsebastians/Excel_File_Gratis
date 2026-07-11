@@ -2,15 +2,15 @@
 import { getCollection } from "astro:content";
 import { siteConfig } from "../config/site";
 import { getCategoryUrl, getPopulatedCategories } from "../lib/templates";
-import { getPublishedResources, getResourceHubUrl, resourceKinds, resourceNavigationAvailable, type ResourceKind } from "../lib/resources";
+import { getPublishedResources, getResourceHubUrl, resourceKinds, resourceNavigationAvailable, type ResourceEntries } from "../lib/resources";
 
 const populatedCategories = getPopulatedCategories(await getCollection("templates"));
-const resources = {
+const resources: ResourceEntries = {
   guides: getPublishedResources(await getCollection("guides")),
   formulas: getPublishedResources(await getCollection("formulas")),
   troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
   resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
-} as Record<ResourceKind, never[]>;
+};
 const availableResources = resourceNavigationAvailable(resources);
 ---
 

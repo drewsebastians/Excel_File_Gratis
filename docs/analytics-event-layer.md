@@ -37,4 +37,13 @@ Jangan mengirim query pencarian mentah, nama pengguna, email, nomor telepon, IP 
 
 Form events hanya menyatakan tahap interaksi. Jangan memasukkan isi form, nama, email, subject, request, atau data personal pada parameter event.
 
+Payload form dibentuk melalui allowlist dan hanya dapat memuat:
+
+- `formType`: `contact` atau `request_template`;
+- `status`: tahap hasil yang telah ditentukan;
+- `errorCategory`: kategori teknis internal tanpa respons mentah provider;
+- `validationErrorCount`: jumlah field yang perlu diperbaiki.
+
+Free text, termasuk nama perusahaan atau pekerjaan/bisnis, tidak diteruskan. Detail reliability dan matriks error tersedia di `docs/form-delivery.md`.
+
 Untuk menghubungkan analytics di masa depan, tambahkan provider di luar Batch 1 yang membuat `window.dataLayer` sebelum event terjadi. Jangan mengaktifkan provider analytics, cookie consent, atau third-party script tanpa approval eksplisit.

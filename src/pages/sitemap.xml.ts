@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content";
 import { siteConfig } from "../config/site";
 import { getPopulatedCategories, getPublishedTemplates, getTemplateUrl } from "../lib/templates";
-import { getPublishedResources, getSitemapResourcePaths, type ResourceKind } from "../lib/resources";
+import { getPublishedResources, getSitemapResourcePaths, type ResourceEntries } from "../lib/resources";
 
 function escapeXml(value: string) {
   return value
@@ -16,12 +16,12 @@ export async function GET() {
   const allTemplates = await getCollection("templates");
   const templates = getPublishedTemplates(allTemplates);
   const populatedCategories = getPopulatedCategories(allTemplates);
-  const resources = {
+  const resources: ResourceEntries = {
     guides: getPublishedResources(await getCollection("guides")),
     formulas: getPublishedResources(await getCollection("formulas")),
     troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
     resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
-  } as Record<ResourceKind, never[]>;
+  };
   const paths = [
     "/",
     "/templates/",

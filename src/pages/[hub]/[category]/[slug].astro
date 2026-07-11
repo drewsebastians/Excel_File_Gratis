@@ -2,27 +2,26 @@
 import { getCollection } from "astro:content";
 import ResourceArticleLayout from "../../../components/ResourceArticleLayout.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { getBreadcrumbStructuredData, getPublishedResources, getRelatedResourceEntries, getResourceCategoryName, getResourceHubUrl, getResourceUrl, resourceKinds, type ArticleResourceKind } from "../../../lib/resources";
+import { articleResourceKinds, getBreadcrumbStructuredData, getPublishedResources, getRelatedResourceEntries, getResourceCategoryName, getResourceHubUrl, getResourceUrl, resourceKinds, type ArticleResourceEntry, type ArticleResourceKind, type RelatedResourceEntries } from "../../../lib/resources";
 import { getPublishedTemplates } from "../../../lib/templates";
 
 export async function getStaticPaths() {
-  const articleKinds = Object.keys(resourceKinds).filter((kind) => kind !== "resourceCollections") as ArticleResourceKind[];
   const paths = [];
-  for (const kind of articleKinds) {
+  for (const kind of articleResourceKinds) {
     for (const entry of getPublishedResources(await getCollection(kind))) {
       paths.push({ params: { hub: resourceKinds[kind].hub, category: entry.data.category, slug: entry.data.slug }, props: { kind, entry } });
     }
   }
   return paths;
 }
-const { kind, entry } = Astro.props as { kind: ArticleResourceKind; entry: any };
-const resources = {
+const { kind, entry } = Astro.props as { kind: ArticleResourceKind; entry: ArticleResourceEntry };
+const resources: RelatedResourceEntries = {
   guides: getPublishedResources(await getCollection("guides")),
   formulas: getPublishedResources(await getCollection("formulas")),
   troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
   resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
   templates: getPublishedTemplates(await getCollection("templates")),
-} as any;
+};
 const related = getRelatedResourceEntries(kind, entry, resources);
 const entryPath = getResourceUrl(kind, entry);
 const categoryName = getResourceCategoryName(kind, entry.data.category);

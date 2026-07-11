@@ -251,6 +251,7 @@ collections:
       - { label: Tags, name: tags, widget: list, required: false, field: { label: Tag, name: tag, widget: string } }
       - { label: Tanggal Publish, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: Tanggal Update, name: updated_date, widget: datetime, required: false, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Featured, name: featured, widget: boolean, required: false, default: false }
       - { label: Draft, name: draft, widget: boolean, required: false, default: false }
       - { label: Template Terkait, name: related_templates, widget: relation, required: false, collection: templates, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
       - { label: Panduan Terkait, name: related_guides, widget: relation, required: false, collection: guides, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }

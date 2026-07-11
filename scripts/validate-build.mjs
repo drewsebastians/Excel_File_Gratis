@@ -147,6 +147,7 @@ for (const file of allHtmlFiles) {
   assert((html.match(/rel="canonical"/g) || []).length <= 1, `Duplicate canonical: ${file}`);
   assert((html.match(/name="robots"/g) || []).length <= 1, `Duplicate robots meta: ${file}`);
   assert(/rel="canonical" href="https:\/\/excelgratis\.my\.id\//.test(html), `Canonical tidak absolute: ${file}`);
+  assert(!/\bAI\b|artificial intelligence|human review|workflow AI|AI-assisted|kecerdasan buatan/i.test(html), `Public AI disclosure terdeteksi: ${file}`);
   assert(!html.includes("adsbygoogle.js"), `Production AdSense script terdeteksi: ${file}`);
   assert(!/ca-pub-\d+/i.test(html), `Publisher ID AdSense terdeteksi: ${file}`);
   assert(!/googletagmanager|google-analytics\.com|analytics\.js/i.test(html), `Analytics script terdeteksi: ${file}`);
@@ -198,6 +199,23 @@ for (const route of ["/kontak/", "/request-template/"]) {
   assert(html.includes("aria-describedby"), `Asosiasi error form tidak ditemukan: ${route}`);
 }
 assert(!read(join(root, "src", "components", "Footer.astro")).includes('href="/panduan/"'), "Footer menampilkan hub resource kosong secara statis.");
+
+const ciWorkflowPath = join(root, ".github", "workflows", "ci.yml");
+assert(existsSync(ciWorkflowPath), "Workflow CI tidak ditemukan: .github/workflows/ci.yml");
+const ciWorkflowSource = existsSync(ciWorkflowPath) ? read(ciWorkflowPath) : "";
+const ciWorkflow = ciWorkflowSource ? YAML.parse(ciWorkflowSource) : {};
+assert(ciWorkflow?.permissions?.contents === "read", "Workflow CI harus memakai permissions contents: read.");
+assert(/pull_request:\s*[\s\S]*?branches:\s*[\s\S]*?- main/.test(ciWorkflowSource), "Workflow CI belum berjalan untuk pull request ke main.");
+assert(/push:\s*[\s\S]*?branches-ignore:\s*[\s\S]*?- main/.test(ciWorkflowSource), "Workflow CI belum menangani push feature branch.");
+assert(/^\s*workflow_dispatch:/m.test(ciWorkflowSource), "Workflow CI belum mendukung workflow_dispatch.");
+assert(ciWorkflow?.concurrency?.["cancel-in-progress"] === true, "Workflow CI belum membatalkan run obsolete.");
+assert(ciWorkflowSource.includes("runs-on: ubuntu-latest"), "Workflow CI harus memakai Ubuntu runner.");
+assert(ciWorkflowSource.includes("pnpm/action-setup@v4") && ciWorkflowSource.includes("version: 10.11.1"), "Setup pnpm CI tidak sesuai packageManager.");
+assert(ciWorkflowSource.includes("node-version: 22.12.0") && ciWorkflowSource.includes("cache: pnpm"), "Setup Node atau cache pnpm CI belum benar.");
+for (const command of ["pnpm install --frozen-lockfile", "pnpm run check", "pnpm run build", "pnpm run validate"]) {
+  assert(ciWorkflowSource.includes(command), `Workflow CI belum menjalankan: ${command}`);
+}
+assert(!/wrangler\s+deploy|pnpm\s+run\s+deploy|secrets\.|contents:\s*write|actions:\s*write/i.test(ciWorkflowSource), "Workflow CI mengandung deployment, secret, atau write permission.");
 
 const resourceDirectories = ["guides", "formulas", "troubleshooting", "collections"];
 const relationFieldsByCollection = {

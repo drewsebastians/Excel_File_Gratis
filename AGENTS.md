@@ -21,4 +21,10 @@ Project ini adalah website statis Astro untuk ExcelGratis.my.id. Output build be
 - Halaman legal, trust, Kontak, dan Request Template tidak memiliki AdSlot; Request Template selalu `noindex, follow`.
 - Hub resource kosong selalu `noindex, follow`, tidak masuk sitemap atau navigation, dan tidak boleh menjadi halaman public sample.
 - Fixed CMS pages tidak boleh mengubah slug/route; target relation harus ada dan resource navigation ditentukan oleh content published.
+- Helper resource publik harus memakai `CollectionEntry` atau union yang eksplisit dan tidak boleh mengekspos `any`.
+- Relasi resource diselesaikan satu tingkat, dideduplikasi, dan mengabaikan target hilang atau draft; jangan membuat fallback yang tidak relevan.
+- Fixture resource harus programatik atau berada di luar production content collection dan tidak boleh muncul di route, CMS, navigation, atau sitemap.
 - Inventory layanan eksternal dan Privacy Policy harus diperbarui setiap kali integrasi berubah.
+- CI harus tetap validation-only dan bebas deployment; jangan menambahkan Wrangler deploy atau command produksi ke workflow tanpa approval eksplisit.
+- Permissions workflow GitHub Actions harus read-only kecuali approval eksplisit diperlukan.
+- `pnpm run check`, `pnpm run build`, dan `pnpm run validate` harus lulus sebelum merge.

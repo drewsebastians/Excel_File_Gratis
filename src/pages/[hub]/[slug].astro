@@ -3,26 +3,22 @@ import { getCollection, render } from "astro:content";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ResourceCard from "../../components/ResourceCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getBreadcrumbStructuredData, getPublishedResources, getResourceUrl } from "../../lib/resources";
+import { getBreadcrumbStructuredData, getCollectionResourceEntries, getPublishedResources, getResourceUrl, type RelatedResourceEntries, type ResourceCollectionEntry } from "../../lib/resources";
 import { getPublishedTemplates } from "../../lib/templates";
 
 export async function getStaticPaths() {
   return getPublishedResources(await getCollection("resourceCollections")).map((entry) => ({ params: { hub: "koleksi", slug: entry.data.slug }, props: { entry } }));
 }
-const { entry } = Astro.props as { entry: any };
+const { entry } = Astro.props as { entry: ResourceCollectionEntry };
 const { Content } = await render(entry);
-const allResources = {
+const allResources: RelatedResourceEntries = {
   templates: getPublishedTemplates(await getCollection("templates")),
   guides: getPublishedResources(await getCollection("guides")),
   formulas: getPublishedResources(await getCollection("formulas")),
   troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
+  resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
 };
-const related = [
-  ...allResources.templates.filter((item) => entry.data.templates.includes(item.data.slug)).map((item) => ({ kind: "templates", entry: item })),
-  ...allResources.guides.filter((item) => entry.data.guides.includes(item.data.slug)).map((item) => ({ kind: "guides", entry: item })),
-  ...allResources.formulas.filter((item) => entry.data.formulas.includes(item.data.slug)).map((item) => ({ kind: "formulas", entry: item })),
-  ...allResources.troubleshooting.filter((item) => entry.data.troubleshooting.includes(item.data.slug)).map((item) => ({ kind: "troubleshooting", entry: item })),
-];
+const related = getCollectionResourceEntries(entry, allResources);
 const entryPath = getResourceUrl("resourceCollections", entry);
 const structuredData = [
   getBreadcrumbStructuredData([
@@ -46,6 +42,6 @@ const structuredData = [
   <section class="article-layout narrow-container">
     <header class="article-header"><Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: "Koleksi", href: "/koleksi/" }, { label: entry.data.title }]} /><h1>{entry.data.title}</h1><p>{entry.data.summary}</p></header>
     <article class="article-content"><Content /></article>
-    {related.length > 0 && <section class="related-section"><h2>Resource dalam koleksi</h2><div class="resource-grid">{related.map((item) => <ResourceCard entry={item.entry} kind={item.kind as never} />)}</div></section>}
+    {related.length > 0 && <section class="related-section"><h2>Resource dalam koleksi</h2><div class="resource-grid">{related.map((item) => <ResourceCard entry={item.entry} kind={item.kind} />)}</div></section>}
   </section>
 </BaseLayout>

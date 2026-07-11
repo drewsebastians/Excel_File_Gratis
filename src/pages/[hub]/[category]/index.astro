@@ -3,12 +3,11 @@ import { getCollection } from "astro:content";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import ResourceCard from "../../../components/ResourceCard.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { getBreadcrumbStructuredData, getPublishedResources, getResourceCategoryName, getResourceHubUrl, resourceKinds, type ArticleResourceKind, type ResourceEntry } from "../../../lib/resources";
+import { articleResourceKinds, getBreadcrumbStructuredData, getPublishedResources, getResourceCategoryName, getResourceHubUrl, resourceKinds, type ArticleResourceEntry, type ArticleResourceKind } from "../../../lib/resources";
 
 export async function getStaticPaths() {
-  const articleKinds = Object.keys(resourceKinds).filter((kind) => kind !== "resourceCollections") as ArticleResourceKind[];
   const paths: Array<{ params: { hub: string; category: string }; props: { kind: ArticleResourceKind; key: string } }> = [];
-  for (const kind of articleKinds) {
+  for (const kind of articleResourceKinds) {
     for (const entry of getPublishedResources(await getCollection(kind))) {
       const key = `${kind}:${entry.data.category}`;
       if (!paths.some((path) => path.props.key === key)) paths.push({ params: { hub: resourceKinds[kind].hub, category: entry.data.category }, props: { kind, key } });
@@ -18,7 +17,7 @@ export async function getStaticPaths() {
 }
 const { kind } = Astro.props as { kind: ArticleResourceKind };
 const category = Astro.params.category || "";
-const entries = getPublishedResources(await getCollection(kind)).filter((entry) => entry.data.category === category) as ResourceEntry[];
+const entries: ArticleResourceEntry[] = getPublishedResources(await getCollection(kind)).filter((entry) => entry.data.category === category);
 const categoryName = getResourceCategoryName(kind, category);
 const categoryPath = `${getResourceHubUrl(kind)}${category}/`;
 const structuredData = [

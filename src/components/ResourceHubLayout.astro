@@ -7,7 +7,7 @@ interface Props {
   kind: ResourceKind;
   title: string;
   description: string;
-  entries: ResourceEntry[];
+  entries: Array<ResourceEntry>;
 }
 
 const { kind, title, description, entries } = Astro.props;

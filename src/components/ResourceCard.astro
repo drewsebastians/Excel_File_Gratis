@@ -1,15 +1,14 @@
 ---
-import type { ResourceEntry, ResourceKind } from "../lib/resources";
-import { getResourceDate, getResourceSummary, getResourceUrl, resourceKinds } from "../lib/resources";
-import { getTemplateUrl } from "../lib/templates";
+import type { RelatedResourceEntry, RelatedResourceKind } from "../lib/resources";
+import { getResourceCardUrl, getResourceDate, getResourceSummary, resourceKinds } from "../lib/resources";
 
 interface Props {
-  entry: ResourceEntry;
-  kind: ResourceKind | "templates";
+  entry: RelatedResourceEntry;
+  kind: RelatedResourceKind;
 }
 
 const { entry, kind } = Astro.props;
-const href = kind === "templates" ? getTemplateUrl(entry) : getResourceUrl(kind, entry);
+const href = getResourceCardUrl(kind, entry);
 const updated = getResourceDate(entry);
 const summary = getResourceSummary(entry);
 const eventName = kind === "guides" ? "guide_card_click" : kind === "formulas" ? "formula_card_click" : kind === "troubleshooting" ? "troubleshooting_card_click" : kind === "resourceCollections" ? "collection_card_click" : "related_resource_click";

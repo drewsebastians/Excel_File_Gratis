@@ -3,17 +3,17 @@ import { getCollection } from "astro:content";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getPopulatedCategories, getPublishedTemplates, getTemplateUrl, sortTemplates } from "../../lib/templates";
-import { getPublishedResources, getResourceHubUrl, resourceKinds, resourceNavigationAvailable, type ResourceKind } from "../../lib/resources";
+import { getPublishedResources, getResourceHubUrl, resourceKinds, resourceNavigationAvailable, type ResourceEntries } from "../../lib/resources";
 
 const allTemplates = await getCollection("templates");
 const templates = sortTemplates(getPublishedTemplates(allTemplates));
 const populatedCategories = getPopulatedCategories(allTemplates);
-const resources = {
+const resources: ResourceEntries = {
   guides: getPublishedResources(await getCollection("guides")),
   formulas: getPublishedResources(await getCollection("formulas")),
   troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
   resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
-} as Record<ResourceKind, never[]>;
+};
 const availableResources = resourceNavigationAvailable(resources);
 const title = "Sitemap HTML";
 const description = "Daftar halaman utama, kategori, dan template Excel gratis yang tersedia di ExcelGratis.";

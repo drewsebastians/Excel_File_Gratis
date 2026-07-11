@@ -2,13 +2,13 @@
 import { render } from "astro:content";
 import Breadcrumbs from "./Breadcrumbs.astro";
 import ResourceCard from "./ResourceCard.astro";
-import type { ResourceEntry, ResourceKind } from "../lib/resources";
+import type { ArticleResourceEntry, ArticleResourceKind, ResolvedRelatedResource } from "../lib/resources";
 import { getResourceDate, getResourceHubUrl, getResourceCategoryName, getResourceSummary, resourceKinds } from "../lib/resources";
 
 interface Props {
-  kind: Exclude<ResourceKind, "resourceCollections">;
-  entry: ResourceEntry;
-  related: Array<{ kind: ResourceKind | "templates"; entry: ResourceEntry }>;
+  kind: ArticleResourceKind;
+  entry: ArticleResourceEntry;
+  related: ResolvedRelatedResource[];
 }
 
 const { kind, entry, related } = Astro.props;
