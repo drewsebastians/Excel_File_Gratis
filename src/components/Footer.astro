@@ -2,8 +2,16 @@
 import { getCollection } from "astro:content";
 import { siteConfig } from "../config/site";
 import { getCategoryUrl, getPopulatedCategories } from "../lib/templates";
+import { getPublishedResources, getResourceHubUrl, resourceKinds, resourceNavigationAvailable, type ResourceEntries } from "../lib/resources";
 
 const populatedCategories = getPopulatedCategories(await getCollection("templates"));
+const resources: ResourceEntries = {
+  guides: getPublishedResources(await getCollection("guides")),
+  formulas: getPublishedResources(await getCollection("formulas")),
+  troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
+  resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
+};
+const availableResources = resourceNavigationAvailable(resources);
 ---
 
 <footer class="site-footer">
@@ -30,7 +38,10 @@ const populatedCategories = getPopulatedCategories(await getCollection("template
       <h2>Tentang</h2>
       <ul>
         <li><a href="/tentang/">Tentang</a></li>
-        <li><a href="/disclaimer/">Disclaimer</a></li>
+        <li><a href="/kontak/">Kontak</a></li>
+        <li><a href="/request-template/">Request Template</a></li>
+        <li><a href="/kebijakan-editorial/">Kebijakan Editorial</a></li>
+        <li><a href="/cara-kami-menguji-template/">Cara Kami Menguji Template</a></li>
       </ul>
     </div>
 
@@ -38,7 +49,12 @@ const populatedCategories = getPopulatedCategories(await getCollection("template
       <h2>Legal</h2>
       <ul>
         <li><a href="/privasi/">Kebijakan Privasi</a></li>
+        <li><a href="/kebijakan-cookie/">Kebijakan Cookie</a></li>
+        <li><a href="/lisensi-template/">Lisensi Template</a></li>
+        <li><a href="/syarat-ketentuan/">Syarat dan Ketentuan</a></li>
+        <li><a href="/disclaimer/">Disclaimer</a></li>
       </ul>
+      {availableResources.length > 0 && <><h2 class="footer-subheading">Resource</h2><ul>{availableResources.map((kind) => <li><a href={getResourceHubUrl(kind)}>{resourceKinds[kind].label}</a></li>)}</ul></>}
       <h2 class="footer-subheading">Discovery</h2>
       <ul>
         <li><a href="/sitemap/">HTML Sitemap</a></li>

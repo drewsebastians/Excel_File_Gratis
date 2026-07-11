@@ -1,0 +1,35 @@
+---
+import Breadcrumbs from "./Breadcrumbs.astro";
+import ResourceCard from "./ResourceCard.astro";
+import type { ResourceEntry, ResourceKind } from "../lib/resources";
+
+interface Props {
+  kind: ResourceKind;
+  title: string;
+  description: string;
+  entries: Array<ResourceEntry>;
+}
+
+const { kind, title, description, entries } = Astro.props;
+const populated = entries.length > 0;
+---
+
+<section class="info-layout container resource-hub">
+  <header class="info-header">
+    <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: title }]} />
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </header>
+  {populated ? (
+    <div class="resource-grid">{entries.map((entry) => <ResourceCard entry={entry} kind={kind} />)}</div>
+  ) : (
+    <section class="resource-empty" aria-labelledby="resource-empty-title">
+      <h2 id="resource-empty-title">Resource belum tersedia</h2>
+      <p>Jelajahi template yang sudah tersedia atau pilih kategori template untuk kebutuhan Anda.</p>
+      <div class="hero-actions">
+        <a class="button" href="/templates/">Lihat Template</a>
+        <a class="button-outline" href="/kategori/">Lihat Kategori</a>
+      </div>
+    </section>
+  )}
+</section>

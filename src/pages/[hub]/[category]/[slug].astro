@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import ResourceArticleLayout from "../../../components/ResourceArticleLayout.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { articleResourceKinds, getBreadcrumbStructuredData, getPublishedResources, getRelatedResourceEntries, getResourceCategoryName, getResourceHubUrl, getResourceUrl, resourceKinds, type ArticleResourceEntry, type ArticleResourceKind, type RelatedResourceEntries } from "../../../lib/resources";
+import { getPublishedTemplates } from "../../../lib/templates";
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const kind of articleResourceKinds) {
+    for (const entry of getPublishedResources(await getCollection(kind))) {
+      paths.push({ params: { hub: resourceKinds[kind].hub, category: entry.data.category, slug: entry.data.slug }, props: { kind, entry } });
+    }
+  }
+  return paths;
+}
+const { kind, entry } = Astro.props as { kind: ArticleResourceKind; entry: ArticleResourceEntry };
+const resources: RelatedResourceEntries = {
+  guides: getPublishedResources(await getCollection("guides")),
+  formulas: getPublishedResources(await getCollection("formulas")),
+  troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
+  resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
+  templates: getPublishedTemplates(await getCollection("templates")),
+};
+const related = getRelatedResourceEntries(kind, entry, resources);
+const entryPath = getResourceUrl(kind, entry);
+const categoryName = getResourceCategoryName(kind, entry.data.category);
+const structuredData = [
+  getBreadcrumbStructuredData([
+    { label: "Beranda", path: "/" },
+    { label: resourceKinds[kind].label, path: getResourceHubUrl(kind) },
+    { label: categoryName, path: `${getResourceHubUrl(kind)}${entry.data.category}/` },
+    { label: entry.data.title, path: entryPath },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: entry.data.title,
+    description: entry.data.meta_description,
+    datePublished: entry.data.date.toISOString(),
+    dateModified: (entry.data.updated_date || entry.data.date).toISOString(),
+    mainEntityOfPage: new URL(entryPath, "https://excelgratis.my.id").toString(),
+  },
+];
+---
+
+<BaseLayout title={entry.data.meta_title} description={entry.data.meta_description} path={entryPath} ogType="article" structuredData={structuredData}>
+  <ResourceArticleLayout kind={kind} entry={entry} related={related} />
+</BaseLayout>

@@ -66,3 +66,36 @@ export const categoryMap = Object.fromEntries(
 export function getCategory(slug: string) {
   return categoryMap[slug as CategorySlug];
 }
+
+export const resourceCategories = {
+  guides: [
+    { slug: "dasar-excel", name: "Dasar Excel" },
+    { slug: "pengolahan-data", name: "Pengolahan Data" },
+    { slug: "produktivitas", name: "Produktivitas" },
+  ],
+  formulas: [
+    { slug: "matematika", name: "Matematika" },
+    { slug: "teks", name: "Teks" },
+    { slug: "logika", name: "Logika" },
+    { slug: "tanggal-waktu", name: "Tanggal & Waktu" },
+    { slug: "lookup-referensi", name: "Lookup & Referensi" },
+  ],
+  troubleshooting: [
+    { slug: "formula", name: "Formula" },
+    { slug: "format-data", name: "Format & Data" },
+    { slug: "file-kompatibilitas", name: "File & Kompatibilitas" },
+  ],
+} as const;
+
+export const guideCategorySlugs = resourceCategories.guides.map((item) => item.slug) as [
+  (typeof resourceCategories.guides)[number]["slug"],
+  ...(typeof resourceCategories.guides)[number]["slug"][],
+];
+export const formulaCategorySlugs = resourceCategories.formulas.map((item) => item.slug) as [
+  (typeof resourceCategories.formulas)[number]["slug"],
+  ...(typeof resourceCategories.formulas)[number]["slug"][],
+];
+export const troubleshootingCategorySlugs = resourceCategories.troubleshooting.map((item) => item.slug) as [
+  (typeof resourceCategories.troubleshooting)[number]["slug"],
+  ...(typeof resourceCategories.troubleshooting)[number]["slug"][],
+];

@@ -13,7 +13,9 @@
     "deploy": "wrangler deploy",
     "preview": "astro preview",
     "check": "astro check",
-    "validate": "node scripts/validate-build.mjs"
+    "test:forms": "node scripts/test-forms.mjs",
+    "test:resources": "node --experimental-strip-types scripts/validate-resource-fixtures.ts",
+    "validate": "node scripts/validate-build.mjs && pnpm run test:forms && pnpm run test:resources"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

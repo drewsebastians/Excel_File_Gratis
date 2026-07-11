@@ -43,3 +43,11 @@ Untuk Cloudflare Pages, kita perlu OAuth proxy/serverless auth kecil agar Decap 
 Tanpa langkah OAuth ini, halaman `/admin/` sudah terbuka, tetapi belum bisa login ke GitHub.
 
 Editorial workflow tetap memakai konfigurasi GitHub Decap CMS yang sudah ada. Batch ini tidak mengubah worker auth, credential OAuth, secret Cloudflare, atau flow login.
+
+## Batch 2: halaman tetap dan resource
+
+Collection **Halaman Tetap** memakai files collection, jadi editor dapat mengubah judul, SEO title, meta description, tanggal update, ringkasan, dan Markdown untuk Tentang, Kontak, Request Template, kebijakan editorial, cara pengujian, lisensi, syarat, privasi, cookie, serta disclaimer. Route dan robots dikunci di kode; editor tidak dapat mengubah slug, ads, atau robots policy.
+
+Collection **Panduan Excel**, **Rumus Excel**, **Masalah Excel**, dan **Koleksi Resource** memakai folder collection. Gunakan slug huruf kecil dengan tanda minus, kategori yang tersedia di dropdown, metadata SEO yang ringkas, dan `draft` selama review. Hub hanya menjadi indexable dan muncul di navigation saat memiliki resource published; jangan membuat sample atau halaman public kosong.
+
+Relasi memakai slug resource. Pilih hanya target yang sudah ada; target hilang diabaikan aman ketika build, tetapi relasi yang benar membuat related resources lebih berguna. Lihat `docs/content-examples/` untuk contoh Markdown yang tidak dipublikasikan. Preview CMS tidak mencerminkan seluruh layout atau status navigation karena halaman dirender statis saat build.

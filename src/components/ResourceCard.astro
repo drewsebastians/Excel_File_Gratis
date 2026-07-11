@@ -1,0 +1,25 @@
+---
+import type { RelatedResourceEntry, RelatedResourceKind } from "../lib/resources";
+import { getResourceCardUrl, getResourceDate, getResourceSummary, resourceKinds } from "../lib/resources";
+
+interface Props {
+  entry: RelatedResourceEntry;
+  kind: RelatedResourceKind;
+}
+
+const { entry, kind } = Astro.props;
+const href = getResourceCardUrl(kind, entry);
+const updated = getResourceDate(entry);
+const summary = getResourceSummary(entry);
+const eventName = kind === "guides" ? "guide_card_click" : kind === "formulas" ? "formula_card_click" : kind === "troubleshooting" ? "troubleshooting_card_click" : kind === "resourceCollections" ? "collection_card_click" : "related_resource_click";
+const label = kind === "templates" ? "Template" : resourceKinds[kind].singular;
+---
+
+<article class="resource-card">
+  <div class="resource-card__body">
+    <p class="chip">{label}</p>
+    <h3><a href={href} data-event={eventName} data-event-param-resource-slug={entry.data.slug} data-event-param-resource-type={kind}>{entry.data.title}</a></h3>
+    <p>{summary}</p>
+    <div class="resource-card__meta"><span>Diperbarui {updated.toLocaleDateString("id-ID")}</span></div>
+  </div>
+</article>

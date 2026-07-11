@@ -61,6 +61,27 @@ Project ini ditujukan untuk Cloudflare Workers Builds dengan static assets:
 
 Wrangler dikonfigurasi untuk menjalankan `pnpm run build` sebelum deploy, sehingga `dist` tetap dibuat saat Cloudflare menjalankan deploy command. Branch `main` terhubung ke Cloudflare, jadi push ke `main` akan memicu deployment otomatis.
 
+## CI validation
+
+Workflow GitHub Actions di `.github/workflows/ci.yml` berjalan untuk pull request yang menargetkan `main`, push ke branch selain `main` atau `master`, dan pemicu manual. Workflow memakai Node `22.12.0` serta `pnpm@10.11.1`, lalu menjalankan:
+
+```bash
+pnpm install --frozen-lockfile
+pnpm run check
+pnpm run build
+pnpm run validate
+```
+
+Workflow ini hanya memvalidasi source dan tidak melakukan deployment, tidak menjalankan Wrangler deploy, tidak memakai secret, dan tidak mengunggah artifact build. Deployment Cloudflare tetap merupakan proses terpisah.
+
+Untuk mereproduksi CI secara lokal, jalankan empat perintah di atas dengan Node `>=22.12.0`. Jika CI gagal, baca langkah yang gagal terlebih dahulu: `check` untuk diagnostic Astro, `build` untuk static route atau bundling, dan `validate` untuk route, sitemap, CMS, link internal, serta asset integrity.
+
 ## SEO
 
 Build menghasilkan halaman statis lengkap dengan title unik, meta description, canonical URL, Open Graph tags, `robots.txt`, `sitemap.xml`, dan JSON-LD untuk halaman detail template.
+
+## Content dan trust pages
+
+Halaman tetap dikelola dari `src/content/site-pages/`, sementara fondasi Panduan, Rumus Excel, Masalah Excel, dan Koleksi berada di `src/content/`. Resource belum dipublikasikan pada Batch 2 sehingga hub tetap noindex dan tidak muncul di navigasi sampai content published tersedia. Dokumentasi editorial, legal review, serta inventory layanan ada di `docs/`.
+
+Perilaku pengiriman, penanganan kegagalan, privasi event, dan prosedur uji manual form didokumentasikan di `docs/form-delivery.md`.

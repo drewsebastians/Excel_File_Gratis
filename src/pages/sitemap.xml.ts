@@ -1,6 +1,7 @@
 import { getCollection } from "astro:content";
 import { siteConfig } from "../config/site";
 import { getPopulatedCategories, getPublishedTemplates, getTemplateUrl } from "../lib/templates";
+import { getPublishedResources, getSitemapResourcePaths, type ResourceEntries } from "../lib/resources";
 
 function escapeXml(value: string) {
   return value
@@ -15,16 +16,29 @@ export async function GET() {
   const allTemplates = await getCollection("templates");
   const templates = getPublishedTemplates(allTemplates);
   const populatedCategories = getPopulatedCategories(allTemplates);
+  const resources: ResourceEntries = {
+    guides: getPublishedResources(await getCollection("guides")),
+    formulas: getPublishedResources(await getCollection("formulas")),
+    troubleshooting: getPublishedResources(await getCollection("troubleshooting")),
+    resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
+  };
   const paths = [
     "/",
     "/templates/",
     "/kategori/",
     "/tentang/",
+    "/kontak/",
+    "/kebijakan-editorial/",
+    "/cara-kami-menguji-template/",
+    "/lisensi-template/",
+    "/syarat-ketentuan/",
     "/privasi/",
+    "/kebijakan-cookie/",
     "/disclaimer/",
     "/sitemap/",
     ...populatedCategories.map((category) => `/kategori/${category.slug}/`),
     ...templates.map(getTemplateUrl),
+    ...getSitemapResourcePaths(resources),
   ];
   const urls = paths
     .map((path) => {

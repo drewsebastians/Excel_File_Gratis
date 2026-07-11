@@ -95,3 +95,201 @@ collections:
         value_field: slug
         display_fields: [title, category]
       - { label: Isi Artikel, name: body, widget: markdown }
+
+  - name: site_pages
+    label: Halaman Tetap
+    create: false
+    delete: false
+    files:
+      - label: Tentang
+        name: tentang
+        file: src/content/site-pages/tentang.md
+        fields: &site_page_fields
+          - { label: Judul Halaman, name: title, widget: string }
+          - { label: SEO Title, name: meta_title, widget: string }
+          - { label: Meta Description, name: meta_description, widget: text, hint: Maksimal 170 karakter. }
+          - { label: Terakhir Diperbarui, name: updated_date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+          - { label: Ringkasan, name: summary, widget: text, required: false }
+          - { label: Isi Halaman, name: body, widget: markdown }
+      - label: Kontak
+        name: kontak
+        file: src/content/site-pages/kontak.md
+        fields: *site_page_fields
+      - label: Request Template
+        name: request_template
+        file: src/content/site-pages/request-template.md
+        fields: *site_page_fields
+      - label: Kebijakan Editorial
+        name: kebijakan_editorial
+        file: src/content/site-pages/kebijakan-editorial.md
+        fields: *site_page_fields
+      - label: Cara Kami Menguji Template
+        name: cara_menguji_template
+        file: src/content/site-pages/cara-kami-menguji-template.md
+        fields: *site_page_fields
+      - label: Lisensi Template
+        name: lisensi_template
+        file: src/content/site-pages/lisensi-template.md
+        fields: *site_page_fields
+      - label: Syarat dan Ketentuan
+        name: syarat_ketentuan
+        file: src/content/site-pages/syarat-ketentuan.md
+        fields: *site_page_fields
+      - label: Kebijakan Privasi
+        name: privasi
+        file: src/content/site-pages/privasi.md
+        fields: *site_page_fields
+      - label: Kebijakan Cookie
+        name: kebijakan_cookie
+        file: src/content/site-pages/kebijakan-cookie.md
+        fields: *site_page_fields
+      - label: Disclaimer
+        name: disclaimer
+        file: src/content/site-pages/disclaimer.md
+        fields: *site_page_fields
+
+  - name: guides
+    label: Panduan Excel
+    folder: src/content/guides
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    preview_path: "panduan/{{category}}/{{slug}}/"
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: SEO Title, name: meta_title, widget: string }
+      - { label: Meta Description, name: meta_description, widget: text, hint: Maksimal 170 karakter. }
+      - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
+      - { label: Ringkasan, name: summary, widget: text }
+      - label: Kategori
+        name: category
+        widget: select
+        options:
+          - { label: Dasar Excel, value: dasar-excel }
+          - { label: Pengolahan Data, value: pengolahan-data }
+          - { label: Produktivitas, value: produktivitas }
+      - { label: Tingkat, name: difficulty, widget: select, options: [{ label: Pemula, value: pemula }, { label: Menengah, value: menengah }, { label: Lanjutan, value: lanjutan }] }
+      - { label: Estimasi Waktu, name: estimated_time, widget: string, required: false }
+      - { label: Prasyarat, name: prerequisites, widget: list, required: false, field: { label: Prasyarat, name: prerequisite, widget: string } }
+      - { label: Versi Excel, name: excel_versions, widget: list, required: false, field: { label: Versi, name: version, widget: string } }
+      - { label: Tags, name: tags, widget: list, required: false, field: { label: Tag, name: tag, widget: string } }
+      - { label: Tanggal Publish, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Tanggal Update, name: updated_date, widget: datetime, required: false, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Featured, name: featured, widget: boolean, required: false, default: false }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false, hint: Draft tidak tampil di website atau sitemap. }
+      - { label: Template Terkait, name: related_templates, widget: relation, required: false, collection: templates, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Panduan Terkait, name: related_guides, widget: relation, required: false, collection: guides, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Rumus Terkait, name: related_formulas, widget: relation, required: false, collection: formulas, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Masalah Excel Terkait, name: related_troubleshooting, widget: relation, required: false, collection: troubleshooting, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Isi Artikel, name: body, widget: markdown }
+
+  - name: formulas
+    label: Rumus Excel
+    folder: src/content/formulas
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    preview_path: "rumus-excel/{{category}}/{{slug}}/"
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: Nama Rumus, name: formula_name, widget: string }
+      - { label: SEO Title, name: meta_title, widget: string }
+      - { label: Meta Description, name: meta_description, widget: text }
+      - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
+      - { label: Ringkasan, name: summary, widget: text }
+      - { label: Sintaks, name: syntax, widget: string }
+      - label: Kategori
+        name: category
+        widget: select
+        options:
+          - { label: Matematika, value: matematika }
+          - { label: Teks, value: teks }
+          - { label: Logika, value: logika }
+          - { label: Tanggal & Waktu, value: tanggal-waktu }
+          - { label: Lookup & Referensi, value: lookup-referensi }
+      - { label: Tingkat, name: difficulty, widget: select, options: [{ label: Pemula, value: pemula }, { label: Menengah, value: menengah }, { label: Lanjutan, value: lanjutan }] }
+      - { label: Versi Excel, name: excel_versions, widget: list, required: false, field: { label: Versi, name: version, widget: string } }
+      - { label: Tags, name: tags, widget: list, required: false, field: { label: Tag, name: tag, widget: string } }
+      - { label: Tanggal Publish, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Tanggal Update, name: updated_date, widget: datetime, required: false, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Featured, name: featured, widget: boolean, required: false, default: false }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
+      - { label: Template Terkait, name: related_templates, widget: relation, required: false, collection: templates, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Panduan Terkait, name: related_guides, widget: relation, required: false, collection: guides, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Rumus Terkait, name: related_formulas, widget: relation, required: false, collection: formulas, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Masalah Excel Terkait, name: related_troubleshooting, widget: relation, required: false, collection: troubleshooting, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Isi Artikel, name: body, widget: markdown }
+
+  - name: troubleshooting
+    label: Masalah Excel
+    folder: src/content/troubleshooting
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    preview_path: "masalah-excel/{{category}}/{{slug}}/"
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: SEO Title, name: meta_title, widget: string }
+      - { label: Meta Description, name: meta_description, widget: text }
+      - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
+      - { label: Ringkasan, name: summary, widget: text }
+      - label: Kategori
+        name: category
+        widget: select
+        options:
+          - { label: Formula, value: formula }
+          - { label: Format & Data, value: format-data }
+          - { label: File & Kompatibilitas, value: file-kompatibilitas }
+      - { label: Gejala, name: symptoms, widget: list, required: false, field: { label: Gejala, name: symptom, widget: string } }
+      - { label: Versi Excel, name: excel_versions, widget: list, required: false, field: { label: Versi, name: version, widget: string } }
+      - { label: Tags, name: tags, widget: list, required: false, field: { label: Tag, name: tag, widget: string } }
+      - { label: Tanggal Publish, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Tanggal Update, name: updated_date, widget: datetime, required: false, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Featured, name: featured, widget: boolean, required: false, default: false }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
+      - { label: Template Terkait, name: related_templates, widget: relation, required: false, collection: templates, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Panduan Terkait, name: related_guides, widget: relation, required: false, collection: guides, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Rumus Terkait, name: related_formulas, widget: relation, required: false, collection: formulas, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Masalah Excel Terkait, name: related_troubleshooting, widget: relation, required: false, collection: troubleshooting, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Isi Artikel, name: body, widget: markdown }
+
+  - name: resource_collections
+    label: Koleksi Resource
+    folder: src/content/collections
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    preview_path: "koleksi/{{slug}}/"
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: SEO Title, name: meta_title, widget: string }
+      - { label: Meta Description, name: meta_description, widget: text }
+      - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
+      - { label: Ringkasan, name: summary, widget: text }
+      - { label: Audiens, name: audience, widget: string, required: false }
+      - { label: Tujuan Penggunaan, name: use_case, widget: string, required: false }
+      - { label: Tanggal Publish, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Tanggal Update, name: updated_date, widget: datetime, required: false, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Featured, name: featured, widget: boolean, required: false, default: false }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
+      - label: Template dalam Koleksi
+        name: templates
+        widget: relation
+        required: false
+        collection: templates
+        multiple: true
+        search_fields: [title, slug]
+        value_field: slug
+        display_fields: [title]
+      - { label: Panduan dalam Koleksi, name: guides, widget: relation, required: false, collection: guides, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Rumus dalam Koleksi, name: formulas, widget: relation, required: false, collection: formulas, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Masalah Excel dalam Koleksi, name: troubleshooting, widget: relation, required: false, collection: troubleshooting, multiple: true, search_fields: [title, slug], value_field: slug, display_fields: [title] }
+      - { label: Isi Koleksi, name: body, widget: markdown }

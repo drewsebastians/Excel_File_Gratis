@@ -54,13 +54,18 @@ function extractHrefs(html) {
 
 assert(existsSync(dist), "dist belum ada. Jalankan pnpm run build sebelum validate.");
 
-const expectedRoutes = ["/", "/templates/", "/kategori/", "/sitemap/", "/tentang/", "/privasi/", "/disclaimer/", "/404/"];
+const trustRoutes = [
+  "/tentang/", "/kontak/", "/kebijakan-editorial/", "/cara-kami-menguji-template/",
+  "/lisensi-template/", "/syarat-ketentuan/", "/privasi/", "/kebijakan-cookie/", "/disclaimer/",
+];
+const emptyResourceHubs = ["/panduan/", "/rumus-excel/", "/masalah-excel/", "/koleksi/"];
+const expectedRoutes = ["/", "/templates/", "/kategori/", "/sitemap/", "/request-template/", "/404/", ...trustRoutes, ...emptyResourceHubs];
 for (const route of expectedRoutes) assert(routeExists(route), `Route tidak terbentuk: ${route}`);
 
 const sitemapPath = join(dist, "sitemap.xml");
 assert(existsSync(sitemapPath), "sitemap.xml tidak terbentuk.");
 const sitemap = existsSync(sitemapPath) ? read(sitemapPath) : "";
-for (const route of ["/", "/templates/", "/kategori/", "/sitemap/"]) {
+for (const route of ["/", "/templates/", "/kategori/", "/sitemap/", ...trustRoutes]) {
   assert(sitemap.includes(`https://excelgratis.my.id${route}`), `Sitemap belum memuat ${route}`);
 }
 
@@ -70,10 +75,30 @@ for (const part of forbiddenSitemapParts) {
 }
 const sitemapLocs = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 assert(!sitemapLocs.some((loc) => loc.includes("?")), "Sitemap memuat URL dengan query parameter.");
+assert(new Set(sitemapLocs).size === sitemapLocs.length, "Sitemap memuat URL duplikat.");
+assert(sitemap.startsWith("<?xml") && sitemap.includes("<urlset"), "Sitemap bukan XML sitemap yang valid.");
+assert(!sitemap.includes("/request-template/"), "Request Template tidak boleh masuk sitemap.");
+for (const route of emptyResourceHubs) assert(!sitemap.includes(route), `Hub resource kosong masuk sitemap: ${route}`);
+
+const requestHtml = read(htmlPath("/request-template/"));
+assert(requestHtml.includes('name="robots" content="noindex, follow"'), "Request Template belum noindex.");
+for (const route of emptyResourceHubs) {
+  const html = read(htmlPath(route));
+  assert(html.includes('name="robots" content="noindex, follow"'), `Hub resource kosong belum noindex: ${route}`);
+  assert(!html.includes("data-ad-slot"), `Hub resource kosong memiliki AdSlot: ${route}`);
+}
+for (const route of [...trustRoutes, "/request-template/"]) {
+  const html = read(htmlPath(route));
+  assert(!html.includes("data-ad-slot"), `Halaman trust/form memiliki AdSlot: ${route}`);
+}
 
 const templateFiles = collectFiles(join(root, "src", "content", "templates")).filter((path) => path.endsWith(".md"));
 const categoryConfig = read(join(root, "src", "config", "site.ts"));
-const categorySlugs = [...categoryConfig.matchAll(/slug:\s*"([^"]+)"/g)].map((match) => match[1]);
+const templateCategorySection = categoryConfig.slice(
+  categoryConfig.indexOf("export const categories"),
+  categoryConfig.indexOf("export const resourceCategories"),
+);
+const categorySlugs = [...templateCategorySection.matchAll(/slug:\s*"([^"]+)"/g)].map((match) => match[1]);
 const templateCategories = new Map();
 
 for (const file of templateFiles) {
@@ -114,13 +139,18 @@ for (const slug of emptyCategories) {
 const notFoundHtml = existsSync(htmlPath("/404/")) ? read(htmlPath("/404/")) : "";
 assert(notFoundHtml.includes('name="robots" content="noindex, follow"'), "404 belum noindex.");
 
-const allHtmlFiles = collectFiles(dist).filter((path) => path.endsWith(".html"));
+const allHtmlFiles = collectFiles(dist).filter(
+  (path) => path.endsWith(".html") && !path.startsWith(join(dist, "admin")),
+);
 for (const file of allHtmlFiles) {
   const html = read(file);
   assert((html.match(/rel="canonical"/g) || []).length <= 1, `Duplicate canonical: ${file}`);
   assert((html.match(/name="robots"/g) || []).length <= 1, `Duplicate robots meta: ${file}`);
+  assert(/rel="canonical" href="https:\/\/excelgratis\.my\.id\//.test(html), `Canonical tidak absolute: ${file}`);
+  assert(!/\bAI\b|artificial intelligence|human review|workflow AI|AI-assisted|kecerdasan buatan/i.test(html), `Public AI disclosure terdeteksi: ${file}`);
   assert(!html.includes("adsbygoogle.js"), `Production AdSense script terdeteksi: ${file}`);
   assert(!/ca-pub-\d+/i.test(html), `Publisher ID AdSense terdeteksi: ${file}`);
+  assert(!/googletagmanager|google-analytics\.com|analytics\.js/i.test(html), `Analytics script terdeteksi: ${file}`);
 
   for (const href of extractHrefs(html)) {
     if (/^(https?:|mailto:|tel:|#)/.test(href)) continue;
@@ -139,6 +169,104 @@ const fields = cmsConfig.collections.find((collection) => collection.name === "t
 for (const field of ["preview_image", "preview_alt", "featured", "updated_date", "related_templates"]) {
   assert(fields.includes(field), `CMS field belum ada: ${field}`);
 }
+for (const collectionName of ["site_pages", "guides", "formulas", "troubleshooting", "resource_collections"]) {
+  assert(cmsConfig.collections.some((collection) => collection.name === collectionName), `CMS collection belum ada: ${collectionName}`);
+}
+for (const collectionName of ["guides", "formulas", "troubleshooting"]) {
+  const collection = cmsConfig.collections.find((item) => item.name === collectionName);
+  const relationFields = collection.fields.filter((field) => field.widget === "relation").map((field) => field.name);
+  for (const field of ["related_templates", "related_guides", "related_formulas", "related_troubleshooting"]) {
+    assert(relationFields.includes(field), `CMS relation field belum lengkap: ${collectionName}.${field}`);
+  }
+}
+const collectionCms = cmsConfig.collections.find((item) => item.name === "resource_collections");
+for (const field of ["templates", "guides", "formulas", "troubleshooting"]) {
+  assert(collectionCms.fields.some((item) => item.name === field && item.widget === "relation"), `CMS collection relation belum ada: ${field}`);
+}
+const fixedPages = ["tentang", "kontak", "request-template", "kebijakan-editorial", "cara-kami-menguji-template", "lisensi-template", "syarat-ketentuan", "privasi", "kebijakan-cookie", "disclaimer"];
+for (const slug of fixedPages) {
+  const source = join(root, "src", "content", "site-pages", `${slug}.md`);
+  assert(existsSync(source), `Konten halaman tetap tidak ditemukan: ${slug}`);
+  if (existsSync(source)) {
+    const body = read(source);
+    for (const field of ["title:", "meta_title:", "meta_description:", "updated_date:"]) assert(body.includes(field), `Metadata ${field} hilang di halaman tetap: ${slug}`);
+  }
+}
+for (const route of ["/kontak/", "/request-template/"]) {
+  const html = read(htmlPath(route));
+  assert(html.includes("<label"), `Label form tidak ditemukan: ${route}`);
+  assert(html.includes('type="checkbox"'), `Consent checkbox tidak ditemukan: ${route}`);
+  assert(html.includes("aria-describedby"), `Asosiasi error form tidak ditemukan: ${route}`);
+}
+assert(!read(join(root, "src", "components", "Footer.astro")).includes('href="/panduan/"'), "Footer menampilkan hub resource kosong secara statis.");
+
+const ciWorkflowPath = join(root, ".github", "workflows", "ci.yml");
+assert(existsSync(ciWorkflowPath), "Workflow CI tidak ditemukan: .github/workflows/ci.yml");
+const ciWorkflowSource = existsSync(ciWorkflowPath) ? read(ciWorkflowPath) : "";
+const ciWorkflow = ciWorkflowSource ? YAML.parse(ciWorkflowSource) : {};
+assert(ciWorkflow?.permissions?.contents === "read", "Workflow CI harus memakai permissions contents: read.");
+assert(/pull_request:\s*[\s\S]*?branches:\s*[\s\S]*?- main/.test(ciWorkflowSource), "Workflow CI belum berjalan untuk pull request ke main.");
+assert(/push:\s*[\s\S]*?branches-ignore:\s*[\s\S]*?- main/.test(ciWorkflowSource), "Workflow CI belum menangani push feature branch.");
+assert(/^\s*workflow_dispatch:/m.test(ciWorkflowSource), "Workflow CI belum mendukung workflow_dispatch.");
+assert(ciWorkflow?.concurrency?.["cancel-in-progress"] === true, "Workflow CI belum membatalkan run obsolete.");
+assert(ciWorkflowSource.includes("runs-on: ubuntu-latest"), "Workflow CI harus memakai Ubuntu runner.");
+assert(ciWorkflowSource.includes("pnpm/action-setup@v4") && ciWorkflowSource.includes("version: 10.11.1"), "Setup pnpm CI tidak sesuai packageManager.");
+assert(ciWorkflowSource.includes("node-version: 22.12.0") && ciWorkflowSource.includes("cache: pnpm"), "Setup Node atau cache pnpm CI belum benar.");
+for (const command of ["pnpm install --frozen-lockfile", "pnpm run check", "pnpm run build", "pnpm run validate"]) {
+  assert(ciWorkflowSource.includes(command), `Workflow CI belum menjalankan: ${command}`);
+}
+assert(!/wrangler\s+deploy|pnpm\s+run\s+deploy|secrets\.|contents:\s*write|actions:\s*write/i.test(ciWorkflowSource), "Workflow CI mengandung deployment, secret, atau write permission.");
+
+const resourceDirectories = ["guides", "formulas", "troubleshooting", "collections"];
+const relationFieldsByCollection = {
+  guides: ["related_templates", "related_guides", "related_formulas", "related_troubleshooting"],
+  formulas: ["related_templates", "related_guides", "related_formulas", "related_troubleshooting"],
+  troubleshooting: ["related_templates", "related_guides", "related_formulas", "related_troubleshooting"],
+  collections: ["templates", "guides", "formulas", "troubleshooting"],
+};
+const resourceEntries = new Map();
+for (const directory of resourceDirectories) {
+  const files = collectFiles(join(root, "src", "content", directory)).filter((path) => path.endsWith(".md"));
+  const entries = files.map((file) => {
+    const source = read(file);
+    const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] || "";
+    const data = YAML.parse(frontmatter) || {};
+    return { file, data };
+  });
+  resourceEntries.set(directory, entries);
+  for (const { data } of entries) {
+    if (data.draft === true) {
+      const hub = directory === "guides" ? "panduan" : directory === "formulas" ? "rumus-excel" : directory === "troubleshooting" ? "masalah-excel" : "koleksi";
+      const route = directory === "collections" ? `/${hub}/${data.slug}/` : `/${hub}/${data.category}/${data.slug}/`;
+      assert(!routeExists(route), `Draft resource tergenerate: ${route}`);
+      assert(!sitemap.includes(route), `Draft resource masuk sitemap: ${route}`);
+    }
+  }
+}
+const templateSlugs = new Set(templateFiles.map((file) => read(file).match(/\nslug:\s*["']?([^"'\n]+)["']?/)?.[1]).filter(Boolean));
+const targetSlugs = {
+  templates: templateSlugs,
+  guides: new Set(resourceEntries.get("guides").map((item) => item.data.slug)),
+  formulas: new Set(resourceEntries.get("formulas").map((item) => item.data.slug)),
+  troubleshooting: new Set(resourceEntries.get("troubleshooting").map((item) => item.data.slug)),
+};
+for (const [directory, entries] of resourceEntries) {
+  for (const { file, data } of entries) {
+    for (const field of relationFieldsByCollection[directory]) {
+      const target = field.replace(/^related_/, "");
+      for (const slug of data[field] || []) assert(targetSlugs[target]?.has(slug), `Target relation tidak ditemukan di ${file}: ${field}=${slug}`);
+    }
+  }
+}
+for (const example of collectFiles(join(root, "docs", "content-examples"))) {
+  assert(!collectFiles(dist).some((file) => file.includes(example.replace(root, ""))), `Contoh dokumentasi masuk build: ${example}`);
+}
+const resourceHelper = read(join(root, "src", "lib", "resources.ts"));
+assert(resourceHelper.includes("getResourceHubUrl") && resourceHelper.includes("getResourceUrl"), "Resource URL builder tidak tersedia.");
+assert(resourceHelper.includes("resourceNavigationAvailable"), "Navigation availability helper tidak tersedia.");
+assert(!allHtmlFiles.some((file) => /segera hadir|coming soon/i.test(read(file))), "Placeholder coming soon ditemukan pada halaman public.");
+const templateDetail = read(htmlPath("/templates/bisnis-umkm/template-stok-barang-excel-gratis/"));
+assert(templateDetail.includes("related_template_click"), "Event related-template Batch 1 tidak tersedia.");
 
 for (const [path, expectedHash] of expectedAssetHashes) {
   const absolute = join(root, path);

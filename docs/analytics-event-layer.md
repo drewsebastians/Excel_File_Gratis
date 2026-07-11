@@ -21,6 +21,9 @@ Event yang sudah dipersiapkan:
 - `template_download_click`
 - `related_template_click`
 - `category_click`
+- `contact_form_start`, `contact_form_submit`, `contact_form_success`, `contact_form_error`
+- `request_template_start`, `request_template_submit`, `request_template_success`, `request_template_error`
+- `guide_card_click`, `formula_card_click`, `troubleshooting_card_click`, `collection_card_click`, `related_resource_click`
 
 Parameter harus tetap non-personal, misalnya:
 
@@ -31,5 +34,16 @@ Parameter harus tetap non-personal, misalnya:
 - `resultCount`
 
 Jangan mengirim query pencarian mentah, nama pengguna, email, nomor telepon, IP address, atau data personal lain.
+
+Form events hanya menyatakan tahap interaksi. Jangan memasukkan isi form, nama, email, subject, request, atau data personal pada parameter event.
+
+Payload form dibentuk melalui allowlist dan hanya dapat memuat:
+
+- `formType`: `contact` atau `request_template`;
+- `status`: tahap hasil yang telah ditentukan;
+- `errorCategory`: kategori teknis internal tanpa respons mentah provider;
+- `validationErrorCount`: jumlah field yang perlu diperbaiki.
+
+Free text, termasuk nama perusahaan atau pekerjaan/bisnis, tidak diteruskan. Detail reliability dan matriks error tersedia di `docs/form-delivery.md`.
 
 Untuk menghubungkan analytics di masa depan, tambahkan provider di luar Batch 1 yang membuat `window.dataLayer` sebelum event terjadi. Jangan mengaktifkan provider analytics, cookie consent, atau third-party script tanpa approval eksplisit.
