@@ -10,7 +10,24 @@ export default {
       return handleCallback(request, env);
     }
 
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+
+    if (response.status !== 404 || url.pathname === "/404" || url.pathname === "/404/") {
+      return response;
+    }
+
+    const notFoundUrl = new URL("/404", url);
+    const notFoundResponse = await env.ASSETS.fetch(new Request(notFoundUrl, request));
+
+    if (!notFoundResponse.ok) {
+      return response;
+    }
+
+    return new Response(notFoundResponse.body, {
+      status: 404,
+      statusText: "Not Found",
+      headers: notFoundResponse.headers,
+    });
   },
 };
 
