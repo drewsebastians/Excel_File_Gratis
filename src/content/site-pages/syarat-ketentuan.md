@@ -2,11 +2,13 @@
 title: "Syarat dan Ketentuan"
 meta_title: "Syarat dan Ketentuan ExcelGratis"
 meta_description: "Syarat penggunaan website, template, unduhan, dan layanan ExcelGratis."
-updated_date: 2026-07-10
+updated_date: 2026-07-11
 summary: "Ketentuan penggunaan website dan resource yang tersedia."
 ---
 
 Dengan menggunakan website ini, Anda menyetujui syarat dan ketentuan ini.
+
+ExcelGratis.my.id dikelola secara independen.
 
 ## Penggunaan website
 
@@ -15,6 +17,8 @@ Website digunakan untuk tujuan yang sah dan sesuai ketentuan ini.
 ## Template dan unduhan
 
 Template dan unduhan disediakan sesuai [Lisensi Template](/lisensi-template/). Pengguna bertanggung jawab meninjau kesesuaian resource sebelum menggunakannya.
+
+Template boleh digunakan untuk kebutuhan pribadi, internal bisnis, modifikasi sesuai kebutuhan sendiri, laporan internal, dan pekerjaan klien yang menghasilkan file selesai atau berisi data. Template kosong atau original tidak boleh dijual ulang, diunggah ulang, disediakan sebagai mirror unduhan, dimasukkan ke koleksi template lain, atau diberikan sebagai produk template yang dapat dijual ulang atau didistribusikan kembali.
 
 ## Hak kekayaan intelektual
 
@@ -46,4 +50,4 @@ Ketentuan ini dapat diperbarui. Versi yang berlaku adalah yang dipublikasikan pa
 
 ## Wording hukum dan kontak
 
-Ketentuan ini menggunakan wording netral dan tidak dimaksudkan menetapkan badan hukum atau yurisdiksi tertentu. Pertanyaan dapat dikirim melalui [Kontak](/kontak/).
+Ketentuan ini menggunakan wording netral dan tidak dimaksudkan menetapkan badan hukum atau yurisdiksi tertentu. Kanal kontak resmi publik adalah [Form Kontak](/kontak/).

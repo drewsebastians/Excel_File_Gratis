@@ -2,11 +2,13 @@
 title: "Tentang ExcelGratis"
 meta_title: "Tentang ExcelGratis"
 meta_description: "Kenali ExcelGratis, resource spreadsheet gratis untuk pengguna Indonesia, dan prinsip publikasi kami."
-updated_date: 2026-07-10
+updated_date: 2026-07-11
 summary: "Resource spreadsheet praktis yang dapat digunakan gratis sesuai ketentuan lisensi."
 ---
 
 ExcelGratis menyediakan template Excel dan resource spreadsheet praktis untuk pengguna Indonesia. Resource kami ditujukan untuk kebutuhan kerja, UMKM, keuangan pribadi, pendidikan, dan aktivitas sehari-hari.
+
+ExcelGratis.my.id dikelola secara independen.
 
 ## Fokus kami
 
@@ -20,4 +22,4 @@ Kami menggunakan kerangka pemeriksaan sebelum publikasi dan mencatat keterbatasa
 
 Website dapat dibiayai melalui cara yang sesuai di masa depan, termasuk iklan yang diberi penanda jelas. Keberadaan iklan tidak menentukan isi, urutan, atau rekomendasi resource. Kami akan memperbarui kebijakan terkait sebelum integrasi baru diaktifkan.
 
-Untuk pertanyaan, koreksi, atau laporan masalah, gunakan halaman [Kontak](/kontak/).
+Kanal kontak resmi publik adalah [Form Kontak](/kontak/). Gunakan formulir tersebut untuk pertanyaan, koreksi, atau laporan masalah.

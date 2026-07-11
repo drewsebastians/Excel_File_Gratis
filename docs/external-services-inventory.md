@@ -4,7 +4,7 @@
 | --- | --- | --- | --- | --- | --- |
 | Cloudflare Workers/Assets | Public site | Hosting static site dan security logging infrastruktur | Request metadata dan security logs sesuai layanan | `wrangler.toml`, deployment environment | Aktif pada arsitektur produksi |
 | Decap CMS + GitHub backend | Admin | Editorial workflow dan penyimpanan Markdown | Kredensial login GitHub pada alur admin | `public/admin/config.yml` | Konfigurasi tersedia; OAuth memerlukan setup owner |
-| Web3Forms | Public form | Memproses pengiriman Kontak dan Request Template | Field formulir yang dikirim pengguna | `src/components/ContactForm.astro` | Aktif dengan konfigurasi yang sudah ada |
+| Web3Forms | Public form | Memproses pengiriman Form Kontak dan Request Template | Field formulir yang dikirim pengguna; data dapat tersedia di mailbox atau interface penyedia sesuai operasi layanan | `src/components/ContactForm.astro` | Aktif dengan konfigurasi yang sudah ada; tidak ada database formulir publik terpisah di repository |
 | Google Fonts | Public site | Font Inter, Plus Jakarta Sans, dan Material Symbols | Request font dan metadata browser | `src/layouts/BaseLayout.astro` | Aktif |
 
 ## Planned but inactive
