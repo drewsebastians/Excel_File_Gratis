@@ -15,7 +15,7 @@ updated_date: "2026-07-12"
 file_name: "template-arus-kas-umkm.xlsx"
 file_size: "10 KB"
 suggested_h1: "Template Arus Kas UMKM Excel Gratis"
-usage_heading: "Cara Mencatat Arus Kas"
+usage_heading: "Cara Pakai Arus Kas"
 ringkasan_singkat: "Gunakan file ini untuk mencatat uang masuk dan uang keluar usaha secara sederhana, lalu lihat saldo akhir serta pengeluaran per kategori di ringkasan bulanan."
 file_spec:
   sheets: 4
@@ -39,7 +39,7 @@ Arus kas sederhana menjawab pertanyaan operasional yang praktis: berapa uang yan
 
 Jenis arus tersedia sebagai **Masuk** dan **Keluar**. Kategori contoh meliputi Penjualan, Bahan Baku, Operasional, dan Lainnya. Bagian ringkasan juga menampilkan grafik donat untuk melihat komposisi pengeluaran.
 
-## Cara Mencatat Arus Kas
+## Cara Pakai Arus Kas
 
 1. Tentukan saldo awal pada sheet **Ringkasan Bulanan**.
 2. Di **Catatan Arus Kas**, isi satu transaksi per baris.

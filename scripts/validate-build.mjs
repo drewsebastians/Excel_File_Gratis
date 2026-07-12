@@ -283,6 +283,14 @@ assert(resourceHelper.includes("resourceNavigationAvailable"), "Navigation avail
 assert(!allHtmlFiles.some((file) => /segera hadir|coming soon/i.test(read(file))), "Placeholder coming soon ditemukan pada halaman public.");
 const templateDetail = read(htmlPath("/templates/bisnis-umkm/template-stok-barang-excel-gratis/"));
 assert(templateDetail.includes("related_template_click"), "Event related-template Batch 1 tidak tersedia.");
+for (const [route, expectedText] of [
+  ["/templates/bisnis-umkm/template-invoice-penjualan-umkm/", "Cara Pakai Invoice"],
+  ["/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/", "Rumus dan Logika"],
+  ["/templates/bisnis-umkm/template-arus-kas-umkm/", "Cara Pakai Arus Kas"],
+  ["/templates/keuangan-pribadi/template-tracker-cicilan-hutang/", "Cara Pakai Tracker Cicilan"],
+]) {
+  assert(read(htmlPath(route)).includes(expectedText), `Konten detail template tidak ter-render: ${route}`);
+}
 
 for (const [path, expectedHash] of expectedAssetHashes) {
   const absolute = join(root, path);
