@@ -58,8 +58,18 @@ const trustRoutes = [
   "/tentang/", "/kontak/", "/kebijakan-editorial/", "/cara-kami-menguji-template/",
   "/lisensi-template/", "/syarat-ketentuan/", "/privasi/", "/kebijakan-cookie/", "/disclaimer/",
 ];
-const emptyResourceHubs = ["/panduan/", "/rumus-excel/", "/masalah-excel/", "/koleksi/"];
-const expectedRoutes = ["/", "/templates/", "/kategori/", "/sitemap/", "/request-template/", "/404/", ...trustRoutes, ...emptyResourceHubs];
+const resourceHubs = [
+  { route: "/panduan/", directory: "guides" },
+  { route: "/rumus-excel/", directory: "formulas" },
+  { route: "/masalah-excel/", directory: "troubleshooting" },
+  { route: "/koleksi/", directory: "collections" },
+].map((hub) => ({
+  ...hub,
+  hasPublishedContent: collectFiles(join(root, "src", "content", hub.directory))
+    .filter((file) => file.endsWith(".md"))
+    .some((file) => !/^draft:\s*true\b/m.test(read(file))),
+}));
+const expectedRoutes = ["/", "/templates/", "/kategori/", "/sitemap/", "/request-template/", "/404/", ...trustRoutes, ...resourceHubs.map((hub) => hub.route)];
 for (const route of expectedRoutes) assert(routeExists(route), `Route tidak terbentuk: ${route}`);
 
 const sitemapPath = join(dist, "sitemap.xml");
@@ -78,14 +88,20 @@ assert(!sitemapLocs.some((loc) => loc.includes("?")), "Sitemap memuat URL dengan
 assert(new Set(sitemapLocs).size === sitemapLocs.length, "Sitemap memuat URL duplikat.");
 assert(sitemap.startsWith("<?xml") && sitemap.includes("<urlset"), "Sitemap bukan XML sitemap yang valid.");
 assert(!sitemap.includes("/request-template/"), "Request Template tidak boleh masuk sitemap.");
-for (const route of emptyResourceHubs) assert(!sitemap.includes(route), `Hub resource kosong masuk sitemap: ${route}`);
+for (const hub of resourceHubs) {
+  assert(sitemap.includes(hub.route) === hub.hasPublishedContent, `Status sitemap hub tidak sesuai resource terbit: ${hub.route}`);
+}
 
 const requestHtml = read(htmlPath("/request-template/"));
 assert(requestHtml.includes('name="robots" content="noindex, follow"'), "Request Template belum noindex.");
-for (const route of emptyResourceHubs) {
-  const html = read(htmlPath(route));
-  assert(html.includes('name="robots" content="noindex, follow"'), `Hub resource kosong belum noindex: ${route}`);
-  assert(!html.includes("data-ad-slot"), `Hub resource kosong memiliki AdSlot: ${route}`);
+for (const hub of resourceHubs) {
+  const html = read(htmlPath(hub.route));
+  if (hub.hasPublishedContent) {
+    assert(!html.includes('name="robots" content="noindex, follow"'), `Hub resource terisi masih noindex: ${hub.route}`);
+  } else {
+    assert(html.includes('name="robots" content="noindex, follow"'), `Hub resource kosong belum noindex: ${hub.route}`);
+    assert(!html.includes("data-ad-slot"), `Hub resource kosong memiliki AdSlot: ${hub.route}`);
+  }
 }
 for (const route of [...trustRoutes, "/request-template/"]) {
   const html = read(htmlPath(route));
@@ -166,7 +182,7 @@ for (const file of allHtmlFiles) {
 const cmsConfigPath = join(root, "public", "admin", "config.yml");
 const cmsConfig = YAML.parse(read(cmsConfigPath));
 const fields = cmsConfig.collections.find((collection) => collection.name === "templates").fields.map((field) => field.name);
-for (const field of ["preview_image", "preview_alt", "featured", "updated_date", "related_templates"]) {
+for (const field of ["preview_image", "preview_alt", "featured", "draft", "updated_date", "related_templates"]) {
   assert(fields.includes(field), `CMS field belum ada: ${field}`);
 }
 for (const collectionName of ["site_pages", "guides", "formulas", "troubleshooting", "resource_collections"]) {

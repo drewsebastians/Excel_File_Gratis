@@ -1,0 +1,54 @@
+{
+  "workbook": "template-laporan-penjualan-harian-umkm.xlsx",
+  "generatedAt": "2026-07-11T23:05:05.585Z",
+  "status": "passed",
+  "fileSizeBytes": 10246,
+  "sheets": [
+    "Cara Pakai",
+    "Data Penjualan",
+    "Dashboard",
+    "Referensi"
+  ],
+  "checks": [
+    {
+      "name": "file_exists_and_exports",
+      "passed": true
+    },
+    {
+      "name": "xlsx_format_without_macros",
+      "passed": true
+    },
+    {
+      "name": "no_external_workbook_links",
+      "passed": true
+    },
+    {
+      "name": "formula_error_scan",
+      "passed": true
+    },
+    {
+      "name": "required_sheets",
+      "passed": true
+    },
+    {
+      "name": "sales_total_formula",
+      "passed": true
+    },
+    {
+      "name": "sales_table",
+      "passed": true
+    },
+    {
+      "name": "dashboard_chart",
+      "passed": true
+    },
+    {
+      "name": "category_validation",
+      "passed": true
+    },
+    {
+      "name": "sample_total_matches_expected",
+      "passed": true
+    }
+  ]
+}

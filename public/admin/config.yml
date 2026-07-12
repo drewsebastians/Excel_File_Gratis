@@ -59,6 +59,7 @@ collections:
       - { label: Preview Image, name: preview_image, widget: image, required: false, media_folder: public/assets/templates, public_folder: /assets/templates, hint: Opsional. Jika kosong, website memakai mapping gambar template lama. Jangan ubah style/crop gambar dari CMS. }
       - { label: Alt Text Gambar, name: preview_alt, widget: string, required: true, hint: Jelaskan isi preview gambar secara singkat dan bermakna. }
       - { label: Featured di Homepage, name: featured, widget: boolean, required: false, default: false }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false, hint: Draft tidak tampil di website atau sitemap. }
       - label: Kategori
         name: category
         widget: select

@@ -1,0 +1,221 @@
+{
+  "status": "passed",
+  "reports": [
+    {
+      "workbook": "template-invoice-penjualan-umkm.xlsx",
+      "generatedAt": "2026-07-11T23:05:05.374Z",
+      "status": "passed",
+      "fileSizeBytes": 9100,
+      "sheets": [
+        "Cara Pakai",
+        "Invoice",
+        "Data Pelanggan",
+        "Ringkasan Pembayaran"
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_format_without_macros",
+          "passed": true
+        },
+        {
+          "name": "no_external_workbook_links",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "invoice_total_formula",
+          "passed": true
+        },
+        {
+          "name": "invoice_items_table",
+          "passed": true
+        },
+        {
+          "name": "payment_method_validation",
+          "passed": true
+        },
+        {
+          "name": "sample_total_matches_expected",
+          "passed": true
+        },
+        {
+          "name": "zero_value_behavior",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "workbook": "template-laporan-penjualan-harian-umkm.xlsx",
+      "generatedAt": "2026-07-11T23:05:05.585Z",
+      "status": "passed",
+      "fileSizeBytes": 10246,
+      "sheets": [
+        "Cara Pakai",
+        "Data Penjualan",
+        "Dashboard",
+        "Referensi"
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_format_without_macros",
+          "passed": true
+        },
+        {
+          "name": "no_external_workbook_links",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "sales_total_formula",
+          "passed": true
+        },
+        {
+          "name": "sales_table",
+          "passed": true
+        },
+        {
+          "name": "dashboard_chart",
+          "passed": true
+        },
+        {
+          "name": "category_validation",
+          "passed": true
+        },
+        {
+          "name": "sample_total_matches_expected",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "workbook": "template-arus-kas-umkm.xlsx",
+      "generatedAt": "2026-07-11T23:05:05.650Z",
+      "status": "passed",
+      "fileSizeBytes": 10022,
+      "sheets": [
+        "Cara Pakai",
+        "Catatan Arus Kas",
+        "Ringkasan Bulanan",
+        "Referensi"
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_format_without_macros",
+          "passed": true
+        },
+        {
+          "name": "no_external_workbook_links",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "cashflow_table",
+          "passed": true
+        },
+        {
+          "name": "cashflow_chart",
+          "passed": true
+        },
+        {
+          "name": "cashflow_type_validation",
+          "passed": true
+        },
+        {
+          "name": "sample_inflow_matches_expected",
+          "passed": true
+        },
+        {
+          "name": "sample_outflow_matches_expected",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "workbook": "template-tracker-cicilan-hutang.xlsx",
+      "generatedAt": "2026-07-11T23:05:05.244Z",
+      "status": "passed",
+      "fileSizeBytes": 11323,
+      "sheets": [
+        "Cara Pakai",
+        "Daftar Cicilan",
+        "Catatan Pembayaran",
+        "Ringkasan"
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_format_without_macros",
+          "passed": true
+        },
+        {
+          "name": "no_external_workbook_links",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "installment_and_payment_tables",
+          "passed": true
+        },
+        {
+          "name": "summary_chart",
+          "passed": true
+        },
+        {
+          "name": "payment_validation",
+          "passed": true
+        },
+        {
+          "name": "sample_remaining_balance",
+          "passed": true
+        },
+        {
+          "name": "zero_amount_row_is_supported",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}
