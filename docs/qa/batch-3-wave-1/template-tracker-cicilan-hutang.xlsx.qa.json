@@ -1,0 +1,54 @@
+{
+  "workbook": "template-tracker-cicilan-hutang.xlsx",
+  "generatedAt": "2026-07-11T23:05:05.244Z",
+  "status": "passed",
+  "fileSizeBytes": 11323,
+  "sheets": [
+    "Cara Pakai",
+    "Daftar Cicilan",
+    "Catatan Pembayaran",
+    "Ringkasan"
+  ],
+  "checks": [
+    {
+      "name": "file_exists_and_exports",
+      "passed": true
+    },
+    {
+      "name": "xlsx_format_without_macros",
+      "passed": true
+    },
+    {
+      "name": "no_external_workbook_links",
+      "passed": true
+    },
+    {
+      "name": "formula_error_scan",
+      "passed": true
+    },
+    {
+      "name": "required_sheets",
+      "passed": true
+    },
+    {
+      "name": "installment_and_payment_tables",
+      "passed": true
+    },
+    {
+      "name": "summary_chart",
+      "passed": true
+    },
+    {
+      "name": "payment_validation",
+      "passed": true
+    },
+    {
+      "name": "sample_remaining_balance",
+      "passed": true
+    },
+    {
+      "name": "zero_amount_row_is_supported",
+      "passed": true
+    }
+  ]
+}

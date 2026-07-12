@@ -1,0 +1,54 @@
+{
+  "workbook": "template-arus-kas-umkm.xlsx",
+  "generatedAt": "2026-07-11T23:05:05.650Z",
+  "status": "passed",
+  "fileSizeBytes": 10022,
+  "sheets": [
+    "Cara Pakai",
+    "Catatan Arus Kas",
+    "Ringkasan Bulanan",
+    "Referensi"
+  ],
+  "checks": [
+    {
+      "name": "file_exists_and_exports",
+      "passed": true
+    },
+    {
+      "name": "xlsx_format_without_macros",
+      "passed": true
+    },
+    {
+      "name": "no_external_workbook_links",
+      "passed": true
+    },
+    {
+      "name": "formula_error_scan",
+      "passed": true
+    },
+    {
+      "name": "required_sheets",
+      "passed": true
+    },
+    {
+      "name": "cashflow_table",
+      "passed": true
+    },
+    {
+      "name": "cashflow_chart",
+      "passed": true
+    },
+    {
+      "name": "cashflow_type_validation",
+      "passed": true
+    },
+    {
+      "name": "sample_inflow_matches_expected",
+      "passed": true
+    },
+    {
+      "name": "sample_outflow_matches_expected",
+      "passed": true
+    }
+  ]
+}

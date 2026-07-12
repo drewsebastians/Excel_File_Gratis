@@ -1,0 +1,54 @@
+{
+  "workbook": "template-invoice-penjualan-umkm.xlsx",
+  "generatedAt": "2026-07-11T23:05:05.374Z",
+  "status": "passed",
+  "fileSizeBytes": 9100,
+  "sheets": [
+    "Cara Pakai",
+    "Invoice",
+    "Data Pelanggan",
+    "Ringkasan Pembayaran"
+  ],
+  "checks": [
+    {
+      "name": "file_exists_and_exports",
+      "passed": true
+    },
+    {
+      "name": "xlsx_format_without_macros",
+      "passed": true
+    },
+    {
+      "name": "no_external_workbook_links",
+      "passed": true
+    },
+    {
+      "name": "formula_error_scan",
+      "passed": true
+    },
+    {
+      "name": "required_sheets",
+      "passed": true
+    },
+    {
+      "name": "invoice_total_formula",
+      "passed": true
+    },
+    {
+      "name": "invoice_items_table",
+      "passed": true
+    },
+    {
+      "name": "payment_method_validation",
+      "passed": true
+    },
+    {
+      "name": "sample_total_matches_expected",
+      "passed": true
+    },
+    {
+      "name": "zero_value_behavior",
+      "passed": true
+    }
+  ]
+}
