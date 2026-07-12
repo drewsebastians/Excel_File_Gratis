@@ -15,7 +15,7 @@ updated_date: "2026-07-12"
 file_name: "template-invoice-penjualan-umkm.xlsx"
 file_size: "9 KB"
 suggested_h1: "Template Invoice Penjualan UMKM Excel Gratis"
-usage_heading: "Cara Menggunakan Invoice"
+usage_heading: "Cara Pakai Invoice"
 ringkasan_singkat: "Template invoice ini membantu UMKM menyiapkan rincian barang atau jasa, menghitung total tagihan, mencatat pembayaran diterima, dan melihat sisa tagihan. Data contoh dapat diganti langsung di sel berwarna biru."
 file_spec:
   sheets: 4
@@ -41,7 +41,7 @@ Pemilik usaha dapat memisahkan nomor invoice, tanggal, data pelanggan, rincian p
 - **Data Pelanggan** menyediakan daftar pelanggan sederhana sebagai referensi manual.
 - **Ringkasan Pembayaran** menarik nomor invoice, total, pembayaran, sisa, dan status dari sheet Invoice.
 
-## Cara Menggunakan Invoice
+## Cara Pakai Invoice
 
 1. Ganti nomor invoice, tanggal, jatuh tempo, nama pelanggan, dan kontak pada sel biru di sheet **Invoice**.
 2. Isi identitas usaha, alamat, dan metode bayar. Metode bayar tersedia sebagai pilihan Tunai, Transfer, atau QRIS.

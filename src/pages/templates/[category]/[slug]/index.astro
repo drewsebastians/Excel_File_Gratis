@@ -91,6 +91,11 @@ const usageSection = findSection(articleParts.sections, ["cara pakai"]);
 const tipsSection = findSection(articleParts.sections, ["tips", "modifikasi"]);
 const illustrationSection = findSection(articleParts.sections, ["contoh ilustrasi"]);
 const exampleDataSection = findSection(articleParts.sections, ["contoh isian data"]);
+const detailSections = articleParts.sections.filter((section) => {
+  if ([specSection, usageSection, tipsSection, illustrationSection, exampleDataSection].includes(section)) return false;
+  if (section === whySection && !entry.data.ringkasan_singkat) return false;
+  return !section.heading.toLowerCase().includes("batasan template");
+});
 const summaryText =
   entry.data.ringkasan_singkat ||
   stripHtml(markdownToHtml(articleParts.intro)).split(/(?<=[.!?])\s+/).slice(0, 2).join(" ") ||
@@ -240,6 +245,13 @@ const allSchemas = [...schemas, breadcrumbSchema];
         </ol>
       )}
     </section>
+
+    {detailSections.map((section) => (
+      <section class="detail-section" aria-label={section.heading}>
+        <h2>{section.heading}</h2>
+        <div class="article-content" set:html={markdownToHtml(section.content)} />
+      </section>
+    ))}
 
     <section class="detail-section" aria-labelledby="example-data-heading">
       <h2 id="example-data-heading">Contoh Isian Data</h2>

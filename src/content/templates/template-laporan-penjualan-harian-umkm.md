@@ -15,7 +15,7 @@ updated_date: "2026-07-12"
 file_name: "template-laporan-penjualan-harian-umkm.xlsx"
 file_size: "10 KB"
 suggested_h1: "Template Laporan Penjualan Harian UMKM Excel Gratis"
-usage_heading: "Cara Mengisi Laporan Penjualan"
+usage_heading: "Cara Pakai Laporan Penjualan"
 ringkasan_singkat: "Catat satu transaksi per baris, lalu gunakan dashboard untuk melihat total penjualan, jumlah transaksi, rata-rata per transaksi, tanggal data terakhir, dan penjualan per kategori."
 file_spec:
   sheets: 4
@@ -42,7 +42,7 @@ Template laporan penjualan harian ini cocok untuk UMKM yang membutuhkan catatan 
 
 **Cara Pakai** menjelaskan alur input. **Data Penjualan** adalah tabel transaksi utama. **Dashboard** merangkum data contoh secara otomatis. **Referensi** menyimpan daftar kategori dan metode pembayaran yang dipakai pada contoh.
 
-## Cara Mengisi Laporan Penjualan
+## Cara Pakai Laporan Penjualan
 
 1. Buka sheet **Data Penjualan** dan tambah satu baris untuk setiap transaksi.
 2. Isi tanggal, nomor invoice, produk atau jasa, lalu pilih kategori dan metode bayar dari dropdown.
