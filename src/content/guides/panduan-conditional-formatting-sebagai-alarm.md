@@ -1,64 +1,88 @@
 ---
 title: "Conditional Formatting sebagai Alarm Kerja, Bukan Sekadar Warna"
 meta_title: "Conditional Formatting sebagai Alarm Kerja, Bukan Sekadar Warna"
-meta_description: "Panduan conditional formatting sebagai alarm kerja, bukan sekadar warna dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Menandai tenggat lewat, stok rendah, dan status yang perlu ditindaklanjuti dengan aturan yang dapat dijelaskan."
 slug: "panduan-conditional-formatting-sebagai-alarm"
-summary: "Panduan praktis untuk menggunakan warna untuk menandai stok tipis, tenggat lewat, atau target yang belum aman, dengan contoh dan langkah yang mudah diikuti."
+summary: "Menandai tenggat lewat, stok rendah, dan status yang perlu ditindaklanjuti dengan aturan yang dapat dijelaskan."
 category: "produktivitas"
 difficulty: "pemula"
-estimated_time: "12 menit"
-prerequisites: ["Punya tabel dengan angka stok atau tanggal tenggat."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","produktivitas","pemula"]
+estimated_time: "13 menit"
+prerequisites: ["Tabel tugas dengan kolom status dan tenggat","Excel desktop atau web"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021","Microsoft Excel 2019"]
+tags: ["conditional formatting","produktivitas","belajar excel"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-rencana-proyek-sederhana","template-jadwal-pembayaran-tagihan"]
+related_guides: ["panduan-checklist-kualitas-file-excel","panduan-excel-table-vs-range"]
+related_formulas: ["rumus-if-ifs-status-prioritas"]
+related_troubleshooting: ["masalah-tanggal-salah-format-excel"]
 ---
 
-Conditional Formatting sebagai Alarm Kerja, Bukan Sekadar Warna membantu kamu menggunakan warna untuk menandai stok tipis, tenggat lewat, atau target yang belum aman. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+Warna tanpa aturan yang jelas membuat pengguna melihat dekorasi, bukan prioritas tindakan.
 
-Gunakan langkah ini ketika kamu ingin menggunakan warna untuk menandai stok tipis, tenggat lewat, atau target yang belum aman. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Baris berisiko diberi penanda yang konsisten dan tetap memiliki label teks.
 
 ## Prasyarat
 
-Punya tabel dengan angka stok atau tanggal tenggat.
+- Tabel tugas dengan kolom status dan tenggat
+- Excel desktop atau web
+
+## Contoh Input
+
+```text
+Status di F2:F30; tenggat di D2:D30; aturan terlambat: `=AND($D2<TODAY(),$F2<>"Selesai",$D2<>"")`.
+```
 
 ## Langkah Praktik
 
-1. Tentukan kondisi kerja yang benar-benar perlu segera dilihat.
-2. Pilih rentang data, bukan seluruh sheet.
-3. Buat aturan Cell Is atau formula berdasarkan kondisi tersebut.
-4. Uji dengan nilai normal dan nilai yang seharusnya memicu alarm.
+1. Pilih rentang baris yang ingin diberi alarm, misalnya A2:G30.
+2. Buat New Rule > Use a formula to determine which cells to format.
+3. Masukkan formula dengan kolom D dan F dikunci, tetapi nomor baris tetap relatif.
+4. Pilih fill yang kontras secukupnya dan pertahankan status teks.
+5. Uji tanggal kemarin, tanggal kosong, dan status Selesai.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Sel stok di bawah batas minimum berubah warna dan tugas dengan tenggat lewat mudah terlihat.
+Kolom dikunci agar seluruh baris mengikuti tenggat dan status pada barisnya sendiri. Syarat tanggal kosong mencegah baris kosong menjadi alarm palsu.
 
 ## Kesalahan Umum
 
-Terlalu banyak warna membuat alarm kehilangan arti. Batasi aturan pada kondisi yang memang membutuhkan tindakan.
+- Mengunci nomor baris membuat semua baris mengikuti baris pertama.
+- Warna menjadi satu-satunya informasi tanpa label yang dapat dibaca.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Buka Manage Rules, cek Applies to, urutan rule, dan formula pada baris pertama rentang.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Perbaiki `$D2` dan `$F2`, atur Stop If True bila diperlukan, lalu uji tiga kondisi batas.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+Conditional Formatting formula tersedia pada Excel modern dan Google Sheets dengan dialog berbeda. TODAY mengikuti tanggal sistem perangkat.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Tambahkan kolom `Flag` dengan IF agar status alarm juga bisa difilter.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+Warna tidak cukup untuk aksesibilitas dan tidak mengirim notifikasi otomatis.
+
+## Langkah Praktis Berikutnya
+
+Sepakati arti warna dengan tim dan dokumentasikan pada header atau sheet Cara Pakai.
+
+## Related Resources
+
+- Template: [template-rencana-proyek-sederhana](/templates/), [template-jadwal-pembayaran-tagihan](/templates/)
+- Panduan: [panduan-checklist-kualitas-file-excel](/panduan/), [panduan-excel-table-vs-range](/panduan/)
+- Rumus: [rumus-if-ifs-status-prioritas](/rumus-excel/)
+- Troubleshooting: [masalah-tanggal-salah-format-excel](/masalah-excel/)
+
+Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
