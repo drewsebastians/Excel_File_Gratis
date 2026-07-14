@@ -25,6 +25,6 @@ Project ini adalah website statis Astro untuk ExcelGratis.my.id. Output build be
 - Relasi resource diselesaikan satu tingkat, dideduplikasi, dan mengabaikan target hilang atau draft; jangan membuat fallback yang tidak relevan.
 - Fixture resource harus programatik atau berada di luar production content collection dan tidak boleh muncul di route, CMS, navigation, atau sitemap.
 - Inventory layanan eksternal dan Privacy Policy harus diperbarui setiap kali integrasi berubah.
-- CI harus tetap validation-only dan bebas deployment; jangan menambahkan Wrangler deploy atau command produksi ke workflow tanpa approval eksplisit.
+- `.github/workflows/ci.yml` harus tetap validation-only. `.github/workflows/deploy.yml` adalah satu-satunya workflow produksi yang diizinkan, berjalan hanya untuk `main` atau pemicu manual, dan memakai `CLOUDFLARE_API_TOKEN` hanya dari GitHub Secrets.
 - Permissions workflow GitHub Actions harus read-only kecuali approval eksplisit diperlukan.
 - `pnpm run check`, `pnpm run build`, dan `pnpm run validate` harus lulus sebelum merge.

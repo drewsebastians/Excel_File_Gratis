@@ -1,7 +1,7 @@
 # Current Project Status
 
 Audit date: 2026-07-14  
-Audited `main`: `0a287ddfd0d0ecb4a3bab68095a759b6b125f4d6` (`feat: publish Batch 3 Wave 3 content portfolio`)
+Audited `main`: `f22c26403761d58af9d82fedad3c98cee7caf961` (`ci: build before deployment validation`)
 Wave 3 merge PR: #10, squash merged on 2026-07-14
 
 ## Executive status
@@ -52,11 +52,13 @@ pnpm run build
 pnpm run validate
 ```
 
-The latest GitHub Actions validation for PR #10 passed. The CI workflow is validation-only; it does not deploy Cloudflare, access production secrets, or activate external tracking. The repeatable smoke procedure is in `docs/production-smoke-checklist.md`.
+The latest GitHub Actions validation for PR #10 passed. The CI workflow is validation-only; it does not deploy Cloudflare, access production secrets, or activate external tracking. The explicit production workflow is `.github/workflows/deploy.yml`, which runs only from `main` or manual dispatch and reads `CLOUDFLARE_API_TOKEN` only from GitHub Secrets. The repeatable smoke procedure is in `docs/production-smoke-checklist.md`; deployment operation and rollback guidance are in `docs/cloudflare-deployment.md`.
 
 ## Production evidence
 
 The public smoke pass on 2026-07-14 loaded the homepage, template directory, category directory, legacy template, all four Wave 1 template pages, all resource hubs, representative guide/formula/troubleshooting pages, collection hub/detail, Contact, Request Template, HTML sitemap, unknown-route 404, and the CMS shell. Wave 1 detail pages showed their substantive article sections and two download links. Canonical URLs were absolute and the Request Template page returned `noindex, follow`. The unknown route resolved to the custom 404 page with `noindex, follow`.
+
+The first authenticated GitHub Actions production deployment completed successfully on 2026-07-14: [run 29309216797](https://github.com/drewsebastians/Excel_File_Gratis/actions/runs/29309216797) deployed commit `f22c26403761d58af9d82fedad3c98cee7caf961` as Worker `excelfilegratis` on `excelgratis.my.id`. Wrangler reported Cloudflare version `529eeef2-25e2-42f3-81d9-268cf1e287a4`. This is deployment evidence, distinct from validation-only CI.
 
 The in-app browser blocked direct display of `robots.txt` and `sitemap.xml`, so those two endpoints were verified separately with a direct HTTP client: both returned HTTP 200, `robots.txt` returned `text/plain`, and `sitemap.xml` returned `application/xml`. A published Wave 1 workbook download also returned HTTP 200 with the expected `.xlsx` content type. No authenticated Cloudflare dashboard or Search Console evidence was available in this audit.
 

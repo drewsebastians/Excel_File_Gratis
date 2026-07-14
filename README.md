@@ -57,9 +57,14 @@ Base URL download dikonfigurasi di `src/config/site.ts` melalui `downloadBaseUrl
 
 ## Deployment dan CI
 
-Project ditujukan untuk Cloudflare Workers/Assets dengan Node `22`, `pnpm@10.11.1`, dan output asset `dist`. Wrangler menjalankan build sebelum deploy. Branch `main` terhubung ke deployment Cloudflare; push ke `main` dapat memicu deployment otomatis sesuai konfigurasi Cloudflare.
+Project ditujukan untuk Cloudflare Workers/Assets dengan Node `>=22.12.0`, `pnpm@10.11.1`, dan output asset `dist`.
 
-Workflow GitHub Actions di `.github/workflows/ci.yml` berjalan pada pull request menuju `main`, push ke branch non-default, dan pemicu manual. CI hanya validasi source dan tidak melakukan deployment. Perintahnya:
+Workflow GitHub Actions dipisahkan secara tegas:
+
+- `.github/workflows/ci.yml` adalah workflow validasi. Ia berjalan untuk pull request menuju `main`, push ke branch non-default, dan pemicu manual. Workflow ini tidak mengakses secret produksi dan tidak melakukan deployment.
+- `.github/workflows/deploy.yml` adalah workflow produksi. Ia berjalan hanya saat push ke `main` atau saat dijalankan manual dari tab Actions. Ia tidak berjalan untuk pull request maupun feature branch.
+
+Keduanya memakai urutan pemeriksaan berikut sebelum deployment:
 
 ```bash
 pnpm install --frozen-lockfile
@@ -68,7 +73,13 @@ pnpm run build
 pnpm run validate
 ```
 
-`check` memeriksa diagnostic Astro, `build` membuat route statis, dan `validate` memeriksa route, sitemap, CMS, link internal, asset, draft filtering, serta fixture resource. Deployment Cloudflare adalah proses terpisah dan harus diverifikasi dari bukti deployment, bukan diasumsikan dari CI.
+Workflow produksi kemudian menjalankan `pnpm run deploy`. Secret repository GitHub yang wajib tersedia bernama `CLOUDFLARE_API_TOKEN`; nilainya tidak boleh ditulis ke source, log, issue, atau pull request. Untuk konfigurasi Worker saat ini, token paling minimum biasanya dibatasi pada account yang memiliki Worker dengan `Account > Workers Scripts > Edit` dan zona `excelgratis.my.id` dengan `Zone > Workers Routes > Edit`.
+
+Deployment produksi memakai concurrency group `production-cloudflare`: hanya satu deployment dapat berjalan pada satu waktu, dan deployment lama yang masih berjalan dibatalkan bila commit baru masuk ke `main`. Job dibatasi 15 menit. `wrangler.jsonc` masih menjalankan `pnpm run build` saat `wrangler deploy`; workflow juga menjalankan build eksplisit sebelum validasi. Build kedua dipertahankan agar `pnpm run deploy` lokal dan integrasi Wrangler yang sudah ada tetap aman. Pastikan perubahan build bersifat deterministik.
+
+`check` memeriksa diagnostic Astro, `build` membuat route statis, dan `validate` memeriksa route, sitemap, CMS, link internal, asset, draft filtering, fixture resource, serta kontrak deployment workflow. Keberhasilan CI membuktikan validasi source; keberhasilan workflow `Deploy to Cloudflare Workers` dan bukti output Wrangler membuktikan deployment.
+
+Setelah deployment, buka run Actions untuk mencatat commit (`head SHA`) dan `Current Version ID` dari output Wrangler, lalu jalankan pemeriksaan segera di [production smoke checklist](docs/production-smoke-checklist.md). Minimal cek `https://excelgratis.my.id/`, `https://excelgratis.my.id/kategori/`, satu halaman template publik, `https://excelgratis.my.id/sitemap.xml`, `https://excelgratis.my.id/robots.txt`, dan satu file `.xlsx` publik. Bila ada regresi material, lakukan rollback versi terakhir yang sudah diverifikasi melalui Cloudflare Dashboard > Workers & Pages > `excelfilegratis` > Deployments, lalu buat revert commit di GitHub agar source `main` kembali selaras dengan produksi.
 
 ## SEO dan status draft
 
