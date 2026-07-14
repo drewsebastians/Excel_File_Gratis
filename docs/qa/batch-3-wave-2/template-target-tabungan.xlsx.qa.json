@@ -1,0 +1,80 @@
+{
+  "workbook": "template-target-tabungan.xlsx",
+  "generatedAt": "2026-07-14T02:40:16.817Z",
+  "status": "passed",
+  "fileSizeBytes": 12032,
+  "sheets": [
+    "Cara Pakai",
+    "Daftar Target",
+    "Catatan Setoran",
+    "Ringkasan"
+  ],
+  "renders": [
+    {
+      "sheet": "Cara Pakai",
+      "bytes": 33149,
+      "rendered": true
+    },
+    {
+      "sheet": "Daftar Target",
+      "bytes": 37278,
+      "rendered": true
+    },
+    {
+      "sheet": "Catatan Setoran",
+      "bytes": 31774,
+      "rendered": true
+    },
+    {
+      "sheet": "Ringkasan",
+      "bytes": 43996,
+      "rendered": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "file_exists_and_exports",
+      "passed": true
+    },
+    {
+      "name": "xlsx_format_without_macros",
+      "passed": true
+    },
+    {
+      "name": "no_external_workbook_links",
+      "passed": true
+    },
+    {
+      "name": "no_hidden_rows_or_columns_configured",
+      "passed": true
+    },
+    {
+      "name": "metadata_contains_no_personal_data",
+      "passed": true
+    },
+    {
+      "name": "formula_error_scan",
+      "passed": true
+    },
+    {
+      "name": "all_sheets_rendered_for_visual_qa",
+      "passed": true
+    },
+    {
+      "name": "required_sheets",
+      "passed": true
+    },
+    {
+      "name": "goals_and_deposits_tables",
+      "passed": true
+    },
+    {
+      "name": "sample_total_reconciles",
+      "passed": true
+    },
+    {
+      "name": "progress_chart_exists",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "workbook": "template-pembukuan-pengeluaran-usaha.xlsx",
+  "generatedAt": "2026-07-14T02:40:16.825Z",
+  "status": "passed",
+  "fileSizeBytes": 12537,
+  "sheets": [
+    "Cara Pakai",
+    "Data Pengeluaran",
+    "Kategori Pengeluaran",
+    "Rekap Bulanan",
+    "Dashboard"
+  ],
+  "renders": [
+    {
+      "sheet": "Cara Pakai",
+      "bytes": 35581,
+      "rendered": true
+    },
+    {
+      "sheet": "Data Pengeluaran",
+      "bytes": 48098,
+      "rendered": true
+    },
+    {
+      "sheet": "Kategori Pengeluaran",
+      "bytes": 20184,
+      "rendered": true
+    },
+    {
+      "sheet": "Rekap Bulanan",
+      "bytes": 26879,
+      "rendered": true
+    },
+    {
+      "sheet": "Dashboard",
+      "bytes": 48234,
+      "rendered": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "file_exists_and_exports",
+      "passed": true
+    },
+    {
+      "name": "xlsx_format_without_macros",
+      "passed": true
+    },
+    {
+      "name": "no_external_workbook_links",
+      "passed": true
+    },
+    {
+      "name": "no_hidden_rows_or_columns_configured",
+      "passed": true
+    },
+    {
+      "name": "metadata_contains_no_personal_data",
+      "passed": true
+    },
+    {
+      "name": "formula_error_scan",
+      "passed": true
+    },
+    {
+      "name": "all_sheets_rendered_for_visual_qa",
+      "passed": true
+    },
+    {
+      "name": "required_sheets",
+      "passed": true
+    },
+    {
+      "name": "expense_table_and_dropdowns",
+      "passed": true
+    },
+    {
+      "name": "recap_reconciles_with_sample",
+      "passed": true
+    },
+    {
+      "name": "dashboard_chart_exists",
+      "passed": true
+    }
+  ]
+}
