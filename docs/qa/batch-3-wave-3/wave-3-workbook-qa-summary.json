@@ -1,0 +1,288 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-07-14T03:43:07.110Z",
+  "reports": [
+    {
+      "workbook": "template-pengeluaran-harian.xlsx",
+      "generatedAt": "2026-07-14T03:43:06.899Z",
+      "status": "passed",
+      "fileSizeBytes": 11514,
+      "sheets": [
+        "Cara Pakai",
+        "Catatan Harian",
+        "Ringkasan",
+        "Referensi"
+      ],
+      "renders": [
+        {
+          "sheet": "Cara Pakai",
+          "bytes": 37094,
+          "rendered": true
+        },
+        {
+          "sheet": "Catatan Harian",
+          "bytes": 45071,
+          "rendered": true
+        },
+        {
+          "sheet": "Ringkasan",
+          "bytes": 47755,
+          "rendered": true
+        },
+        {
+          "sheet": "Referensi",
+          "bytes": 17808,
+          "rendered": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_without_macros_or_external_links",
+          "passed": true
+        },
+        {
+          "name": "no_hidden_rows_or_columns_configured",
+          "passed": true
+        },
+        {
+          "name": "workbook_properties_contain_no_personal_data",
+          "passed": true
+        },
+        {
+          "name": "named_ranges_reviewed_not_required",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "all_sheets_rendered_for_visual_qa",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "daily_log_table_and_validations",
+          "passed": true
+        },
+        {
+          "name": "daily_total_reconciles",
+          "passed": true
+        },
+        {
+          "name": "monthly_total_reconciles",
+          "passed": true
+        },
+        {
+          "name": "negative_and_blank_behavior",
+          "passed": true
+        },
+        {
+          "name": "summary_chart_exists",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "workbook": "template-jadwal-shift-sederhana.xlsx",
+      "generatedAt": "2026-07-14T03:43:07.019Z",
+      "status": "passed",
+      "fileSizeBytes": 13141,
+      "sheets": [
+        "Cara Pakai",
+        "Daftar Anggota",
+        "Jadwal Shift",
+        "Ringkasan",
+        "Referensi"
+      ],
+      "renders": [
+        {
+          "sheet": "Cara Pakai",
+          "bytes": 37875,
+          "rendered": true
+        },
+        {
+          "sheet": "Daftar Anggota",
+          "bytes": 17696,
+          "rendered": true
+        },
+        {
+          "sheet": "Jadwal Shift",
+          "bytes": 42791,
+          "rendered": true
+        },
+        {
+          "sheet": "Ringkasan",
+          "bytes": 29024,
+          "rendered": true
+        },
+        {
+          "sheet": "Referensi",
+          "bytes": 15202,
+          "rendered": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_without_macros_or_external_links",
+          "passed": true
+        },
+        {
+          "name": "no_hidden_rows_or_columns_configured",
+          "passed": true
+        },
+        {
+          "name": "workbook_properties_contain_no_personal_data",
+          "passed": true
+        },
+        {
+          "name": "named_ranges_reviewed_not_required",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "all_sheets_rendered_for_visual_qa",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "tables_and_dropdowns",
+          "passed": true
+        },
+        {
+          "name": "shift_duration_handles_overnight",
+          "passed": true
+        },
+        {
+          "name": "shift_total_hours_reconcile",
+          "passed": true
+        },
+        {
+          "name": "blank_time_behavior",
+          "passed": true
+        },
+        {
+          "name": "summary_chart_exists",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "workbook": "template-tracker-proyek-sederhana.xlsx",
+      "generatedAt": "2026-07-14T03:43:07.098Z",
+      "status": "passed",
+      "fileSizeBytes": 16360,
+      "sheets": [
+        "Cara Pakai",
+        "Project Overview",
+        "Task List",
+        "Milestones",
+        "Dashboard",
+        "Referensi"
+      ],
+      "renders": [
+        {
+          "sheet": "Cara Pakai",
+          "bytes": 40532,
+          "rendered": true
+        },
+        {
+          "sheet": "Project Overview",
+          "bytes": 30081,
+          "rendered": true
+        },
+        {
+          "sheet": "Task List",
+          "bytes": 50725,
+          "rendered": true
+        },
+        {
+          "sheet": "Milestones",
+          "bytes": 25713,
+          "rendered": true
+        },
+        {
+          "sheet": "Dashboard",
+          "bytes": 34296,
+          "rendered": true
+        },
+        {
+          "sheet": "Referensi",
+          "bytes": 16250,
+          "rendered": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_without_macros_or_external_links",
+          "passed": true
+        },
+        {
+          "name": "no_hidden_rows_or_columns_configured",
+          "passed": true
+        },
+        {
+          "name": "workbook_properties_contain_no_personal_data",
+          "passed": true
+        },
+        {
+          "name": "named_ranges_reviewed_not_required",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "all_sheets_rendered_for_visual_qa",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "tables_and_validations",
+          "passed": true
+        },
+        {
+          "name": "project_progress_reconciles",
+          "passed": true
+        },
+        {
+          "name": "overdue_and_blank_logic",
+          "passed": true
+        },
+        {
+          "name": "duplicate_identifier_checks",
+          "passed": true
+        },
+        {
+          "name": "dashboard_chart_exists",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

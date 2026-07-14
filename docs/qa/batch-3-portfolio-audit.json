@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "auditedAt": "2026-07-14T04:00:44.974Z",
+  "counts": {
+    "templates": 15,
+    "guides": 8,
+    "formulas": 6,
+    "troubleshooting": 6,
+    "collections": 3
+  },
+  "resourcesChecked": 38,
+  "sitemapFiles": [
+    "sitemap.xml"
+  ],
+  "checks": [
+    "published inventory count",
+    "required metadata and uniqueness",
+    "built route, canonical, JSON-LD, and sitemap presence",
+    "template download and preview assets"
+  ],
+  "failures": []
+}

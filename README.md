@@ -12,7 +12,7 @@ Resource utama tersedia melalui hub berikut:
 - Masalah Excel: `/masalah-excel/`.
 - Koleksi: `/koleksi/`.
 
-Per 2026-07-14, inventory terbit yang diverifikasi dari `src/content/` adalah 12 template, 6 panduan, 4 referensi rumus, 4 halaman troubleshooting, dan 2 koleksi. Navigation, related resources, structured data, canonical URL, dan sitemap dibentuk dari resource published. Hub yang belum memiliki resource published tetap aman untuk dibuka tetapi memakai `noindex, follow` dan tidak dipromosikan.
+Per 2026-07-14, inventory terbit yang diverifikasi dari `src/content/` adalah 15 template, 8 panduan, 6 referensi rumus, 6 halaman troubleshooting, dan 3 koleksi. Navigation, related resources, structured data, canonical URL, dan sitemap dibentuk dari resource published. Hub yang belum memiliki resource published tetap aman untuk dibuka tetapi memakai `noindex, follow` dan tidak dipromosikan.
 
 Halaman tetap dan trust pages dikelola dari `src/content/site-pages/`. Form Kontak dan Request Template tetap memakai provider Web3Forms sesuai batasan dan prosedur di `docs/form-delivery.md`.
 
@@ -36,7 +36,7 @@ Output build ada di folder `dist`.
 ### Template Excel
 
 1. Buat workbook dan QA report mengikuti `docs/template-production-specifications.md`.
-2. Generator workbook Batch 3 berada di `scripts/generate-batch3-wave1-workbooks.mjs` dan `scripts/generate-batch3-wave2-workbooks.mjs`; hasil QA tersimpan di `.workbook-artifacts/` saat lokal dan ringkasan versioned tersimpan di `docs/qa/batch-3-wave-1/` serta `docs/qa/batch-3-wave-2/`.
+2. Generator workbook Batch 3 berada di `scripts/generate-batch3-wave1-workbooks.mjs`, `scripts/generate-batch3-wave2-workbooks.mjs`, dan `scripts/generate-batch3-wave3-workbooks.mjs`; hasil QA tersimpan di `.workbook-artifacts/` saat lokal dan ringkasan versioned tersimpan di `docs/qa/batch-3-wave-1/`, `docs/qa/batch-3-wave-2/`, serta `docs/qa/batch-3-wave-3/`.
 3. Tambahkan Markdown ke `src/content/templates/` dengan frontmatter `title`, `meta_title`, `meta_description`, `slug`, `category`, `tags`, `date`, `file_name`, dan `file_size`. Gunakan `draft: true` selama review.
 4. Simpan file `.xlsx` di `public/downloads/{file_name}` dan preview, jika tersedia, di `public/assets/templates/`.
 5. Halaman detail otomatis tersedia di `/templates/{category}/{slug}/` setelah resource dipublikasikan.
