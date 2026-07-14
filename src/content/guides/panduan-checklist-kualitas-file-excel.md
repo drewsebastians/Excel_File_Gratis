@@ -13,8 +13,8 @@ tags: ["quality checklist","file excel","review"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
-related_templates: ["template-checklist-acara","template-rencana-proyek-sederhana"]
+draft: false
+related_templates: ["template-tracker-proyek-sederhana","template-notulen-rapat-action-item"]
 related_guides: ["panduan-audit-rumus-excel","panduan-excel-table-vs-range"]
 related_formulas: ["rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets"]
@@ -81,9 +81,9 @@ Jadikan checklist ini bagian dari proses release dan simpan bukti untuk file pen
 
 ## Related Resources
 
-- Template: [template-checklist-acara](/templates/), [template-rencana-proyek-sederhana](/templates/)
-- Panduan: [panduan-audit-rumus-excel](/panduan/), [panduan-excel-table-vs-range](/panduan/)
-- Rumus: [rumus-iferror-template-rapi](/rumus-excel/)
-- Troubleshooting: [masalah-file-excel-berantakan-google-sheets](/masalah-excel/)
+- Template: [Tracker Proyek Sederhana](/templates/produktivitas-kerja/template-tracker-proyek-sederhana/), [Notulen Rapat dan Action Item](/templates/produktivitas-kerja/template-notulen-rapat-action-item/)
+- Panduan: [Audit Rumus Excel](/panduan/pengolahan-data/panduan-audit-rumus-excel/), [Excel Table vs Range Biasa](/panduan/dasar-excel/panduan-excel-table-vs-range/)
+- Rumus: [IFERROR untuk Template Rapi](/rumus-excel/logika/rumus-iferror-template-rapi/)
+- Troubleshooting: [File Excel Berantakan saat Dibuka di Google Sheets](/masalah-excel/file-kompatibilitas/masalah-file-excel-berantakan-google-sheets/)
 
 Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
