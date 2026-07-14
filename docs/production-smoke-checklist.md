@@ -1,6 +1,6 @@
 # Production Smoke Checklist
 
-Use this checklist after every public content release. Record the date, URL, result, and evidence link or screenshot. A check is `PASS` only when the public response and visible content agree.
+Use this checklist after every public content release or production deployment. Record the date, deployed `main` SHA, GitHub Actions deployment run, URL, result, and evidence link or screenshot. A check is `PASS` only when the public response and visible content agree. A green validation workflow alone is not deployment evidence.
 
 | Area | URL or action | Pass condition | Result | Evidence / notes |
 | --- | --- | --- | --- | --- |
