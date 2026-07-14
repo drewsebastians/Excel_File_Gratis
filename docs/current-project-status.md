@@ -2,11 +2,11 @@
 
 Audit date: 2026-07-14  
 Audited base `main`: `526a71b` (`docs: record closure merge SHA`)  
-Current Wave 2 branch: `feat/batch-3-wave-2-content-portfolio`
+Current `main` after Wave 2 squash merge: `011fd1bd0058a730f037cd01b95fa0969a122bb8`
 
 ## Executive status
 
-Batch 1, Batch 2, Batch 2 custom 404 hotfix, Batch 3A planning, Batch 3 Wave 1, and Batch 3 Wave 2 are implemented. Wave 2 adds workbook-backed resources only; it does not add AdSense, Analytics, a database, a new service, or a public route. The PR and merge reference are appended after release verification.
+Batch 1, Batch 2, Batch 2 custom 404 hotfix, Batch 3A planning, Batch 3 Wave 1, and Batch 3 Wave 2 are published. Wave 2 adds workbook-backed resources only; it does not add AdSense, Analytics, a database, a new service, or a public route.
 
 ## Current public inventory
 
@@ -30,7 +30,7 @@ Wave 2 adds Pembukuan Pengeluaran Usaha, Target Tabungan, Task Tracker Kanban Ex
 - PR #4: Batch 3A content portfolio planning.
 - PR #5: Batch 3 Wave 1 content portfolio.
 - PR #6: render substantive template detail sections after production inspection.
-- Wave 2 release PR: pending CI verification on this branch.
+- PR #9: Batch 3 Wave 2 content portfolio, squash merged as `011fd1bd0058a730f037cd01b95fa0969a122bb8` after the latest validation run passed. A superseded concurrent run was cancelled by the workflow concurrency rule.
 
 All six PRs are merged into `main`. The latest two merged validation runs for PR #6 succeeded: [run 29188246431](https://github.com/drewsebastians/Excel_File_Gratis/actions/runs/29188246431) and [run 29188235101](https://github.com/drewsebastians/Excel_File_Gratis/actions/runs/29188235101).
 
@@ -73,7 +73,5 @@ Google Search Console, Google Trends, private request data, authenticated Cloudf
 
 ## Recommended next sequence
 
-1. Merge Wave 2 only after CI, workbook QA, and production smoke checks are green.
-2. Record the PR and squash merge SHA in this document after the release.
-3. Release future content in controlled batches, re-running the build, validation, and production smoke checklist after each release.
-4. Reassess AdSense readiness only after the public resource base, privacy posture, and owner policy review support a separate implementation decision.
+1. Release future content in controlled batches, re-running the build, validation, and production smoke checklist after each release.
+2. Reassess AdSense readiness only after the public resource base, privacy posture, and owner policy review support a separate implementation decision.
