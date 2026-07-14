@@ -1,7 +1,8 @@
 # Current Project Status
 
 Audit date: 2026-07-14  
-Audited `main`: `be139295d361293aefe64409ab0437d264ef488a` (`fix: render template detail sections`)
+Audited base `main`: `be139295d361293aefe64409ab0437d264ef488a` (`fix: render template detail sections`)  
+Current `main` after this closure merge: `a67ad25c202efc41cfc16f8979629b96b4cbc3cc`
 
 ## Executive status
 
