@@ -12,7 +12,7 @@ Resource utama tersedia melalui hub berikut:
 - Masalah Excel: `/masalah-excel/`.
 - Koleksi: `/koleksi/`.
 
-Per 2026-07-14, inventory terbit yang diverifikasi dari `src/content/` adalah 15 template, 8 panduan, 6 referensi rumus, 6 halaman troubleshooting, dan 3 koleksi. Navigation, related resources, structured data, canonical URL, dan sitemap dibentuk dari resource published. Hub yang belum memiliki resource published tetap aman untuk dibuka tetapi memakai `noindex, follow` dan tidak dipromosikan.
+Per 2026-07-14, inventory publik yang diverifikasi dari `src/content/` adalah 15 template, 8 panduan, 6 referensi rumus, 6 halaman troubleshooting, dan 3 koleksi, atau 38 resource publik. Repository juga menyimpan 20 template draft dan 20 panduan draft dari PR #11. Draft adalah bahan review, bukan resource publik: draft tidak menghasilkan route, card, navigation link, related link, atau sitemap entry. Navigation, related resources, structured data, canonical URL, dan sitemap dibentuk dari resource published. Hub yang belum memiliki resource published tetap aman untuk dibuka tetapi memakai `noindex, follow` dan tidak dipromosikan.
 
 Halaman tetap dan trust pages dikelola dari `src/content/site-pages/`. Form Kontak dan Request Template tetap memakai provider Web3Forms sesuai batasan dan prosedur di `docs/form-delivery.md`.
 
@@ -41,11 +41,15 @@ Output build ada di folder `dist`.
 4. Simpan file `.xlsx` di `public/downloads/{file_name}` dan preview, jika tersedia, di `public/assets/templates/`.
 5. Halaman detail otomatis tersedia di `/templates/{category}/{slug}/` setelah resource dipublikasikan.
 
+Sebelum template dipublikasikan, cocokkan Markdown dengan workbook, preview, filename download, cara pakai, batasan, dan relasi resource. Jalankan QA workbook sesuai `docs/template-production-specifications.md` dan simpan bukti di `docs/qa/`. Untuk terbit aman, ubah `draft` ke `false` hanya setelah `pnpm run check`, `pnpm run build`, `pnpm run validate`, dan smoke check lolos.
+
 Kategori template yang tersedia adalah `keuangan-pribadi`, `bisnis-umkm`, `produktivitas-kerja`, `pendidikan`, dan `rumah-tangga-acara`.
 
 ### Panduan, rumus, dan troubleshooting
 
 Tambahkan file Markdown ke `src/content/guides/`, `src/content/formulas/`, atau `src/content/troubleshooting/`. Isi metadata sesuai schema dan CMS di `src/content.config.ts` serta `public/admin/config.yml`. Gunakan slug stabil, ringkasan yang spesifik, contoh yang dapat diuji, batasan versi Excel, dan relation field yang mengarah ke resource published yang relevan.
+
+Panduan, rumus, troubleshooting, dan koleksi memiliki field gambar artikel opsional `preview_image` dan `preview_alt`. Media artikel dikelola di `public/assets/articles/` melalui CMS. Gunakan gambar hanya bila membantu pembaca memahami isi; alt text harus menjelaskan gambar secara singkat dan bermakna.
 
 ### Koleksi
 

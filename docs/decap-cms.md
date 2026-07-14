@@ -4,7 +4,7 @@ Admin CMS tersedia di:
 
 `https://excelgratis.my.id/admin/`
 
-CMS ini menyimpan konten sebagai Markdown di `src/content/templates` dan file Excel di `public/downloads`, lalu Cloudflare akan rebuild website statis setelah perubahan dipush ke GitHub.
+CMS ini menyimpan konten sebagai Markdown di `src/content/templates` dan file Excel di `public/downloads`. Perubahan yang masuk ke `main` diproses oleh workflow produksi GitHub Actions setelah seluruh validation gate lulus; workflow tersebut kemudian menjalankan deployment Cloudflare Workers/Assets.
 
 ## Yang Sudah Disiapkan
 
@@ -14,6 +14,7 @@ CMS ini menyimpan konten sebagai Markdown di `src/content/templates` dan file Ex
 - Upload file Excel diarahkan ke `public/downloads`.
 - Upload media umum diarahkan ke `public/assets/uploads`.
 - Upload preview template opsional diarahkan ke `public/assets/templates` dan dipakai lewat field `preview_image`.
+- Upload gambar artikel opsional diarahkan ke `public/assets/articles` untuk panduan, rumus, troubleshooting, dan koleksi melalui field `preview_image`.
 
 ## Field Template Baru
 
@@ -33,14 +34,14 @@ Gunakan Bahasa Indonesia untuk judul, ringkasan, alt text, dan isi artikel. Jang
 
 ## Yang Perlu Anda Set Di GitHub
 
-Decap CMS dengan backend GitHub butuh autentikasi OAuth. Buat GitHub OAuth App:
+Decap CMS dengan backend GitHub butuh autentikasi OAuth. Konfigurasi CMS dan halaman admin sudah tersedia, tetapi login OAuth dan penyimpanan secret belum diverifikasi dalam audit ini. Buat GitHub OAuth App:
 
 - Homepage URL: `https://excelgratis.my.id`
 - Authorization callback URL: gunakan URL callback dari OAuth provider yang Anda pakai.
 
-Untuk Cloudflare Pages, kita perlu OAuth proxy/serverless auth kecil agar Decap bisa login ke GitHub. Setelah client id/secret tersedia, simpan sebagai environment variable di Cloudflare, lalu hubungkan `base_url` di `public/admin/config.yml` ke endpoint OAuth tersebut.
+Untuk Cloudflare Workers/Assets, kita perlu endpoint OAuth yang kompatibel dengan Worker agar Decap bisa login ke GitHub. Setelah client id/secret tersedia, simpan sebagai secret di Cloudflare Worker, lalu hubungkan `base_url` di `public/admin/config.yml` ke endpoint OAuth tersebut.
 
-Tanpa langkah OAuth ini, halaman `/admin/` sudah terbuka, tetapi belum bisa login ke GitHub.
+Tanpa langkah OAuth ini, halaman `/admin/` sudah terbuka, tetapi belum bisa login ke GitHub. Jangan menyebut login CMS atau perubahan mailbox sebagai verified sebelum owner menguji alur tersebut dengan kredensial nyata.
 
 Editorial workflow tetap memakai konfigurasi GitHub Decap CMS yang sudah ada. Batch ini tidak mengubah worker auth, credential OAuth, secret Cloudflare, atau flow login.
 

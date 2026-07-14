@@ -4,6 +4,8 @@ Audit date: 2026-07-14
 Scope: Batch 3 Waves 1-3, merged `main` at `0a287ddfd0d0ecb4a3bab68095a759b6b125f4d6`
 Production status: HTTP smoke pass completed; browser-based responsive review remains recorded as an environment limitation
 
+Note: subsequent work prepared 20 template drafts and 20 guide drafts, plus deployment workflow hardening. The public Batch 3 inventory recorded below remains unchanged; see [current project status](current-project-status.md) for the live inventory and draft state.
+
 ## Result
 
 Batch 3 reaches its planned public inventory target. The audited local build contains 15 templates, 8 guides, 6 formula references, 6 troubleshooting pages, and 3 curated collections. All published resources have content-collection metadata, a public route, canonical URL, JSON-LD, and sitemap entry in the generated build.

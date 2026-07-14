@@ -2,9 +2,9 @@
 
 Status: no implementation. This document does not approve or implement AdSense.
 
-## Post-Wave-1 Assessment — 2026-07-14
+## Post-Wave-3 Assessment — 2026-07-14
 
-Repository checks now cover 15 published templates, 8 published guides, 6 published formula references, 6 published troubleshooting pages, and 3 published collections. Batch 3 Wave 3 adds three workbook-backed templates with generated previews and versioned QA evidence. The final Batch 3 audit is recorded in `docs/post-batch-3-audit.md`.
+Repository checks now cover 15 published templates, 8 published guides, 6 published formula references, 6 published troubleshooting pages, and 3 published collections. The repository also contains 20 template drafts and 20 guide drafts; drafts are not evidence of public content readiness and must remain excluded from ads and sitemap. Batch 3 Wave 3 adds three workbook-backed templates with generated previews and versioned QA evidence. The final Batch 3 audit is recorded in `docs/post-batch-3-audit.md`, while current state is recorded in `docs/current-project-status.md`.
 
 AdSense remains inactive. The internal content target in this document is an editorial readiness target owned by this project, not an official Google requirement and not a guarantee of eligibility. Batch 3 completion does not approve ads or tracking. Any future AdSense decision still requires a separate implementation and privacy/policy review.
 
