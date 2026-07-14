@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-07-14T07:59:45.230Z",
+  "status": "blocked_browser_runtime",
+  "desktop": "not_run",
+  "mobile": "not_run",
+  "checks": [
+    "header navigation",
+    "mobile navigation",
+    "category cards",
+    "keyboard focus",
+    "horizontal overflow",
+    "forms",
+    "CMS shell",
+    "custom 404"
+  ],
+  "notes": "The Codex browser-client runtime could not initialize in this environment (`Cannot redefine property: process`). No browser pass is claimed and no screenshots were captured."
+}

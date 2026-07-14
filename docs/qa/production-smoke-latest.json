@@ -1,0 +1,835 @@
+{
+  "generatedAt": "2026-07-14T08:01:07.701Z",
+  "baseUrl": "https://excelgratis.my.id",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "homepage",
+      "url": "https://excelgratis.my.id/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 267,
+      "bodyLength": 18632
+    },
+    {
+      "name": "templates",
+      "url": "https://excelgratis.my.id/templates/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 102,
+      "bodyLength": 38054
+    },
+    {
+      "name": "categories",
+      "url": "https://excelgratis.my.id/kategori/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 52,
+      "bodyLength": 9486
+    },
+    {
+      "name": "guides",
+      "url": "https://excelgratis.my.id/panduan/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 56,
+      "bodyLength": 11148
+    },
+    {
+      "name": "formulas",
+      "url": "https://excelgratis.my.id/rumus-excel/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 57,
+      "bodyLength": 9816
+    },
+    {
+      "name": "troubleshooting",
+      "url": "https://excelgratis.my.id/masalah-excel/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 46,
+      "bodyLength": 10141
+    },
+    {
+      "name": "collections",
+      "url": "https://excelgratis.my.id/koleksi/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 72,
+      "bodyLength": 8127
+    },
+    {
+      "name": "contact",
+      "url": "https://excelgratis.my.id/kontak/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 51,
+      "bodyLength": 10070
+    },
+    {
+      "name": "request-template",
+      "url": "https://excelgratis.my.id/request-template/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 53,
+      "bodyLength": 11512
+    },
+    {
+      "name": "about",
+      "url": "https://excelgratis.my.id/tentang/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 50,
+      "bodyLength": 8002
+    },
+    {
+      "name": "privacy",
+      "url": "https://excelgratis.my.id/privasi/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 57,
+      "bodyLength": 8104
+    },
+    {
+      "name": "terms",
+      "url": "https://excelgratis.my.id/syarat-ketentuan/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 40,
+      "bodyLength": 8889
+    },
+    {
+      "name": "disclaimer",
+      "url": "https://excelgratis.my.id/disclaimer/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 59,
+      "bodyLength": 7741
+    },
+    {
+      "name": "html-sitemap",
+      "url": "https://excelgratis.my.id/sitemap/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 57,
+      "bodyLength": 9554
+    },
+    {
+      "name": "xml-sitemap",
+      "url": "https://excelgratis.my.id/sitemap.xml",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "application/xml",
+      "durationMs": 50,
+      "bodyLength": 5979
+    },
+    {
+      "name": "robots",
+      "url": "https://excelgratis.my.id/robots.txt",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "durationMs": 55,
+      "bodyLength": 1940
+    },
+    {
+      "name": "admin-shell",
+      "url": "https://excelgratis.my.id/admin/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 51,
+      "bodyLength": 346
+    },
+    {
+      "name": "published-template",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-arus-kas-umkm/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 55,
+      "bodyLength": 18786
+    },
+    {
+      "name": "published-guide",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 43,
+      "bodyLength": 14355
+    },
+    {
+      "name": "published-formula",
+      "url": "https://excelgratis.my.id/rumus-excel/matematika/rumus-sumifs-rekap-kategori/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 52,
+      "bodyLength": 14717
+    },
+    {
+      "name": "published-troubleshooting",
+      "url": "https://excelgratis.my.id/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 55,
+      "bodyLength": 14554
+    },
+    {
+      "name": "published-collection",
+      "url": "https://excelgratis.my.id/koleksi/koleksi-administrasi-umkm/",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "text/html",
+      "durationMs": 48,
+      "bodyLength": 21511
+    },
+    {
+      "name": "workbook-download",
+      "url": "https://excelgratis.my.id/downloads/template-arus-kas-umkm.xlsx",
+      "passed": true,
+      "detail": "HTTP 200; expected 200",
+      "status": 200,
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "durationMs": 38,
+      "bodyLength": 9650
+    },
+    {
+      "name": "homepage:canonical",
+      "url": "https://excelgratis.my.id/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/",
+      "canonical": "https://excelgratis.my.id/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "templates:canonical",
+      "url": "https://excelgratis.my.id/templates/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/templates/",
+      "canonical": "https://excelgratis.my.id/templates/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "categories:canonical",
+      "url": "https://excelgratis.my.id/kategori/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/kategori/",
+      "canonical": "https://excelgratis.my.id/kategori/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "guides:canonical",
+      "url": "https://excelgratis.my.id/panduan/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/panduan/",
+      "canonical": "https://excelgratis.my.id/panduan/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "formulas:canonical",
+      "url": "https://excelgratis.my.id/rumus-excel/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/rumus-excel/",
+      "canonical": "https://excelgratis.my.id/rumus-excel/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "troubleshooting:canonical",
+      "url": "https://excelgratis.my.id/masalah-excel/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/masalah-excel/",
+      "canonical": "https://excelgratis.my.id/masalah-excel/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "collections:canonical",
+      "url": "https://excelgratis.my.id/koleksi/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/koleksi/",
+      "canonical": "https://excelgratis.my.id/koleksi/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "contact:canonical",
+      "url": "https://excelgratis.my.id/kontak/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/kontak/",
+      "canonical": "https://excelgratis.my.id/kontak/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "request-template:canonical",
+      "url": "https://excelgratis.my.id/request-template/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/request-template/",
+      "canonical": "https://excelgratis.my.id/request-template/",
+      "robotsMeta": "noindex, follow"
+    },
+    {
+      "name": "about:canonical",
+      "url": "https://excelgratis.my.id/tentang/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/tentang/",
+      "canonical": "https://excelgratis.my.id/tentang/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "privacy:canonical",
+      "url": "https://excelgratis.my.id/privasi/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/privasi/",
+      "canonical": "https://excelgratis.my.id/privasi/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "terms:canonical",
+      "url": "https://excelgratis.my.id/syarat-ketentuan/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/syarat-ketentuan/",
+      "canonical": "https://excelgratis.my.id/syarat-ketentuan/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "disclaimer:canonical",
+      "url": "https://excelgratis.my.id/disclaimer/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/disclaimer/",
+      "canonical": "https://excelgratis.my.id/disclaimer/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "html-sitemap:canonical",
+      "url": "https://excelgratis.my.id/sitemap/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/sitemap/",
+      "canonical": "https://excelgratis.my.id/sitemap/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "admin-shell:canonical",
+      "url": "https://excelgratis.my.id/admin/",
+      "passed": true,
+      "detail": "missing",
+      "canonical": "",
+      "robotsMeta": "noindex"
+    },
+    {
+      "name": "published-template:canonical",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-arus-kas-umkm/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/templates/bisnis-umkm/template-arus-kas-umkm/",
+      "canonical": "https://excelgratis.my.id/templates/bisnis-umkm/template-arus-kas-umkm/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "published-guide:canonical",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/",
+      "canonical": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "published-formula:canonical",
+      "url": "https://excelgratis.my.id/rumus-excel/matematika/rumus-sumifs-rekap-kategori/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/rumus-excel/matematika/rumus-sumifs-rekap-kategori/",
+      "canonical": "https://excelgratis.my.id/rumus-excel/matematika/rumus-sumifs-rekap-kategori/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "published-troubleshooting:canonical",
+      "url": "https://excelgratis.my.id/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/",
+      "canonical": "https://excelgratis.my.id/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "published-collection:canonical",
+      "url": "https://excelgratis.my.id/koleksi/koleksi-administrasi-umkm/",
+      "passed": true,
+      "detail": "https://excelgratis.my.id/koleksi/koleksi-administrasi-umkm/",
+      "canonical": "https://excelgratis.my.id/koleksi/koleksi-administrasi-umkm/",
+      "robotsMeta": "index, follow"
+    },
+    {
+      "name": "sitemap:xml-content",
+      "url": "https://excelgratis.my.id/sitemap.xml",
+      "passed": true,
+      "detail": "XML sitemap excludes draft slugs",
+      "draftLeak": []
+    },
+    {
+      "name": "robots:content",
+      "url": "https://excelgratis.my.id/robots.txt",
+      "passed": true,
+      "detail": "robots directives and sitemap URL",
+      "robots": "# As a condition of accessing this website, you agree to abide by the following\n# content signals:\n\n# (a)  If a Content-Signal = yes, you may collect content for the corresponding\n#      use.\n# (b)  If a Content-Signal = no, you may not collect content for the\n#      corresponding use.\n# (c)  If the website operator does not include a Content-Signal for a\n#      corresponding use, the website operator neither grants nor restricts\n#      permission via Content-Signal with respect to the corresponding use.\n\n# The content signals and their meanings are:\n\n# search:   building a search index and providing search results (e.g., returning\n#           hyperlinks and short excerpts from your website's contents). Search does not\n#           include providing AI-generated search summaries.\n# ai-input: inputting content into one or more AI models (e.g., retrieval\n#           augmented generation, grounding, or other real-time taking of content for\n#           generative AI search answers).\n# ai-train: training or fine-tuning AI models.\n# use:      how AI systems may consume the content (immediate, reference, or full).\n\n# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF\n# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT\n# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.\n\n# BEGIN Cloudflare Managed content\n\nUser-agent: *\nContent-Signal: search=yes,ai-train=no,use=reference\nAllow: /\n\nUser-agent: Amazonbot\nDisallow: /\n\nUser-agent: Applebot-Extended\nDisallow: /\n\nUser-agent: Bytespider\nDisallow: /\n\nUser-agent: CCBot\nDisallow: /\n\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: CloudflareBrowserRenderingCrawler\nDisallow: /\n\nUser-agent: Google-Extended\nDisallow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nUser-agent: meta-externalagent\nDisallow: /\n\n# END Cloudflare Managed Content\n\nUser-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nSitemap: https://excelgratis.my.id/sitemap.xml\n"
+    },
+    {
+      "name": "unknown-route",
+      "url": "https://excelgratis.my.id/run-6-route-that-does-not-exist-9c2e/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 134,
+      "bodyLength": 6760
+    },
+    {
+      "name": "unknown-route:custom-body",
+      "url": "https://excelgratis.my.id/run-6-route-that-does-not-exist-9c2e/",
+      "passed": true,
+      "detail": "custom 404 body present"
+    },
+    {
+      "name": "workbook-download:mime",
+      "url": "https://excelgratis.my.id/downloads/template-arus-kas-umkm.xlsx",
+      "passed": true,
+      "detail": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    },
+    {
+      "name": "draft-route:template-absensi-karyawan-sederhana",
+      "url": "https://excelgratis.my.id/templates/produktivitas-kerja/template-absensi-karyawan-sederhana/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 91,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-checklist-acara",
+      "url": "https://excelgratis.my.id/templates/rumah-tangga-acara/template-checklist-acara/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 62,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-daftar-aset-inventaris-kantor",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-daftar-aset-inventaris-kantor/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 57,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-daftar-belanja-rumah-tangga",
+      "url": "https://excelgratis.my.id/templates/rumah-tangga-acara/template-daftar-belanja-rumah-tangga/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 55,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-daftar-harga-produk-jasa",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-daftar-harga-produk-jasa/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 77,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-daftar-kehadiran-acara",
+      "url": "https://excelgratis.my.id/templates/rumah-tangga-acara/template-daftar-kehadiran-acara/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 74,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-daftar-piutang-pelanggan",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-daftar-piutang-pelanggan/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 56,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-database-pelanggan-sederhana",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-database-pelanggan-sederhana/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 53,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-form-permintaan-pembelian",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-form-permintaan-pembelian/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 54,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-jadwal-belajar-siswa",
+      "url": "https://excelgratis.my.id/templates/pendidikan/template-jadwal-belajar-siswa/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 49,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-jadwal-kerja-mingguan",
+      "url": "https://excelgratis.my.id/templates/produktivitas-kerja/template-jadwal-kerja-mingguan/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 55,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-jadwal-pembayaran-tagihan",
+      "url": "https://excelgratis.my.id/templates/keuangan-pribadi/template-jadwal-pembayaran-tagihan/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 59,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-kalender-konten-media-sosial",
+      "url": "https://excelgratis.my.id/templates/produktivitas-kerja/template-kalender-konten-media-sosial/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 69,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-kas-kecil-excel",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-kas-kecil-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 54,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-laba-rugi-sederhana-umkm",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-laba-rugi-sederhana-umkm/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 59,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-purchase-order-sederhana",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-purchase-order-sederhana/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 60,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-rekap-penjualan-bulanan",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-rekap-penjualan-bulanan/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 56,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-rekap-pesanan-pelanggan",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-rekap-pesanan-pelanggan/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 58,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-rencana-proyek-sederhana",
+      "url": "https://excelgratis.my.id/templates/produktivitas-kerja/template-rencana-proyek-sederhana/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 49,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:template-surat-jalan-excel",
+      "url": "https://excelgratis.my.id/templates/bisnis-umkm/template-surat-jalan-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 69,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-audit-rumus-excel",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-audit-rumus-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 62,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-checklist-kualitas-file-excel",
+      "url": "https://excelgratis.my.id/panduan/produktivitas/panduan-checklist-kualitas-file-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 59,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-conditional-formatting-sebagai-alarm",
+      "url": "https://excelgratis.my.id/panduan/produktivitas/panduan-conditional-formatting-sebagai-alarm/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 69,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-data-model-excel",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-data-model-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 67,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-dropdown-dinamis-excel",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-dropdown-dinamis-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 59,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-dynamic-array-spill-excel",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-dynamic-array-spill-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 50,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-excel-table-vs-range",
+      "url": "https://excelgratis.my.id/panduan/dasar-excel/panduan-excel-table-vs-range/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 54,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-parameter-power-query",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-parameter-power-query/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 65,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-pivottable-dua-tabel",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-pivottable-dua-tabel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 56,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-power-query-append",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-power-query-append/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 57,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-power-query-data-asli",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-power-query-data-asli/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 78,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-power-query-merge-vs-append",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-power-query-merge-vs-append/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 64,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-power-query-unpivot",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-power-query-unpivot/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 63,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-rumus-filter-laporan",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-rumus-filter-laporan/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 63,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-rumus-let-excel",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-rumus-let-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 61,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-sparklines-excel",
+      "url": "https://excelgratis.my.id/panduan/produktivitas/panduan-sparklines-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 46,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-structured-references-excel-table",
+      "url": "https://excelgratis.my.id/panduan/dasar-excel/panduan-structured-references-excel-table/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 61,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-textsplit-excel",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-textsplit-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 67,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-unique-sort-excel",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-unique-sort-excel/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 59,
+      "bodyLength": 6760
+    },
+    {
+      "name": "draft-route:panduan-validasi-data-formula-kustom",
+      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-validasi-data-formula-kustom/",
+      "passed": true,
+      "detail": "HTTP 404; expected 404",
+      "status": 404,
+      "contentType": "text/html",
+      "durationMs": 49,
+      "bodyLength": 6760
+    }
+  ],
+  "networkBlocked": false,
+  "notes": "A passing public HTTP smoke does not prove mailbox delivery, OAuth, Search Console, or Cloudflare dashboard state."
+}

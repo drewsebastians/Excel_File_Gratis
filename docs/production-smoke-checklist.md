@@ -41,3 +41,24 @@ Use this checklist after every public content release or production deployment. 
 ## Recording guidance
 
 For each release, copy this table into the release note or attach a dated result. Use `N/A` only when a check is genuinely outside the release scope. Keep failed checks open until a fix or an explicit owner decision is recorded. Never treat a successful CI build as proof of Cloudflare deployment or third-party form delivery.
+
+## RUN 6 automated verification
+
+Use `pnpm run smoke:production` for the public HTTP matrix and
+`pnpm run smoke:browser` for the optional browser runtime. Both commands write
+JSON evidence under `docs/qa/`. The HTTP script checks status, content type,
+canonical, robots, sitemap draft leakage, 404 behavior, CMS shell, and a
+representative workbook download. The browser script records the desktop and
+mobile checks it must cover and explicitly records a runtime blocker when a
+browser binary or the Codex browser connection is unavailable.
+
+Form-provider evidence is limited to provider submission acceptance. Mailbox
+delivery is never inferred. The Search Console evidence template is
+`docs/search-console-verification-register.csv`; owner credentials are needed
+to complete the observation columns.
+
+RUN 6 evidence: public HTTP smoke passed. The in-app browser connection was
+unavailable, so browser pass is pending. Exactly one synthetic submission was
+attempted for each form; Web3Forms returned HTTP 403 for both, so provider
+acceptance and mailbox delivery are not verified. OAuth login, Cloudflare
+dashboard confirmation, and Search Console results remain owner-only.

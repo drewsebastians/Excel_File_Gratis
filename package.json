@@ -20,6 +20,9 @@
     "qa:workbooks": "python scripts/audit-draft-workbooks.py",
     "audit:guides": "node scripts/audit-draft-guides.mjs",
     "test:guides": "node scripts/test-guide-fixtures.mjs",
+    "smoke:production": "node scripts/smoke-production.mjs",
+    "smoke:browser": "node scripts/browser-smoke.mjs",
+    "forms:production": "node scripts/submit-production-forms.mjs",
     "audit:batch3": "node scripts/audit-batch3-portfolio.mjs",
     "validate": "node scripts/validate-build.mjs && pnpm run test:forms && pnpm run test:resources && pnpm run test:workflow"
   },
