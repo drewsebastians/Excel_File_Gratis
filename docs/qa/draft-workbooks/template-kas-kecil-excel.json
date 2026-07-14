@@ -1,0 +1,127 @@
+{
+  "slug": "kas-kecil-excel",
+  "workbook": "public/downloads/template-kas-kecil-excel.xlsx",
+  "risk_level": "high",
+  "status": "passed",
+  "visual_qa_status": "not_run",
+  "sheet_count": 3,
+  "checks": [
+    {
+      "name": "workbook_exists",
+      "passed": true,
+      "detail": "C:\\Users\\andrew.sebastian\\Documents\\Codex\\2026-07-05\\project-brief-website-template-excel-gratis\\work\\Excel_File_Gratis\\public\\downloads\\template-kas-kecil-excel.xlsx"
+    },
+    {
+      "name": "markdown_exists",
+      "passed": true,
+      "detail": "C:\\Users\\andrew.sebastian\\Documents\\Codex\\2026-07-05\\project-brief-website-template-excel-gratis\\work\\Excel_File_Gratis\\src\\content\\templates\\template-kas-kecil-excel.md"
+    },
+    {
+      "name": "preview_exists",
+      "passed": true,
+      "detail": "C:\\Users\\andrew.sebastian\\Documents\\Codex\\2026-07-05\\project-brief-website-template-excel-gratis\\work\\Excel_File_Gratis\\public\\assets\\templates\\template-kas-kecil-excel.png"
+    },
+    {
+      "name": "draft_true",
+      "passed": true,
+      "detail": "true"
+    },
+    {
+      "name": "metadata_slug_matches",
+      "passed": true,
+      "detail": "template-kas-kecil-excel"
+    },
+    {
+      "name": "metadata_file_name_matches",
+      "passed": true,
+      "detail": "template-kas-kecil-excel.xlsx"
+    },
+    {
+      "name": "xlsx_zip_integrity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "expected_xlsx_format",
+      "passed": true,
+      "detail": "OOXML package"
+    },
+    {
+      "name": "no_macros",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_external_links_or_connections",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "has_sheets",
+      "passed": true,
+      "detail": "Cara Pakai, Catatan Kas Kecil, Ringkasan"
+    },
+    {
+      "name": "first_sheet_is_cara_pakai",
+      "passed": true,
+      "detail": "Cara Pakai, Catatan Kas Kecil, Ringkasan"
+    },
+    {
+      "name": "sheet_targets_resolve",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "formulas_present",
+      "passed": true,
+      "detail": "10"
+    },
+    {
+      "name": "formula_cached_values_present",
+      "passed": true,
+      "detail": "96"
+    },
+    {
+      "name": "data_validation_present",
+      "passed": true,
+      "detail": "1"
+    },
+    {
+      "name": "table_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "chart_references_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_hidden_sheets",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "no_hidden_rows_or_columns",
+      "passed": true,
+      "detail": "rows=0, cols=0"
+    },
+    {
+      "name": "no_formula_error_literals",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_personal_metadata",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "file_size_reasonable",
+      "passed": true,
+      "detail": "9520"
+    }
+  ],
+  "issues": [],
+  "notes": "OOXML QA passed; visual QA requires owner/desktop renderer."
+}

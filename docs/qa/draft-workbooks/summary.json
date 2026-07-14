@@ -1,0 +1,149 @@
+{
+  "generated_at": "2026-07-14T07:13:33.026029+00:00",
+  "total": 20,
+  "passed": 20,
+  "failed": 0,
+  "visual_qa_not_run": 20,
+  "reports": [
+    {
+      "slug": "absensi-karyawan-sederhana",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "checklist-acara",
+      "status": "passed",
+      "risk_level": "low",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "daftar-aset-inventaris-kantor",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "daftar-belanja-rumah-tangga",
+      "status": "passed",
+      "risk_level": "low",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "daftar-harga-produk-jasa",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "daftar-kehadiran-acara",
+      "status": "passed",
+      "risk_level": "low",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "daftar-piutang-pelanggan",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "database-pelanggan-sederhana",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "form-permintaan-pembelian",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "jadwal-belajar-siswa",
+      "status": "passed",
+      "risk_level": "low",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "jadwal-kerja-mingguan",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "jadwal-pembayaran-tagihan",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "kalender-konten-media-sosial",
+      "status": "passed",
+      "risk_level": "low",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "kas-kecil-excel",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "laba-rugi-sederhana-umkm",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "purchase-order-sederhana",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "rekap-penjualan-bulanan",
+      "status": "passed",
+      "risk_level": "low",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "rekap-pesanan-pelanggan",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "rencana-proyek-sederhana",
+      "status": "passed",
+      "risk_level": "low",
+      "visual_qa_status": "not_run",
+      "issues": []
+    },
+    {
+      "slug": "surat-jalan-excel",
+      "status": "passed",
+      "risk_level": "high",
+      "visual_qa_status": "not_run",
+      "issues": []
+    }
+  ]
+}
