@@ -1,0 +1,9 @@
+url,expected_indexability,expected_canonical,expected_robots,owner_observed_indexed,owner_observed_canonical,owner_observed_robots,checked_at,owner_notes
+https://excelgratis.my.id/,index,https://excelgratis.my.id/,index follow,,,,,
+https://excelgratis.my.id/templates/,index,https://excelgratis.my.id/templates/,index follow,,,,,
+https://excelgratis.my.id/kategori/,index,https://excelgratis.my.id/kategori/,index follow,,,,,
+https://excelgratis.my.id/panduan/,index,https://excelgratis.my.id/panduan/,index follow,,,,,
+https://excelgratis.my.id/templates/bisnis-umkm/template-arus-kas-umkm/,index,https://excelgratis.my.id/templates/bisnis-umkm/template-arus-kas-umkm/,index follow,,,,,
+https://excelgratis.my.id/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/,index,https://excelgratis.my.id/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/,index follow,,,,,
+https://excelgratis.my.id/kontak/,noindex,https://excelgratis.my.id/kontak/,noindex follow,,,,,
+https://excelgratis.my.id/request-template/,noindex,https://excelgratis.my.id/request-template/,noindex follow,,,,,

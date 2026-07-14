@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-07-14T07:57:28.278Z",
+  "endpoint": "https://api.web3forms.com/submit",
+  "submissions": [
+    {
+      "formType": "contact",
+      "subjectPrefix": "[RUN6-CONTACT-2026-07-14T07-57-28-272Z]",
+      "status": 403,
+      "providerAccepted": false,
+      "visibleBrowserResult": "not_observed",
+      "mailboxDelivery": "not_verified"
+    },
+    {
+      "formType": "request_template",
+      "subjectPrefix": "[RUN6-REQUEST-2026-07-14T07-57-28-272Z]",
+      "status": 403,
+      "providerAccepted": false,
+      "visibleBrowserResult": "not_observed",
+      "mailboxDelivery": "not_verified"
+    }
+  ],
+  "status": "provider_result_failed_or_blocked",
+  "notes": "Provider acceptance is not mailbox delivery. Do not repeat submissions without owner approval."
+}
