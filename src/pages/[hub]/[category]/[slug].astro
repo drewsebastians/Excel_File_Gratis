@@ -25,6 +25,7 @@ const resources: RelatedResourceEntries = {
 const related = getRelatedResourceEntries(kind, entry, resources);
 const entryPath = getResourceUrl(kind, entry);
 const categoryName = getResourceCategoryName(kind, entry.data.category);
+const previewImage = entry.data.preview_image;
 const structuredData = [
   getBreadcrumbStructuredData([
     { label: "Beranda", path: "/" },
@@ -40,10 +41,11 @@ const structuredData = [
     datePublished: entry.data.date.toISOString(),
     dateModified: (entry.data.updated_date || entry.data.date).toISOString(),
     mainEntityOfPage: new URL(entryPath, "https://excelgratis.my.id").toString(),
+    ...(previewImage ? { image: new URL(previewImage, "https://excelgratis.my.id").toString() } : {}),
   },
 ];
 ---
 
-<BaseLayout title={entry.data.meta_title} description={entry.data.meta_description} path={entryPath} ogType="article" structuredData={structuredData}>
+<BaseLayout title={entry.data.meta_title} description={entry.data.meta_description} path={entryPath} ogImage={previewImage} ogType="article" structuredData={structuredData}>
   <ResourceArticleLayout kind={kind} entry={entry} related={related} />
 </BaseLayout>
