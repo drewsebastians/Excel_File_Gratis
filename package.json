@@ -15,8 +15,9 @@
     "check": "astro check",
     "test:forms": "node scripts/test-forms.mjs",
     "test:resources": "node --experimental-strip-types scripts/validate-resource-fixtures.ts",
+    "test:workflow": "node scripts/validate-deploy-workflow.mjs",
     "audit:batch3": "node scripts/audit-batch3-portfolio.mjs",
-    "validate": "node scripts/validate-build.mjs && pnpm run test:forms && pnpm run test:resources"
+    "validate": "node scripts/validate-build.mjs && pnpm run test:forms && pnpm run test:resources && pnpm run test:workflow"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
