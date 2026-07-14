@@ -12,6 +12,9 @@ Use this checklist after every public content release. Record the date, URL, res
 | Wave 1 sales | `/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/` | All substantive sections and download render | [ ] | |
 | Wave 1 cash flow | `/templates/bisnis-umkm/template-arus-kas-umkm/` | All substantive sections and download render | [ ] | |
 | Wave 1 installments | `/templates/keuangan-pribadi/template-tracker-cicilan-hutang/` | All substantive sections and download render | [ ] | |
+| Wave 3 daily expenses | `/templates/keuangan-pribadi/template-pengeluaran-harian/` | Preview, substantive sections, and download render | [ ] | |
+| Wave 3 shift schedule | `/templates/produktivitas-kerja/template-jadwal-shift-sederhana/` | Preview, disclaimer, substantive sections, and download render | [ ] | |
+| Wave 3 project tracker | `/templates/produktivitas-kerja/template-tracker-proyek-sederhana/` | Preview, substantive sections, and download render | [ ] | |
 | Guide hub | `/panduan/` | Hub indexability and cards match published content | [ ] | |
 | Representative guides | One guide in each populated category | H1, steps, examples, and related links render | [ ] | |
 | Formula hub | `/rumus-excel/` | Hub and formula cards render | [ ] | |

@@ -15,6 +15,7 @@
     "check": "astro check",
     "test:forms": "node scripts/test-forms.mjs",
     "test:resources": "node --experimental-strip-types scripts/validate-resource-fixtures.ts",
+    "audit:batch3": "node scripts/audit-batch3-portfolio.mjs",
     "validate": "node scripts/validate-build.mjs && pnpm run test:forms && pnpm run test:resources"
   },
   "dependencies": {

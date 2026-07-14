@@ -1,0 +1,88 @@
+{
+  "workbook": "template-pengeluaran-harian.xlsx",
+  "generatedAt": "2026-07-14T03:43:06.899Z",
+  "status": "passed",
+  "fileSizeBytes": 11514,
+  "sheets": [
+    "Cara Pakai",
+    "Catatan Harian",
+    "Ringkasan",
+    "Referensi"
+  ],
+  "renders": [
+    {
+      "sheet": "Cara Pakai",
+      "bytes": 37094,
+      "rendered": true
+    },
+    {
+      "sheet": "Catatan Harian",
+      "bytes": 45071,
+      "rendered": true
+    },
+    {
+      "sheet": "Ringkasan",
+      "bytes": 47755,
+      "rendered": true
+    },
+    {
+      "sheet": "Referensi",
+      "bytes": 17808,
+      "rendered": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "file_exists_and_exports",
+      "passed": true
+    },
+    {
+      "name": "xlsx_without_macros_or_external_links",
+      "passed": true
+    },
+    {
+      "name": "no_hidden_rows_or_columns_configured",
+      "passed": true
+    },
+    {
+      "name": "workbook_properties_contain_no_personal_data",
+      "passed": true
+    },
+    {
+      "name": "named_ranges_reviewed_not_required",
+      "passed": true
+    },
+    {
+      "name": "formula_error_scan",
+      "passed": true
+    },
+    {
+      "name": "all_sheets_rendered_for_visual_qa",
+      "passed": true
+    },
+    {
+      "name": "required_sheets",
+      "passed": true
+    },
+    {
+      "name": "daily_log_table_and_validations",
+      "passed": true
+    },
+    {
+      "name": "daily_total_reconciles",
+      "passed": true
+    },
+    {
+      "name": "monthly_total_reconciles",
+      "passed": true
+    },
+    {
+      "name": "negative_and_blank_behavior",
+      "passed": true
+    },
+    {
+      "name": "summary_chart_exists",
+      "passed": true
+    }
+  ]
+}

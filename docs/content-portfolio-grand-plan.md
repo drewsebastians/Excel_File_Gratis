@@ -1,6 +1,6 @@
 # Batch 3A Content Portfolio Grand Plan
 
-> Status diperbarui 2026-07-14: perencanaan Batch 3A telah dilaksanakan sebagian melalui Batch 3 Wave 1. Wave 1 menerbitkan empat template tambahan serta supporting resources, dan PR #6 memperbaiki rendering section detail template. Lihat [current project status](current-project-status.md) untuk inventory dan bukti terbaru. Dokumen ini tetap dipertahankan sebagai catatan historis rencana dan scoring awal; tabel serta urutan di bawah tidak ditulis ulang setelah produksi.
+> Status diperbarui 2026-07-14: perencanaan Batch 3A telah selesai dilaksanakan melalui Wave 1, Wave 2, dan Wave 3. Portfolio mencapai target 15 template, 8 panduan, 6 referensi rumus, 6 troubleshooting pages, dan 3 koleksi. Lihat [current project status](current-project-status.md) dan [post-Batch 3 audit](post-batch-3-audit.md) untuk inventory serta bukti terbaru. Dokumen ini tetap dipertahankan sebagai catatan historis rencana dan scoring awal; tabel serta urutan di bawah tidak ditulis ulang setelah produksi.
 
 Status: planning only  
 Branch: `plan/batch-3-content-portfolio`  

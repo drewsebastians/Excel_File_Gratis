@@ -159,6 +159,26 @@ for (const workbook of wave2Workbooks) {
   }
 }
 
+const wave3Workbooks = [
+  { file: "template-pengeluaran-harian.xlsx", sheets: 4 },
+  { file: "template-jadwal-shift-sederhana.xlsx", sheets: 5 },
+  { file: "template-tracker-proyek-sederhana.xlsx", sheets: 6 },
+];
+for (const workbook of wave3Workbooks) {
+  const reportPath = join(root, "docs", "qa", "batch-3-wave-3", `${workbook.file}.qa.json`);
+  const previewPath = join(root, "public", "assets", "templates", workbook.file.replace(".xlsx", ".png"));
+  assert(existsSync(reportPath), `Laporan QA Wave 3 tidak ditemukan: ${workbook.file}`);
+  assert(existsSync(previewPath), `Preview Wave 3 tidak ditemukan: ${workbook.file}`);
+  if (existsSync(reportPath)) {
+    const report = JSON.parse(read(reportPath));
+    assert(report.status === "passed", `Status QA Wave 3 bukan passed: ${workbook.file}`);
+    assert(report.workbook === workbook.file, `Nama workbook tidak sesuai pada QA Wave 3: ${workbook.file}`);
+    assert(report.sheets?.length === workbook.sheets, `Jumlah sheet tidak sesuai pada QA Wave 3: ${workbook.file}`);
+    assert(report.checks?.every((check) => check.passed), `Ada check QA Wave 3 yang gagal: ${workbook.file}`);
+    assert(report.renders?.every((render) => render.rendered), `Render visual QA belum lengkap: ${workbook.file}`);
+  }
+}
+
 const populatedCategories = categorySlugs.filter((slug) => (templateCategories.get(slug) || 0) > 0);
 const emptyCategories = categorySlugs.filter((slug) => (templateCategories.get(slug) || 0) === 0);
 for (const slug of populatedCategories) {
