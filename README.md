@@ -14,6 +14,8 @@ Resource utama tersedia melalui hub berikut:
 
 Per 2026-07-14, inventory publik yang diverifikasi dari `src/content/` adalah 15 template, 8 panduan, 6 referensi rumus, 6 halaman troubleshooting, dan 3 koleksi, atau 38 resource publik. Repository juga menyimpan 20 template draft dan 20 panduan draft dari PR #11. Draft adalah bahan review, bukan resource publik: draft tidak menghasilkan route, card, navigation link, related link, atau sitemap entry. Navigation, related resources, structured data, canonical URL, dan sitemap dibentuk dari resource published. Hub yang belum memiliki resource published tetap aman untuk dibuka tetapi memakai `noindex, follow` dan tidak dipromosikan.
 
+Readiness setiap draft dicatat di `docs/draft-content-readiness.csv`. Jalankan `pnpm run audit:drafts` untuk memperbarui register dan `docs/qa/draft-readiness-audit.json`; definisi gate dan aturan release ada di `docs/draft-publication-governance.md`.
+
 Halaman tetap dan trust pages dikelola dari `src/content/site-pages/`. Form Kontak dan Request Template tetap memakai provider Web3Forms sesuai batasan dan prosedur di `docs/form-delivery.md`.
 
 ## Menjalankan lokal

@@ -1,0 +1,111 @@
+{
+  "generatedAt": "2026-07-14T06:48:21.556Z",
+  "mainSha": "local-working-tree",
+  "totalDrafts": 40,
+  "byResourceType": {
+    "template": 20,
+    "guide": 20
+  },
+  "byCategory": {
+    "produktivitas-kerja": 4,
+    "rumah-tangga-acara": 3,
+    "bisnis-umkm": 11,
+    "pendidikan": 1,
+    "keuangan-pribadi": 1,
+    "pengolahan-data": 15,
+    "produktivitas": 3,
+    "dasar-excel": 2
+  },
+  "highRiskDrafts": [
+    {
+      "title": "Template Absensi Karyawan Sederhana Excel Gratis",
+      "slug": "template-absensi-karyawan-sederhana",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Daftar Aset dan Inventaris Kantor Excel Gratis",
+      "slug": "template-daftar-aset-inventaris-kantor",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Daftar Harga Produk dan Jasa Excel Gratis",
+      "slug": "template-daftar-harga-produk-jasa",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Daftar Piutang Pelanggan Excel Gratis",
+      "slug": "template-daftar-piutang-pelanggan",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Database Pelanggan Sederhana Excel Gratis",
+      "slug": "template-database-pelanggan-sederhana",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Form Permintaan Pembelian Excel Gratis",
+      "slug": "template-form-permintaan-pembelian",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Jadwal Kerja Mingguan Excel Gratis",
+      "slug": "template-jadwal-kerja-mingguan",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Jadwal Pembayaran Tagihan Excel Gratis",
+      "slug": "template-jadwal-pembayaran-tagihan",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Kas Kecil Excel Gratis",
+      "slug": "template-kas-kecil-excel",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Laba Rugi Sederhana UMKM Excel Gratis",
+      "slug": "template-laba-rugi-sederhana-umkm",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Purchase Order Sederhana Excel Gratis",
+      "slug": "template-purchase-order-sederhana",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Rekap Pesanan Pelanggan Excel Gratis",
+      "slug": "template-rekap-pesanan-pelanggan",
+      "resourceType": "template"
+    },
+    {
+      "title": "Template Surat Jalan Excel Gratis",
+      "slug": "template-surat-jalan-excel",
+      "resourceType": "template"
+    }
+  ],
+  "missingWorkbookQaEvidence": [
+    "src/content/templates/template-absensi-karyawan-sederhana.md: workbook QA evidence is missing",
+    "src/content/templates/template-checklist-acara.md: workbook QA evidence is missing",
+    "src/content/templates/template-daftar-aset-inventaris-kantor.md: workbook QA evidence is missing",
+    "src/content/templates/template-daftar-belanja-rumah-tangga.md: workbook QA evidence is missing",
+    "src/content/templates/template-daftar-harga-produk-jasa.md: workbook QA evidence is missing",
+    "src/content/templates/template-daftar-kehadiran-acara.md: workbook QA evidence is missing",
+    "src/content/templates/template-daftar-piutang-pelanggan.md: workbook QA evidence is missing",
+    "src/content/templates/template-database-pelanggan-sederhana.md: workbook QA evidence is missing",
+    "src/content/templates/template-form-permintaan-pembelian.md: workbook QA evidence is missing",
+    "src/content/templates/template-jadwal-belajar-siswa.md: workbook QA evidence is missing",
+    "src/content/templates/template-jadwal-kerja-mingguan.md: workbook QA evidence is missing",
+    "src/content/templates/template-jadwal-pembayaran-tagihan.md: workbook QA evidence is missing",
+    "src/content/templates/template-kalender-konten-media-sosial.md: workbook QA evidence is missing",
+    "src/content/templates/template-kas-kecil-excel.md: workbook QA evidence is missing",
+    "src/content/templates/template-laba-rugi-sederhana-umkm.md: workbook QA evidence is missing",
+    "src/content/templates/template-purchase-order-sederhana.md: workbook QA evidence is missing",
+    "src/content/templates/template-rekap-penjualan-bulanan.md: workbook QA evidence is missing",
+    "src/content/templates/template-rekap-pesanan-pelanggan.md: workbook QA evidence is missing",
+    "src/content/templates/template-rencana-proyek-sederhana.md: workbook QA evidence is missing",
+    "src/content/templates/template-surat-jalan-excel.md: workbook QA evidence is missing"
+  ],
+  "errors": [],
+  "status": "passed_with_open_readiness_gates",
+  "registerPath": "docs/draft-content-readiness.csv"
+}
