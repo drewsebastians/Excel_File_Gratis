@@ -13,9 +13,9 @@ tags: ["dropdown excel","data validation","excel table"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
-related_templates: ["template-kalender-konten-media-sosial","template-checklist-acara"]
-related_guides: ["panduan-validasi-data-formula-kustom","panduan-structured-references-excel-table"]
+draft: false
+related_templates: ["template-task-tracker-kanban-excel","template-notulen-rapat-action-item"]
+related_guides: ["panduan-dropdown-data-validation-excel","panduan-structured-references-excel-table"]
 related_formulas: ["rumus-filter-daftar-dinamis"]
 related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul"]
 ---
@@ -80,9 +80,9 @@ Tambahkan satu kategori percobaan, lalu catat siapa yang boleh mengubah `tblKate
 
 ## Related Resources
 
-- Template: [template-kalender-konten-media-sosial](/templates/), [template-checklist-acara](/templates/)
-- Panduan: [panduan-validasi-data-formula-kustom](/panduan/), [panduan-structured-references-excel-table](/panduan/)
-- Rumus: [rumus-filter-daftar-dinamis](/rumus-excel/)
-- Troubleshooting: [masalah-dropdown-data-validation-tidak-muncul](/masalah-excel/)
+- Template: [Task Tracker Kanban](/templates/produktivitas-kerja/template-task-tracker-kanban-excel/), [Notulen Rapat dan Action Item](/templates/produktivitas-kerja/template-notulen-rapat-action-item/)
+- Panduan: [Dropdown Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/), [Structured References Excel](/panduan/dasar-excel/panduan-structured-references-excel-table/)
+- Rumus: [FILTER untuk Daftar Dinamis](/rumus-excel/lookup-referensi/rumus-filter-daftar-dinamis/)
+- Troubleshooting: [Dropdown Data Validation Tidak Muncul](/masalah-excel/format-data/masalah-dropdown-data-validation-tidak-muncul/)
 
 Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.

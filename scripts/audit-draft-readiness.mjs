@@ -59,6 +59,14 @@ const lowRiskGuideSlugs = new Set([
   "panduan-unique-sort-excel",
 ]);
 
+const publishedWaveSlugs = new Set([
+  "panduan-audit-rumus-excel",
+  "panduan-checklist-kualitas-file-excel",
+  "panduan-dropdown-dinamis-excel",
+  "panduan-excel-table-vs-range",
+  "panduan-structured-references-excel-table",
+]);
+
 const requiredFields = {
   template: ["title", "meta_title", "meta_description", "slug", "category", "date", "file_name", "file_size", "draft"],
   guide: ["title", "meta_title", "meta_description", "slug", "summary", "category", "date", "draft"],
@@ -138,7 +146,8 @@ for (const directory of ["templates", "guides", "formulas", "troubleshooting", "
 for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
   for (const filePath of markdownFiles(directory)) {
     const { data } = readFrontmatter(filePath);
-    if (data.draft !== true) continue;
+    const isPublishedWave = data.draft !== true && publishedWaveSlugs.has(data.slug);
+    if (data.draft !== true && !isPublishedWave) continue;
     const slug = data.slug;
     const title = data.title;
     const id = `${resourceType === "template" ? "T" : "G"}-${allEntries.length + 1}`;
@@ -174,21 +183,23 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
       download_path: resourceType === "template" ? relative(downloadPath) : "not_applicable",
       preview_path: data.preview_image ? relative(previewPath) : "not_applicable",
       risk_level: risk,
-      content_status: guideVerified ? "passed" : "in_progress",
+      content_status: isPublishedWave ? "published" : guideVerified ? "passed" : "in_progress",
       workbook_qa_status: resourceType === "template" ? (qaFiles.length ? "passed" : "not_started") : "not_applicable",
       visual_qa_status: data.preview_image ? "not_started" : "not_applicable",
       technical_verification_status: guideVerified ? "passed" : "in_progress",
-      editorial_review_status: "in_progress",
+      editorial_review_status: isPublishedWave ? "passed" : "in_progress",
       relation_review_status: missingRelations.length ? "failed" : (guideVerified ? "passed" : "in_progress"),
       seo_review_status: guideVerified ? "passed" : "in_progress",
-      owner_review_required: "yes",
-      owner_review_reason: ownerReason(resourceType, risk, data),
-      publication_wave: plannedWave(resourceType, risk, slug),
-      planned_publish_date: "",
-      release_status: guideVerified ? "ready_for_release" : (risk === "high" ? "manual_owner_gate" : "not_started"),
-      production_smoke_status: "not_applicable",
-      search_console_status: "not_applicable",
-      notes: guideVerified
+      owner_review_required: isPublishedWave ? "no" : "yes",
+      owner_review_reason: isPublishedWave ? "Owner approved for first low-risk wave on 2026-07-14." : ownerReason(resourceType, risk, data),
+      publication_wave: isPublishedWave ? "wave-1-low-risk" : plannedWave(resourceType, risk, slug),
+      planned_publish_date: isPublishedWave ? "2026-07-14" : "",
+      release_status: isPublishedWave ? "published" : guideVerified ? "ready_for_release" : (risk === "high" ? "manual_owner_gate" : "not_started"),
+      production_smoke_status: isPublishedWave ? "not_started" : "not_applicable",
+      search_console_status: isPublishedWave ? "manual_owner_gate" : "not_applicable",
+      notes: isPublishedWave
+        ? "Published in first low-risk guide wave; production smoke is recorded after deployment."
+        : guideVerified
         ? "Guide rewrite and automated metadata, relation, technical, and draft-leakage checks passed; owner editorial approval and production smoke remain open."
         : resourceType === "template"
         ? "Workbook QA evidence is not yet recorded; keep draft until workbook, preview, editorial, relation, SEO, and owner gates pass."
@@ -205,8 +216,8 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
     if (inconsistentFileName) errors.push(`${relative(filePath)}: file_name must match ${slug}.xlsx`);
     if (missingRelations.length) errors.push(`${relative(filePath)}: broken relations ${missingRelations.join(", ")}`);
     if (qaFiles.length === 0 && resourceType === "template") findings.push(`${relative(filePath)}: workbook QA evidence is missing`);
-    if (existsSync(routePath)) errors.push(`${relative(filePath)}: draft generated public route ${relative(routePath)}`);
-    if (publicHtml) errors.push(`${relative(filePath)}: draft slug appears in generated HTML/XML`);
+    if (!isPublishedWave && existsSync(routePath)) errors.push(`${relative(filePath)}: draft generated public route ${relative(routePath)}`);
+    if (!isPublishedWave && publicHtml) errors.push(`${relative(filePath)}: draft slug appears in generated HTML/XML`);
   }
 }
 
@@ -235,10 +246,11 @@ const csv = [csvColumns.join(","), ...allEntries.map((entry) => csvColumns.map((
 const report = {
   generatedAt: new Date().toISOString(),
   mainSha: process.env.GITHUB_SHA || "local-working-tree",
-  totalDrafts: allEntries.length,
-  byResourceType: Object.fromEntries(Object.entries(Object.groupBy(allEntries, (entry) => entry.resource_type)).map(([key, value]) => [key, value.length])),
-  byCategory: Object.fromEntries(Object.entries(Object.groupBy(allEntries, (entry) => entry.category)).map(([key, value]) => [key, value.length])),
-  highRiskDrafts: allEntries.filter((entry) => entry.risk_level === "high").map((entry) => ({ title: entry.title, slug: entry.slug, resourceType: entry.resource_type })),
+  totalDrafts: allEntries.filter((entry) => entry.release_status !== "published").length,
+  totalPublishedWave: allEntries.filter((entry) => entry.release_status === "published").length,
+  byResourceType: Object.fromEntries(Object.entries(Object.groupBy(allEntries.filter((entry) => entry.release_status !== "published"), (entry) => entry.resource_type)).map(([key, value]) => [key, value.length])),
+  byCategory: Object.fromEntries(Object.entries(Object.groupBy(allEntries.filter((entry) => entry.release_status !== "published"), (entry) => entry.category)).map(([key, value]) => [key, value.length])),
+  highRiskDrafts: allEntries.filter((entry) => entry.release_status !== "published" && entry.risk_level === "high").map((entry) => ({ title: entry.title, slug: entry.slug, resourceType: entry.resource_type })),
   missingWorkbookQaEvidence: findings,
   errors,
   status: errors.length ? "failed" : "passed_with_open_readiness_gates",

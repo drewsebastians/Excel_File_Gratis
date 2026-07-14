@@ -13,9 +13,9 @@ tags: ["belajar excel","excel table","dasar excel"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-laporan-penjualan-harian-umkm","template-stok-barang-excel-gratis"]
-related_guides: ["panduan-structured-references-excel-table","panduan-excel-table-untuk-template"]
+related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
 related_formulas: ["rumus-countifs-dashboard-status"]
 related_troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks"]
 ---
@@ -81,9 +81,9 @@ Buat satu Table kecil dari data nyata yang sudah dianonimkan, lalu catat nama Ta
 
 ## Related Resources
 
-- Template: [template-laporan-penjualan-harian-umkm](/templates/), [template-stok-barang-excel-gratis](/templates/)
-- Panduan: [panduan-structured-references-excel-table](/panduan/), [panduan-excel-table-untuk-template](/panduan/)
-- Rumus: [rumus-countifs-dashboard-status](/rumus-excel/)
-- Troubleshooting: [masalah-angka-tidak-terjumlah-format-teks](/masalah-excel/)
+- Template: [Laporan Penjualan Harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/), [Stok Barang](/templates/bisnis-umkm/template-stok-barang-excel-gratis/)
+- Panduan: [Excel Table untuk Template](/panduan/pengolahan-data/panduan-excel-table-untuk-template/), [Dropdown Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/)
+- Rumus: [COUNTIFS untuk Dashboard](/rumus-excel/matematika/rumus-countifs-dashboard-status/)
+- Troubleshooting: [Angka Tidak Terjumlah karena Format Teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/)
 
 Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.

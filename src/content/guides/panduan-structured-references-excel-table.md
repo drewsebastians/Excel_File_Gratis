@@ -13,8 +13,8 @@ tags: ["structured reference","excel table","rumus excel"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
-related_templates: ["template-rekap-pesanan-pelanggan","template-rekap-penjualan-bulanan"]
+draft: false
+related_templates: ["template-laporan-penjualan-harian-umkm","template-stok-barang-excel-gratis"]
 related_guides: ["panduan-excel-table-vs-range","panduan-excel-table-untuk-template"]
 related_formulas: ["rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
@@ -81,9 +81,9 @@ Ganti satu rumus koordinat pada Table kerja kamu dengan structured reference dan
 
 ## Related Resources
 
-- Template: [template-rekap-pesanan-pelanggan](/templates/), [template-rekap-penjualan-bulanan](/templates/)
-- Panduan: [panduan-excel-table-vs-range](/panduan/), [panduan-excel-table-untuk-template](/panduan/)
-- Rumus: [rumus-sumifs-rekap-kategori](/rumus-excel/)
-- Troubleshooting: [masalah-sumifs-countifs-hasil-nol](/masalah-excel/)
+- Template: [Laporan Penjualan Harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/), [Stok Barang](/templates/bisnis-umkm/template-stok-barang-excel-gratis/)
+- Panduan: [Excel Table vs Range Biasa](/panduan/dasar-excel/panduan-excel-table-vs-range/), [Excel Table untuk Template](/panduan/pengolahan-data/panduan-excel-table-untuk-template/)
+- Rumus: [SUMIFS untuk Rekap Kategori](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/)
+- Troubleshooting: [SUMIFS atau COUNTIFS Menghasilkan Nol](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/)
 
 Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.

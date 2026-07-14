@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-07-14T07:59:40.536Z",
+  "generatedAt": "2026-07-14T09:14:15.099Z",
   "mainSha": "local-working-tree",
-  "totalDrafts": 40,
+  "totalDrafts": 35,
+  "totalPublishedWave": 5,
   "byResourceType": {
     "template": 20,
-    "guide": 20
+    "guide": 15
   },
   "byCategory": {
     "produktivitas-kerja": 4,
@@ -12,9 +13,8 @@
     "bisnis-umkm": 11,
     "pendidikan": 1,
     "keuangan-pribadi": 1,
-    "pengolahan-data": 15,
-    "produktivitas": 3,
-    "dasar-excel": 2
+    "produktivitas": 2,
+    "pengolahan-data": 13
   },
   "highRiskDrafts": [
     {

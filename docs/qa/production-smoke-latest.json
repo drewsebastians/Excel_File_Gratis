@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T08:01:07.701Z",
+  "generatedAt": "2026-07-14T08:13:31.416Z",
   "baseUrl": "https://excelgratis.my.id",
   "status": "passed",
   "checks": [
@@ -10,7 +10,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 267,
+      "durationMs": 327,
       "bodyLength": 18632
     },
     {
@@ -20,7 +20,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 102,
+      "durationMs": 47,
       "bodyLength": 38054
     },
     {
@@ -30,7 +30,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 52,
+      "durationMs": 37,
       "bodyLength": 9486
     },
     {
@@ -40,7 +40,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 56,
+      "durationMs": 42,
       "bodyLength": 11148
     },
     {
@@ -50,7 +50,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 57,
+      "durationMs": 42,
       "bodyLength": 9816
     },
     {
@@ -60,7 +60,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 46,
+      "durationMs": 40,
       "bodyLength": 10141
     },
     {
@@ -70,7 +70,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 72,
+      "durationMs": 43,
       "bodyLength": 8127
     },
     {
@@ -80,7 +80,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 51,
+      "durationMs": 40,
       "bodyLength": 10070
     },
     {
@@ -90,7 +90,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 53,
+      "durationMs": 38,
       "bodyLength": 11512
     },
     {
@@ -100,7 +100,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 50,
+      "durationMs": 39,
       "bodyLength": 8002
     },
     {
@@ -110,7 +110,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 57,
+      "durationMs": 45,
       "bodyLength": 8104
     },
     {
@@ -130,7 +130,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 59,
+      "durationMs": 36,
       "bodyLength": 7741
     },
     {
@@ -140,7 +140,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 57,
+      "durationMs": 39,
       "bodyLength": 9554
     },
     {
@@ -150,7 +150,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "application/xml",
-      "durationMs": 50,
+      "durationMs": 39,
       "bodyLength": 5979
     },
     {
@@ -160,7 +160,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/plain; charset=utf-8",
-      "durationMs": 55,
+      "durationMs": 35,
       "bodyLength": 1940
     },
     {
@@ -170,7 +170,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 51,
+      "durationMs": 42,
       "bodyLength": 346
     },
     {
@@ -180,7 +180,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 55,
+      "durationMs": 44,
       "bodyLength": 18786
     },
     {
@@ -190,7 +190,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 43,
+      "durationMs": 41,
       "bodyLength": 14355
     },
     {
@@ -200,7 +200,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 52,
+      "durationMs": 43,
       "bodyLength": 14717
     },
     {
@@ -210,7 +210,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 55,
+      "durationMs": 39,
       "bodyLength": 14554
     },
     {
@@ -220,7 +220,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 48,
+      "durationMs": 43,
       "bodyLength": 21511
     },
     {
@@ -230,7 +230,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "durationMs": 38,
+      "durationMs": 44,
       "bodyLength": 9650
     },
     {
@@ -414,7 +414,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 134,
+      "durationMs": 179,
       "bodyLength": 6760
     },
     {
@@ -436,7 +436,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 91,
+      "durationMs": 53,
       "bodyLength": 6760
     },
     {
@@ -446,7 +446,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 62,
+      "durationMs": 45,
       "bodyLength": 6760
     },
     {
@@ -456,7 +456,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 57,
+      "durationMs": 47,
       "bodyLength": 6760
     },
     {
@@ -466,7 +466,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 55,
+      "durationMs": 45,
       "bodyLength": 6760
     },
     {
@@ -476,7 +476,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 77,
+      "durationMs": 43,
       "bodyLength": 6760
     },
     {
@@ -486,7 +486,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 74,
+      "durationMs": 45,
       "bodyLength": 6760
     },
     {
@@ -506,7 +506,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 53,
+      "durationMs": 55,
       "bodyLength": 6760
     },
     {
@@ -516,7 +516,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 54,
+      "durationMs": 46,
       "bodyLength": 6760
     },
     {
@@ -526,7 +526,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 49,
+      "durationMs": 50,
       "bodyLength": 6760
     },
     {
@@ -536,7 +536,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 55,
+      "durationMs": 48,
       "bodyLength": 6760
     },
     {
@@ -556,7 +556,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 69,
+      "durationMs": 51,
       "bodyLength": 6760
     },
     {
@@ -566,7 +566,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 54,
+      "durationMs": 59,
       "bodyLength": 6760
     },
     {
@@ -576,7 +576,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 59,
+      "durationMs": 46,
       "bodyLength": 6760
     },
     {
@@ -586,7 +586,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 60,
+      "durationMs": 62,
       "bodyLength": 6760
     },
     {
@@ -596,7 +596,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 56,
+      "durationMs": 60,
       "bodyLength": 6760
     },
     {
@@ -606,7 +606,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 58,
+      "durationMs": 64,
       "bodyLength": 6760
     },
     {
@@ -616,7 +616,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 49,
+      "durationMs": 56,
       "bodyLength": 6760
     },
     {
@@ -626,27 +626,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 69,
-      "bodyLength": 6760
-    },
-    {
-      "name": "draft-route:panduan-audit-rumus-excel",
-      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-audit-rumus-excel/",
-      "passed": true,
-      "detail": "HTTP 404; expected 404",
-      "status": 404,
-      "contentType": "text/html",
-      "durationMs": 62,
-      "bodyLength": 6760
-    },
-    {
-      "name": "draft-route:panduan-checklist-kualitas-file-excel",
-      "url": "https://excelgratis.my.id/panduan/produktivitas/panduan-checklist-kualitas-file-excel/",
-      "passed": true,
-      "detail": "HTTP 404; expected 404",
-      "status": 404,
-      "contentType": "text/html",
-      "durationMs": 59,
+      "durationMs": 52,
       "bodyLength": 6760
     },
     {
@@ -656,7 +636,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 69,
+      "durationMs": 50,
       "bodyLength": 6760
     },
     {
@@ -666,17 +646,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 67,
-      "bodyLength": 6760
-    },
-    {
-      "name": "draft-route:panduan-dropdown-dinamis-excel",
-      "url": "https://excelgratis.my.id/panduan/pengolahan-data/panduan-dropdown-dinamis-excel/",
-      "passed": true,
-      "detail": "HTTP 404; expected 404",
-      "status": 404,
-      "contentType": "text/html",
-      "durationMs": 59,
+      "durationMs": 63,
       "bodyLength": 6760
     },
     {
@@ -686,17 +656,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 50,
-      "bodyLength": 6760
-    },
-    {
-      "name": "draft-route:panduan-excel-table-vs-range",
-      "url": "https://excelgratis.my.id/panduan/dasar-excel/panduan-excel-table-vs-range/",
-      "passed": true,
-      "detail": "HTTP 404; expected 404",
-      "status": 404,
-      "contentType": "text/html",
-      "durationMs": 54,
+      "durationMs": 62,
       "bodyLength": 6760
     },
     {
@@ -706,7 +666,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 65,
+      "durationMs": 53,
       "bodyLength": 6760
     },
     {
@@ -716,7 +676,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 56,
+      "durationMs": 51,
       "bodyLength": 6760
     },
     {
@@ -726,7 +686,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 57,
+      "durationMs": 58,
       "bodyLength": 6760
     },
     {
@@ -736,7 +696,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 78,
+      "durationMs": 49,
       "bodyLength": 6760
     },
     {
@@ -746,7 +706,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 64,
+      "durationMs": 59,
       "bodyLength": 6760
     },
     {
@@ -756,7 +716,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 63,
+      "durationMs": 54,
       "bodyLength": 6760
     },
     {
@@ -766,7 +726,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 63,
+      "durationMs": 59,
       "bodyLength": 6760
     },
     {
@@ -776,7 +736,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 61,
+      "durationMs": 50,
       "bodyLength": 6760
     },
     {
@@ -786,17 +746,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 46,
-      "bodyLength": 6760
-    },
-    {
-      "name": "draft-route:panduan-structured-references-excel-table",
-      "url": "https://excelgratis.my.id/panduan/dasar-excel/panduan-structured-references-excel-table/",
-      "passed": true,
-      "detail": "HTTP 404; expected 404",
-      "status": 404,
-      "contentType": "text/html",
-      "durationMs": 61,
+      "durationMs": 47,
       "bodyLength": 6760
     },
     {
@@ -806,7 +756,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 67,
+      "durationMs": 90,
       "bodyLength": 6760
     },
     {
@@ -816,7 +766,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 59,
+      "durationMs": 74,
       "bodyLength": 6760
     },
     {
@@ -826,7 +776,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 49,
+      "durationMs": 66,
       "bodyLength": 6760
     }
   ],

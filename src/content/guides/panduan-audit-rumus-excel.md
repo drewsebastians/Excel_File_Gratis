@@ -13,7 +13,7 @@ tags: ["audit rumus","debug excel","belajar excel"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-laporan-penjualan-harian-umkm"]
 related_guides: ["panduan-file-excel-rapi-untuk-dipakai-rutin"]
 related_formulas: ["rumus-iferror-template-rapi","rumus-countifs-dashboard-status"]
@@ -80,9 +80,9 @@ Tambahkan satu kasus uji yang hasilnya sudah diketahui sebelum mengubah formula 
 
 ## Related Resources
 
-- Template: [template-laporan-penjualan-harian-umkm](/templates/)
-- Panduan: [panduan-file-excel-rapi-untuk-dipakai-rutin](/panduan/)
-- Rumus: [rumus-iferror-template-rapi](/rumus-excel/), [rumus-countifs-dashboard-status](/rumus-excel/)
-- Troubleshooting: [masalah-sumifs-countifs-hasil-nol](/masalah-excel/), [masalah-angka-tidak-terjumlah-format-teks](/masalah-excel/)
+- Template: [Laporan Penjualan Harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/)
+- Panduan: [File Excel Rapi untuk Dipakai Rutin](/panduan/produktivitas/panduan-file-excel-rapi-untuk-dipakai-rutin/)
+- Rumus: [IFERROR untuk Template Rapi](/rumus-excel/logika/rumus-iferror-template-rapi/), [COUNTIFS untuk Dashboard](/rumus-excel/matematika/rumus-countifs-dashboard-status/)
+- Troubleshooting: [SUMIFS atau COUNTIFS Menghasilkan Nol](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/), [Angka Tidak Terjumlah karena Format Teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/)
 
 Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
