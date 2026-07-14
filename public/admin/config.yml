@@ -164,6 +164,8 @@ collections:
       - { label: Meta Description, name: meta_description, widget: text, hint: Maksimal 170 karakter. }
       - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
       - { label: Ringkasan, name: summary, widget: text }
+      - { label: Gambar Artikel, name: preview_image, widget: image, required: false, media_folder: public/assets/articles, public_folder: /assets/articles, hint: Opsional. Tampil sebagai gambar utama di halaman artikel dan kartu resource. }
+      - { label: Alt Text Gambar, name: preview_alt, widget: string, required: false, hint: Jelaskan isi gambar secara singkat dan bermakna. }
       - label: Kategori
         name: category
         widget: select
@@ -202,6 +204,8 @@ collections:
       - { label: Meta Description, name: meta_description, widget: text }
       - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
       - { label: Ringkasan, name: summary, widget: text }
+      - { label: Gambar Artikel, name: preview_image, widget: image, required: false, media_folder: public/assets/articles, public_folder: /assets/articles, hint: Opsional. Tampil sebagai gambar utama di halaman artikel dan kartu resource. }
+      - { label: Alt Text Gambar, name: preview_alt, widget: string, required: false, hint: Jelaskan isi gambar secara singkat dan bermakna. }
       - { label: Sintaks, name: syntax, widget: string }
       - label: Kategori
         name: category
@@ -240,6 +244,8 @@ collections:
       - { label: Meta Description, name: meta_description, widget: text }
       - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
       - { label: Ringkasan, name: summary, widget: text }
+      - { label: Gambar Artikel, name: preview_image, widget: image, required: false, media_folder: public/assets/articles, public_folder: /assets/articles, hint: Opsional. Tampil sebagai gambar utama di halaman artikel dan kartu resource. }
+      - { label: Alt Text Gambar, name: preview_alt, widget: string, required: false, hint: Jelaskan isi gambar secara singkat dan bermakna. }
       - label: Kategori
         name: category
         widget: select
@@ -275,6 +281,8 @@ collections:
       - { label: Meta Description, name: meta_description, widget: text }
       - { label: URL Slug, name: slug, widget: string, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Gunakan huruf kecil, angka, dan tanda minus."] }
       - { label: Ringkasan, name: summary, widget: text }
+      - { label: Gambar Artikel, name: preview_image, widget: image, required: false, media_folder: public/assets/articles, public_folder: /assets/articles, hint: Opsional. Tampil sebagai gambar utama di halaman koleksi. }
+      - { label: Alt Text Gambar, name: preview_alt, widget: string, required: false, hint: Jelaskan isi gambar secara singkat dan bermakna. }
       - { label: Audiens, name: audience, widget: string, required: false }
       - { label: Tujuan Penggunaan, name: use_case, widget: string, required: false }
       - { label: Tanggal Publish, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }

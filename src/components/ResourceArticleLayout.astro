@@ -16,6 +16,8 @@ const { Content } = await render(entry);
 const updated = getResourceDate(entry);
 const categoryName = getResourceCategoryName(kind, entry.data.category);
 const summary = getResourceSummary(entry);
+const previewImage = entry.data.preview_image;
+const previewAlt = entry.data.preview_alt || entry.data.title;
 ---
 
 <section class="article-layout narrow-container">
@@ -36,6 +38,11 @@ const summary = getResourceSummary(entry);
       {"syntax" in entry.data && <div><dt>Sintaks</dt><dd><code>{entry.data.syntax}</code></dd></div>}
     </dl>
   </header>
+  {previewImage && (
+    <figure class="article-image">
+      <img src={previewImage} alt={previewAlt} loading="eager" />
+    </figure>
+  )}
   <article class="article-content"><Content /></article>
   {related.length > 0 && (
     <section class="related-section" aria-labelledby="related-resource-title">

@@ -1,6 +1,7 @@
 ---
 import type { RelatedResourceEntry, RelatedResourceKind } from "../lib/resources";
 import { getResourceCardUrl, getResourceDate, getResourceSummary, resourceKinds } from "../lib/resources";
+import { getTemplateImage, getTemplateImageAlt } from "../lib/templates";
 
 interface Props {
   entry: RelatedResourceEntry;
@@ -13,9 +14,20 @@ const updated = getResourceDate(entry);
 const summary = getResourceSummary(entry);
 const eventName = kind === "guides" ? "guide_card_click" : kind === "formulas" ? "formula_card_click" : kind === "troubleshooting" ? "troubleshooting_card_click" : kind === "resourceCollections" ? "collection_card_click" : "related_resource_click";
 const label = kind === "templates" ? "Template" : resourceKinds[kind].singular;
+const previewImage = kind === "templates" && entry.collection === "templates"
+  ? getTemplateImage(entry)
+  : entry.data.preview_image;
+const previewAlt = kind === "templates" && entry.collection === "templates"
+  ? getTemplateImageAlt(entry)
+  : entry.data.preview_alt || entry.data.title;
 ---
 
-<article class="resource-card">
+<article class:list={["resource-card", { "resource-card--with-media": Boolean(previewImage) }]}>
+  {previewImage && (
+    <a class="resource-card__media" href={href} aria-label={entry.data.title}>
+      <img src={previewImage} alt={previewAlt} loading="lazy" />
+    </a>
+  )}
   <div class="resource-card__body">
     <p class="chip">{label}</p>
     <h3><a href={href} data-event={eventName} data-event-param-resource-slug={entry.data.slug} data-event-param-resource-type={kind}>{entry.data.title}</a></h3>

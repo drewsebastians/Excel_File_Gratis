@@ -17,19 +17,13 @@ const description =
   </section>
 
   <section class="container section" aria-labelledby="category-directory-heading">
-    <h2 id="category-directory-heading" class="visually-hidden">Daftar kategori</h2>
+    <div class="category-directory-heading">
+      <h2 id="category-directory-heading">Jelajahi berdasarkan kebutuhan</h2>
+      <p>Setiap kategori berisi template siap pakai. Preview di samping hanya contoh tampilan file; pilih kategori untuk melihat seluruh pilihan yang tersedia.</p>
+    </div>
     <div class="category-directory-grid">
       {populatedCategories.map((category) => (
         <article class="category-directory-card">
-          {category.representative && (
-            <a class="template-card__media" href={getCategoryUrl(category.slug)} aria-label={`Lihat kategori ${category.name}`}>
-              <img
-                src={getTemplateImage(category.representative)}
-                alt={getTemplateImageAlt(category.representative)}
-                loading="lazy"
-              />
-            </a>
-          )}
           <div class="category-directory-card__body">
             <span class="category-card__icon"><Icon name={category.icon} /></span>
             <h2><a href={getCategoryUrl(category.slug)}>{category.name}</a></h2>
@@ -44,6 +38,15 @@ const description =
               Lihat kategori
             </a>
           </div>
+          {category.representative && (
+            <a class="category-directory-card__preview" href={getCategoryUrl(category.slug)} aria-label={`Lihat contoh template kategori ${category.name}`}>
+              <img
+                src={getTemplateImage(category.representative)}
+                alt={getTemplateImageAlt(category.representative)}
+                loading="lazy"
+              />
+            </a>
+          )}
         </article>
       ))}
     </div>
