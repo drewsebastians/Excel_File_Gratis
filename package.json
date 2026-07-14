@@ -17,6 +17,7 @@
     "test:resources": "node --experimental-strip-types scripts/validate-resource-fixtures.ts",
     "test:workflow": "node scripts/validate-deploy-workflow.mjs",
     "audit:drafts": "node scripts/audit-draft-readiness.mjs",
+    "qa:workbooks": "python scripts/audit-draft-workbooks.py",
     "audit:batch3": "node scripts/audit-batch3-portfolio.mjs",
     "validate": "node scripts/validate-build.mjs && pnpm run test:forms && pnpm run test:resources && pnpm run test:workflow"
   },

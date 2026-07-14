@@ -73,3 +73,12 @@ After each release, record the deployed `main` SHA and GitHub Actions deployment
 ## Keep unpublished when
 
 Keep a draft unpublished when any required asset is missing, workbook QA is missing or failed, visual review is incomplete, a relation is broken, metadata is incomplete, the page would make unsupported formal claims, owner acceptance is missing, the proposed wave is not approved, or an external production check is required but unavailable. The safe default is to keep `draft: true`.
+
+## RUN 4 QA evidence
+
+The 20 draft workbooks have machine-readable reports under
+`docs/qa/draft-workbooks/` and can be regenerated with `pnpm run qa:workbooks`.
+The OOXML checks passed for all 20 files. Visual inspection is explicitly
+recorded as `not_run` because the repository CI environment does not include
+Excel or LibreOffice; desktop rendering and preview agreement remain owner
+gates before publication.
