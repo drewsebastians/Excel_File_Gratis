@@ -1,0 +1,86 @@
+{
+  "workbook": "template-notulen-rapat-action-item.xlsx",
+  "generatedAt": "2026-07-14T02:40:16.825Z",
+  "status": "passed",
+  "fileSizeBytes": 13281,
+  "sheets": [
+    "Cara Pakai",
+    "Informasi Rapat",
+    "Notulen dan Keputusan",
+    "Action Item",
+    "Ringkasan"
+  ],
+  "renders": [
+    {
+      "sheet": "Cara Pakai",
+      "bytes": 37059,
+      "rendered": true
+    },
+    {
+      "sheet": "Informasi Rapat",
+      "bytes": 23330,
+      "rendered": true
+    },
+    {
+      "sheet": "Notulen dan Keputusan",
+      "bytes": 30760,
+      "rendered": true
+    },
+    {
+      "sheet": "Action Item",
+      "bytes": 40489,
+      "rendered": true
+    },
+    {
+      "sheet": "Ringkasan",
+      "bytes": 33208,
+      "rendered": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "file_exists_and_exports",
+      "passed": true
+    },
+    {
+      "name": "xlsx_format_without_macros",
+      "passed": true
+    },
+    {
+      "name": "no_external_workbook_links",
+      "passed": true
+    },
+    {
+      "name": "no_hidden_rows_or_columns_configured",
+      "passed": true
+    },
+    {
+      "name": "metadata_contains_no_personal_data",
+      "passed": true
+    },
+    {
+      "name": "formula_error_scan",
+      "passed": true
+    },
+    {
+      "name": "all_sheets_rendered_for_visual_qa",
+      "passed": true
+    },
+    {
+      "name": "required_sheets",
+      "passed": true
+    },
+    {
+      "name": "meeting_notes_and_actions_tables",
+      "passed": true
+    },
+    {
+      "name": "action_item_status_dropdown",
+      "passed": true
+    },
+    {
+      "name": "summary_chart_exists",
+      "passed": true
+    }
+  ]
+}

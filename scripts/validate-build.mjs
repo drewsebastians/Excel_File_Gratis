@@ -138,6 +138,27 @@ for (const file of templateFiles) {
   }
 }
 
+const wave2Workbooks = [
+  { file: "template-pembukuan-pengeluaran-usaha.xlsx", sheets: 5 },
+  { file: "template-target-tabungan.xlsx", sheets: 4 },
+  { file: "template-task-tracker-kanban-excel.xlsx", sheets: 4 },
+  { file: "template-notulen-rapat-action-item.xlsx", sheets: 5 },
+];
+for (const workbook of wave2Workbooks) {
+  const reportPath = join(root, "docs", "qa", "batch-3-wave-2", `${workbook.file}.qa.json`);
+  const previewPath = join(root, "public", "assets", "templates", workbook.file.replace(".xlsx", ".png"));
+  assert(existsSync(reportPath), `Laporan QA Wave 2 tidak ditemukan: ${workbook.file}`);
+  assert(existsSync(previewPath), `Preview Wave 2 tidak ditemukan: ${workbook.file}`);
+  if (existsSync(reportPath)) {
+    const report = JSON.parse(read(reportPath));
+    assert(report.status === "passed", `Status QA Wave 2 bukan passed: ${workbook.file}`);
+    assert(report.workbook === workbook.file, `Nama workbook tidak sesuai pada QA Wave 2: ${workbook.file}`);
+    assert(report.sheets?.length === workbook.sheets, `Jumlah sheet tidak sesuai pada QA Wave 2: ${workbook.file}`);
+    assert(report.checks?.every((check) => check.passed), `Ada check QA Wave 2 yang gagal: ${workbook.file}`);
+    assert(report.renders?.every((render) => render.rendered), `Render visual QA belum lengkap: ${workbook.file}`);
+  }
+}
+
 const populatedCategories = categorySlugs.filter((slug) => (templateCategories.get(slug) || 0) > 0);
 const emptyCategories = categorySlugs.filter((slug) => (templateCategories.get(slug) || 0) === 0);
 for (const slug of populatedCategories) {

@@ -1,0 +1,338 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-07-14T02:40:16.872Z",
+  "reports": [
+    {
+      "workbook": "template-pembukuan-pengeluaran-usaha.xlsx",
+      "generatedAt": "2026-07-14T02:40:16.825Z",
+      "status": "passed",
+      "fileSizeBytes": 12537,
+      "sheets": [
+        "Cara Pakai",
+        "Data Pengeluaran",
+        "Kategori Pengeluaran",
+        "Rekap Bulanan",
+        "Dashboard"
+      ],
+      "renders": [
+        {
+          "sheet": "Cara Pakai",
+          "bytes": 35581,
+          "rendered": true
+        },
+        {
+          "sheet": "Data Pengeluaran",
+          "bytes": 48098,
+          "rendered": true
+        },
+        {
+          "sheet": "Kategori Pengeluaran",
+          "bytes": 20184,
+          "rendered": true
+        },
+        {
+          "sheet": "Rekap Bulanan",
+          "bytes": 26879,
+          "rendered": true
+        },
+        {
+          "sheet": "Dashboard",
+          "bytes": 48234,
+          "rendered": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_format_without_macros",
+          "passed": true
+        },
+        {
+          "name": "no_external_workbook_links",
+          "passed": true
+        },
+        {
+          "name": "no_hidden_rows_or_columns_configured",
+          "passed": true
+        },
+        {
+          "name": "metadata_contains_no_personal_data",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "all_sheets_rendered_for_visual_qa",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "expense_table_and_dropdowns",
+          "passed": true
+        },
+        {
+          "name": "recap_reconciles_with_sample",
+          "passed": true
+        },
+        {
+          "name": "dashboard_chart_exists",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "workbook": "template-target-tabungan.xlsx",
+      "generatedAt": "2026-07-14T02:40:16.817Z",
+      "status": "passed",
+      "fileSizeBytes": 12032,
+      "sheets": [
+        "Cara Pakai",
+        "Daftar Target",
+        "Catatan Setoran",
+        "Ringkasan"
+      ],
+      "renders": [
+        {
+          "sheet": "Cara Pakai",
+          "bytes": 33149,
+          "rendered": true
+        },
+        {
+          "sheet": "Daftar Target",
+          "bytes": 37278,
+          "rendered": true
+        },
+        {
+          "sheet": "Catatan Setoran",
+          "bytes": 31774,
+          "rendered": true
+        },
+        {
+          "sheet": "Ringkasan",
+          "bytes": 43996,
+          "rendered": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_format_without_macros",
+          "passed": true
+        },
+        {
+          "name": "no_external_workbook_links",
+          "passed": true
+        },
+        {
+          "name": "no_hidden_rows_or_columns_configured",
+          "passed": true
+        },
+        {
+          "name": "metadata_contains_no_personal_data",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "all_sheets_rendered_for_visual_qa",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "goals_and_deposits_tables",
+          "passed": true
+        },
+        {
+          "name": "sample_total_reconciles",
+          "passed": true
+        },
+        {
+          "name": "progress_chart_exists",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "workbook": "template-task-tracker-kanban-excel.xlsx",
+      "generatedAt": "2026-07-14T02:40:16.863Z",
+      "status": "passed",
+      "fileSizeBytes": 11421,
+      "sheets": [
+        "Cara Pakai",
+        "Daftar Tugas",
+        "Papan Kanban",
+        "Ringkasan"
+      ],
+      "renders": [
+        {
+          "sheet": "Cara Pakai",
+          "bytes": 34981,
+          "rendered": true
+        },
+        {
+          "sheet": "Daftar Tugas",
+          "bytes": 43406,
+          "rendered": true
+        },
+        {
+          "sheet": "Papan Kanban",
+          "bytes": 18643,
+          "rendered": true
+        },
+        {
+          "sheet": "Ringkasan",
+          "bytes": 32265,
+          "rendered": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_format_without_macros",
+          "passed": true
+        },
+        {
+          "name": "no_external_workbook_links",
+          "passed": true
+        },
+        {
+          "name": "no_hidden_rows_or_columns_configured",
+          "passed": true
+        },
+        {
+          "name": "metadata_contains_no_personal_data",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "all_sheets_rendered_for_visual_qa",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "task_table_and_dropdowns",
+          "passed": true
+        },
+        {
+          "name": "kanban_is_formula_driven",
+          "passed": true
+        },
+        {
+          "name": "status_chart_exists",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "workbook": "template-notulen-rapat-action-item.xlsx",
+      "generatedAt": "2026-07-14T02:40:16.825Z",
+      "status": "passed",
+      "fileSizeBytes": 13281,
+      "sheets": [
+        "Cara Pakai",
+        "Informasi Rapat",
+        "Notulen dan Keputusan",
+        "Action Item",
+        "Ringkasan"
+      ],
+      "renders": [
+        {
+          "sheet": "Cara Pakai",
+          "bytes": 37059,
+          "rendered": true
+        },
+        {
+          "sheet": "Informasi Rapat",
+          "bytes": 23330,
+          "rendered": true
+        },
+        {
+          "sheet": "Notulen dan Keputusan",
+          "bytes": 30760,
+          "rendered": true
+        },
+        {
+          "sheet": "Action Item",
+          "bytes": 40489,
+          "rendered": true
+        },
+        {
+          "sheet": "Ringkasan",
+          "bytes": 33208,
+          "rendered": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "file_exists_and_exports",
+          "passed": true
+        },
+        {
+          "name": "xlsx_format_without_macros",
+          "passed": true
+        },
+        {
+          "name": "no_external_workbook_links",
+          "passed": true
+        },
+        {
+          "name": "no_hidden_rows_or_columns_configured",
+          "passed": true
+        },
+        {
+          "name": "metadata_contains_no_personal_data",
+          "passed": true
+        },
+        {
+          "name": "formula_error_scan",
+          "passed": true
+        },
+        {
+          "name": "all_sheets_rendered_for_visual_qa",
+          "passed": true
+        },
+        {
+          "name": "required_sheets",
+          "passed": true
+        },
+        {
+          "name": "meeting_notes_and_actions_tables",
+          "passed": true
+        },
+        {
+          "name": "action_item_status_dropdown",
+          "passed": true
+        },
+        {
+          "name": "summary_chart_exists",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}
