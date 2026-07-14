@@ -1,5 +1,7 @@
 # Batch 3A Content Portfolio Grand Plan
 
+> Status diperbarui 2026-07-14: perencanaan Batch 3A telah dilaksanakan sebagian melalui Batch 3 Wave 1. Wave 1 menerbitkan empat template tambahan serta supporting resources, dan PR #6 memperbaiki rendering section detail template. Lihat [current project status](current-project-status.md) untuk inventory dan bukti terbaru. Dokumen ini tetap dipertahankan sebagai catatan historis rencana dan scoring awal; tabel serta urutan di bawah tidak ditulis ulang setelah produksi.
+
 Status: planning only  
 Branch: `plan/batch-3-content-portfolio`  
 Audience: Excelgratis editorial, workbook production, QA, and owner review

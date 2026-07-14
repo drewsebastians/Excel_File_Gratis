@@ -1,6 +1,20 @@
 # ExcelGratis
 
-Website statis Astro untuk membagikan template Excel gratis bagi pengguna Indonesia. Situs ini memakai Astro Content Collections, tanpa backend dan tanpa database.
+ExcelGratis adalah website statis Astro untuk membagikan template Excel dan materi belajar Excel berbahasa Indonesia. Website memakai Astro Content Collections, tanpa database dan tanpa backend aplikasi. Resource yang berstatus `draft: true` tidak dibuat menjadi halaman publik, tidak masuk navigasi, dan tidak masuk sitemap.
+
+## Arsitektur publik saat ini
+
+Resource utama tersedia melalui hub berikut:
+
+- Template: `/templates/` dan `/kategori/`.
+- Panduan: `/panduan/`.
+- Rumus Excel: `/rumus-excel/`.
+- Masalah Excel: `/masalah-excel/`.
+- Koleksi: `/koleksi/`.
+
+Per 2026-07-14, inventory terbit yang diverifikasi dari `src/content/` adalah 8 template, 3 panduan, 2 referensi rumus, 2 halaman troubleshooting, dan 1 koleksi. Navigation, related resources, structured data, canonical URL, dan sitemap dibentuk dari resource published. Hub yang belum memiliki resource published tetap aman untuk dibuka tetapi memakai `noindex, follow` dan tidak dipromosikan.
+
+Halaman tetap dan trust pages dikelola dari `src/content/site-pages/`. Form Kontak dan Request Template tetap memakai provider Web3Forms sesuai batasan dan prosedur di `docs/form-delivery.md`.
 
 ## Menjalankan lokal
 
@@ -17,53 +31,35 @@ pnpm run build
 
 Output build ada di folder `dist`.
 
-## Menambah template baru
+## Membuat resource baru
 
-1. Tambahkan file Markdown baru ke `src/content/templates/`.
-2. Isi frontmatter dengan skema berikut:
+### Template Excel
 
-```yaml
----
-title: "Judul artikel"
-meta_title: "Judul SEO"
-meta_description: "Deskripsi SEO maksimal sekitar 160 karakter."
-slug: "slug-template"
-category: "keuangan-pribadi"
-tags: ["template excel gratis"]
-date: 2026-07-06
-file_name: "Nama-File.xlsx"
-file_size: "245 KB"
-suggested_h1: "Judul H1 opsional"
----
-```
+1. Buat workbook dan QA report mengikuti `docs/template-production-specifications.md`.
+2. Untuk Batch 3 Wave 1, generator workbook berada di `scripts/generate-batch3-wave1-workbooks.mjs`; hasil QA tersimpan di `.workbook-artifacts/` saat lokal dan ringkasan yang disimpan di `docs/qa/batch-3-wave-1/`.
+3. Tambahkan Markdown ke `src/content/templates/` dengan frontmatter `title`, `meta_title`, `meta_description`, `slug`, `category`, `tags`, `date`, `file_name`, dan `file_size`. Gunakan `draft: true` selama review.
+4. Simpan file `.xlsx` di `public/downloads/{file_name}` dan preview, jika tersedia, di `public/assets/templates/`.
+5. Halaman detail otomatis tersedia di `/templates/{category}/{slug}/` setelah resource dipublikasikan.
 
-Kategori yang valid:
+Kategori template yang tersedia adalah `keuangan-pribadi`, `bisnis-umkm`, `produktivitas-kerja`, `pendidikan`, dan `rumah-tangga-acara`.
 
-- `keuangan-pribadi`
-- `bisnis-umkm`
-- `produktivitas-kerja`
-- `pendidikan`
-- `rumah-tangga-acara`
+### Panduan, rumus, dan troubleshooting
 
-3. Simpan file Excel ke `public/downloads/{slug}.xlsx`.
-4. Halaman detail otomatis tersedia di `/templates/{category}/{slug}/`.
+Tambahkan file Markdown ke `src/content/guides/`, `src/content/formulas/`, atau `src/content/troubleshooting/`. Isi metadata sesuai schema dan CMS di `src/content.config.ts` serta `public/admin/config.yml`. Gunakan slug stabil, ringkasan yang spesifik, contoh yang dapat diuji, batasan versi Excel, dan relation field yang mengarah ke resource published yang relevan.
 
-Base URL download dikonfigurasi di `src/config/site.ts` melalui `downloadBaseUrl`, dan bisa dioverride dengan environment variable `PUBLIC_DOWNLOAD_BASE_URL` jika file dipindahkan ke Cloudflare R2.
+### Koleksi
 
-## Deployment
+Tambahkan file Markdown ke `src/content/collections/` setelah resource yang akan dikurasi sudah terbit. Koleksi hanya memakai relasi eksplisit; jangan membuat halaman koleksi kosong atau mengisi relasi dengan tautan yang tidak relevan.
 
-Project ini ditujukan untuk Cloudflare Workers Builds dengan static assets:
+Validasi detail relasi dan visibilitas tersedia di `docs/resource-fixture-testing.md`. Quality gates editorial dan workbook berada di `docs/content-quality-gates.md`.
 
-- Node version: `22`
-- Package manager: `pnpm@10.11.1`
-- Deploy command: `pnpm run deploy` atau default `npx wrangler deploy`
-- Assets directory: `dist`
+Base URL download dikonfigurasi di `src/config/site.ts` melalui `downloadBaseUrl`, dan dapat dioverride dengan `PUBLIC_DOWNLOAD_BASE_URL` bila file dipindahkan ke storage lain.
 
-Wrangler dikonfigurasi untuk menjalankan `pnpm run build` sebelum deploy, sehingga `dist` tetap dibuat saat Cloudflare menjalankan deploy command. Branch `main` terhubung ke Cloudflare, jadi push ke `main` akan memicu deployment otomatis.
+## Deployment dan CI
 
-## CI validation
+Project ditujukan untuk Cloudflare Workers/Assets dengan Node `22`, `pnpm@10.11.1`, dan output asset `dist`. Wrangler menjalankan build sebelum deploy. Branch `main` terhubung ke deployment Cloudflare; push ke `main` dapat memicu deployment otomatis sesuai konfigurasi Cloudflare.
 
-Workflow GitHub Actions di `.github/workflows/ci.yml` berjalan untuk pull request yang menargetkan `main`, push ke branch selain `main` atau `master`, dan pemicu manual. Workflow memakai Node `22.12.0` serta `pnpm@10.11.1`, lalu menjalankan:
+Workflow GitHub Actions di `.github/workflows/ci.yml` berjalan pada pull request menuju `main`, push ke branch non-default, dan pemicu manual. CI hanya validasi source dan tidak melakukan deployment. Perintahnya:
 
 ```bash
 pnpm install --frozen-lockfile
@@ -72,16 +68,10 @@ pnpm run build
 pnpm run validate
 ```
 
-Workflow ini hanya memvalidasi source dan tidak melakukan deployment, tidak menjalankan Wrangler deploy, tidak memakai secret, dan tidak mengunggah artifact build. Deployment Cloudflare tetap merupakan proses terpisah.
+`check` memeriksa diagnostic Astro, `build` membuat route statis, dan `validate` memeriksa route, sitemap, CMS, link internal, asset, draft filtering, serta fixture resource. Deployment Cloudflare adalah proses terpisah dan harus diverifikasi dari bukti deployment, bukan diasumsikan dari CI.
 
-Untuk mereproduksi CI secara lokal, jalankan empat perintah di atas dengan Node `>=22.12.0`. Jika CI gagal, baca langkah yang gagal terlebih dahulu: `check` untuk diagnostic Astro, `build` untuk static route atau bundling, dan `validate` untuk route, sitemap, CMS, link internal, serta asset integrity.
+## SEO dan status draft
 
-## SEO
+Build menghasilkan title, meta description, canonical absolute, Open Graph, JSON-LD pada halaman resource yang sesuai, `robots.txt`, dan `sitemap.xml`. Sitemap hanya berisi halaman publik yang dimaksudkan untuk index. Request Template memakai `noindex, follow`; draft resource tidak menghasilkan route publik.
 
-Build menghasilkan halaman statis lengkap dengan title unik, meta description, canonical URL, Open Graph tags, `robots.txt`, `sitemap.xml`, dan JSON-LD untuk halaman detail template.
-
-## Content dan trust pages
-
-Halaman tetap dikelola dari `src/content/site-pages/`, sementara fondasi Panduan, Rumus Excel, Masalah Excel, dan Koleksi berada di `src/content/`. Resource belum dipublikasikan pada Batch 2 sehingga hub tetap noindex dan tidak muncul di navigasi sampai content published tersedia. Dokumentasi editorial, legal review, serta inventory layanan ada di `docs/`.
-
-Perilaku pengiriman, penanganan kegagalan, privasi event, dan prosedur uji manual form didokumentasikan di `docs/form-delivery.md`.
+Jangan menambahkan AdSense, Analytics provider, cookies, pixel, database, backend, atau layanan eksternal baru tanpa review terpisah. Status kesiapan dan scope deferred dicatat di `docs/adsense-readiness-checklist.md` dan `docs/current-project-status.md`.
