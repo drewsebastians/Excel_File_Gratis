@@ -1,64 +1,87 @@
 ---
 title: "Rumus LET Excel: Membuat Formula Panjang Lebih Mudah Dibaca"
 meta_title: "Rumus LET Excel: Membuat Formula Panjang Lebih Mudah Dibaca"
-meta_description: "Panduan rumus let excel: membuat formula panjang lebih mudah dibaca dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Memecah formula laporan penjualan menjadi nama variabel dengan LET agar perhitungan berulang lebih jelas dan mudah diuji."
 slug: "panduan-rumus-let-excel"
-summary: "Panduan praktis untuk memberi nama hasil antara di dalam satu rumus agar logikanya lebih mudah dirawat, dengan contoh dan langkah yang mudah diikuti."
+summary: "Memecah formula laporan penjualan menjadi nama variabel dengan LET agar perhitungan berulang lebih jelas dan mudah diuji."
 category: "pengolahan-data"
-difficulty: "lanjutan"
-estimated_time: "13 menit"
-prerequisites: ["Pahami IF, SUMIFS, dan referensi sel dasar. Membutuhkan Excel 365 atau Excel 2021."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","pengolahan-data","lanjutan"]
+difficulty: "menengah"
+estimated_time: "16 menit"
+prerequisites: ["Excel 365 atau Excel 2021","Data Qty dan Harga"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021"]
+tags: ["LET excel","rumus modern","formula"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-laporan-penjualan-harian-umkm"]
+related_guides: ["panduan-rumus-filter-laporan","panduan-audit-rumus-excel"]
+related_formulas: ["rumus-iferror-template-rapi","rumus-sumifs-rekap-kategori"]
+related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
 ---
 
-Rumus LET Excel: Membuat Formula Panjang Lebih Mudah Dibaca membantu kamu memberi nama hasil antara di dalam satu rumus agar logikanya lebih mudah dirawat. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+Formula yang mengulang `Qty*Harga` beberapa kali sulit dibaca dan rawan tidak konsisten ketika diperbaiki.
 
-Gunakan langkah ini ketika kamu ingin memberi nama hasil antara di dalam satu rumus agar logikanya lebih mudah dirawat. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Satu formula LET menghitung subtotal, diskon, dan total akhir dengan nama yang dapat dibaca.
 
 ## Prasyarat
 
-Pahami IF, SUMIFS, dan referensi sel dasar. Membutuhkan Excel 365 atau Excel 2021.
+- Excel 365 atau Excel 2021
+- Data Qty dan Harga
+
+## Contoh Input
+
+```text
+Qty=3, Harga=25000, Diskon=5000; hasil yang diharapkan: 70000.
+```
 
 ## Langkah Praktik
 
-1. Mulai dari rumus yang mengulang perhitungan yang sama.
-2. Pindahkan perhitungan berulang itu ke pasangan nama dan nilai dalam LET.
-3. Gunakan nama singkat yang menjelaskan fungsinya, misalnya total atau status.
-4. Bandingkan hasil LET dengan rumus lama untuk memastikan nilainya sama.
+1. Siapkan sel B2 untuk Qty, C2 untuk Harga, dan D2 untuk Diskon.
+2. Masukkan `=LET(subtotal,B2*C2,total,subtotal-D2,total)`.
+3. Ubah salah satu input dan pastikan total mengikuti perubahan.
+4. Bandingkan dengan formula panjang tanpa LET untuk memastikan hasil sama.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Rumus `=LET(total,SUM(B2:B10),IF(total=0,"Belum ada data",total))` menyimpan hasil SUM sebelum dipakai lagi.
+LET mengikat nama ke hasil ekspresi lalu mengembalikan nama terakhir. Nilai `subtotal` dihitung sekali dan dipakai kembali pada `total`.
 
 ## Kesalahan Umum
 
-LET membuat formula lebih jelas, tetapi bukan alasan untuk menyatukan logika yang seharusnya dipisah ke kolom bantu.
+- Nama variabel menyerupai referensi sel atau memakai spasi.
+- Kurung atau pemisah argumen kurang satu, terutama pada regional setting yang memakai titik koma.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Evaluasi bagian `B2*C2` sendiri, lalu cek formula separator yang dipakai Excel melalui formula sederhana.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Gunakan nama tanpa spasi, sesuaikan pemisah koma/titik koma, dan pastikan ekspresi terakhir adalah hasil yang ingin ditampilkan.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+LET tersedia pada Microsoft 365 dan Excel 2021. Excel 2019 dan Google Sheets tidak dapat diasumsikan mendukung sintaks yang sama.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Gunakan kolom bantu untuk subtotal dan total pada Excel lama.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+LET membuat formula rapi, tetapi tidak mengubah aturan perhitungan atau menggantikan desain tabel yang baik.
+
+## Langkah Praktis Berikutnya
+
+Refactor satu formula berulang di workbook uji, lalu simpan versi lama untuk perbandingan.
+
+## Related Resources
+
+- Template: [template-laporan-penjualan-harian-umkm](/templates/)
+- Panduan: [panduan-rumus-filter-laporan](/panduan/), [panduan-audit-rumus-excel](/panduan/)
+- Rumus: [rumus-iferror-template-rapi](/rumus-excel/), [rumus-sumifs-rekap-kategori](/rumus-excel/)
+- Troubleshooting: [masalah-sumifs-countifs-hasil-nol](/masalah-excel/)
+
+Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.

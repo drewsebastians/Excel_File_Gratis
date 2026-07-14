@@ -1,64 +1,89 @@
 ---
 title: "Cara Membuat Laporan Mandiri dengan Rumus FILTER Excel"
 meta_title: "Cara Membuat Laporan Mandiri dengan Rumus FILTER Excel"
-meta_description: "Panduan cara membuat laporan mandiri dengan rumus filter excel dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Menampilkan transaksi milik pelanggan terpilih dengan FILTER, termasuk pesan ketika tidak ada baris yang cocok."
 slug: "panduan-rumus-filter-laporan"
-summary: "Panduan praktis untuk menampilkan transaksi tertentu tanpa salin-tempel dengan FILTER, dengan contoh dan langkah yang mudah diikuti."
+summary: "Menampilkan transaksi milik pelanggan terpilih dengan FILTER, termasuk pesan ketika tidak ada baris yang cocok."
 category: "pengolahan-data"
 difficulty: "menengah"
 estimated_time: "15 menit"
-prerequisites: ["Excel 365 atau Excel 2021 dan data yang memiliki baris judul."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","pengolahan-data","menengah"]
+prerequisites: ["Excel 365 atau Excel 2021","Data transaksi A2:D20","Sel kriteria G2"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021"]
+tags: ["FILTER excel","dynamic array","laporan excel"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-rekap-pesanan-pelanggan","template-laporan-penjualan-harian-umkm"]
+related_guides: ["panduan-dynamic-array-spill-excel","panduan-unique-sort-excel"]
+related_formulas: ["rumus-filter-daftar-dinamis","rumus-countifs-dashboard-status"]
+related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
 ---
 
-Cara Membuat Laporan Mandiri dengan Rumus FILTER Excel membantu kamu menampilkan transaksi tertentu tanpa salin-tempel dengan FILTER. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+Laporan per pelanggan sering dibuat dengan salin-tempel sehingga mudah tertinggal saat transaksi berubah.
 
-Gunakan langkah ini ketika kamu ingin menampilkan transaksi tertentu tanpa salin-tempel dengan FILTER. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Area laporan berubah otomatis ketika nama pelanggan pada G2 diganti.
 
 ## Prasyarat
 
-Excel 365 atau Excel 2021 dan data yang memiliki baris judul.
+- Excel 365 atau Excel 2021
+- Data transaksi A2:D20
+- Sel kriteria G2
+
+## Contoh Input
+
+```text
+A:D = ID, Tanggal, Pelanggan, Total; G2=`Toko Melati`; formula `=FILTER(A2:D20,C2:C20=G2,"Tidak ada transaksi")`.
+```
 
 ## Langkah Praktik
 
-1. Siapkan data transaksi dan satu sel kriteria, misalnya nama pelanggan.
-2. Tulis FILTER di area hasil yang kosong.
-3. Hubungkan argumen include ke kolom yang berisi kriteria.
-4. Tambahkan pesan pengganti agar hasil kosong tidak menampilkan error.
+1. Pastikan A2:D20 memiliki data dan C adalah kolom Pelanggan.
+2. Isi G2 dengan nama pelanggan yang ingin dilihat.
+3. Masukkan formula FILTER di A24 atau area output kosong.
+4. Ganti G2 ke pelanggan lain dan amati hasil yang spill.
+5. Uji nama yang tidak ada untuk memastikan pesan pengganti muncul.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Daftar transaksi pelanggan tertentu dengan pola `=FILTER(A2:D20,C2:C20=G2,"Tidak ada data")`.
+Argumen include menghasilkan TRUE/FALSE per baris. FILTER hanya mengembalikan baris TRUE dan argumen ketiga mencegah tampilan error saat tidak ada hasil.
 
 ## Kesalahan Umum
 
-FILTER cocok untuk laporan tampilan cepat. Untuk ringkasan angka yang lebih kompleks, PivotTable bisa lebih sesuai.
+- Kolom kriteria tidak memiliki jumlah baris sama dengan array data.
+- Area spill tertutup oleh isi lain.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Uji `=C2:C20=G2` di area kosong dan hitung jumlah TRUE. Periksa #SPILL! pada anchor formula.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Samakan tinggi rentang, bersihkan area output, dan gunakan pesan pengganti yang sesuai konteks.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+FILTER tersedia pada Microsoft 365 dan Excel 2021. Excel 2019 memerlukan helper column atau Advanced Filter; Google Sheets memiliki FILTER dengan sintaks yang mirip tetapi perilaku berbeda.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Gunakan Advanced Filter atau PivotTable untuk laporan yang dibuat manual pada Excel lama.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+FILTER menampilkan data, bukan mengubah sumber; lindungi area output dari input manual.
+
+## Langkah Praktis Berikutnya
+
+Tambahkan dropdown pelanggan pada G2 setelah formula dasar sudah lulus uji.
+
+## Related Resources
+
+- Template: [template-rekap-pesanan-pelanggan](/templates/), [template-laporan-penjualan-harian-umkm](/templates/)
+- Panduan: [panduan-dynamic-array-spill-excel](/panduan/), [panduan-unique-sort-excel](/panduan/)
+- Rumus: [rumus-filter-daftar-dinamis](/rumus-excel/), [rumus-countifs-dashboard-status](/rumus-excel/)
+- Troubleshooting: [masalah-sumifs-countifs-hasil-nol](/masalah-excel/)
+
+Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
