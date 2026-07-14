@@ -21,6 +21,7 @@
     "audit:guides": "node scripts/audit-draft-guides.mjs",
     "test:guides": "node scripts/test-guide-fixtures.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
+    "observe:release": "node scripts/observe-release.mjs",
     "smoke:browser": "node scripts/browser-smoke.mjs",
     "forms:production": "node scripts/submit-production-forms.mjs",
     "audit:batch3": "node scripts/audit-batch3-portfolio.mjs",

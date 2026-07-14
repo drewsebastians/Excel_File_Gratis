@@ -1,9 +1,6 @@
-url,expected_indexability,expected_canonical,expected_robots,owner_observed_indexed,owner_observed_canonical,owner_observed_robots,checked_at,owner_notes
-https://excelgratis.my.id/,index,https://excelgratis.my.id/,index follow,,,,,
-https://excelgratis.my.id/templates/,index,https://excelgratis.my.id/templates/,index follow,,,,,
-https://excelgratis.my.id/kategori/,index,https://excelgratis.my.id/kategori/,index follow,,,,,
-https://excelgratis.my.id/panduan/,index,https://excelgratis.my.id/panduan/,index follow,,,,,
-https://excelgratis.my.id/templates/bisnis-umkm/template-arus-kas-umkm/,index,https://excelgratis.my.id/templates/bisnis-umkm/template-arus-kas-umkm/,index follow,,,,,
-https://excelgratis.my.id/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/,index,https://excelgratis.my.id/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/,index follow,,,,,
-https://excelgratis.my.id/kontak/,noindex,https://excelgratis.my.id/kontak/,noindex follow,,,,,
-https://excelgratis.my.id/request-template/,noindex,https://excelgratis.my.id/request-template/,noindex follow,,,,,
+url,resource_type,publish_date,submitted_in_sitemap,discovered_status,indexed_status,canonical_status,impressions,clicks,ctr,average_position,last_checked,owner_verified,notes
+https://excelgratis.my.id/panduan/pengolahan-data/panduan-audit-rumus-excel/,guide,2026-07-14,pending_owner,pending_owner,pending_owner,pending_owner,,,,,,pending_owner,Owner must verify Search Console evidence.
+https://excelgratis.my.id/panduan/produktivitas/panduan-checklist-kualitas-file-excel/,guide,2026-07-14,pending_owner,pending_owner,pending_owner,pending_owner,,,,,,pending_owner,Owner must verify Search Console evidence.
+https://excelgratis.my.id/panduan/pengolahan-data/panduan-dropdown-dinamis-excel/,guide,2026-07-14,pending_owner,pending_owner,pending_owner,pending_owner,,,,,,pending_owner,Owner must verify Search Console evidence.
+https://excelgratis.my.id/panduan/dasar-excel/panduan-excel-table-vs-range/,guide,2026-07-14,pending_owner,pending_owner,pending_owner,pending_owner,,,,,,pending_owner,Owner must verify Search Console evidence.
+https://excelgratis.my.id/panduan/dasar-excel/panduan-structured-references-excel-table/,guide,2026-07-14,pending_owner,pending_owner,pending_owner,pending_owner,,,,,,pending_owner,Owner must verify Search Console evidence.
