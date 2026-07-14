@@ -1,8 +1,8 @@
 # Post-Batch 3 Portfolio Audit
 
 Audit date: 2026-07-14
-Scope: Batch 3 Waves 1-3, local release branch before merge
-Production status: pending merge and public smoke verification
+Scope: Batch 3 Waves 1-3, merged `main` at `0a287ddfd0d0ecb4a3bab68095a759b6b125f4d6`
+Production status: HTTP smoke pass completed; browser-based responsive review remains recorded as an environment limitation
 
 ## Result
 
@@ -34,7 +34,7 @@ Each new template has a real `.xlsx` workbook, generated preview PNG, full-sheet
 | Workbook QA | 3 of 3 passed | `docs/qa/batch-3-wave-3/wave-3-workbook-qa-summary.json` |
 | Build route and SEO audit | Pass, 38 resources checked with no failures | `docs/qa/batch-3-portfolio-audit.json` |
 | Build validator and resource fixtures | Pass | `pnpm run validate` |
-| Production smoke | Pending merge | `docs/production-smoke-checklist.md` |
+| Production HTTP smoke | Pass: Wave 3 pages, collection, sitemap, robots, and workbook download returned HTTP 200 with expected content types | `docs/current-project-status.md` |
 
 The reusable `scripts/audit-batch3-portfolio.mjs` checks final inventory, required metadata, title/meta/slug uniqueness, generated routes, absolute canonicals, JSON-LD, sitemap entries, and template download/preview assets. Its generated result is stored at `docs/qa/batch-3-portfolio-audit.json`.
 
@@ -56,7 +56,7 @@ Do not activate AdSense or Analytics as part of this release. Batch 3 now meets 
 
 ## Required Post-Merge Evidence
 
-1. Confirm the merged main SHA and successful GitHub Actions validation.
-2. Run the public smoke checklist on desktop and mobile, including keyboard focus checks.
-3. Confirm representative Wave 3 pages, collection page, downloads, sitemap, robots, and unknown-route behavior in production.
-4. Record public URL, timestamp, and any remaining external-access limitations in `docs/current-project-status.md`.
+1. Merged main SHA confirmed as `0a287ddfd0d0ecb4a3bab68095a759b6b125f4d6`; PR #10 validation passed and its superseded concurrent run was cancelled.
+2. Wave 3 pages, collection, download, sitemap, and robots returned production HTTP 200 with expected content types on 2026-07-14.
+3. Run the public smoke checklist on desktop and mobile, including keyboard focus checks, when a browser session can access the deployed site.
+4. Search Console and authenticated Cloudflare deployment evidence remain unavailable in this audit.

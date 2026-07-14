@@ -1,12 +1,12 @@
 # Current Project Status
 
 Audit date: 2026-07-14  
-Audited base `main`: `e0fe9e4` (`docs: record Wave 2 release merge`)
-Current release branch: `feat/batch-3-wave-3-and-final-audit`
+Audited `main`: `0a287ddfd0d0ecb4a3bab68095a759b6b125f4d6` (`feat: publish Batch 3 Wave 3 content portfolio`)
+Wave 3 merge PR: #10, squash merged on 2026-07-14
 
 ## Executive status
 
-Batch 1, Batch 2, Batch 2 custom 404 hotfix, Batch 3A planning, Batch 3 Wave 1, and Batch 3 Wave 2 are published. Batch 3 Wave 3 is implemented on the release branch and awaiting PR merge plus production smoke verification. Wave 3 adds workbook-backed resources only; it does not add AdSense, Analytics, a database, a new service, or a public route type.
+Batch 1, Batch 2, Batch 2 custom 404 hotfix, Batch 3A planning, and Batch 3 Waves 1-3 are published. Batch 3 reaches its planned portfolio target. Wave 3 adds workbook-backed resources only; it does not add AdSense, Analytics, a database, a new service, or a public route type.
 
 ## Current public inventory
 
@@ -31,8 +31,9 @@ Wave 2 adds Pembukuan Pengeluaran Usaha, Target Tabungan, Task Tracker Kanban Ex
 - PR #5: Batch 3 Wave 1 content portfolio.
 - PR #6: render substantive template detail sections after production inspection.
 - PR #9: Batch 3 Wave 2 content portfolio, squash merged as `011fd1bd0058a730f037cd01b95fa0969a122bb8` after the latest validation run passed. A superseded concurrent run was cancelled by the workflow concurrency rule.
+- PR #10: Batch 3 Wave 3 content portfolio, squash merged as `0a287ddfd0d0ecb4a3bab68095a759b6b125f4d6`. The latest validation run for the PR passed; an earlier run on the same SHA was cancelled by the workflow concurrency rule.
 
-All listed PRs are merged into `main`; Wave 3 will use the next PR after local validation is complete. The latest two merged validation runs for PR #6 succeeded: [run 29188246431](https://github.com/drewsebastians/Excel_File_Gratis/actions/runs/29188246431) and [run 29188235101](https://github.com/drewsebastians/Excel_File_Gratis/actions/runs/29188235101).
+All listed PRs are merged into `main`. The latest two merged validation runs for PR #6 succeeded: [run 29188246431](https://github.com/drewsebastians/Excel_File_Gratis/actions/runs/29188246431) and [run 29188235101](https://github.com/drewsebastians/Excel_File_Gratis/actions/runs/29188235101).
 
 ## Architecture and content workflow
 
@@ -51,7 +52,7 @@ pnpm run build
 pnpm run validate
 ```
 
-The latest available GitHub Actions validation for the post-release hotfix passed. The CI workflow is validation-only; it does not deploy Cloudflare, access production secrets, or activate external tracking. The repeatable smoke procedure is in `docs/production-smoke-checklist.md`.
+The latest GitHub Actions validation for PR #10 passed. The CI workflow is validation-only; it does not deploy Cloudflare, access production secrets, or activate external tracking. The repeatable smoke procedure is in `docs/production-smoke-checklist.md`.
 
 ## Production evidence
 
@@ -59,13 +60,15 @@ The public smoke pass on 2026-07-14 loaded the homepage, template directory, cat
 
 The in-app browser blocked direct display of `robots.txt` and `sitemap.xml`, so those two endpoints were verified separately with a direct HTTP client: both returned HTTP 200, `robots.txt` returned `text/plain`, and `sitemap.xml` returned `application/xml`. A published Wave 1 workbook download also returned HTTP 200 with the expected `.xlsx` content type. No authenticated Cloudflare dashboard or Search Console evidence was available in this audit.
 
+Post-merge HTTP checks on 2026-07-14 returned HTTP 200 for the three Wave 3 template pages, the productivity collection, `sitemap.xml`, and `robots.txt`. The Tracker Proyek workbook download returned HTTP 200 with `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`. The local in-app browser could not reach the local preview server, so desktop/mobile interactive review remains a checklist item for a browser session that can access the deployed site; this limitation did not affect the workbook visual QA or production HTTP checks.
+
 ## Wave 2 scope
 
 Wave 2 is implemented in the current release branch. Each of its four workbooks has actual synthetic Indonesian sample data, formulas, tables, validation, generated preview, full-sheet render verification, and a machine-readable QA report. Content entries are published only after the linked download, preview, and QA evidence exist.
 
 ## Wave 3 scope
 
-Wave 3 is implemented on the release branch: Catatan Pengeluaran Harian, Jadwal Shift Sederhana, Tracker Proyek Sederhana, supporting guides, formula references, troubleshooting pages, and a productivity collection. Each new workbook has generated preview, full-sheet render verification, and machine-readable QA evidence. Shift content states its non-payroll and non-compliance limitations. The local portfolio audit is in `docs/post-batch-3-audit.md`.
+Wave 3 is published: Catatan Pengeluaran Harian, Jadwal Shift Sederhana, Tracker Proyek Sederhana, supporting guides, formula references, troubleshooting pages, and a productivity collection. Each new workbook has generated preview, full-sheet render verification, and machine-readable QA evidence. Shift content states its non-payroll and non-compliance limitations. The portfolio audit is in `docs/post-batch-3-audit.md`.
 
 ## Deferred evidence-driven scope
 
@@ -73,5 +76,5 @@ Google Search Console, Google Trends, private request data, authenticated Cloudf
 
 ## Recommended next sequence
 
-1. Merge Wave 3 only after final build, validation, and PR CI checks pass; then complete the production smoke checklist.
+1. Complete the remaining browser-based desktop/mobile smoke checklist when a production-capable browser session is available.
 2. Reassess AdSense readiness only after the public resource base, privacy posture, and owner policy review support a separate implementation decision.
