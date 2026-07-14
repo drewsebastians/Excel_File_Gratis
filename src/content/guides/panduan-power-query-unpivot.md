@@ -1,64 +1,91 @@
 ---
 title: "Unpivot Power Query: Mengubah Kolom Bulan Menjadi Data yang Siap Dianalisis"
 meta_title: "Unpivot Power Query: Mengubah Kolom Bulan Menjadi Data yang Siap Dianalisis"
-meta_description: "Panduan unpivot power query: mengubah kolom bulan menjadi data yang siap dianalisis dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Mengubah tabel penjualan dengan kolom Jan, Feb, dan Mar menjadi format baris-per-bulan untuk PivotTable."
 slug: "panduan-power-query-unpivot"
-summary: "Panduan praktis untuk mengubah format lebar seperti Jan, Feb, Mar menjadi kolom Bulan dan Nilai, dengan contoh dan langkah yang mudah diikuti."
+summary: "Mengubah tabel penjualan dengan kolom Jan, Feb, dan Mar menjadi format baris-per-bulan untuk PivotTable."
 category: "pengolahan-data"
 difficulty: "menengah"
 estimated_time: "17 menit"
-prerequisites: ["Data memiliki satu atau beberapa kolom identitas serta beberapa kolom periode."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","pengolahan-data","menengah"]
+prerequisites: ["Data berbentuk satu baris per produk","Power Query Editor"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021","Microsoft Excel 2019"]
+tags: ["unpivot","Power Query","data analisis"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-rekap-penjualan-bulanan"]
+related_guides: ["panduan-power-query-append","panduan-pivottable-dua-tabel"]
+related_formulas: ["rumus-sumifs-rekap-kategori"]
+related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets"]
 ---
 
-Unpivot Power Query: Mengubah Kolom Bulan Menjadi Data yang Siap Dianalisis membantu kamu mengubah format lebar seperti Jan, Feb, Mar menjadi kolom Bulan dan Nilai. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+Kolom bulan melebar membuat filter, chart, dan ringkasan lintas periode lebih sulit.
 
-Gunakan langkah ini ketika kamu ingin mengubah format lebar seperti Jan, Feb, Mar menjadi kolom Bulan dan Nilai. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Bulan menjadi nilai pada satu kolom dan angka penjualan menjadi satu kolom nilai.
 
 ## Prasyarat
 
-Data memiliki satu atau beberapa kolom identitas serta beberapa kolom periode.
+- Data berbentuk satu baris per produk
+- Power Query Editor
+
+## Contoh Input
+
+```text
+Produk | Jan | Feb | Mar
+Kopi | 10 | 12 | 9
+Teh | 8 | 11 | 13
+```
 
 ## Langkah Praktik
 
-1. Muat tabel lebar ke Power Query.
-2. Pilih kolom identitas seperti Produk atau Cabang.
-3. Pilih Transform > Unpivot Other Columns.
-4. Ubah nama Attribute menjadi Bulan dan Value menjadi Nilai sebelum load.
+1. Muat data ke Power Query.
+2. Pilih kolom identitas Produk.
+3. Klik Transform > Unpivot Columns > Unpivot Other Columns.
+4. Rename Attribute menjadi Bulan dan Value menjadi Jumlah.
+5. Ubah Jumlah menjadi tipe angka dan Close & Load.
+6. Refresh setelah menambah kolom bulan hanya jika desain sumber memang mendukungnya.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Tabel target penjualan dengan kolom Jan-Mar diubah menjadi Produk, Bulan, dan Nilai agar mudah dibuat PivotTable.
+Unpivot mengubah nama kolom periode menjadi nilai baris sehingga satu struktur dapat dipakai untuk filter dan agregasi.
 
 ## Kesalahan Umum
 
-Unpivot mengubah bentuk data, bukan nilai dasarnya. Simpan query agar perubahan dapat diulang saat periode baru ditambah.
+- Kolom identitas ikut ter-unpivot karena pemilihan awal salah.
+- Header bulan mengandung teks campuran yang tidak konsisten.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Periksa preview tiga kolom hasil: Produk, Attribute, Value. Bandingkan jumlah produk dikali periode dengan jumlah baris output.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Undo langkah dan pilih kolom identitas, lalu gunakan Unpivot Other Columns.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+Unpivot tersedia pada Power Query Excel 2016 ke atas. Google Sheets perlu formula atau Apps Script yang berbeda.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Gunakan Power Query sebagai pilihan utama; untuk data kecil, salin ke format panjang secara manual dengan checklist.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+Unpivot tidak memahami apakah kolom tertentu adalah forecast, actual, atau revisi; metadata itu perlu dipertahankan.
+
+## Langkah Praktis Berikutnya
+
+Tambahkan kolom Tahun atau Skenario sebelum unpivot jika periode berulang di beberapa sumber.
+
+## Related Resources
+
+- Template: [template-rekap-penjualan-bulanan](/templates/)
+- Panduan: [panduan-power-query-append](/panduan/), [panduan-pivottable-dua-tabel](/panduan/)
+- Rumus: [rumus-sumifs-rekap-kategori](/rumus-excel/)
+- Troubleshooting: [masalah-file-excel-berantakan-google-sheets](/masalah-excel/)
+
+Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
