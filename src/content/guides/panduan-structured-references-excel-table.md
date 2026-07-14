@@ -1,64 +1,89 @@
 ---
 title: "Structured References Excel: Membaca Rumus di Dalam Table"
 meta_title: "Structured References Excel: Membaca Rumus di Dalam Table"
-meta_description: "Panduan structured references excel: membaca rumus di dalam table dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Membuat rumus penjualan yang memakai nama kolom Table agar lebih mudah dibaca dan tetap mengikuti pertambahan baris."
 slug: "panduan-structured-references-excel-table"
-summary: "Panduan praktis untuk membaca referensi seperti `Penjualan[Total]` dan `[@Jumlah]*[@Harga]` tanpa tersesat oleh alamat sel, dengan contoh dan langkah yang mudah diikuti."
+summary: "Membuat rumus penjualan yang memakai nama kolom Table agar lebih mudah dibaca dan tetap mengikuti pertambahan baris."
 category: "dasar-excel"
-difficulty: "menengah"
+difficulty: "pemula"
 estimated_time: "14 menit"
-prerequisites: ["Sudah membuat Excel Table dan memahami rumus perkalian sederhana."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","dasar-excel","menengah"]
+prerequisites: ["Satu Excel Table bernama `tblPesanan`","Kolom Produk, Qty, Harga, dan Total"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021","Microsoft Excel 2019"]
+tags: ["structured reference","excel table","rumus excel"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-rekap-pesanan-pelanggan","template-rekap-penjualan-bulanan"]
+related_guides: ["panduan-excel-table-vs-range","panduan-excel-table-untuk-template"]
+related_formulas: ["rumus-sumifs-rekap-kategori"]
+related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
 ---
 
-Structured References Excel: Membaca Rumus di Dalam Table membantu kamu membaca referensi seperti `Penjualan[Total]` dan `[@Jumlah]*[@Harga]` tanpa tersesat oleh alamat sel. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+Rumus seperti `=C2*D2` sulit dibaca ketika kolom bergeser dan sering perlu disalin ulang.
 
-Gunakan langkah ini ketika kamu ingin membaca referensi seperti `Penjualan[Total]` dan `[@Jumlah]*[@Harga]` tanpa tersesat oleh alamat sel. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Kolom Total memakai nama kolom Table dan tetap mengisi baris baru secara konsisten.
 
 ## Prasyarat
 
-Sudah membuat Excel Table dan memahami rumus perkalian sederhana.
+- Satu Excel Table bernama `tblPesanan`
+- Kolom Produk, Qty, Harga, dan Total
+
+## Contoh Input
+
+```text
+Produk | Qty | Harga
+Buku | 2 | 45000
+Pulpen | 5 | 6000
+```
 
 ## Langkah Praktik
 
-1. Buat Table bernama Penjualan dengan kolom Jumlah, Harga, dan Total.
-2. Di kolom Total, tulis rumus `=[@Jumlah]*[@Harga]`.
-3. Buat satu sel ringkasan di luar Table dengan `=SUM(Penjualan[Total])`.
-4. Ubah satu harga untuk melihat dua rumus tersebut ikut diperbarui.
+1. Ubah data menjadi Table dan beri nama `tblPesanan`.
+2. Tambahkan kolom Total, lalu ketik `=[@Qty]*[@Harga]` pada baris pertama.
+3. Tambahkan baris baru dan pastikan formula kolom terisi otomatis.
+4. Di luar Table, gunakan `=SUM(tblPesanan[Total])` untuk total seluruh pesanan.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Kolom Total yang menghitung `[@Jumlah]*[@Harga]`, lalu total keseluruhan memakai `=SUM(Penjualan[Total])`.
+`[@Qty]` berarti nilai Qty pada baris aktif, sedangkan `tblPesanan[Total]` berarti seluruh kolom Total. Excel menjaga referensi itu saat baris Table bertambah.
 
 ## Kesalahan Umum
 
-Jangan mengganti judul kolom sembarangan karena nama itu ikut dipakai oleh structured reference.
+- Nama header berubah sehingga structured reference ikut berubah.
+- Formula dimasukkan di luar Table sehingga tidak menjadi calculated column.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Klik formula dan amati highlight kolom Table. Periksa Table Name dan header tanpa spasi ganda.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Perbaiki header, masukkan formula pada kolom Table, dan gunakan Insert Field bila sulit mengetik nama kolom.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+Structured reference tersedia pada Excel Table di Excel 2007 ke atas. Google Sheets mengimpor nilai, tetapi tidak selalu mempertahankan perilaku calculated column.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Gunakan range biasa dengan referensi absolut seperti `=$C2*$D2`, lalu salin ke bawah.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+Structured reference tidak menggantikan pemeriksaan tipe angka, duplikat ID, atau aturan bisnis.
+
+## Langkah Praktis Berikutnya
+
+Ganti satu rumus koordinat pada Table kerja kamu dengan structured reference dan bandingkan hasilnya.
+
+## Related Resources
+
+- Template: [template-rekap-pesanan-pelanggan](/templates/), [template-rekap-penjualan-bulanan](/templates/)
+- Panduan: [panduan-excel-table-vs-range](/panduan/), [panduan-excel-table-untuk-template](/panduan/)
+- Rumus: [rumus-sumifs-rekap-kategori](/rumus-excel/)
+- Troubleshooting: [masalah-sumifs-countifs-hasil-nol](/masalah-excel/)
+
+Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.

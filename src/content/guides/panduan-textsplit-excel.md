@@ -1,64 +1,88 @@
 ---
 title: "TEXTSPLIT Excel: Memecah Data Impor yang Menumpuk dalam Satu Kolom"
 meta_title: "TEXTSPLIT Excel: Memecah Data Impor yang Menumpuk dalam Satu Kolom"
-meta_description: "Panduan textsplit excel: memecah data impor yang menumpuk dalam satu kolom dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Memisahkan data impor berformat `kode|nama|kategori` menjadi kolom terstruktur dengan TEXTSPLIT dan pemeriksaan hasil."
 slug: "panduan-textsplit-excel"
-summary: "Panduan praktis untuk memecah teks berseparator menjadi beberapa kolom tanpa Text to Columns manual, dengan contoh dan langkah yang mudah diikuti."
+summary: "Memisahkan data impor berformat `kode|nama|kategori` menjadi kolom terstruktur dengan TEXTSPLIT dan pemeriksaan hasil."
 category: "pengolahan-data"
 difficulty: "menengah"
-estimated_time: "13 menit"
-prerequisites: ["Excel 365 dan data teks yang konsisten memakai pemisah, misalnya tanda koma atau garis miring."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","pengolahan-data","menengah"]
+estimated_time: "15 menit"
+prerequisites: ["Excel 365 atau Excel 2021","Data yang memakai pemisah konsisten"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021"]
+tags: ["TEXTSPLIT","import data","dynamic array"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-database-pelanggan-sederhana"]
+related_guides: ["panduan-dynamic-array-spill-excel","panduan-power-query-data-asli"]
+related_formulas: ["rumus-filter-daftar-dinamis"]
+related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets"]
 ---
 
-TEXTSPLIT Excel: Memecah Data Impor yang Menumpuk dalam Satu Kolom membantu kamu memecah teks berseparator menjadi beberapa kolom tanpa Text to Columns manual. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+Data dari email atau sistem lama sering masuk sebagai satu teks panjang dengan pemisah tertentu.
 
-Gunakan langkah ini ketika kamu ingin memecah teks berseparator menjadi beberapa kolom tanpa Text to Columns manual. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Satu formula memecah teks menjadi beberapa kolom dan tetap mudah diuji ketika delimiter tidak konsisten.
 
 ## Prasyarat
 
-Excel 365 dan data teks yang konsisten memakai pemisah, misalnya tanda koma atau garis miring.
+- Excel 365 atau Excel 2021
+- Data yang memakai pemisah konsisten
+
+## Contoh Input
+
+```text
+A2=`BRG-01|Buku Tulis|ATK`; formula `=TEXTSPLIT(A2,"|")`.
+```
 
 ## Langkah Praktik
 
-1. Identifikasi karakter pemisah yang dipakai data sumber.
-2. Tulis TEXTSPLIT pada sel kosong di samping data.
-3. Uji satu baris dan cek apakah kolom hasil sudah sesuai.
-4. Salin sebagai nilai bila hasil perlu dikirim ke sistem lain yang tidak mendukung TEXTSPLIT.
+1. Pastikan karakter `|` tidak dipakai sebagai bagian normal dari nama.
+2. Masukkan TEXTSPLIT di B2, bukan di sel yang berisi data sumber.
+3. Cek hasil spill ke tiga kolom.
+4. Uji satu baris dengan field kosong, misalnya `BRG-02||ATK`.
+5. Tambahkan `ignore_empty` hanya setelah memahami apakah field kosong perlu dipertahankan.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Kode `PRD-001|Kopi Susu|Minuman` dapat dipisahkan dengan `=TEXTSPLIT(A2,"|")`.
+Argumen kedua adalah column delimiter. TEXTSPLIT dapat mengembalikan array horizontal, sedangkan row delimiter digunakan untuk memecah baris.
 
 ## Kesalahan Umum
 
-TEXTSPLIT membutuhkan pola pemisah yang konsisten; data dengan pemisah campuran perlu dibersihkan lebih dahulu.
+- Delimiter berbeda-beda, misalnya sebagian memakai koma dan sebagian memakai pipa.
+- Area hasil terisi sehingga spill gagal.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Hitung jumlah delimiter dengan LEN dan SUBSTITUTE, lalu periksa baris yang jumlah bagiannya tidak sama.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Normalisasi delimiter lebih dulu atau gunakan delimiter alternatif yang benar; jangan menghapus field kosong tanpa keputusan data.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+TEXTSPLIT tersedia pada Microsoft 365 dan Excel 2021. Excel 2019 memerlukan Text to Columns, Power Query, atau formula bantu.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Gunakan Data > Text to Columns untuk pekerjaan satu kali, atau Power Query untuk impor berulang.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+TEXTSPLIT tidak memahami struktur bisnis; hasilnya tetap perlu pemeriksaan tipe tanggal, angka, dan kode.
+
+## Langkah Praktis Berikutnya
+
+Simpan satu baris input rusak sebagai fixture uji sebelum file dipakai pada impor berikutnya.
+
+## Related Resources
+
+- Template: [template-database-pelanggan-sederhana](/templates/)
+- Panduan: [panduan-dynamic-array-spill-excel](/panduan/), [panduan-power-query-data-asli](/panduan/)
+- Rumus: [rumus-filter-daftar-dinamis](/rumus-excel/)
+- Troubleshooting: [masalah-file-excel-berantakan-google-sheets](/masalah-excel/)
+
+Google Sheets: artikel ini berfokus pada Excel; jangan menganggap perilaku Google Sheets identik.

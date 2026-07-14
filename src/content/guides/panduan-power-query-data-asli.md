@@ -1,64 +1,88 @@
 ---
 title: "Power Query untuk Membersihkan Data Excel Tanpa Merusak Data Asli"
 meta_title: "Power Query untuk Membersihkan Data Excel Tanpa Merusak Data Asli"
-meta_description: "Panduan power query untuk membersihkan data excel tanpa merusak data asli dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Membuat alur Power Query yang memisahkan sumber mentah dari hasil bersih sehingga data asli tetap menjadi bahan audit."
 slug: "panduan-power-query-data-asli"
-summary: "Panduan praktis untuk membuat alur pembersihan data yang bisa di-refresh daripada mengedit file sumber langsung, dengan contoh dan langkah yang mudah diikuti."
+summary: "Membuat alur Power Query yang memisahkan sumber mentah dari hasil bersih sehingga data asli tetap menjadi bahan audit."
 category: "pengolahan-data"
 difficulty: "menengah"
 estimated_time: "18 menit"
-prerequisites: ["Excel Windows dengan menu Get Data atau Power Query tersedia."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","pengolahan-data","menengah"]
+prerequisites: ["Excel desktop dengan Power Query","Satu Table sumber yang dianonimkan"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021","Microsoft Excel 2019"]
+tags: ["Power Query","clean data","data asli"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-laporan-penjualan-harian-umkm"]
+related_guides: ["panduan-power-query-append","panduan-excel-table-vs-range"]
+related_formulas: ["rumus-iferror-template-rapi"]
+related_troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks"]
 ---
 
-Power Query untuk Membersihkan Data Excel Tanpa Merusak Data Asli membantu kamu membuat alur pembersihan data yang bisa di-refresh daripada mengedit file sumber langsung. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+Mengedit data impor langsung membuat perubahan sulit dilacak dan menyulitkan refresh berikutnya.
 
-Gunakan langkah ini ketika kamu ingin membuat alur pembersihan data yang bisa di-refresh daripada mengedit file sumber langsung. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Data mentah tidak disentuh; transformasi tersimpan sebagai langkah query yang bisa di-refresh.
 
 ## Prasyarat
 
-Excel Windows dengan menu Get Data atau Power Query tersedia.
+- Excel desktop dengan Power Query
+- Satu Table sumber yang dianonimkan
+
+## Contoh Input
+
+```text
+Table `tblRawSales` berisi tanggal, nama produk, dan total dengan beberapa spasi di nama produk.
+```
 
 ## Langkah Praktik
 
-1. Simpan data sumber apa adanya di satu lokasi yang jelas.
-2. Pilih Data > From Table/Range untuk membuka Power Query.
-3. Lakukan perubahan yang dapat diulang, misalnya mengubah tipe data atau menghapus kolom.
-4. Pilih Close & Load lalu gunakan Refresh saat data sumber diperbarui.
+1. Ubah sumber menjadi Table dan beri nama `tblRawSales`.
+2. Pilih Data > From Table/Range lalu simpan query sebagai `qRawSales`.
+3. Gunakan Transform > Format > Trim pada kolom teks dan ubah tipe data secara eksplisit.
+4. Rename query hasil menjadi `qSalesClean` dan Close & Load ke sheet baru.
+5. Tambahkan satu baris pada sumber, lalu Refresh All untuk menguji alurnya.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Data ekspor penjualan dibersihkan dengan menghapus kolom kosong, memperbaiki tipe tanggal, lalu dimuat ke sheet baru.
+Power Query menyimpan sumber dan transformasi terpisah. Refresh mengulang langkah terhadap sumber terbaru, bukan terhadap hasil yang sudah dimuat.
 
 ## Kesalahan Umum
 
-Jangan menghapus sumber sebelum query stabil. Power Query menyimpan langkah, bukan salinan keputusan yang sulit dilacak.
+- Pengguna mengedit hasil query lalu mengira perubahan akan kembali ke sumber.
+- Nama kolom berubah sehingga langkah berikutnya gagal.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Buka Applied Steps dan klik langkah satu per satu. Periksa Source dan Changed Type sebelum memperbaiki langkah lanjutan.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Kembalikan sumber ke data mentah, ubah langkah yang gagal, lalu refresh dari awal.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+Power Query tersedia pada Excel 2016 ke atas dengan tingkat fitur yang berbeda. Google Sheets tidak menjalankan query M secara native.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Gunakan kolom bantu dan salinan data jika Power Query tidak tersedia, sambil menyimpan sumber mentah terpisah.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+Query bukan backup; simpan salinan sumber dan dokumentasikan kredensial atau lokasi file secara aman.
+
+## Langkah Praktis Berikutnya
+
+Buat kolom `source_file` atau `source_date` pada data mentah agar asal setiap baris tetap dapat dilacak.
+
+## Related Resources
+
+- Template: [template-laporan-penjualan-harian-umkm](/templates/)
+- Panduan: [panduan-power-query-append](/panduan/), [panduan-excel-table-vs-range](/panduan/)
+- Rumus: [rumus-iferror-template-rapi](/rumus-excel/)
+- Troubleshooting: [masalah-angka-tidak-terjumlah-format-teks](/masalah-excel/)
+
+Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.

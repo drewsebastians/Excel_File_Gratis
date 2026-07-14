@@ -1,64 +1,88 @@
 ---
 title: "UNIQUE dan SORT Excel untuk Membuat Daftar Bersih Otomatis"
 meta_title: "UNIQUE dan SORT Excel untuk Membuat Daftar Bersih Otomatis"
-meta_description: "Panduan unique dan sort excel untuk membuat daftar bersih otomatis dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Membuat daftar pelanggan unik yang langsung terurut dari data transaksi tanpa menghapus data sumber."
 slug: "panduan-unique-sort-excel"
-summary: "Panduan praktis untuk membuat daftar kategori atau pelanggan unik yang selalu bisa diurutkan, dengan contoh dan langkah yang mudah diikuti."
+summary: "Membuat daftar pelanggan unik yang langsung terurut dari data transaksi tanpa menghapus data sumber."
 category: "pengolahan-data"
 difficulty: "menengah"
-estimated_time: "12 menit"
-prerequisites: ["Excel 365 atau Excel 2021."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","pengolahan-data","menengah"]
+estimated_time: "14 menit"
+prerequisites: ["Excel 365 atau Excel 2021","Kolom pelanggan dengan beberapa nama berulang"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021"]
+tags: ["UNIQUE excel","SORT excel","dynamic array"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-database-pelanggan-sederhana"]
+related_guides: ["panduan-dynamic-array-spill-excel","panduan-dropdown-dinamis-excel"]
+related_formulas: ["rumus-filter-daftar-dinamis"]
+related_troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks"]
 ---
 
-UNIQUE dan SORT Excel untuk Membuat Daftar Bersih Otomatis membantu kamu membuat daftar kategori atau pelanggan unik yang selalu bisa diurutkan. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+Daftar pilihan dari transaksi mentah berisi nama berulang dan sulit dirawat secara manual.
 
-Gunakan langkah ini ketika kamu ingin membuat daftar kategori atau pelanggan unik yang selalu bisa diurutkan. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Satu formula menghasilkan daftar unik dan terurut yang dapat dipakai sebagai bahan dropdown atau ringkasan.
 
 ## Prasyarat
 
-Excel 365 atau Excel 2021.
+- Excel 365 atau Excel 2021
+- Kolom pelanggan dengan beberapa nama berulang
+
+## Contoh Input
+
+```text
+C2:C7 = Toko Melati, Toko Sari, Toko Melati, Koperasi Maju, Toko Sari, Koperasi Maju.
+```
 
 ## Langkah Praktik
 
-1. Pastikan kolom sumber tidak berisi judul di dalam rentang formula.
-2. Tulis UNIQUE untuk mengambil nilai tanpa pengulangan.
-3. Bungkus UNIQUE dengan SORT bila daftar perlu diurutkan.
-4. Periksa spasi berlebih pada data sumber bila nilai yang tampak sama masih muncul dua kali.
+1. Pilih area output yang kosong, misalnya F2.
+2. Gunakan `=SORT(UNIQUE(C2:C100))`.
+3. Tambahkan satu nama pelanggan baru pada C8.
+4. Periksa apakah hasil di F2 meluas dan tetap terurut.
+5. Gunakan hasil tersebut sebagai sumber laporan, bukan mengedit daftar output langsung.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Daftar kategori bersih dengan `=SORT(UNIQUE(A2:A100))`.
+UNIQUE menghapus nilai berulang, lalu SORT mengurutkan array hasilnya. Urutan fungsi penting karena SORT bekerja pada hasil UNIQUE.
 
 ## Kesalahan Umum
 
-UNIQUE tidak otomatis menyamakan ejaan yang berbeda, misalnya `Makan` dan `makan ` dengan spasi di akhir.
+- Spasi tersembunyi membuat dua nama yang tampak sama dianggap berbeda.
+- Output terhalang sehingga formula menghasilkan #SPILL!.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Bandingkan panjang teks dengan LEN dan bersihkan data dengan TRIM pada kolom bantu bila perlu.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Bersihkan sumber, kosongkan area spill, dan jangan menaruh formula lain di dalam output.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+UNIQUE dan SORT merupakan fungsi dynamic array pada Microsoft 365 dan Excel 2021. Excel 2019 memerlukan Remove Duplicates atau PivotTable.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Gunakan Data > Remove Duplicates pada salinan data, atau PivotTable untuk daftar kategori.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+Daftar unik tidak otomatis memperbaiki perbedaan kapitalisasi, ejaan, atau ID pelanggan yang salah.
+
+## Langkah Praktis Berikutnya
+
+Gunakan daftar hasil hanya setelah aturan penamaan pelanggan disepakati.
+
+## Related Resources
+
+- Template: [template-database-pelanggan-sederhana](/templates/)
+- Panduan: [panduan-dynamic-array-spill-excel](/panduan/), [panduan-dropdown-dinamis-excel](/panduan/)
+- Rumus: [rumus-filter-daftar-dinamis](/rumus-excel/)
+- Troubleshooting: [masalah-angka-tidak-terjumlah-format-teks](/masalah-excel/)
+
+Google Sheets: artikel ini berfokus pada Excel; jangan menganggap perilaku Google Sheets identik.

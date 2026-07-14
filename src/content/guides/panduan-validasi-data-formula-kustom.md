@@ -1,64 +1,90 @@
 ---
 title: "Validasi Data Excel dengan Formula Kustom untuk Mencegah Salah Input"
 meta_title: "Validasi Data Excel dengan Formula Kustom untuk Mencegah Salah Input"
-meta_description: "Panduan validasi data excel dengan formula kustom untuk mencegah salah input dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Membatasi input ID transaksi agar tidak kosong dan tidak duplikat dengan formula validasi yang memakai referensi relatif dan absolut."
 slug: "panduan-validasi-data-formula-kustom"
-summary: "Panduan praktis untuk membuat aturan input selain dropdown, misalnya ID berawalan tertentu atau mencegah data ganda, dengan contoh dan langkah yang mudah diikuti."
+summary: "Membatasi input ID transaksi agar tidak kosong dan tidak duplikat dengan formula validasi yang memakai referensi relatif dan absolut."
 category: "pengolahan-data"
 difficulty: "menengah"
-estimated_time: "15 menit"
-prerequisites: ["Pahami referensi relatif dan absolut dasar seperti A2 dan $A$2."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","pengolahan-data","menengah"]
+estimated_time: "18 menit"
+prerequisites: ["Kolom ID transaksi pada A2:A100","Excel desktop atau web"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021","Microsoft Excel 2019"]
+tags: ["data validation","validasi excel","kontrol input"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-database-pelanggan-sederhana","template-rekap-pesanan-pelanggan"]
+related_guides: ["panduan-dropdown-dinamis-excel","panduan-excel-table-vs-range"]
+related_formulas: ["rumus-countifs-dashboard-status"]
+related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul"]
 ---
 
-Validasi Data Excel dengan Formula Kustom untuk Mencegah Salah Input membantu kamu membuat aturan input selain dropdown, misalnya ID berawalan tertentu atau mencegah data ganda. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+ID yang kosong atau kembar membuat pencarian, rekap, dan penggabungan data menjadi tidak dapat dipercaya.
 
-Gunakan langkah ini ketika kamu ingin membuat aturan input selain dropdown, misalnya ID berawalan tertentu atau mencegah data ganda. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Baris input baru menolak ID kosong dan memberi peringatan ketika ID sudah pernah dipakai.
 
 ## Prasyarat
 
-Pahami referensi relatif dan absolut dasar seperti A2 dan $A$2.
+- Kolom ID transaksi pada A2:A100
+- Excel desktop atau web
+
+## Contoh Input
+
+```text
+A2=INV-001
+A3=INV-002
+A4=INV-002 (harus ditolak)
+```
 
 ## Langkah Praktik
 
-1. Pilih rentang input mulai dari baris pertama data.
-2. Buka Data Validation lalu pilih Custom.
-3. Masukkan formula sesuai aturan dan pastikan referensi pertama mengarah ke baris aktif.
-4. Uji dengan contoh yang benar serta contoh yang seharusnya ditolak.
+1. Pilih rentang A2:A100, bukan seluruh kolom.
+2. Buka Data > Data Validation, pilih Allow: Custom.
+3. Masukkan `=AND(A2<>"",COUNTIF($A$2:$A$100,A2)=1)`.
+4. Pilih Error Alert dengan gaya Stop dan uji ID baru serta ID duplikat.
+5. Coba tempel beberapa nilai untuk memahami bahwa validasi tidak selalu menghentikan semua paste dari sumber lain.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Kolom kode pelanggan hanya menerima nilai yang belum pernah dipakai dengan pola `=COUNTIF($A$2:A2,A2)=1`.
+A2 relatif terhadap sel pertama yang dipilih, sehingga setiap baris memeriksa nilainya sendiri. `$A$2:$A$100` absolut agar seluruh rentang duplikat tetap sama.
 
 ## Kesalahan Umum
 
-Formula validasi harus ditulis berdasarkan sel kiri atas dari rentang yang dipilih, bukan berdasarkan seluruh kolom sekaligus.
+- Mengunci A2 menjadi `$A$2` membuat semua baris memeriksa sel yang sama.
+- Validasi tidak menggantikan pembersihan data yang sudah telanjur masuk.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Klik sel bermasalah dan lihat Data Validation. Uji formula di sel bantu untuk melihat hasil TRUE atau FALSE.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Pilih ulang rentang dari A2, betulkan tanda dolar, dan gunakan Stop jika input harus benar-benar ditolak.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+Custom validation tersedia di Excel desktop dan web. Google Sheets memiliki Data validation dengan formula kustom yang sintaks dan perilakunya perlu diuji ulang.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Gunakan Remove Duplicates sebagai pemeriksaan berkala, bukan sebagai pencegahan input harian.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+Validasi berbasis rentang tetap perlu diperluas ketika data melewati baris 100; Table dapat membantu mengelola baris baru.
+
+## Langkah Praktis Berikutnya
+
+Tambahkan kolom status pemeriksaan dan catat tanggal saat aturan validasi terakhir diuji.
+
+## Related Resources
+
+- Template: [template-database-pelanggan-sederhana](/templates/), [template-rekap-pesanan-pelanggan](/templates/)
+- Panduan: [panduan-dropdown-dinamis-excel](/panduan/), [panduan-excel-table-vs-range](/panduan/)
+- Rumus: [rumus-countifs-dashboard-status](/rumus-excel/)
+- Troubleshooting: [masalah-dropdown-data-validation-tidak-muncul](/masalah-excel/)
+
+Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.

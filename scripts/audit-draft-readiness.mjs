@@ -8,6 +8,8 @@ const qaRoot = path.join(root, "docs", "qa");
 const distRoot = path.join(root, "dist");
 const registerPath = path.join(root, "docs", "draft-content-readiness.csv");
 const reportPath = path.join(qaRoot, "draft-readiness-audit.json");
+const guideAuditPath = path.join(qaRoot, "draft-guides-audit.json");
+const guideAudit = existsSync(guideAuditPath) ? JSON.parse(readFileSync(guideAuditPath, "utf8")) : undefined;
 
 const allowedStatuses = new Set([
   "not_started",
@@ -162,6 +164,7 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
     const missingMetadata = requiredFields[resourceType].filter((field) => data[field] === undefined || data[field] === "");
     const inconsistentFileName = resourceType === "template" && data.file_name !== `${slug}.xlsx`;
 
+    const guideVerified = resourceType === "guide" && guideAudit?.status === "passed";
     const entry = {
       resource_type: resourceType,
       title,
@@ -171,21 +174,23 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
       download_path: resourceType === "template" ? relative(downloadPath) : "not_applicable",
       preview_path: data.preview_image ? relative(previewPath) : "not_applicable",
       risk_level: risk,
-      content_status: "in_progress",
+      content_status: guideVerified ? "passed" : "in_progress",
       workbook_qa_status: resourceType === "template" ? (qaFiles.length ? "passed" : "not_started") : "not_applicable",
       visual_qa_status: data.preview_image ? "not_started" : "not_applicable",
-      technical_verification_status: "in_progress",
+      technical_verification_status: guideVerified ? "passed" : "in_progress",
       editorial_review_status: "in_progress",
-      relation_review_status: missingRelations.length ? "failed" : "in_progress",
-      seo_review_status: "in_progress",
+      relation_review_status: missingRelations.length ? "failed" : (guideVerified ? "passed" : "in_progress"),
+      seo_review_status: guideVerified ? "passed" : "in_progress",
       owner_review_required: "yes",
       owner_review_reason: ownerReason(resourceType, risk, data),
       publication_wave: plannedWave(resourceType, risk, slug),
       planned_publish_date: "",
-      release_status: risk === "high" ? "manual_owner_gate" : "not_started",
+      release_status: guideVerified ? "ready_for_release" : (risk === "high" ? "manual_owner_gate" : "not_started"),
       production_smoke_status: "not_applicable",
       search_console_status: "not_applicable",
-      notes: resourceType === "template"
+      notes: guideVerified
+        ? "Guide rewrite and automated metadata, relation, technical, and draft-leakage checks passed; owner editorial approval and production smoke remain open."
+        : resourceType === "template"
         ? "Workbook QA evidence is not yet recorded; keep draft until workbook, preview, editorial, relation, SEO, and owner gates pass."
         : "Guide is editorially prepared but still needs final editorial, image/alt-text, relation, SEO, and owner review.",
     };

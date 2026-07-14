@@ -1,64 +1,89 @@
 ---
 title: "Parameter Power Query: Mengganti Sumber File Tanpa Membuat Query Ulang"
 meta_title: "Parameter Power Query: Mengganti Sumber File Tanpa Membuat Query Ulang"
-meta_description: "Panduan parameter power query: mengganti sumber file tanpa membuat query ulang dengan langkah praktis, contoh, kesalahan umum, dan batasan versi Excel."
+meta_description: "Membuat parameter folder atau tanggal agar satu query dapat dipakai ulang pada sumber yang berubah tanpa mengedit langkah M manual."
 slug: "panduan-parameter-power-query"
-summary: "Panduan praktis untuk menggunakan parameter untuk folder, nama file, atau tanggal batas data, dengan contoh dan langkah yang mudah diikuti."
+summary: "Membuat parameter folder atau tanggal agar satu query dapat dipakai ulang pada sumber yang berubah tanpa mengedit langkah M manual."
 category: "pengolahan-data"
 difficulty: "lanjutan"
-estimated_time: "16 menit"
-prerequisites: ["Sudah memiliki query Power Query yang berjalan dan memahami lokasi sumber datanya."]
-excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021 atau lebih baru"]
-tags: ["belajar excel","pengolahan-data","lanjutan"]
+estimated_time: "20 menit"
+prerequisites: ["Power Query Editor","Query sumber yang sudah berhasil","Folder uji tanpa data pribadi"]
+excel_versions: ["Microsoft Excel 365","Microsoft Excel 2021","Microsoft Excel 2019"]
+tags: ["parameter power query","Power Query","otomasi"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
 draft: true
-related_templates: ["template-stok-barang-excel-gratis","template-laporan-penjualan-harian-umkm"]
-related_guides: ["panduan-excel-table-untuk-template","panduan-dropdown-data-validation-excel"]
-related_formulas: ["rumus-filter-daftar-dinamis","rumus-xlookup-vlookup-data","rumus-countifs-dashboard-status"]
-related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-vlookup-xlookup-na"]
+related_templates: ["template-laporan-penjualan-harian-umkm"]
+related_guides: ["panduan-power-query-data-asli","panduan-power-query-append"]
+related_formulas: ["rumus-iferror-template-rapi"]
+related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets"]
 ---
 
-Parameter Power Query: Mengganti Sumber File Tanpa Membuat Query Ulang membantu kamu menggunakan parameter untuk folder, nama file, atau tanggal batas data. Fokusnya bukan menghafal menu, tetapi membuat file lebih mudah diperbarui dan diperiksa.
+## Masalah yang Diselesaikan
 
-## Kapan Panduan Ini Berguna
+Jalur file atau batas tanggal yang tertulis langsung di query membuat alur sulit dipindahkan dan dirawat.
 
-Gunakan langkah ini ketika kamu ingin menggunakan parameter untuk folder, nama file, atau tanggal batas data. Mulailah dari file contoh kecil agar perubahan mudah diamati.
+## Hasil yang Diharapkan
+
+Nilai sumber dikontrol dari parameter sehingga perubahan lokasi atau periode tidak memerlukan query baru.
 
 ## Prasyarat
 
-Sudah memiliki query Power Query yang berjalan dan memahami lokasi sumber datanya.
+- Power Query Editor
+- Query sumber yang sudah berhasil
+- Folder uji tanpa data pribadi
+
+## Contoh Input
+
+```text
+Parameter `pFolder` = `C:\Data\PenjualanUji`; query memakai Folder.Files(pFolder).
+```
 
 ## Langkah Praktik
 
-1. Buka Manage Parameters dan buat parameter teks untuk lokasi sumber.
-2. Ganti nilai sumber yang diketik langsung di query dengan parameter tersebut.
-3. Refresh query untuk memastikan sumber baru terbaca.
-4. Dokumentasikan nilai parameter agar orang lain dapat memeliharanya.
+1. Buka Power Query Editor > Home > Manage Parameters > New Parameter.
+2. Buat `pFolder` bertipe Text dengan nilai folder uji.
+3. Pada Source, ganti path hard-coded dengan parameter melalui formula atau menu parameter.
+4. Uji Change Value ke folder salinan dan refresh.
+5. Dokumentasikan nilai parameter dan batas akses di sheet Cara Pakai.
 
-## Contoh Singkat
+## Mengapa Ini Bekerja
 
-Parameter FolderSumber dipakai oleh query agar lokasi file dapat diganti dari satu tempat.
+Parameter memisahkan konfigurasi dari langkah transformasi. Query tetap sama ketika nilai konfigurasi berubah.
 
 ## Kesalahan Umum
 
-Parameter tidak memperbaiki perubahan struktur file. Header dan tipe data sumber tetap harus konsisten.
+- Parameter bertipe Text tetapi dipakai sebagai Date atau Folder Path secara tidak tepat.
+- Folder berisi file dengan struktur berbeda sehingga langkah gabungan gagal.
 
-## Tips Agar File Tetap Rapi
+## Diagnosis
 
-Gunakan judul kolom yang konsisten, simpan contoh data secukupnya, dan periksa hasil setelah menambah baris baru. Bila file dipakai tim, catat aturan penulisan di sheet Cara Pakai agar semua orang mengikuti pola yang sama.
+Lihat Manage Parameters, Source step, dan preview daftar file sebelum transformasi lanjutan.
 
-## Batasan dan Kompatibilitas
+## Cara Memperbaiki
 
-Beberapa fitur modern seperti dynamic array, LET, FILTER, UNIQUE, SORT, dan TEXTSPLIT memerlukan Excel 365 atau Excel 2021. Jika file akan dibuka di versi lebih lama atau Google Sheets, uji hasilnya terlebih dahulu.
+Betulkan tipe parameter, uji dengan folder kecil yang homogen, dan tambahkan filter nama file secara eksplisit.
 
-## Pertanyaan yang Sering Ditanyakan
+## Kompatibilitas dan Alternatif Versi Lama
 
-**Apakah saya perlu langsung memakai data asli?**
+Parameter tersedia pada Power Query modern di Excel desktop. Excel web dan Google Sheets tidak dapat diasumsikan mendukung alur parameter yang sama.
 
-Tidak. Uji dulu dengan beberapa baris contoh supaya perubahan dan hasil rumus mudah diperiksa.
+Alternatif untuk Excel lama: Simpan path di named cell dan baca dengan konektor yang mendukungnya, tetapi uji keamanan dan refresh secara khusus.
 
-**Bagaimana kalau hasilnya tidak sesuai?**
+## Batasan
 
-Periksa kembali nama kolom, tipe data, dan referensi rumus. Bila perlu, gunakan Trace Precedents untuk menelusuri sumber angka.
+Parameter tidak memberi izin akses; pengguna tetap memerlukan hak baca pada folder atau file sumber.
+
+## Langkah Praktis Berikutnya
+
+Gunakan folder dummy untuk menguji error sebelum mengarahkan parameter ke sumber operasional.
+
+## Related Resources
+
+- Template: [template-laporan-penjualan-harian-umkm](/templates/)
+- Panduan: [panduan-power-query-data-asli](/panduan/), [panduan-power-query-append](/panduan/)
+- Rumus: [rumus-iferror-template-rapi](/rumus-excel/)
+- Troubleshooting: [masalah-file-excel-berantakan-google-sheets](/masalah-excel/)
+
+Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
