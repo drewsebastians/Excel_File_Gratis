@@ -1,0 +1,597 @@
+{
+  "generatedAt": "2026-07-15T02:14:30.493Z",
+  "status": "passed",
+  "scope": "Information architecture, navigation discoverability, canonical, and sitemap entry points.",
+  "checks": [
+    {
+      "id": "route:/",
+      "passed": true,
+      "detail": "route tersedia"
+    },
+    {
+      "id": "canonical:/",
+      "passed": true,
+      "detail": "canonical harus menunjuk ke route publik yang sama"
+    },
+    {
+      "id": "route:/templates/",
+      "passed": true,
+      "detail": "route tersedia"
+    },
+    {
+      "id": "canonical:/templates/",
+      "passed": true,
+      "detail": "canonical harus menunjuk ke route publik yang sama"
+    },
+    {
+      "id": "route:/kategori/",
+      "passed": true,
+      "detail": "route tersedia"
+    },
+    {
+      "id": "canonical:/kategori/",
+      "passed": true,
+      "detail": "canonical harus menunjuk ke route publik yang sama"
+    },
+    {
+      "id": "route:/belajar-excel/",
+      "passed": true,
+      "detail": "route tersedia"
+    },
+    {
+      "id": "canonical:/belajar-excel/",
+      "passed": true,
+      "detail": "canonical harus menunjuk ke route publik yang sama"
+    },
+    {
+      "id": "route:/panduan/",
+      "passed": true,
+      "detail": "route tersedia"
+    },
+    {
+      "id": "canonical:/panduan/",
+      "passed": true,
+      "detail": "canonical harus menunjuk ke route publik yang sama"
+    },
+    {
+      "id": "route:/rumus-excel/",
+      "passed": true,
+      "detail": "route tersedia"
+    },
+    {
+      "id": "canonical:/rumus-excel/",
+      "passed": true,
+      "detail": "canonical harus menunjuk ke route publik yang sama"
+    },
+    {
+      "id": "route:/masalah-excel/",
+      "passed": true,
+      "detail": "route tersedia"
+    },
+    {
+      "id": "canonical:/masalah-excel/",
+      "passed": true,
+      "detail": "canonical harus menunjuk ke route publik yang sama"
+    },
+    {
+      "id": "route:/koleksi/",
+      "passed": true,
+      "detail": "route tersedia"
+    },
+    {
+      "id": "canonical:/koleksi/",
+      "passed": true,
+      "detail": "canonical harus menunjuk ke route publik yang sama"
+    },
+    {
+      "id": "route:/sitemap/",
+      "passed": true,
+      "detail": "route tersedia"
+    },
+    {
+      "id": "canonical:/sitemap/",
+      "passed": true,
+      "detail": "canonical harus menunjuk ke route publik yang sama"
+    },
+    {
+      "id": "learning-hub:/panduan/",
+      "passed": true,
+      "detail": "hub Belajar Excel harus menautkan seluruh arsip resource"
+    },
+    {
+      "id": "learning-hub:/rumus-excel/",
+      "passed": true,
+      "detail": "hub Belajar Excel harus menautkan seluruh arsip resource"
+    },
+    {
+      "id": "learning-hub:/masalah-excel/",
+      "passed": true,
+      "detail": "hub Belajar Excel harus menautkan seluruh arsip resource"
+    },
+    {
+      "id": "archive-navigation:/panduan/:/panduan/",
+      "passed": true,
+      "detail": "setiap arsip resource harus menyediakan jalur ke ketiga jenis resource"
+    },
+    {
+      "id": "archive-navigation:/panduan/:/rumus-excel/",
+      "passed": true,
+      "detail": "setiap arsip resource harus menyediakan jalur ke ketiga jenis resource"
+    },
+    {
+      "id": "archive-navigation:/panduan/:/masalah-excel/",
+      "passed": true,
+      "detail": "setiap arsip resource harus menyediakan jalur ke ketiga jenis resource"
+    },
+    {
+      "id": "archive-navigation:/rumus-excel/:/panduan/",
+      "passed": true,
+      "detail": "setiap arsip resource harus menyediakan jalur ke ketiga jenis resource"
+    },
+    {
+      "id": "archive-navigation:/rumus-excel/:/rumus-excel/",
+      "passed": true,
+      "detail": "setiap arsip resource harus menyediakan jalur ke ketiga jenis resource"
+    },
+    {
+      "id": "archive-navigation:/rumus-excel/:/masalah-excel/",
+      "passed": true,
+      "detail": "setiap arsip resource harus menyediakan jalur ke ketiga jenis resource"
+    },
+    {
+      "id": "archive-navigation:/masalah-excel/:/panduan/",
+      "passed": true,
+      "detail": "setiap arsip resource harus menyediakan jalur ke ketiga jenis resource"
+    },
+    {
+      "id": "archive-navigation:/masalah-excel/:/rumus-excel/",
+      "passed": true,
+      "detail": "setiap arsip resource harus menyediakan jalur ke ketiga jenis resource"
+    },
+    {
+      "id": "archive-navigation:/masalah-excel/:/masalah-excel/",
+      "passed": true,
+      "detail": "setiap arsip resource harus menyediakan jalur ke ketiga jenis resource"
+    },
+    {
+      "id": "desktop-navigation:learning-hub",
+      "passed": true,
+      "detail": "menu desktop Belajar Excel harus menuju hub"
+    },
+    {
+      "id": "mobile-navigation:learning-hub",
+      "passed": true,
+      "detail": "navigasi bawah mobile harus menuju hub"
+    },
+    {
+      "id": "xml-sitemap:exists",
+      "passed": true,
+      "detail": "sitemap.xml harus terbentuk"
+    },
+    {
+      "id": "xml-sitemap:/templates/",
+      "passed": true,
+      "detail": "entry point publik harus berada di XML sitemap"
+    },
+    {
+      "id": "xml-sitemap:/kategori/",
+      "passed": true,
+      "detail": "entry point publik harus berada di XML sitemap"
+    },
+    {
+      "id": "xml-sitemap:/belajar-excel/",
+      "passed": true,
+      "detail": "entry point publik harus berada di XML sitemap"
+    },
+    {
+      "id": "xml-sitemap:/panduan/",
+      "passed": true,
+      "detail": "entry point publik harus berada di XML sitemap"
+    },
+    {
+      "id": "xml-sitemap:/rumus-excel/",
+      "passed": true,
+      "detail": "entry point publik harus berada di XML sitemap"
+    },
+    {
+      "id": "xml-sitemap:/masalah-excel/",
+      "passed": true,
+      "detail": "entry point publik harus berada di XML sitemap"
+    },
+    {
+      "id": "xml-sitemap:no-duplicates",
+      "passed": true,
+      "detail": "XML sitemap tidak boleh berisi URL duplikat"
+    },
+    {
+      "id": "html-sitemap:learning-hub",
+      "passed": true,
+      "detail": "HTML sitemap harus menautkan hub Belajar Excel"
+    },
+    {
+      "id": "single-canonical:404.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:belajar-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:cara-kami-menguji-template\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:disclaimer\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:kategori\\bisnis-umkm\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:kategori\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:kategori\\keuangan-pribadi\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:kategori\\pendidikan\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:kategori\\produktivitas-kerja\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:kategori\\rumah-tangga-acara\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:kebijakan-cookie\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:kebijakan-editorial\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:koleksi\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:koleksi\\koleksi-administrasi-umkm\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:koleksi\\koleksi-template-keuangan-pribadi\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:koleksi\\koleksi-template-produktivitas-kerja\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:kontak\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:lisensi-template\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\file-kompatibilitas\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\file-kompatibilitas\\masalah-file-excel-berantakan-google-sheets\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\format-data\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\format-data\\masalah-angka-tidak-terjumlah-format-teks\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\format-data\\masalah-dropdown-data-validation-tidak-muncul\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\format-data\\masalah-tanggal-salah-format-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\formula\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\formula\\masalah-sumifs-countifs-hasil-nol\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\formula\\masalah-vlookup-xlookup-na\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:masalah-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\dasar-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\dasar-excel\\panduan-budget-pribadi-sebagai-catatan\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\dasar-excel\\panduan-dropdown-data-validation-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\dasar-excel\\panduan-excel-table-vs-range\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\dasar-excel\\panduan-memilih-template-excel-umkm\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\dasar-excel\\panduan-structured-references-excel-table\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\pengolahan-data\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\pengolahan-data\\panduan-arus-kas-sederhana-umkm\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\pengolahan-data\\panduan-audit-rumus-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\pengolahan-data\\panduan-dashboard-sederhana-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\pengolahan-data\\panduan-dropdown-dinamis-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\pengolahan-data\\panduan-excel-table-untuk-template\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\pengolahan-data\\panduan-rekap-penjualan-harian-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\produktivitas\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\produktivitas\\panduan-checklist-kualitas-file-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:panduan\\produktivitas\\panduan-file-excel-rapi-untuk-dipakai-rutin\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:privasi\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:request-template\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\logika\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\logika\\rumus-if-ifs-status-prioritas\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\logika\\rumus-iferror-template-rapi\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\lookup-referensi\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\lookup-referensi\\rumus-filter-daftar-dinamis\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\lookup-referensi\\rumus-xlookup-vlookup-data\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\matematika\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\matematika\\rumus-countifs-dashboard-status\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:rumus-excel\\matematika\\rumus-sumifs-rekap-kategori\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:sitemap\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:syarat-ketentuan\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\bisnis-umkm\\template-arus-kas-umkm\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\bisnis-umkm\\template-follow-up-pelanggan-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\bisnis-umkm\\template-invoice-penjualan-umkm\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\bisnis-umkm\\template-laporan-penjualan-harian-umkm\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\bisnis-umkm\\template-pembukuan-pengeluaran-usaha\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\bisnis-umkm\\template-stok-barang-excel-gratis\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\keuangan-pribadi\\template-budget-bulanan\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\keuangan-pribadi\\template-pengeluaran-harian\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\keuangan-pribadi\\template-target-tabungan\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\keuangan-pribadi\\template-tracker-cicilan-hutang\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\produktivitas-kerja\\template-jadwal-shift-sederhana\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\produktivitas-kerja\\template-kalender-planner-2026\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\produktivitas-kerja\\template-notulen-rapat-action-item\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\produktivitas-kerja\\template-task-tracker-kanban-excel\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:templates\\produktivitas-kerja\\template-tracker-proyek-sederhana\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    },
+    {
+      "id": "single-canonical:tentang\\index.html",
+      "passed": true,
+      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
+    }
+  ]
+}

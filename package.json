@@ -22,13 +22,14 @@
     "qa:workbook-visuals": "python scripts/generate-workbook-visual-review.py",
     "prepare:owner-review": "node scripts/generate-owner-approval-packs.mjs",
     "audit:guides": "node scripts/audit-draft-guides.mjs",
+    "audit:discovery": "node scripts/audit-site-discovery.mjs",
     "test:guides": "node scripts/test-guide-fixtures.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
     "observe:release": "node scripts/observe-release.mjs",
     "smoke:browser": "node scripts/browser-smoke.mjs",
     "forms:production": "node scripts/submit-production-forms.mjs",
     "audit:batch3": "node scripts/audit-batch3-portfolio.mjs",
-    "validate": "node scripts/validate-build.mjs && pnpm run test:forms && pnpm run test:resources && pnpm run test:workflow && pnpm run test:readiness"
+    "validate": "node scripts/validate-build.mjs && pnpm run audit:discovery && pnpm run test:forms && pnpm run test:resources && pnpm run test:workflow && pnpm run test:readiness"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
