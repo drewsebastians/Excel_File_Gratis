@@ -35,7 +35,6 @@ const description = "Daftar halaman utama, kategori, dan template Excel gratis y
           <li><a href="/templates/">Semua Template</a></li>
           <li><a href="/kategori/">Semua Kategori</a></li>
           <li><a href="/belajar-excel/">Belajar Excel</a></li>
-          <li><a href="/struktur-konten/">Struktur Konten</a></li>
           {availableResources.map((kind) => <li><a href={getResourceHubUrl(kind)}>{resourceKinds[kind].label}</a></li>)}
         </ul>
       </section>
