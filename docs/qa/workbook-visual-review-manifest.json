@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-07-15T01:22:50.189554+00:00",
+  "source_run_url": "https://github.com/drewsebastians/Excel_File_Gratis/actions/runs/29381410549",
+  "source_artifact": "workbook-visual-review-6f3cb9ef6be4cc3093f645b9199128a24e82b5bf",
+  "renderer": "LibreOffice 24.2.7.2 with Poppler on GitHub Actions Ubuntu",
+  "total_workbooks": 20,
+  "render_generated": 20,
+  "render_failed": 0,
+  "visual_review_status": "pending_owner_review",
+  "workbooks": [
+    {"slug":"template-absensi-karyawan-sederhana","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-checklist-acara","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-daftar-aset-inventaris-kantor","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-daftar-belanja-rumah-tangga","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-daftar-harga-produk-jasa","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-daftar-kehadiran-acara","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-daftar-piutang-pelanggan","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-database-pelanggan-sederhana","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-form-permintaan-pembelian","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-jadwal-belajar-siswa","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-jadwal-kerja-mingguan","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-jadwal-pembayaran-tagihan","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-kalender-konten-media-sosial","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-kas-kecil-excel","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-laba-rugi-sederhana-umkm","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-purchase-order-sederhana","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-rekap-penjualan-bulanan","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-rekap-pesanan-pelanggan","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-rencana-proyek-sederhana","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9},
+    {"slug":"template-surat-jalan-excel","structural_qa_status":"passed","render_status":"render_generated","visual_review_status":"pending_owner_review","rendered_page_count":9}
+  ]
+}

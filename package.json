@@ -20,6 +20,7 @@
     "test:readiness": "node scripts/test-draft-readiness.mjs",
     "qa:workbooks": "python scripts/audit-draft-workbooks.py",
     "qa:workbook-visuals": "python scripts/generate-workbook-visual-review.py",
+    "prepare:owner-review": "node scripts/generate-owner-approval-packs.mjs",
     "audit:guides": "node scripts/audit-draft-guides.mjs",
     "test:guides": "node scripts/test-guide-fixtures.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
