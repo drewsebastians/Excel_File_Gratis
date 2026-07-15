@@ -1,7 +1,8 @@
 ---
 import Breadcrumbs from "./Breadcrumbs.astro";
 import ResourceCard from "./ResourceCard.astro";
-import type { ResourceEntry, ResourceKind } from "../lib/resources";
+import LearningResourceNav from "./LearningResourceNav.astro";
+import type { ArticleResourceKind, ResourceEntry, ResourceKind } from "../lib/resources";
 
 interface Props {
   kind: ResourceKind;
@@ -19,6 +20,7 @@ const populated = entries.length > 0;
     <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: title }]} />
     <h1>{title}</h1>
     <p>{description}</p>
+    {kind !== "resourceCollections" && <LearningResourceNav activeKind={kind as ArticleResourceKind} />}
   </header>
   {populated ? (
     <div class="resource-grid">{entries.map((entry) => <ResourceCard entry={entry} kind={kind} />)}</div>

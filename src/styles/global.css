@@ -1289,6 +1289,40 @@ textarea {
 
 .content-updated { margin: 12px 0 0; color: var(--text-muted); font-size: 14px; }
 .resource-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+
+.learning-resource-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.learning-resource-nav a {
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-control);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.learning-resource-nav a:hover,
+.learning-resource-nav a[aria-current="page"] {
+  background: var(--surface-low);
+  border-color: var(--primary);
+}
+
+.learning-resource-section {
+  border-top: 1px solid var(--outline);
+  margin-top: 32px;
+  padding-top: 28px;
+}
+
+.learning-resource-section .section-heading > div > p {
+  color: var(--text-muted);
+  margin: 6px 0 0;
+}
 .resource-card { min-width: 0; overflow: hidden; border: 1px solid var(--outline); border-radius: var(--radius-card); background: var(--surface-lowest); }
 .resource-card__body { display: grid; gap: 10px; padding: 16px; }
 .resource-card__media { display: block; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--outline); background: var(--surface-high); }
