@@ -1,16 +1,16 @@
 # Next Wave Recommendation
 
-## Recommended Next Step
+Current evidence supports observation, not automatic publication. The remaining draft portfolio contains 20 templates and 15 guides.
 
-Jangan publish wave berikutnya otomatis sebelum visual QA workbook selesai. Kandidat kecil setelah QA: `template-checklist-acara`, `template-daftar-belanja-rumah-tangga`, dan `template-jadwal-belajar-siswa`, bila kategori tetap memiliki deskripsi dan journey yang cukup.
+## Candidate Preparation
 
-## Classification
+Low-risk template candidates are Checklist Acara, Daftar Belanja Rumah Tangga, Jadwal Belajar Siswa, Kalender Konten Media Sosial, and Rencana Proyek Sederhana. Their OOXML structural QA passed, but all require desktop visual QA and owner release approval before publication.
 
-- Ready for next low-risk release: belum ada; seluruh template kandidat masih visual QA `not_started`.
-- Technically ready but manual owner approval required: panduan dan template low/medium-risk yang belum memiliki release approval wave.
-- Needs workbook repair or QA: seluruh 20 workbook draft sampai evidence visual QA tercatat.
-- Needs editorial/relation review: resource yang audit register masih menandai `in_progress` atau `failed`.
-- Defer pending evidence: semua Search Console, mailbox, traffic, download, dan browser-runtime evidence.
-- Sensitive owner-gated: finance, HR, payroll, procurement, tax, legal, accounting, compliance, customer-data, and formal business-document templates.
+## Gates
 
-Tidak ada resource tambahan yang dipublikasikan dalam RUN 8.
+- 20 draft workbooks: structural QA passed; visual QA remains `not_started`.
+- 13 high-risk templates: retain `manual_owner_gate` for finance, HR, customer data, procurement, accounting, compliance, payroll, tax, legal, or formal business-document impact.
+- 15 draft guides: technical checks are available, but editorial owner release acceptance remains required.
+- Search Console, traffic, download, mailbox, OAuth, and browser-runtime evidence remain owner-only or unavailable.
+
+No draft should be changed to `draft: false` until all applicable release gates are satisfied.

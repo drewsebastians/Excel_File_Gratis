@@ -10,6 +10,7 @@ const registerPath = path.join(root, "docs", "draft-content-readiness.csv");
 const reportPath = path.join(qaRoot, "draft-readiness-audit.json");
 const guideAuditPath = path.join(qaRoot, "draft-guides-audit.json");
 const guideAudit = existsSync(guideAuditPath) ? JSON.parse(readFileSync(guideAuditPath, "utf8")) : undefined;
+const workbookQaRoot = path.join(qaRoot, "draft-workbooks");
 
 const allowedStatuses = new Set([
   "not_started",
@@ -101,6 +102,14 @@ function asList(value) {
   return Array.isArray(value) ? value : [];
 }
 
+function workbookQaFor(templateSlug) {
+  const workbookSlug = templateSlug.replace(/^template-/, "");
+  const reportPath = path.join(workbookQaRoot, `template-${workbookSlug}.json`);
+  if (!existsSync(reportPath)) return undefined;
+  const report = JSON.parse(readFileSync(reportPath, "utf8"));
+  return report.slug === workbookSlug ? report : undefined;
+}
+
 function csvEscape(value) {
   const text = value == null ? "" : String(value);
   return /[",\r\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
@@ -154,9 +163,7 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
     const risk = riskFor(resourceType, slug || path.basename(filePath, ".md"));
     const previewPath = data.preview_image ? path.join(root, "public", data.preview_image.replace(/^\//, "")) : "";
     const downloadPath = resourceType === "template" && data.file_name ? path.join(root, "public", "downloads", data.file_name) : "";
-    const qaFiles = resourceType === "template" && data.file_name
-      ? allFiles(qaRoot).filter((candidate) => candidate.endsWith(`${data.file_name}.qa.json`))
-      : [];
+    const workbookQa = resourceType === "template" ? workbookQaFor(slug || "") : undefined;
     const relations = [
       ...asList(data.related_templates),
       ...asList(data.related_guides),
@@ -184,9 +191,9 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
       preview_path: data.preview_image ? relative(previewPath) : "not_applicable",
       risk_level: risk,
       content_status: isPublishedWave ? "published" : guideVerified ? "passed" : "in_progress",
-      workbook_qa_status: resourceType === "template" ? (qaFiles.length ? "passed" : "not_started") : "not_applicable",
+      workbook_qa_status: resourceType === "template" ? (workbookQa?.status === "passed" ? "passed" : workbookQa ? "failed" : "not_started") : "not_applicable",
       visual_qa_status: data.preview_image ? "not_started" : "not_applicable",
-      technical_verification_status: guideVerified ? "passed" : "in_progress",
+      technical_verification_status: resourceType === "template" ? (workbookQa?.status === "passed" ? "passed" : workbookQa ? "failed" : "in_progress") : guideVerified ? "passed" : "in_progress",
       editorial_review_status: isPublishedWave ? "passed" : "in_progress",
       relation_review_status: missingRelations.length ? "failed" : (guideVerified ? "passed" : "in_progress"),
       seo_review_status: guideVerified ? "passed" : "in_progress",
@@ -199,6 +206,8 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
       search_console_status: isPublishedWave ? "manual_owner_gate" : "not_applicable",
       notes: isPublishedWave
         ? "Published in first low-risk guide wave; production smoke is recorded after deployment."
+        : resourceType === "template" && workbookQa?.status === "passed"
+        ? "OOXML structural QA passed; desktop visual inspection and owner release approval remain open."
         : guideVerified
         ? "Guide rewrite and automated metadata, relation, technical, and draft-leakage checks passed; owner editorial approval and production smoke remain open."
         : resourceType === "template"
@@ -215,7 +224,7 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
     if (resourceType === "template" && !existsSync(downloadPath)) errors.push(`${relative(filePath)}: missing workbook ${relative(downloadPath)}`);
     if (inconsistentFileName) errors.push(`${relative(filePath)}: file_name must match ${slug}.xlsx`);
     if (missingRelations.length) errors.push(`${relative(filePath)}: broken relations ${missingRelations.join(", ")}`);
-    if (qaFiles.length === 0 && resourceType === "template") findings.push(`${relative(filePath)}: workbook QA evidence is missing`);
+    if (!workbookQa && resourceType === "template") findings.push(`${relative(filePath)}: workbook QA evidence is missing`);
     if (!isPublishedWave && existsSync(routePath)) errors.push(`${relative(filePath)}: draft generated public route ${relative(routePath)}`);
     if (!isPublishedWave && publicHtml) errors.push(`${relative(filePath)}: draft slug appears in generated HTML/XML`);
   }

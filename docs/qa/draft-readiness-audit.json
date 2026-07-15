@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T09:37:05.411Z",
+  "generatedAt": "2026-07-15T00:45:19.504Z",
   "mainSha": "local-working-tree",
   "totalDrafts": 35,
   "totalPublishedWave": 5,
@@ -83,28 +83,7 @@
       "resourceType": "template"
     }
   ],
-  "missingWorkbookQaEvidence": [
-    "src/content/templates/template-absensi-karyawan-sederhana.md: workbook QA evidence is missing",
-    "src/content/templates/template-checklist-acara.md: workbook QA evidence is missing",
-    "src/content/templates/template-daftar-aset-inventaris-kantor.md: workbook QA evidence is missing",
-    "src/content/templates/template-daftar-belanja-rumah-tangga.md: workbook QA evidence is missing",
-    "src/content/templates/template-daftar-harga-produk-jasa.md: workbook QA evidence is missing",
-    "src/content/templates/template-daftar-kehadiran-acara.md: workbook QA evidence is missing",
-    "src/content/templates/template-daftar-piutang-pelanggan.md: workbook QA evidence is missing",
-    "src/content/templates/template-database-pelanggan-sederhana.md: workbook QA evidence is missing",
-    "src/content/templates/template-form-permintaan-pembelian.md: workbook QA evidence is missing",
-    "src/content/templates/template-jadwal-belajar-siswa.md: workbook QA evidence is missing",
-    "src/content/templates/template-jadwal-kerja-mingguan.md: workbook QA evidence is missing",
-    "src/content/templates/template-jadwal-pembayaran-tagihan.md: workbook QA evidence is missing",
-    "src/content/templates/template-kalender-konten-media-sosial.md: workbook QA evidence is missing",
-    "src/content/templates/template-kas-kecil-excel.md: workbook QA evidence is missing",
-    "src/content/templates/template-laba-rugi-sederhana-umkm.md: workbook QA evidence is missing",
-    "src/content/templates/template-purchase-order-sederhana.md: workbook QA evidence is missing",
-    "src/content/templates/template-rekap-penjualan-bulanan.md: workbook QA evidence is missing",
-    "src/content/templates/template-rekap-pesanan-pelanggan.md: workbook QA evidence is missing",
-    "src/content/templates/template-rencana-proyek-sederhana.md: workbook QA evidence is missing",
-    "src/content/templates/template-surat-jalan-excel.md: workbook QA evidence is missing"
-  ],
+  "missingWorkbookQaEvidence": [],
   "errors": [],
   "status": "passed_with_open_readiness_gates",
   "registerPath": "docs/draft-content-readiness.csv"

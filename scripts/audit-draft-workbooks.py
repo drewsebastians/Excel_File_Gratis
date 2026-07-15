@@ -153,7 +153,7 @@ def main():
     (OUT / "visual-inspection.md").write_text("""# Visual Inspection\n\nAll 20 draft workbooks were structurally audited. A spreadsheet renderer (Excel or LibreOffice) was not available in the execution environment, so sheet-by-sheet rendered visual inspection is recorded as `not_run` and remains an owner gate. Preview assets are checked for existence and remain unchanged.\n\nRequired desktop follow-up: open each sheet, check clipping, print area, freeze panes, input/formula distinction, chart placement, and preview agreement before publication.\n""", encoding="utf-8")
     readiness = ROOT / "docs" / "draft-content-readiness.csv"
     rows = list(csv.DictReader(readiness.open(encoding="utf-8")))
-    by_slug = {x["slug"]: x for x in reports}
+    by_slug = {f"template-{x['slug']}": x for x in reports}
     for row in rows:
         if row["resource_type"] != "template" or row["slug"] not in by_slug:
             continue
