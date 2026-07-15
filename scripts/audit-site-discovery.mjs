@@ -40,7 +40,7 @@ if (!existsSync(dist)) {
   process.exit(1);
 }
 
-const publicEntryPoints = ["/", "/templates/", "/kategori/", "/belajar-excel/", "/panduan/", "/rumus-excel/", "/masalah-excel/", "/koleksi/", "/sitemap/"];
+const publicEntryPoints = ["/", "/templates/", "/kategori/", "/belajar-excel/", "/struktur-konten/", "/panduan/", "/rumus-excel/", "/masalah-excel/", "/koleksi/", "/sitemap/"];
 const resourceArchives = ["/panduan/", "/rumus-excel/", "/masalah-excel/"];
 
 for (const route of publicEntryPoints) {
@@ -70,7 +70,7 @@ record("mobile-navigation:learning-hub", bottomNavSource.includes('href: "/belaj
 const sitemapPath = join(dist, "sitemap.xml");
 const sitemap = existsSync(sitemapPath) ? read(sitemapPath) : "";
 record("xml-sitemap:exists", existsSync(sitemapPath), "sitemap.xml harus terbentuk");
-for (const route of ["/templates/", "/kategori/", "/belajar-excel/", ...resourceArchives]) {
+for (const route of ["/templates/", "/kategori/", "/belajar-excel/", "/struktur-konten/", ...resourceArchives]) {
   record(`xml-sitemap:${route}`, sitemap.includes(`${baseUrl}${route}`), "entry point publik harus berada di XML sitemap");
 }
 const sitemapLocs = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
@@ -78,6 +78,7 @@ record("xml-sitemap:no-duplicates", sitemapLocs.length === new Set(sitemapLocs).
 
 const htmlSitemap = routeExists("/sitemap/") ? read(htmlPath("/sitemap/")) : "";
 record("html-sitemap:learning-hub", hasHref(htmlSitemap, "/belajar-excel/"), "HTML sitemap harus menautkan hub Belajar Excel");
+record("html-sitemap:content-hierarchy", hasHref(htmlSitemap, "/struktur-konten/"), "HTML sitemap harus menautkan Struktur Konten");
 
 const allPublicHtml = collectHtmlFiles(dist).filter((file) => relative(dist, file).split(/[\\/]/)[0] !== "admin");
 for (const file of allPublicHtml) {

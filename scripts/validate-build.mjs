@@ -69,13 +69,13 @@ const resourceHubs = [
     .filter((file) => file.endsWith(".md"))
     .some((file) => !/^draft:\s*true\b/m.test(read(file))),
 }));
-const expectedRoutes = ["/", "/templates/", "/kategori/", "/belajar-excel/", "/sitemap/", "/request-template/", "/404/", ...trustRoutes, ...resourceHubs.map((hub) => hub.route)];
+const expectedRoutes = ["/", "/templates/", "/kategori/", "/belajar-excel/", "/struktur-konten/", "/sitemap/", "/request-template/", "/404/", ...trustRoutes, ...resourceHubs.map((hub) => hub.route)];
 for (const route of expectedRoutes) assert(routeExists(route), `Route tidak terbentuk: ${route}`);
 
 const sitemapPath = join(dist, "sitemap.xml");
 assert(existsSync(sitemapPath), "sitemap.xml tidak terbentuk.");
 const sitemap = existsSync(sitemapPath) ? read(sitemapPath) : "";
-for (const route of ["/", "/templates/", "/kategori/", "/belajar-excel/", "/sitemap/", ...trustRoutes]) {
+for (const route of ["/", "/templates/", "/kategori/", "/belajar-excel/", "/struktur-konten/", "/sitemap/", ...trustRoutes]) {
   assert(sitemap.includes(`https://excelgratis.my.id${route}`), `Sitemap belum memuat ${route}`);
 }
 
