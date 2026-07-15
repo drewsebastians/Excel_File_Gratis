@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T03:57:02.489Z",
+  "generatedAt": "2026-07-15T04:09:20.501Z",
   "status": "passed",
   "scope": "Information architecture, navigation discoverability, canonical, and sitemap entry points.",
   "checks": [
@@ -40,16 +40,6 @@
     },
     {
       "id": "canonical:/belajar-excel/",
-      "passed": true,
-      "detail": "canonical harus menunjuk ke route publik yang sama"
-    },
-    {
-      "id": "route:/struktur-konten/",
-      "passed": true,
-      "detail": "route tersedia"
-    },
-    {
-      "id": "canonical:/struktur-konten/",
       "passed": true,
       "detail": "canonical harus menunjuk ke route publik yang sama"
     },
@@ -194,11 +184,6 @@
       "detail": "entry point publik harus berada di XML sitemap"
     },
     {
-      "id": "xml-sitemap:/struktur-konten/",
-      "passed": true,
-      "detail": "entry point publik harus berada di XML sitemap"
-    },
-    {
       "id": "xml-sitemap:/panduan/",
       "passed": true,
       "detail": "entry point publik harus berada di XML sitemap"
@@ -222,11 +207,6 @@
       "id": "html-sitemap:learning-hub",
       "passed": true,
       "detail": "HTML sitemap harus menautkan hub Belajar Excel"
-    },
-    {
-      "id": "html-sitemap:content-hierarchy",
-      "passed": true,
-      "detail": "HTML sitemap harus menautkan Struktur Konten"
     },
     {
       "id": "single-canonical:404.html",
@@ -520,11 +500,6 @@
     },
     {
       "id": "single-canonical:sitemap\\index.html",
-      "passed": true,
-      "detail": "setiap halaman publik harus memiliki tepat satu canonical"
-    },
-    {
-      "id": "single-canonical:struktur-konten\\index.html",
       "passed": true,
       "detail": "setiap halaman publik harus memiliki tepat satu canonical"
     },

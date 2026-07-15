@@ -791,56 +791,6 @@ textarea {
   margin-top: 8px;
 }
 
-.content-hierarchy {
-  display: grid;
-  gap: 0;
-  border-top: 1px solid var(--outline);
-}
-
-.content-hierarchy__branch {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--outline);
-}
-
-.content-hierarchy__branch h2 {
-  margin: 0;
-  font-family: "Plus Jakarta Sans", Inter, Arial, sans-serif;
-  font-size: 21px;
-  letter-spacing: 0;
-}
-
-.content-hierarchy__branch h2 a {
-  text-decoration: none;
-}
-
-.content-hierarchy__branch p {
-  max-width: 680px;
-  margin: 6px 0 0;
-  color: var(--text-muted);
-}
-
-.content-hierarchy__branch ul {
-  display: grid;
-  gap: 8px;
-  margin: 14px 0 0;
-  padding-left: 18px;
-}
-
-.content-hierarchy__branch ul ul {
-  margin: 8px 0 0;
-  border-left: 1px solid var(--outline);
-}
-
-.content-hierarchy__branch a {
-  font-weight: 700;
-}
-
-.content-hierarchy__branch span {
-  color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 600;
-}
-
 .trust-section {
   border-top: 1px solid var(--outline);
 }
