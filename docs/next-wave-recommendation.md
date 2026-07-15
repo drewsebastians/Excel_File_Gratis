@@ -1,16 +1,50 @@
 # Next Wave Recommendation
 
-Current evidence supports observation, not automatic publication. The remaining draft portfolio contains 20 templates and 15 guides.
+Evidence recalculated on 2026-07-15: 15 draft guides have technical audit status `passed`; 20 draft templates have structural QA `passed`, a generated LibreOffice render, and `pending_owner_review` visual status. No status here authorizes publication.
 
-## Candidate Preparation
+## Ready After Owner Editorial Approval
 
-Low-risk template candidates are Checklist Acara, Daftar Belanja Rumah Tangga, Jadwal Belajar Siswa, Kalender Konten Media Sosial, and Rencana Proyek Sederhana. Their OOXML structural QA passed, but all require desktop visual QA and owner release approval before publication.
+- `panduan-conditional-formatting-sebagai-alarm`: approve example accuracy, Excel version wording, Google Sheets limitation, and editorial release.
+- `panduan-dynamic-array-spill-excel`: approve example accuracy, Excel version wording, Google Sheets limitation, and editorial release.
+- `panduan-sparklines-excel`: approve example accuracy, Excel version wording, Google Sheets limitation, and editorial release.
+- `panduan-textsplit-excel`: approve example accuracy, Excel version wording, Google Sheets limitation, and editorial release.
+- `panduan-unique-sort-excel`: approve example accuracy, Excel version wording, Google Sheets limitation, and editorial release.
 
-## Gates
+## Ready After Workbook Visual Approval
 
-- 20 draft workbooks: structural QA passed; visual QA remains `not_started`.
-- 13 high-risk templates: retain `manual_owner_gate` for finance, HR, customer data, procurement, accounting, compliance, payroll, tax, legal, or formal business-document impact.
-- 15 draft guides: technical checks are available, but editorial owner release acceptance remains required.
-- Search Console, traffic, download, mailbox, OAuth, and browser-runtime evidence remain owner-only or unavailable.
+- `template-checklist-acara`: confirm the original workbook in Microsoft Excel, then approve release.
+- `template-daftar-belanja-rumah-tangga`: confirm the original workbook in Microsoft Excel, then approve release.
+- `template-jadwal-belajar-siswa`: confirm the original workbook in Microsoft Excel, then approve release.
+- `template-kalender-konten-media-sosial`: confirm the original workbook in Microsoft Excel, then approve release.
 
-No draft should be changed to `draft: false` until all applicable release gates are satisfied.
+## Manual Sensitive-Resource Approval Required
+
+- `template-absensi-karyawan-sederhana`: HR; attendance data.
+- `template-daftar-aset-inventaris-kantor`: accounting or asset records.
+- `template-daftar-harga-produk-jasa`: customer or commercial pricing.
+- `template-daftar-piutang-pelanggan`: finance and customer data.
+- `template-database-pelanggan-sederhana`: customer data.
+- `template-form-permintaan-pembelian`: procurement.
+- `template-jadwal-kerja-mingguan`: HR.
+- `template-jadwal-pembayaran-tagihan`: finance.
+- `template-kas-kecil-excel`: accounting.
+- `template-laba-rugi-sederhana-umkm`: accounting.
+- `template-purchase-order-sederhana`: procurement.
+- `template-rekap-pesanan-pelanggan`: customer data.
+- `template-surat-jalan-excel`: formal business document.
+
+## Technical Correction Required
+
+- None identified by current structural workbook QA or guide technical audit. A later owner failure moves the affected resource here.
+
+## Category Too Thin
+
+- No proposed first-wave resource needs a new category. Do not activate a draft-only category with a single isolated item.
+
+## Defer Pending External Evidence
+
+- Search Console, mailbox delivery, Decap OAuth, traffic, download metrics, and browser-runtime evidence remain owner-only. They do not replace the explicit approvals above.
+
+## Exact Decisions Required
+
+Use [approval-handoff.md](manual-review/approval-handoff.md). Approve only exact slugs from the two proposed groups; every other draft remains unpublished.
