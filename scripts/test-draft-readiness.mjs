@@ -35,7 +35,9 @@ for (const template of draftTemplates) {
   const row = rows.find((candidate) => candidate.slug === template.slug);
   if (!row) fail(`missing readiness row for ${template.slug}`);
   if (row.workbook_qa_status !== "passed" || row.technical_verification_status !== "passed") fail(`structural QA was not recognized for ${template.slug}`);
-  if (row.visual_qa_status === "passed") fail(`visual QA must remain unapproved for ${template.slug}`);
+  if (!["not_started", "pending_owner_review", "owner_failed"].includes(row.visual_qa_status)) fail(`unsupported visual QA state for ${template.slug}`);
+  if (!row.render_status) fail(`missing render status for ${template.slug}`);
+  if (row.visual_qa_status === "owner_passed") fail(`owner visual QA must not be inferred for ${template.slug}`);
   if (row.owner_review_required !== "yes") fail(`owner review removed for ${template.slug}`);
   if (row.risk_level === "high" && row.release_status !== "manual_owner_gate") fail(`high-risk gate removed for ${template.slug}`);
   const route = path.join(root, "dist", "templates", template.category, template.slug, "index.html");
