@@ -11,6 +11,11 @@ const reportPath = path.join(qaRoot, "draft-readiness-audit.json");
 const guideAuditPath = path.join(qaRoot, "draft-guides-audit.json");
 const guideAudit = existsSync(guideAuditPath) ? JSON.parse(readFileSync(guideAuditPath, "utf8")) : undefined;
 const workbookQaRoot = path.join(qaRoot, "draft-workbooks");
+const visualReviewManifestPath = path.join(qaRoot, "workbook-visual-review-manifest.json");
+const visualReviewManifest = existsSync(visualReviewManifestPath)
+  ? JSON.parse(readFileSync(visualReviewManifestPath, "utf8"))
+  : undefined;
+const visualReviewBySlug = new Map((visualReviewManifest?.workbooks || []).map((entry) => [entry.slug, entry]));
 
 const allowedStatuses = new Set([
   "not_started",
@@ -21,6 +26,11 @@ const allowedStatuses = new Set([
   "manual_owner_gate",
   "ready_for_release",
   "published",
+  "render_generated",
+  "render_failed",
+  "pending_owner_review",
+  "owner_passed",
+  "owner_failed",
 ]);
 
 const highRiskTerms = [
@@ -164,6 +174,7 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
     const previewPath = data.preview_image ? path.join(root, "public", data.preview_image.replace(/^\//, "")) : "";
     const downloadPath = resourceType === "template" && data.file_name ? path.join(root, "public", "downloads", data.file_name) : "";
     const workbookQa = resourceType === "template" ? workbookQaFor(slug || "") : undefined;
+    const visualReview = resourceType === "template" ? visualReviewBySlug.get(slug) : undefined;
     const relations = [
       ...asList(data.related_templates),
       ...asList(data.related_guides),
@@ -192,7 +203,8 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
       risk_level: risk,
       content_status: isPublishedWave ? "published" : guideVerified ? "passed" : "in_progress",
       workbook_qa_status: resourceType === "template" ? (workbookQa?.status === "passed" ? "passed" : workbookQa ? "failed" : "not_started") : "not_applicable",
-      visual_qa_status: data.preview_image ? "not_started" : "not_applicable",
+      render_status: resourceType === "template" ? (visualReview?.render_status || "not_started") : "not_applicable",
+      visual_qa_status: resourceType === "template" ? (visualReview?.visual_review_status || "pending_owner_review") : "not_applicable",
       technical_verification_status: resourceType === "template" ? (workbookQa?.status === "passed" ? "passed" : workbookQa ? "failed" : "in_progress") : guideVerified ? "passed" : "in_progress",
       editorial_review_status: isPublishedWave ? "passed" : "in_progress",
       relation_review_status: missingRelations.length ? "failed" : (guideVerified ? "passed" : "in_progress"),
@@ -207,7 +219,7 @@ for (const [resourceType, directory] of Object.entries(collectionDirectories)) {
       notes: isPublishedWave
         ? "Published in first low-risk guide wave; production smoke is recorded after deployment."
         : resourceType === "template" && workbookQa?.status === "passed"
-        ? "OOXML structural QA passed; desktop visual inspection and owner release approval remain open."
+        ? `OOXML structural QA passed; render status: ${visualReview?.render_status || "not_started"}; Microsoft Excel owner visual review remains open.`
         : guideVerified
         ? "Guide rewrite and automated metadata, relation, technical, and draft-leakage checks passed; owner editorial approval and production smoke remain open."
         : resourceType === "template"
@@ -239,14 +251,14 @@ for (const field of ["title", "slug"]) {
 }
 
 for (const entry of allEntries) {
-  for (const field of ["content_status", "workbook_qa_status", "visual_qa_status", "technical_verification_status", "editorial_review_status", "relation_review_status", "seo_review_status", "release_status", "production_smoke_status", "search_console_status"]) {
+  for (const field of ["content_status", "workbook_qa_status", "render_status", "visual_qa_status", "technical_verification_status", "editorial_review_status", "relation_review_status", "seo_review_status", "release_status", "production_smoke_status", "search_console_status"]) {
     if (!allowedStatuses.has(entry[field])) errors.push(`${entry.draft_path}: unsupported ${field} value ${entry[field]}`);
   }
 }
 
 const csvColumns = [
   "id", "resource_type", "title", "slug", "category", "draft_path", "download_path", "preview_path", "risk_level",
-  "content_status", "workbook_qa_status", "visual_qa_status", "technical_verification_status", "editorial_review_status",
+  "content_status", "workbook_qa_status", "render_status", "visual_qa_status", "technical_verification_status", "editorial_review_status",
   "relation_review_status", "seo_review_status", "owner_review_required", "owner_review_reason", "publication_wave",
   "planned_publish_date", "release_status", "production_smoke_status", "search_console_status", "notes",
 ];

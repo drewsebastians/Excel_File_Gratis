@@ -1,7 +1,7 @@
 # Current Project Status
 
 Audit date: 2026-07-15  
-Audited main: `49b9d07cb69db2155b176729872f09acdf3b5458`
+Audited main: `c85a54ad3aee78cd73ab392cecb56e4a9cdb3695`
 
 ## Current Inventory
 
@@ -34,6 +34,7 @@ The first low-risk guide wave is published: Excel Table vs Range, Structured Ref
 - Automated production evidence: deployment through `.github/workflows/deploy.yml` to Cloudflare Worker `excelfilegratis` is active. Production smoke passed `93/93`; release observation checked 43 public resources with zero errors.
 - Workbook structural QA: all 20 draft workbooks passed OOXML structural checks. Their readiness rows record `workbook_qa_status=passed` and `technical_verification_status=passed`.
 - Visual QA: all 20 workbook rows remain `not_started`; structural QA does not approve visual quality.
+- Workbook render review: a manual GitHub Actions pipeline renders all draft workbooks with LibreOffice and stores PDF/PNG evidence as a time-limited artifact. Render output is supplementary only; Microsoft Excel owner review remains required.
 - Browser QA: automated browser runtime evidence remains unavailable/blocked in the local Codex browser environment. Manual desktop/mobile review remains open.
 - Web3Forms: form pages are reachable, but provider delivery returned HTTP 403 in the last synthetic attempt; mailbox delivery is not verified.
 - Owner-only/time-dependent evidence: Search Console indexing and performance, mailbox delivery, Decap OAuth, Cloudflare dashboard history, and final visual acceptance remain pending owner credentials or review.
