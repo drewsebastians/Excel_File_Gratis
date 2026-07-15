@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPopulatedCategories } from "../../lib/templates";
+import { getPublishedResources, getResourceCategories, getResourceHubUrl, resourceKinds } from "../../lib/resources";
+
+const allTemplates = await getCollection("templates");
+const templateCategories = getPopulatedCategories(allTemplates);
+const guides = getPublishedResources(await getCollection("guides"));
+const formulas = getPublishedResources(await getCollection("formulas"));
+const troubleshooting = getPublishedResources(await getCollection("troubleshooting"));
+const resourceCollections = getPublishedResources(await getCollection("resourceCollections"));
+
+const learningBranches = [
+  { kind: "guides" as const, entries: guides, categories: getResourceCategories("guides", guides) },
+  { kind: "formulas" as const, entries: formulas, categories: getResourceCategories("formulas", formulas) },
+  { kind: "troubleshooting" as const, entries: troubleshooting, categories: getResourceCategories("troubleshooting", troubleshooting) },
+];
+
+const title = "Struktur Konten";
+const description = "Peta hierarki konten ExcelGratis: template, kategori, panduan, rumus Excel, masalah Excel, dan koleksi.";
+---
+
+<BaseLayout title={title} description={description} path="/struktur-konten/">
+  <section class="info-layout container">
+    <header class="info-header">
+      <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: title }]} />
+      <h1>{title}</h1>
+      <p>Gunakan peta ini untuk memahami susunan konten dan langsung menuju area yang sesuai dengan kebutuhan Anda.</p>
+    </header>
+
+    <nav class="content-hierarchy" aria-label="Hirarki konten ExcelGratis">
+      <section class="content-hierarchy__branch">
+        <h2><a href="/">Beranda</a></h2>
+        <p>Titik awal untuk mencari template dan materi belajar Excel.</p>
+      </section>
+
+      <section class="content-hierarchy__branch">
+        <h2><a href="/templates/">Template Excel</a></h2>
+        <p>Template siap pakai berdasarkan kebutuhan.</p>
+        <ul>
+          <li><a href="/kategori/">Semua Kategori</a></li>
+          {templateCategories.map((category) => (
+            <li><a href={category.url}>{category.name} <span>{category.count} template</span></a></li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="content-hierarchy__branch">
+        <h2><a href="/belajar-excel/">Belajar Excel</a></h2>
+        <p>Materi pembelajaran dibagi berdasarkan cara pengguna mencari bantuan.</p>
+        <ul>
+          {learningBranches.map((branch) => (
+            <li>
+              <a href={getResourceHubUrl(branch.kind)}>{resourceKinds[branch.kind].label} <span>{branch.entries.length} artikel</span></a>
+              <ul>
+                {branch.categories.map((category) => (
+                  <li><a href={`${getResourceHubUrl(branch.kind)}${category.slug}/`}>{category.name} <span>{category.count} artikel</span></a></li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="content-hierarchy__branch">
+        <h2><a href="/koleksi/">Koleksi</a></h2>
+        <p>Rangkaian resource yang disusun untuk kebutuhan tertentu.</p>
+        <ul><li><a href="/koleksi/">{resourceCollections.length} koleksi terbit</a></li></ul>
+      </section>
+
+      <section class="content-hierarchy__branch">
+        <h2>Informasi Situs</h2>
+        <ul>
+          <li><a href="/tentang/">Tentang</a></li>
+          <li><a href="/kontak/">Kontak</a></li>
+          <li><a href="/sitemap/">HTML Sitemap</a></li>
+        </ul>
+      </section>
+    </nav>
+  </section>
+</BaseLayout>

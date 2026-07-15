@@ -27,6 +27,7 @@ export async function GET() {
     "/templates/",
     "/kategori/",
     "/belajar-excel/",
+    "/struktur-konten/",
     "/tentang/",
     "/kontak/",
     "/kebijakan-editorial/",
