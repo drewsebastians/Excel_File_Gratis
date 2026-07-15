@@ -1,0 +1,16 @@
+---
+import { getResourceHubUrl, resourceKinds, type ArticleResourceKind } from "../lib/resources";
+
+interface Props {
+  activeKind?: ArticleResourceKind;
+}
+
+const { activeKind } = Astro.props;
+const kinds: ArticleResourceKind[] = ["guides", "formulas", "troubleshooting"];
+---
+
+<nav class="learning-resource-nav" aria-label="Jenis resource Belajar Excel">
+  {kinds.map((kind) => (
+    <a href={getResourceHubUrl(kind)} aria-current={activeKind === kind ? "page" : undefined}>{resourceKinds[kind].label}</a>
+  ))}
+</nav>

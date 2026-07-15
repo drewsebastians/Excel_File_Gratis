@@ -69,13 +69,13 @@ const resourceHubs = [
     .filter((file) => file.endsWith(".md"))
     .some((file) => !/^draft:\s*true\b/m.test(read(file))),
 }));
-const expectedRoutes = ["/", "/templates/", "/kategori/", "/sitemap/", "/request-template/", "/404/", ...trustRoutes, ...resourceHubs.map((hub) => hub.route)];
+const expectedRoutes = ["/", "/templates/", "/kategori/", "/belajar-excel/", "/sitemap/", "/request-template/", "/404/", ...trustRoutes, ...resourceHubs.map((hub) => hub.route)];
 for (const route of expectedRoutes) assert(routeExists(route), `Route tidak terbentuk: ${route}`);
 
 const sitemapPath = join(dist, "sitemap.xml");
 assert(existsSync(sitemapPath), "sitemap.xml tidak terbentuk.");
 const sitemap = existsSync(sitemapPath) ? read(sitemapPath) : "";
-for (const route of ["/", "/templates/", "/kategori/", "/sitemap/", ...trustRoutes]) {
+for (const route of ["/", "/templates/", "/kategori/", "/belajar-excel/", "/sitemap/", ...trustRoutes]) {
   assert(sitemap.includes(`https://excelgratis.my.id${route}`), `Sitemap belum memuat ${route}`);
 }
 
@@ -91,6 +91,18 @@ assert(!sitemap.includes("/request-template/"), "Request Template tidak boleh ma
 for (const hub of resourceHubs) {
   assert(sitemap.includes(hub.route) === hub.hasPublishedContent, `Status sitemap hub tidak sesuai resource terbit: ${hub.route}`);
 }
+
+const learningHtml = read(htmlPath("/belajar-excel/"));
+assert(learningHtml.includes('rel="canonical" href="https://excelgratis.my.id/belajar-excel/"'), "Canonical hub Belajar Excel tidak sesuai.");
+for (const [label, href] of [["Panduan", "/panduan/"], ["Rumus Excel", "/rumus-excel/"], ["Masalah Excel", "/masalah-excel/"]]) {
+  assert(learningHtml.includes(`href="${href}">${label}</a>`), `Hub Belajar Excel belum menautkan ${label}.`);
+}
+const guidesHubHtml = read(htmlPath("/panduan/"));
+for (const [label, href] of [["Rumus Excel", "/rumus-excel/"], ["Masalah Excel", "/masalah-excel/"]]) {
+  assert(guidesHubHtml.includes(`href="${href}">${label}</a>`), `Arsip Panduan belum menampilkan tautan ${label}.`);
+}
+const headerSource = read(join(root, "src", "components", "Header.astro"));
+assert(headerSource.includes('href="/belajar-excel/"'), "Menu utama belum mengarah ke hub Belajar Excel.");
 
 const requestHtml = read(htmlPath("/request-template/"));
 assert(requestHtml.includes('name="robots" content="noindex, follow"'), "Request Template belum noindex.");

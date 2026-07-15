@@ -2,7 +2,7 @@
 import Icon from "./Icon.astro";
 import { getCollection } from "astro:content";
 import { siteConfig } from "../config/site";
-import { getPublishedResources, getResourceHubUrl, resourceNavigationAvailable, type ResourceEntries } from "../lib/resources";
+import { getPublishedResources, resourceNavigationAvailable, type ResourceEntries } from "../lib/resources";
 
 const path = Astro.url.pathname;
 const isCategory = path.startsWith("/kategori/");
@@ -15,7 +15,6 @@ const resources: ResourceEntries = {
   resourceCollections: getPublishedResources(await getCollection("resourceCollections")),
 };
 const learningAvailable = resourceNavigationAvailable(resources).filter((kind) => kind !== "resourceCollections").length > 0;
-const learningHub = (["guides", "formulas", "troubleshooting"] as const).find((kind) => resources[kind].length > 0);
 ---
 
 <header class="site-header">
@@ -27,7 +26,7 @@ const learningHub = (["guides", "formulas", "troubleshooting"] as const).find((k
     <nav class="desktop-nav" aria-label="Navigasi utama">
       <a href="/templates/" aria-current={isTemplate ? "page" : undefined}>Template</a>
       <a href="/kategori/" aria-current={isCategory ? "page" : undefined}>Kategori</a>
-      {learningAvailable && learningHub && <a href={getResourceHubUrl(learningHub)} aria-current={path.startsWith("/panduan/") || path.startsWith("/rumus-excel/") || path.startsWith("/masalah-excel/") ? "page" : undefined}>Belajar Excel</a>}
+      {learningAvailable && <a href="/belajar-excel/" aria-current={path.startsWith("/belajar-excel/") || path.startsWith("/panduan/") || path.startsWith("/rumus-excel/") || path.startsWith("/masalah-excel/") ? "page" : undefined}>Belajar Excel</a>}
       <a href="/tentang/" aria-current={isInfo ? "page" : undefined}>Tentang</a>
       <a href="/templates/#template-search">Cari</a>
     </nav>

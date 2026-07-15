@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import LearningResourceNav from "../../components/LearningResourceNav.astro";
+import ResourceCard from "../../components/ResourceCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPublishedResources, getResourceHubUrl, sortResources } from "../../lib/resources";
+
+const guides = sortResources(getPublishedResources(await getCollection("guides")));
+const formulas = sortResources(getPublishedResources(await getCollection("formulas")));
+const troubleshooting = sortResources(getPublishedResources(await getCollection("troubleshooting")));
+const title = "Belajar Excel";
+const description = "Pilih panduan langkah demi langkah, referensi rumus Excel, atau solusi untuk masalah Excel yang sering terjadi.";
+---
+
+<BaseLayout title={title} description={description} path="/belajar-excel/">
+  <section class="info-layout container learning-hub">
+    <header class="info-header">
+      <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: title }]} />
+      <h1>{title}</h1>
+      <p>{description}</p>
+      <LearningResourceNav />
+    </header>
+
+    <section class="learning-resource-section" aria-labelledby="learning-guides-title">
+      <div class="section-heading">
+        <div><h2 id="learning-guides-title">Panduan</h2><p>Langkah praktis untuk mengerjakan tugas Excel dari awal sampai selesai.</p></div>
+        <a href={getResourceHubUrl("guides")}>Lihat {guides.length} Panduan</a>
+      </div>
+      <div class="resource-grid">{guides.slice(0, 3).map((entry) => <ResourceCard entry={entry} kind="guides" />)}</div>
+    </section>
+
+    <section class="learning-resource-section" aria-labelledby="learning-formulas-title">
+      <div class="section-heading">
+        <div><h2 id="learning-formulas-title">Rumus Excel</h2><p>Referensi fungsi, sintaks, contoh penggunaan, dan catatan kompatibilitas.</p></div>
+        <a href={getResourceHubUrl("formulas")}>Lihat {formulas.length} Rumus Excel</a>
+      </div>
+      <div class="resource-grid">{formulas.slice(0, 3).map((entry) => <ResourceCard entry={entry} kind="formulas" />)}</div>
+    </section>
+
+    <section class="learning-resource-section" aria-labelledby="learning-troubleshooting-title">
+      <div class="section-heading">
+        <div><h2 id="learning-troubleshooting-title">Masalah Excel</h2><p>Diagnosis dan langkah perbaikan saat formula, format, atau file tidak berjalan seperti harapan.</p></div>
+        <a href={getResourceHubUrl("troubleshooting")}>Lihat {troubleshooting.length} Masalah Excel</a>
+      </div>
+      <div class="resource-grid">{troubleshooting.slice(0, 3).map((entry) => <ResourceCard entry={entry} kind="troubleshooting" />)}</div>
+    </section>
+  </section>
+</BaseLayout>
