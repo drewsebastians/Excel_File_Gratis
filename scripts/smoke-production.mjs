@@ -10,7 +10,7 @@ const draftSlugs = [
 ];
 
 const pages = [
-  ["homepage", "/", 200], ["templates", "/templates/", 200], ["categories", "/kategori/", 200], ["guides", "/panduan/", 200], ["formulas", "/rumus-excel/", 200], ["troubleshooting", "/masalah-excel/", 200], ["collections", "/koleksi/", 200], ["contact", "/kontak/", 200], ["request-template", "/request-template/", 200], ["about", "/tentang/", 200], ["privacy", "/privasi/", 200], ["terms", "/syarat-ketentuan/", 200], ["disclaimer", "/disclaimer/", 200], ["html-sitemap", "/sitemap/", 200], ["xml-sitemap", "/sitemap.xml", 200], ["robots", "/robots.txt", 200], ["admin-shell", "/admin/", 200],
+  ["homepage", "/", 200], ["templates", "/templates/", 200], ["categories", "/kategori/", 200], ["learning-hub", "/belajar-excel/", 200], ["guides", "/panduan/", 200], ["formulas", "/rumus-excel/", 200], ["troubleshooting", "/masalah-excel/", 200], ["collections", "/koleksi/", 200], ["contact", "/kontak/", 200], ["request-template", "/request-template/", 200], ["about", "/tentang/", 200], ["privacy", "/privasi/", 200], ["terms", "/syarat-ketentuan/", 200], ["disclaimer", "/disclaimer/", 200], ["html-sitemap", "/sitemap/", 200], ["xml-sitemap", "/sitemap.xml", 200], ["robots", "/robots.txt", 200], ["admin-shell", "/admin/", 200],
   ["published-template", "/templates/bisnis-umkm/template-arus-kas-umkm/", 200], ["published-guide", "/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/", 200], ["published-guide:table-vs-range", "/panduan/dasar-excel/panduan-excel-table-vs-range/", 200], ["published-guide:structured-references", "/panduan/dasar-excel/panduan-structured-references-excel-table/", 200], ["published-guide:audit-rumus", "/panduan/pengolahan-data/panduan-audit-rumus-excel/", 200], ["published-guide:dropdown-dinamis", "/panduan/pengolahan-data/panduan-dropdown-dinamis-excel/", 200], ["published-guide:checklist-kualitas", "/panduan/produktivitas/panduan-checklist-kualitas-file-excel/", 200], ["published-formula", "/rumus-excel/matematika/rumus-sumifs-rekap-kategori/", 200], ["published-troubleshooting", "/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/", 200], ["published-collection", "/koleksi/koleksi-administrasi-umkm/", 200], ["workbook-download", "/downloads/template-arus-kas-umkm.xlsx", 200],
 ];
 
@@ -34,6 +34,8 @@ async function fetchUrl(name, route, expectedStatus = 200) {
 for (const [name, route, status] of pages) await fetchUrl(name, route, status);
 const sitemap = checks.find((check) => check.name === "xml-sitemap" && check.passed)?.body || "";
 const robots = checks.find((check) => check.name === "robots" && check.passed)?.body || "";
+const learningHub = checks.find((check) => check.name === "learning-hub" && check.passed)?.body || "";
+record("learning-hub:resource-navigation", `${baseUrl}/belajar-excel/`, ["/panduan/", "/rumus-excel/", "/masalah-excel/"].every((href) => learningHub.includes(`href="${href}"`)), "Hub Belajar Excel menautkan Panduan, Rumus Excel, dan Masalah Excel");
 const htmlChecks = checks.filter((check) => check.contentType?.includes("text/html") && check.body);
 for (const check of htmlChecks) {
   const canonical = check.body.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)/i)?.[1] || "";

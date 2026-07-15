@@ -97,12 +97,16 @@ assert(learningHtml.includes('rel="canonical" href="https://excelgratis.my.id/be
 for (const [label, href] of [["Panduan", "/panduan/"], ["Rumus Excel", "/rumus-excel/"], ["Masalah Excel", "/masalah-excel/"]]) {
   assert(learningHtml.includes(`href="${href}">${label}</a>`), `Hub Belajar Excel belum menautkan ${label}.`);
 }
-const guidesHubHtml = read(htmlPath("/panduan/"));
-for (const [label, href] of [["Rumus Excel", "/rumus-excel/"], ["Masalah Excel", "/masalah-excel/"]]) {
-  assert(guidesHubHtml.includes(`href="${href}">${label}</a>`), `Arsip Panduan belum menampilkan tautan ${label}.`);
+for (const resourceHub of ["/panduan/", "/rumus-excel/", "/masalah-excel/"]) {
+  const html = read(htmlPath(resourceHub));
+  for (const [label, href] of [["Panduan", "/panduan/"], ["Rumus Excel", "/rumus-excel/"], ["Masalah Excel", "/masalah-excel/"]]) {
+    assert(html.includes(`href="${href}">${label}</a>`), `Arsip resource ${resourceHub} belum menampilkan tautan ${label}.`);
+  }
 }
 const headerSource = read(join(root, "src", "components", "Header.astro"));
 assert(headerSource.includes('href="/belajar-excel/"'), "Menu utama belum mengarah ke hub Belajar Excel.");
+const bottomNavSource = read(join(root, "src", "components", "BottomNav.astro"));
+assert(bottomNavSource.includes('href: "/belajar-excel/"'), "Navigasi bawah belum mengarah ke hub Belajar Excel.");
 
 const requestHtml = read(htmlPath("/request-template/"));
 assert(requestHtml.includes('name="robots" content="noindex, follow"'), "Request Template belum noindex.");
