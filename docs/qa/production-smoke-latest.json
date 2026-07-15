@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T09:37:10.393Z",
+  "generatedAt": "2026-07-15T00:45:45.924Z",
   "baseUrl": "https://excelgratis.my.id",
   "status": "passed",
   "checks": [
@@ -10,7 +10,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 207,
+      "durationMs": 1336,
       "bodyLength": 18632
     },
     {
@@ -20,7 +20,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 41,
+      "durationMs": 694,
       "bodyLength": 38054
     },
     {
@@ -30,7 +30,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 41,
+      "durationMs": 220,
       "bodyLength": 9486
     },
     {
@@ -40,7 +40,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 37,
+      "durationMs": 155,
       "bodyLength": 14036
     },
     {
@@ -50,7 +50,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 36,
+      "durationMs": 92,
       "bodyLength": 9816
     },
     {
@@ -60,7 +60,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 38,
+      "durationMs": 154,
       "bodyLength": 10141
     },
     {
@@ -70,7 +70,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 35,
+      "durationMs": 56,
       "bodyLength": 8127
     },
     {
@@ -80,7 +80,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 41,
+      "durationMs": 53,
       "bodyLength": 10070
     },
     {
@@ -90,7 +90,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 46,
+      "durationMs": 53,
       "bodyLength": 11512
     },
     {
@@ -100,7 +100,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 45,
+      "durationMs": 41,
       "bodyLength": 8002
     },
     {
@@ -110,7 +110,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 39,
+      "durationMs": 38,
       "bodyLength": 8104
     },
     {
@@ -120,7 +120,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 47,
+      "durationMs": 34,
       "bodyLength": 8889
     },
     {
@@ -130,7 +130,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 37,
+      "durationMs": 40,
       "bodyLength": 7741
     },
     {
@@ -140,7 +140,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 46,
+      "durationMs": 54,
       "bodyLength": 9554
     },
     {
@@ -150,7 +150,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "application/xml",
-      "durationMs": 49,
+      "durationMs": 43,
       "bodyLength": 6495
     },
     {
@@ -160,7 +160,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/plain; charset=utf-8",
-      "durationMs": 41,
+      "durationMs": 34,
       "bodyLength": 1940
     },
     {
@@ -170,7 +170,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 36,
+      "durationMs": 42,
       "bodyLength": 346
     },
     {
@@ -180,7 +180,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 40,
+      "durationMs": 39,
       "bodyLength": 18786
     },
     {
@@ -190,7 +190,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 42,
+      "durationMs": 38,
       "bodyLength": 14355
     },
     {
@@ -200,7 +200,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 43,
+      "durationMs": 36,
       "bodyLength": 17197
     },
     {
@@ -210,7 +210,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 41,
+      "durationMs": 35,
       "bodyLength": 16980
     },
     {
@@ -220,7 +220,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 47,
+      "durationMs": 39,
       "bodyLength": 16089
     },
     {
@@ -230,7 +230,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 37,
+      "durationMs": 47,
       "bodyLength": 16254
     },
     {
@@ -240,7 +240,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 36,
+      "durationMs": 35,
       "bodyLength": 16318
     },
     {
@@ -250,7 +250,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 44,
+      "durationMs": 33,
       "bodyLength": 14717
     },
     {
@@ -260,7 +260,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 49,
+      "durationMs": 35,
       "bodyLength": 14554
     },
     {
@@ -270,7 +270,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "text/html",
-      "durationMs": 45,
+      "durationMs": 33,
       "bodyLength": 21511
     },
     {
@@ -280,7 +280,7 @@
       "detail": "HTTP 200; expected 200",
       "status": 200,
       "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "durationMs": 50,
+      "durationMs": 39,
       "bodyLength": 9650
     },
     {
@@ -504,7 +504,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 128,
+      "durationMs": 120,
       "bodyLength": 6760
     },
     {
@@ -526,7 +526,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 68,
+      "durationMs": 47,
       "bodyLength": 6760
     },
     {
@@ -536,7 +536,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 46,
+      "durationMs": 35,
       "bodyLength": 6760
     },
     {
@@ -546,7 +546,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 52,
+      "durationMs": 47,
       "bodyLength": 6760
     },
     {
@@ -556,7 +556,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 45,
+      "durationMs": 35,
       "bodyLength": 6760
     },
     {
@@ -566,7 +566,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 43,
+      "durationMs": 57,
       "bodyLength": 6760
     },
     {
@@ -576,7 +576,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 48,
+      "durationMs": 40,
       "bodyLength": 6760
     },
     {
@@ -586,7 +586,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 45,
+      "durationMs": 55,
       "bodyLength": 6760
     },
     {
@@ -596,7 +596,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 43,
+      "durationMs": 36,
       "bodyLength": 6760
     },
     {
@@ -606,7 +606,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 39,
+      "durationMs": 36,
       "bodyLength": 6760
     },
     {
@@ -616,7 +616,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 51,
+      "durationMs": 36,
       "bodyLength": 6760
     },
     {
@@ -626,7 +626,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 46,
+      "durationMs": 42,
       "bodyLength": 6760
     },
     {
@@ -636,7 +636,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 61,
+      "durationMs": 35,
       "bodyLength": 6760
     },
     {
@@ -646,7 +646,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 51,
+      "durationMs": 36,
       "bodyLength": 6760
     },
     {
@@ -656,7 +656,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 44,
+      "durationMs": 45,
       "bodyLength": 6760
     },
     {
@@ -666,7 +666,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 51,
+      "durationMs": 36,
       "bodyLength": 6760
     },
     {
@@ -676,7 +676,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 42,
+      "durationMs": 35,
       "bodyLength": 6760
     },
     {
@@ -686,7 +686,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 42,
+      "durationMs": 36,
       "bodyLength": 6760
     },
     {
@@ -696,7 +696,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 46,
+      "durationMs": 35,
       "bodyLength": 6760
     },
     {
@@ -706,7 +706,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 50,
+      "durationMs": 42,
       "bodyLength": 6760
     },
     {
@@ -716,7 +716,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 54,
+      "durationMs": 38,
       "bodyLength": 6760
     },
     {
@@ -726,7 +726,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 62,
+      "durationMs": 33,
       "bodyLength": 6760
     },
     {
@@ -736,7 +736,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 63,
+      "durationMs": 45,
       "bodyLength": 6760
     },
     {
@@ -746,7 +746,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 49,
+      "durationMs": 36,
       "bodyLength": 6760
     },
     {
@@ -756,7 +756,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 43,
+      "durationMs": 36,
       "bodyLength": 6760
     },
     {
@@ -776,7 +776,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 43,
+      "durationMs": 40,
       "bodyLength": 6760
     },
     {
@@ -786,7 +786,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 46,
+      "durationMs": 40,
       "bodyLength": 6760
     },
     {
@@ -796,7 +796,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 49,
+      "durationMs": 39,
       "bodyLength": 6760
     },
     {
@@ -806,7 +806,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 48,
+      "durationMs": 61,
       "bodyLength": 6760
     },
     {
@@ -816,7 +816,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 47,
+      "durationMs": 34,
       "bodyLength": 6760
     },
     {
@@ -826,7 +826,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 47,
+      "durationMs": 34,
       "bodyLength": 6760
     },
     {
@@ -836,7 +836,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 42,
+      "durationMs": 37,
       "bodyLength": 6760
     },
     {
@@ -846,7 +846,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 41,
+      "durationMs": 35,
       "bodyLength": 6760
     },
     {
@@ -856,7 +856,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 47,
+      "durationMs": 60,
       "bodyLength": 6760
     },
     {
@@ -866,7 +866,7 @@
       "detail": "HTTP 404; expected 404",
       "status": 404,
       "contentType": "text/html",
-      "durationMs": 50,
+      "durationMs": 40,
       "bodyLength": 6760
     }
   ],

@@ -17,6 +17,7 @@
     "test:resources": "node --experimental-strip-types scripts/validate-resource-fixtures.ts",
     "test:workflow": "node scripts/validate-deploy-workflow.mjs",
     "audit:drafts": "node scripts/audit-draft-readiness.mjs",
+    "test:readiness": "node scripts/test-draft-readiness.mjs",
     "qa:workbooks": "python scripts/audit-draft-workbooks.py",
     "audit:guides": "node scripts/audit-draft-guides.mjs",
     "test:guides": "node scripts/test-guide-fixtures.mjs",
@@ -25,7 +26,7 @@
     "smoke:browser": "node scripts/browser-smoke.mjs",
     "forms:production": "node scripts/submit-production-forms.mjs",
     "audit:batch3": "node scripts/audit-batch3-portfolio.mjs",
-    "validate": "node scripts/validate-build.mjs && pnpm run test:forms && pnpm run test:resources && pnpm run test:workflow"
+    "validate": "node scripts/validate-build.mjs && pnpm run test:forms && pnpm run test:resources && pnpm run test:workflow && pnpm run test:readiness"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
