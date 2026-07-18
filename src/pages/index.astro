@@ -4,7 +4,6 @@ import Icon from "../components/Icon.astro";
 import TemplateCard from "../components/TemplateCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../config/site";
-import { templateImages } from "../config/images";
 import {
   getExcerpt,
   getFeaturedTemplates,
@@ -23,26 +22,50 @@ const featuredTemplates = getFeaturedTemplates(templates, 4);
 const populatedCategories = getPopulatedCategories(templates);
 const title = "Template Excel Gratis, Siap Pakai";
 const description = siteConfig.description;
+const homepageHeroImage = "/assets/templates/template-pembukuan-pengeluaran-usaha.png";
 ---
 
-<BaseLayout title={title} description={description} path="/" ogImage={templateImages.budgetHero}>
-  <section class="hero container">
-    <h1>Template Excel Gratis, <span>Siap Pakai</span></h1>
-    <p>Template Excel untuk keuangan, bisnis, dan produktivitas - download gratis, tanpa perlu daftar.</p>
-    <form class="search-panel" action="/templates/" method="get" role="search">
-      <Icon name="search" />
-      <input name="q" type="search" placeholder="Cari template... misal: anggaran bulanan" aria-label="Cari template" />
-      <button class="button" type="submit">Cari</button>
-    </form>
-    <div class="hero-actions">
-      <a class="button" href="/templates/">Lihat Semua Template</a>
-      <a class="button-outline" href="/kategori/">Lihat Kategori</a>
+<BaseLayout title={title} description={description} path="/" ogImage={homepageHeroImage} bodyClass="homepage">
+  <section class="home-hero">
+    <div class="home-hero__inner container">
+      <div class="home-hero__content">
+        <h1>Template Excel Gratis, <span>Siap Pakai</span></h1>
+        <p>Template Excel untuk keuangan, bisnis, dan produktivitas - download gratis, tanpa perlu daftar.</p>
+        <form class="search-panel" action="/templates/" method="get" role="search">
+          <Icon name="search" />
+          <input name="q" type="search" placeholder="Cari template... misal: anggaran bulanan" aria-label="Cari template" />
+          <button class="button" type="submit">Cari</button>
+        </form>
+        <div class="hero-actions">
+          <a class="button" href="/templates/">Lihat Semua Template</a>
+          <a class="button-outline" href="/kategori/">Lihat Kategori</a>
+        </div>
+      </div>
+      <figure class="home-hero__visual">
+        <span class="home-hero__excel-mark" aria-hidden="true"><Icon name="table_chart" /></span>
+        <div class="home-hero__laptop">
+          <div class="home-hero__screen">
+            <img
+              src={homepageHeroImage}
+              alt="Preview dashboard pengeluaran usaha Excel dengan tabel dan grafik ringkas."
+              width="960"
+              height="540"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              sizes="(max-width: 767px) 84vw, (max-width: 1199px) 42vw, 440px"
+            />
+          </div>
+          <div class="home-hero__keyboard" aria-hidden="true"></div>
+        </div>
+        <div class="home-hero__plant" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
+      </figure>
     </div>
   </section>
 
   <section class="section container" aria-labelledby="popular-category-heading">
     <div class="section-heading">
-      <h2 id="popular-category-heading">Kategori Tersedia</h2>
+      <h2 id="popular-category-heading">Kategori Template</h2>
       <a href="/kategori/">Lihat Semua <Icon name="arrow_forward" /></a>
     </div>
     <div class="category-grid">
@@ -101,7 +124,10 @@ const description = siteConfig.description;
   </section>
 
   <section class="section container trust-section" aria-labelledby="trust-heading">
-    <h2 id="trust-heading">Praktis untuk kebutuhan harian</h2>
-    <p>Setiap template disiapkan sebagai file spreadsheet statis yang bisa langsung diunduh, dibuka di Excel atau Google Sheets, lalu disesuaikan dengan kebutuhanmu sendiri.</p>
+    <div class="trust-section__icon" aria-hidden="true"><Icon name="download" /></div>
+    <div>
+      <h2 id="trust-heading">Praktis untuk kebutuhan harian</h2>
+      <p>Setiap template disiapkan sebagai file spreadsheet statis yang bisa langsung diunduh, dibuka di Excel atau Google Sheets, lalu disesuaikan dengan kebutuhanmu sendiri.</p>
+    </div>
   </section>
 </BaseLayout>
