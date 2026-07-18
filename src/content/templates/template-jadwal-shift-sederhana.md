@@ -1,11 +1,11 @@
 ---
-title: "Template Jadwal Shift Sederhana Excel Gratis"
-meta_title: "Template Jadwal Shift Sederhana Excel Gratis"
-meta_description: "Download template jadwal shift sederhana Excel gratis dengan daftar anggota, jam mulai-selesai, durasi lintas tengah malam, rekap, dan grafik penugasan."
+title: "Template Jadwal Shift Excel untuk Anggota, Jam Kerja, dan Durasi"
+meta_title: "Template Jadwal Shift Excel Gratis | ExcelGratis"
+meta_description: "Unduh template jadwal shift Excel untuk mencatat anggota, tanggal, shift, jam mulai-selesai, durasi lintas tengah malam, dan ringkasan penugasan."
 slug: "template-jadwal-shift-sederhana"
 focus_keyword: "template jadwal shift excel"
 preview_image: "/assets/templates/template-jadwal-shift-sederhana.png"
-preview_alt: "Ringkasan template jadwal shift Excel dengan jumlah penugasan per anggota dan grafik shift"
+preview_alt: "Ringkasan template jadwal shift Excel dengan jumlah penugasan per anggota, total jam, dan jumlah shift"
 featured: true
 draft: false
 category: "produktivitas-kerja"
@@ -14,60 +14,65 @@ date: "2026-07-14"
 updated_date: "2026-07-14"
 file_name: "template-jadwal-shift-sederhana.xlsx"
 file_size: "13 KB"
-suggested_h1: "Template Jadwal Shift Sederhana Excel Gratis"
-usage_heading: "Cara Pakai Jadwal Shift"
-ringkasan_singkat: "Isi anggota, tanggal, nama shift, jam mulai, dan jam selesai. Ringkasan menghitung jumlah penugasan serta total jam tercatat, termasuk shift yang melewati tengah malam."
+suggested_h1: "Template Jadwal Shift Excel untuk Anggota, Jam Kerja, dan Durasi"
+usage_heading: "Cara Menggunakan Template Jadwal Shift"
+ringkasan_singkat: "Isi daftar anggota, tanggal, nama shift, jam mulai, dan jam selesai. Formula menghitung durasi, termasuk shift yang melewati tengah malam, lalu ringkasan menjumlahkan penugasan dan jam yang tercatat."
 file_spec:
   sheets: 5
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; penggunaan di Google Sheets perlu diuji ulang"
 batasan:
   - "Template ini membantu pembagian jadwal sederhana dan bukan alat penggajian, absensi, atau kepatuhan ketenagakerjaan."
   - "Pengguna tetap perlu memeriksa aturan jam kerja, jeda, dan persetujuan jadwal yang berlaku di tempatnya."
 related_templates: ["template-kalender-planner-2026", "template-task-tracker-kanban-excel", "template-notulen-rapat-action-item"]
 ---
 
-Gunakan template ini untuk mengatur jadwal tim kecil yang memiliki pola pagi, siang, atau malam. File ini sengaja fokus pada pencatatan penugasan dan durasi agar tetap mudah diperiksa, bukan pada penggajian atau pencatatan kehadiran resmi.
+Isi anggota, tanggal, nama shift, jam mulai, dan jam selesai pada `Jadwal Shift`. Template jadwal shift Excel ini menghitung durasi setiap penugasan, termasuk jadwal yang melewati tengah malam, lalu merangkum jumlah penugasan dan total jam. Gunakan untuk perencanaan tim sederhana, bukan sebagai bukti absensi, dasar gaji, atau perhitungan lembur.
 
-## Isi Workbook
+## Isi file template jadwal shift
 
-- **Cara Pakai** menjelaskan urutan pengisian.
-- **Daftar Anggota** menyimpan nama anggota dan keterangan singkat.
-- **Jadwal Shift** berisi tanggal, anggota, shift, jam mulai, jam selesai, dan durasi.
-- **Ringkasan** menampilkan jumlah penugasan per anggota, total jam, serta grafik per shift.
-- **Referensi** menyediakan pilihan shift dan anggota untuk dropdown.
+File `.xlsx` berukuran 13 KB ini memiliki lima sheet dan tidak memakai macro:
 
-## Cara Pakai
+- **Cara Pakai** — urutan awal penggunaan.
+- **Daftar Anggota** — nama anggota dan keterangan.
+- **Jadwal Shift** — tanggal, anggota, shift, jam mulai, jam selesai, dan durasi.
+- **Ringkasan** — jumlah penugasan, total jam, dan jumlah per jenis shift.
+- **Referensi** — pilihan yang digunakan pada input.
 
-1. Isi atau sesuaikan nama pada **Daftar Anggota**.
-2. Masuk ke **Jadwal Shift**, lalu isi satu penugasan per baris.
-3. Pilih anggota dan nama shift dari dropdown agar rekap konsisten.
-4. Masukkan jam mulai dan selesai sebagai nilai waktu Excel, misalnya `20:00` dan `04:00`.
-5. Cek **Ringkasan** untuk melihat pembagian penugasan serta total jam yang tercatat.
+Audit workbook menemukan tiga Excel Table, data validation, dan 25 formula. Tidak ditemukan chart, PivotTable, named range, atau proteksi sheet.
 
-## Shift yang Melewati Tengah Malam
+## Cara menggunakan template
 
-Durasi menggunakan pola `MOD(jam selesai-jam mulai,1)*24`. Karena itu, jadwal dari 20:00 sampai 04:00 tetap dibaca sebagai 8 jam. Jika salah satu jam kosong, durasi dibiarkan kosong agar angka total tidak menyesatkan.
+1. **Perbarui daftar anggota.** Ganti nama contoh pada `Daftar Anggota`.
+2. **Catat satu penugasan per baris.** Isi tanggal, anggota, nama shift, jam mulai, dan jam selesai.
+3. **Gunakan format waktu Excel.** Masukkan waktu seperti `08:00`, `16:00`, atau `20:00`.
+4. **Periksa durasi.** Pastikan kolom durasi terisi dan tidak menampilkan peringatan kelengkapan.
+5. **Tinjau ringkasan.** Bandingkan jumlah penugasan dan total jam sebelum jadwal dibagikan.
 
-## Penggunaan yang Tepat
+Checkpoint: baris dengan tanggal atau jam yang belum lengkap seharusnya tidak menghasilkan durasi final.
 
-Untuk rapat serah-terima atau pekerjaan lanjutan, catat action item pada [template notulen rapat](/templates/produktivitas-kerja/template-notulen-rapat-action-item/). Gunakan [IF dan IFS untuk status](/rumus-excel/logika/rumus-if-ifs-status-prioritas/) saat ingin membuat penanda tambahan seperti Aman atau Perlu Ditinjau.
+## Contoh shift melewati tengah malam
 
-## Batasan Template
+Data berikut hanya ilustrasi:
 
-Total jam di file ini adalah hasil pencatatan jadwal, bukan bukti kehadiran, perhitungan lembur, atau dasar penggajian. Periksa kembali jam aktual, jeda kerja, aturan internal, dan ketentuan yang berlaku sebelum memakai data untuk tujuan operasional resmi.
+| Anggota | Shift | Mulai | Selesai | Durasi |
+|---|---|---:|---:|---:|
+| Rina | Malam | 20:00 | 04:00 | 8 jam |
+| Budi | Pagi | 08:00 | 16:00 | 8 jam |
 
-## FAQ
+Formula durasi memakai pola `MOD(jam selesai-jam mulai,1)*24`. Karena itu, pukul 04:00 dapat dibaca sebagai waktu setelah pukul 20:00 pada penugasan malam, bukan sebagai durasi negatif.
 
-**Apakah shift malam dihitung otomatis?**
+## Apa yang dihitung oleh workbook
 
-Ya, selama kedua jam terisi sebagai waktu Excel. Contoh 20:00 sampai 04:00 dihitung 8 jam.
+Formula `TEXT` membentuk nama hari dari tanggal. Formula `IF` menjaga hasil tetap kosong ketika input utama belum lengkap dan dapat memberi tanda seperti `Lengkapi jam` atau `Cek durasi nol`. `COUNTIFS`, `COUNTIF`, dan `SUM` digunakan pada ringkasan penugasan serta total jam.
 
-**Apakah file ini menghitung gaji atau lembur?**
+Catat hasil serah-terima atau tindak lanjut pada [template notulen rapat dan action item](/templates/produktivitas-kerja/template-notulen-rapat-action-item/). Bila daftar pilihan tidak tampil pada sel input, gunakan [solusi dropdown Data Validation](/masalah-excel/format-data/masalah-dropdown-data-validation-tidak-muncul/).
 
-Tidak. File hanya mencatat durasi jadwal sederhana.
+## Batasan yang perlu diketahui
 
-**Dropdown tidak muncul. Apa yang harus dilakukan?**
+Total jam pada file adalah durasi jadwal yang direncanakan, bukan jam kehadiran aktual. Template tidak menghitung jeda, lembur, upah, izin, pergantian mendadak, atau kepatuhan terhadap aturan ketenagakerjaan. Periksa kembali persetujuan jadwal dan aturan internal sebelum membagikannya.
 
-Periksa apakah Anda mengedit sel input yang benar, lalu baca [solusi dropdown Data Validation](/masalah-excel/format-data/masalah-dropdown-data-validation-tidak-muncul/).
+Penggunaan di Google Sheets perlu diuji ulang, terutama untuk data validation, format waktu, formula durasi lintas tengah malam, dan perluasan Table.
+
+Unduh `template-jadwal-shift-sederhana.xlsx`, masukkan dua atau tiga shift uji, lalu periksa durasi dan ringkasannya sebelum menyusun jadwal penuh.

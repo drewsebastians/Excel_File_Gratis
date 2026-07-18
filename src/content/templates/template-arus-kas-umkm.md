@@ -1,11 +1,11 @@
 ---
-title: "Template Arus Kas UMKM Excel Gratis"
-meta_title: "Template Arus Kas UMKM Excel Gratis"
-meta_description: "Download template arus kas UMKM Excel gratis untuk mencatat uang masuk dan keluar, saldo awal, saldo akhir, serta rekap pengeluaran kategori."
+title: "Template Arus Kas UMKM Excel untuk Mencatat Uang Masuk dan Keluar"
+meta_title: "Template Arus Kas UMKM Excel Gratis | ExcelGratis"
+meta_description: "Unduh template arus kas UMKM Excel untuk mencatat uang masuk, uang keluar, saldo awal, saldo akhir, dan pengeluaran per kategori dalam satu periode."
 slug: "template-arus-kas-umkm"
 focus_keyword: "template arus kas umkm excel"
 preview_image: "/assets/templates/template-arus-kas-umkm.png"
-preview_alt: "Ringkasan arus kas UMKM dengan saldo awal, uang masuk, uang keluar, saldo akhir, dan grafik pengeluaran"
+preview_alt: "Ringkasan bulanan template arus kas UMKM dengan saldo awal, total masuk, total keluar, saldo akhir, dan pengeluaran per kategori"
 featured: true
 draft: false
 category: "bisnis-umkm"
@@ -14,71 +14,66 @@ date: "2026-07-12"
 updated_date: "2026-07-12"
 file_name: "template-arus-kas-umkm.xlsx"
 file_size: "10 KB"
-suggested_h1: "Template Arus Kas UMKM Excel Gratis"
-usage_heading: "Cara Pakai Arus Kas"
-ringkasan_singkat: "Gunakan file ini untuk mencatat uang masuk dan uang keluar usaha secara sederhana, lalu lihat saldo akhir serta pengeluaran per kategori di ringkasan bulanan."
+suggested_h1: "Template Arus Kas UMKM Excel untuk Mencatat Uang Masuk dan Keluar"
+usage_heading: "Cara Menggunakan Template Arus Kas UMKM"
+ringkasan_singkat: "Catat uang masuk dan keluar usaha pada satu tabel, lalu pilih periode untuk memeriksa total penerimaan, pengeluaran, dan saldo akhir. File ini memiliki empat sheet, tidak memakai macro, dan menggunakan SUMIFS untuk rekap bulanan serta kategori."
 file_spec:
   sheets: 4
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; penggunaan di Google Sheets perlu diuji ulang"
 batasan:
   - "Template ini adalah catatan arus kas sederhana, bukan laporan keuangan atau laporan pajak."
   - "Saldo akhir akan keliru bila transaksi terlewat atau jenis arus salah dipilih."
 related_templates: ["template-laporan-penjualan-harian-umkm", "template-invoice-penjualan-umkm", "template-budget-bulanan"]
 ---
 
-Arus kas sederhana menjawab pertanyaan operasional yang praktis: berapa uang yang masuk, berapa yang keluar, dan berapa saldo yang tersisa pada periode yang dicatat. Template ini dibuat untuk UMKM yang ingin membangun kebiasaan mencatat transaksi kas tanpa menyamakan file ini dengan laporan keuangan formal.
+Catat uang masuk dan keluar usaha pada `Catatan Arus Kas`, lalu pilih bulan yang ingin diperiksa di `Ringkasan Bulanan`. Template arus kas UMKM Excel ini menghitung total penerimaan, pengeluaran, dan saldo akhir berdasarkan transaksi yang kamu masukkan. Gunakan hasilnya untuk pengecekan kas sederhana, bukan sebagai pengganti laporan keuangan atau pajak.
 
-## Isi dan Fitur Workbook
+## Isi file template arus kas UMKM
 
-- **Cara Pakai** menjelaskan urutan pencatatan.
-- **Catatan Arus Kas** berisi tabel tanggal, jenis arus, kategori, keterangan, metode, nominal, dan bulan.
-- **Ringkasan Bulanan** menghitung saldo awal, total masuk, total keluar, dan saldo akhir dengan `SUMIFS`.
-- **Referensi** menyediakan kategori contoh.
+File `.xlsx` berukuran 10 KB ini memiliki empat sheet dan tidak memakai macro:
 
-Jenis arus tersedia sebagai **Masuk** dan **Keluar**. Kategori contoh meliputi Penjualan, Bahan Baku, Operasional, dan Lainnya. Bagian ringkasan juga menampilkan grafik donat untuk melihat komposisi pengeluaran.
+- **Cara Pakai** — petunjuk awal sebelum mengisi transaksi.
+- **Catatan Arus Kas** — tabel tanggal, jenis arus, kategori, keterangan, metode, nominal, dan periode bulan.
+- **Ringkasan Bulanan** — rekap saldo awal, uang masuk, uang keluar, saldo akhir, dan pengeluaran per kategori.
+- **Referensi** — daftar pilihan yang digunakan pada pencatatan.
 
-## Cara Pakai Arus Kas
+Audit workbook menemukan satu Excel Table, data validation, dan 12 formula. Tidak ditemukan PivotTable, chart, named range, atau proteksi sheet.
 
-1. Tentukan saldo awal pada sheet **Ringkasan Bulanan**.
-2. Di **Catatan Arus Kas**, isi satu transaksi per baris.
-3. Pilih Jenis Arus dan Kategori dari dropdown, lalu tulis nominal sebagai angka positif.
-4. Periksa kolom Bulan yang terbentuk dari tanggal transaksi.
-5. Pilih atau ketik periode yang ingin diperiksa di Ringkasan Bulanan.
+## Cara menggunakan template
 
-## Contoh Alur Penggunaan
+1. **Isi saldo awal.** Masukkan saldo kas sebelum periode transaksi yang akan diperiksa.
+2. **Catat satu transaksi per baris.** Isi tanggal, jenis arus `Masuk` atau `Keluar`, kategori, keterangan, metode, dan nominal positif.
+3. **Gunakan tanggal Excel yang valid.** Kolom periode memakai nilai tanggal untuk membentuk kriteria bulan.
+4. **Periksa ringkasan.** Pilih periode di `Ringkasan Bulanan`, lalu cocokkan total dan saldo akhir dengan catatan sumber.
 
-Dalam contoh Juli 2026, penjualan dan pengembalian dana menghasilkan Rp900.000 uang masuk. Belanja bahan serta biaya operasional berjumlah Rp200.000. Dengan saldo awal Rp1.000.000, saldo akhir contoh menjadi Rp1.700.000.
+Checkpoint: total masuk dikurangi total keluar, kemudian ditambah saldo awal, harus sama dengan saldo akhir pada ringkasan.
 
-## Rumus dan Logika
+## Contoh pencatatan satu periode
 
-Total masuk dan keluar memakai `SUMIFS` dengan dua kriteria: jenis arus serta bulan. Saldo akhir memakai rumus `=Saldo Awal+Total Masuk-Total Keluar`. Karena kriteria bulan diambil dari tanggal, pastikan setiap transaksi menggunakan nilai tanggal Excel yang valid.
+Data berikut hanya ilustrasi:
 
-Baca [rumus SUMIFS untuk rekap kategori](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) dan [cara membuat dashboard sederhana](/panduan/pengolahan-data/panduan-dashboard-sederhana-excel/). Jika nominal tidak ikut dijumlahkan, lihat [angka tidak terjumlah karena format teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/).
+| Tanggal | Jenis Arus | Kategori | Keterangan | Nominal |
+|---|---|---|---|---:|
+| 02/07/2026 | Masuk | Penjualan | Penjualan tunai | Rp3.500.000 |
+| 04/07/2026 | Keluar | Bahan Baku | Belanja bahan | Rp1.100.000 |
+| 08/07/2026 | Keluar | Operasional | Internet dan transportasi | Rp400.000 |
 
-## Tips Modifikasi
+Dengan saldo awal Rp2.000.000, total masuk Rp3.500.000, dan total keluar Rp1.500.000, saldo akhir ilustrasi menjadi Rp4.000.000.
 
-Pertahankan nominal sebagai angka positif dan gunakan kolom Jenis Arus untuk membedakan masuk atau keluar. Tambahkan kategori baru secara konsisten di dropdown, tabel transaksi, dan rekap pengeluaran. Jangan mencampur catatan pribadi dan usaha bila Anda ingin pembacaan arus kas lebih jelas.
+## Apa yang dihitung oleh workbook
 
-## Batasan Template
+Rumus `SUMIFS` menjumlahkan nominal berdasarkan jenis arus dan bulan. Pengeluaran per kategori juga memakai kriteria kategori dan periode. Saldo akhir menggunakan pola saldo awal ditambah total masuk lalu dikurangi total keluar.
 
-File ini tidak menghitung laba, utang, pajak, atau nilai persediaan. Ini hanya alat pencatatan kas; cocokkan hasilnya dengan bukti transaksi dan saldo nyata secara berkala.
+Untuk memahami perbedaan arus kas dan hasil usaha, baca [cara membaca arus kas sederhana untuk UMKM](/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/). Pola rekapnya dijelaskan lebih lanjut pada [rumus SUMIFS untuk rekap kategori](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/).
 
-## Pertanyaan yang Sering Ditanyakan (FAQ)
+## Jika saldo tidak sesuai
 
-**Apakah nominal pengeluaran ditulis minus?**
+Periksa transaksi yang belum dicatat, jenis arus yang terbalik, tanggal yang tersimpan sebagai teks, atau nominal yang bukan angka. Bila nilai terlihat seperti angka tetapi tidak ikut dijumlahkan, gunakan [panduan memperbaiki angka berformat teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/).
 
-Tidak perlu. Isi nominal positif, lalu pilih Jenis Arus Keluar.
+## Batasan yang perlu diketahui
 
-**Apakah bisa dipakai untuk bulan lain?**
+Template ini hanya mencatat pergerakan kas. File tidak menghitung laba rugi, pajak, piutang, utang, atau nilai persediaan. Kompatibilitas penuh dengan Google Sheets belum diverifikasi; uji kembali formula, data validation, dan tampilan setelah mengimpor file.
 
-Bisa. Masukkan transaksi dengan tanggal yang tepat dan ubah nilai Bulan di Ringkasan Bulanan.
-
-**Mengapa saldo akhir berbeda dari uang nyata?**
-
-Periksa transaksi yang belum dicatat, nominal yang salah, atau jenis arus yang keliru.
-
-**Apakah ini laporan laba rugi?**
-
-Bukan. Arus kas hanya mencatat pergerakan uang masuk dan keluar.
+Unduh `template-arus-kas-umkm.xlsx`, simpan salinan cadangan, lalu masukkan beberapa transaksi uji sebelum memakai file untuk pencatatan rutin.
