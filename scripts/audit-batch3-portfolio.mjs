@@ -11,7 +11,7 @@ const collections = [
   { directory: "troubleshooting", route: (entry) => `/masalah-excel/${entry.category}/${entry.slug}/` },
   { directory: "collections", route: (entry) => `/koleksi/${entry.slug}/` },
 ];
-const expectedCounts = { templates: 15, guides: 13, formulas: 6, troubleshooting: 6, collections: 3 };
+const expectedCounts = { templates: 35, guides: 28, formulas: 6, troubleshooting: 6, collections: 3 };
 const failures = [];
 const assert = (condition, message) => {
   if (!condition) failures.push(message);

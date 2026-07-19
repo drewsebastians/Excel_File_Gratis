@@ -13,12 +13,18 @@ tags: ["PivotTable","Data Model","relasi tabel"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-rekap-penjualan-bulanan","template-daftar-harga-produk-jasa"]
 related_guides: ["panduan-data-model-excel","panduan-power-query-merge-vs-append"]
 related_formulas: ["rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
 ---
+
+Menyusun ringkasan penjualan dari tabel transaksi dan master produk dengan relasi key yang jelas. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 

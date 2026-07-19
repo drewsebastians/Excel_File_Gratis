@@ -13,12 +13,18 @@ tags: ["Data Model","Power Pivot","analisis data"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-laporan-penjualan-harian-umkm"]
 related_guides: ["panduan-pivottable-dua-tabel","panduan-power-query-merge-vs-append"]
 related_formulas: ["rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-vlookup-xlookup-na"]
 ---
+
+Memahami fact table, dimension table, dan relasi sederhana sebelum membangun laporan dari beberapa sumber. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 

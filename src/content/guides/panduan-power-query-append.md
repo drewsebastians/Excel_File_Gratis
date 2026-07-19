@@ -13,12 +13,18 @@ tags: ["append queries","Power Query","laporan bulanan"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-rekap-penjualan-bulanan"]
 related_guides: ["panduan-power-query-merge-vs-append","panduan-power-query-data-asli"]
 related_formulas: ["rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
 ---
+
+Menggabungkan tabel Januari, Februari, dan Maret yang kolomnya sejenis menjadi satu riwayat transaksi. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 

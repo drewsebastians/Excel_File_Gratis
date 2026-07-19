@@ -7,7 +7,7 @@ focus_keyword: "jadwal kerja mingguan"
 preview_image: "/assets/templates/template-jadwal-kerja-mingguan.png"
 preview_alt: "Preview template jadwal kerja mingguan excel gratis dengan ringkasan otomatis dan grafik status"
 featured: false
-draft: true
+draft: false
 category: "produktivitas-kerja"
 tags: ["jadwal kerja mingguan","template excel","excel gratis"]
 date: "2026-07-14"
@@ -22,11 +22,24 @@ file_spec:
   sheets: 3
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Template ini adalah pengatur jadwal sederhana dan tidak mendeteksi konflik shift otomatis."
 related_templates: ["template-follow-up-pelanggan-excel","template-kalender-planner-2026","template-task-tracker-kanban-excel"]
 ---
+
+Template Jadwal Kerja Mingguan Excel Gratis membantu mencatat jumlah jadwal dalam format yang rapi. File berisi petunjuk, sheet Jadwal Mingguan, dan ringkasan otomatis dengan data ilustrasi yang bisa diganti. Isi data pada sheet kerja yang relevan, lalu gunakan ringkasan sebagai pembacaan dari data sumber, bukan angka yang diketik ulang.
+
+## Mulai dengan Data Sumber
+
+1. Buka sheet **Cara Pakai** untuk melihat urutan input yang tersedia.
+2. Masukkan satu catatan per baris pada sheet kerja utama.
+3. Gunakan pilihan atau format yang sudah disediakan agar ringkasan dapat membaca data secara konsisten.
+4. Cocokkan hasil ringkasan dengan beberapa baris sumber sebelum menggunakannya.
+
+## Fakta File dan Batasan
+
+Workbook yang diperiksa memiliki 3 sheet, format xlsx, dan tidak memakai macro. Buka dan uji salinan file sebelum dipakai rutin, terutama bila menggunakan aplikasi spreadsheet selain Microsoft Excel.
 
 Template Jadwal Kerja Mingguan Excel Gratis disiapkan untuk membantu pekerjaan rutin tanpa perlu membangun format dari nol. Ganti data contoh di sheet **Jadwal Mingguan**, lalu gunakan **Ringkasan** untuk membaca kondisi data secara cepat.
 

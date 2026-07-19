@@ -13,12 +13,18 @@ tags: ["Power Query","clean data","data asli"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-laporan-penjualan-harian-umkm"]
 related_guides: ["panduan-power-query-append","panduan-excel-table-vs-range"]
 related_formulas: ["rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks"]
 ---
+
+Membuat alur Power Query yang memisahkan sumber mentah dari hasil bersih sehingga data asli tetap menjadi bahan audit. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 

@@ -13,12 +13,18 @@ tags: ["parameter power query","Power Query","otomasi"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-laporan-penjualan-harian-umkm"]
 related_guides: ["panduan-power-query-data-asli","panduan-power-query-append"]
 related_formulas: ["rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets"]
 ---
+
+Membuat parameter folder atau tanggal agar satu query dapat dipakai ulang pada sumber yang berubah tanpa mengedit langkah M manual. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 

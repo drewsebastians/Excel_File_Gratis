@@ -13,12 +13,18 @@ tags: ["data validation","validasi excel","kontrol input"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-database-pelanggan-sederhana","template-rekap-pesanan-pelanggan"]
 related_guides: ["panduan-dropdown-dinamis-excel","panduan-excel-table-vs-range"]
 related_formulas: ["rumus-countifs-dashboard-status"]
 related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul"]
 ---
+
+Membatasi input ID transaksi agar tidak kosong dan tidak duplikat dengan formula validasi yang memakai referensi relatif dan absolut. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 
