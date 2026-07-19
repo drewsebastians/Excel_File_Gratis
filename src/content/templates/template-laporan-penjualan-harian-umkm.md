@@ -21,67 +21,34 @@ file_spec:
   sheets: 4
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Rekap hanya akurat bila setiap transaksi dicatat satu per satu."
   - "Dashboard disiapkan untuk kategori contoh Makanan, Minuman, dan Lainnya."
 related_templates: ["template-invoice-penjualan-umkm", "template-arus-kas-umkm", "template-stok-barang-excel-gratis"]
 ---
 
-Template laporan penjualan harian ini cocok untuk UMKM yang membutuhkan catatan transaksi ringkas sebelum melihat pola penjualan. Setiap baris mencatat tanggal, nomor invoice, produk atau jasa, kategori, metode pembayaran, jumlah, harga satuan, diskon, dan total.
+Catat satu penjualan per baris, lalu gunakan dashboard untuk membaca total, jumlah transaksi, rata-rata transaksi, tanggal data terakhir, dan nilai per kategori. Template laporan penjualan harian UMKM ini cocok sebagai catatan operasional; angka dashboard selalu mengikuti transaksi yang dicatat.
 
-## Fitur Utama
+## Isi Workbook
 
-- Tabel transaksi dengan filter bawaan Excel.
-- Dropdown kategori dan metode pembayaran agar penulisan konsisten.
-- Total per transaksi dengan rumus jumlah x harga satuan - diskon.
-- Dashboard total penjualan, jumlah transaksi, rata-rata transaksi, dan tanggal data terakhir.
-- Rekap kategori menggunakan `SUMIFS` serta grafik batang dari data yang sama.
+**Cara Pakai**, **Data Penjualan**, **Dashboard**, dan **Referensi**. Data Penjualan adalah sumber angka; Referensi menyimpan pilihan kategori serta metode pembayaran.
 
-## Struktur Workbook
+## Cara Menggunakan Template
 
-**Cara Pakai** menjelaskan alur input. **Data Penjualan** adalah tabel transaksi utama. **Dashboard** merangkum data contoh secara otomatis. **Referensi** menyimpan daftar kategori dan metode pembayaran yang dipakai pada contoh.
+1. Tambahkan satu baris pada **Data Penjualan** untuk setiap transaksi.
+2. Isi tanggal, nomor invoice, produk atau jasa, lalu pilih kategori dan metode pembayaran.
+3. Masukkan jumlah, harga satuan, dan diskon bila ada. Kolom total dihitung dari data pada baris itu.
+4. Baca total dan rekap kategori di **Dashboard**; periksa tabel sumber sebelum menyimpulkan hasil.
 
-## Cara Pakai Laporan Penjualan
+## Yang Dihitung Workbook
 
-1. Buka sheet **Data Penjualan** dan tambah satu baris untuk setiap transaksi.
-2. Isi tanggal, nomor invoice, produk atau jasa, lalu pilih kategori dan metode bayar dari dropdown.
-3. Isi jumlah, harga satuan, dan diskon jika ada. Kolom Total dihitung otomatis.
-4. Buka **Dashboard** untuk memeriksa total dan rekap kategori.
-5. Bila kategori bisnis berubah, sesuaikan dropdown dan baris rekap agar namanya sama persis.
+Workbook berisi 12 formula, satu Excel Table, dan dua data validation. Formula yang terdeteksi mencakup `SUMIFS`, `SUM`, `MAX`, `COUNTA`, dan `IFERROR`.
 
-## Contoh Alur Penggunaan
+## Batasan yang Perlu Diketahui
 
-Contoh file berisi lima transaksi. Total penjualan contoh adalah Rp919.000: kategori Makanan Rp520.000, Minuman Rp324.000, dan Lainnya Rp75.000. Angka itu berasal langsung dari tabel transaksi, bukan dari nilai yang diketik ulang di dashboard.
+Template ini bukan pembukuan, laporan pajak, atau pengganti bukti transaksi. Google Sheets perlu diuji ulang pada salinan file sebelum dipakai rutin.
 
-## Rumus dan Logika
+## Langkah Berikutnya
 
-Kolom Total memakai `=Jumlah*Harga Satuan-Diskon`. Rekap kategori memakai pola `SUMIFS(total_range, kategori_range, nama_kategori)`. Dashboard rata-rata memakai `IFERROR` agar tidak menampilkan kesalahan ketika belum ada transaksi.
-
-Pelajari langkahnya pada [cara membuat rekap penjualan harian](/panduan/pengolahan-data/panduan-rekap-penjualan-harian-excel/) dan [cara membuat dashboard sederhana](/panduan/pengolahan-data/panduan-dashboard-sederhana-excel/). Jika rekap bernilai nol, cek [penyebab SUMIFS atau COUNTIFS hasil 0](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/).
-
-## Tips Modifikasi
-
-Jangan mengganti nama kategori di dashboard tanpa memperbarui nama di tabel transaksi. Jika ingin menambah kategori, salin baris rekap di Dashboard dan sesuaikan kriterianya. Untuk membuat dokumen transaksi per pelanggan, gunakan [template invoice UMKM](/templates/bisnis-umkm/template-invoice-penjualan-umkm/).
-
-## Batasan Template
-
-Template ini tidak menggantikan pembukuan atau laporan pajak. Grafik hanya menampilkan tiga kategori contoh dan tidak otomatis membuat kategori baru saat Anda mengetik nama kategori tambahan.
-
-## Pertanyaan yang Sering Ditanyakan (FAQ)
-
-**Apakah total dihitung otomatis?**
-
-Ya. Nilai Total per baris menghitung jumlah dikali harga satuan, kemudian mengurangi diskon.
-
-**Apakah bisa mencatat jasa?**
-
-Bisa. Kolom Produk/Jasa dapat berisi nama layanan.
-
-**Mengapa rekap kategori 0?**
-
-Nama kategori pada transaksi harus sama dengan kriteria di Dashboard dan nilai Total harus berupa angka.
-
-**Apakah grafik bisa dihapus?**
-
-Bisa, tetapi menghapus grafik tidak memengaruhi tabel atau rumus rekap.
+[panduan rekap penjualan harian](/panduan/pengolahan-data/panduan-rekap-penjualan-harian-excel/) dan [diagnosis SUMIFS atau COUNTIFS bernilai nol](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/).

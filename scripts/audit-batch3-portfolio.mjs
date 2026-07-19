@@ -11,7 +11,7 @@ const collections = [
   { directory: "troubleshooting", route: (entry) => `/masalah-excel/${entry.category}/${entry.slug}/` },
   { directory: "collections", route: (entry) => `/koleksi/${entry.slug}/` },
 ];
-const expectedCounts = { templates: 15, guides: 8, formulas: 6, troubleshooting: 6, collections: 3 };
+const expectedCounts = { templates: 15, guides: 13, formulas: 6, troubleshooting: 6, collections: 3 };
 const failures = [];
 const assert = (condition, message) => {
   if (!condition) failures.push(message);
@@ -51,6 +51,23 @@ for (const field of ["title", "meta_title", "meta_description", "slug"]) {
   }
 }
 
+const bannedPhrases = [
+  "di era digital yang serba cepat", "seiring berkembangnya zaman", "tidak dapat dipungkiri",
+  "pada dasarnya", "tentunya", "solusi terbaik", "solusi lengkap", "game changer", "merevolusi",
+];
+for (const entry of resources) {
+  const source = readFileSync(join(root, "src", "content", entry.collection, entry.file), "utf8").toLowerCase();
+  for (const phrase of bannedPhrases) assert(!source.includes(phrase), `Frasa editorial terlarang: ${entry.collection}/${entry.file}: ${phrase}`);
+}
+
+const manifestPath = join(root, "docs", "content-rewrite", "rewrite-manifest.yaml");
+assert(existsSync(manifestPath), "Rewrite manifest tidak ditemukan.");
+const manifestSource = existsSync(manifestPath) ? readFileSync(manifestPath, "utf8") : "";
+for (const entry of resources) {
+  const expectedPath = `src/content/${entry.collection}/${entry.file}`;
+  assert(manifestSource.includes(`path: ${expectedPath}`), `Resource published belum dicatat di manifest: ${expectedPath}`);
+}
+
 const sitemapFiles = existsSync(join(root, "dist"))
   ? readdirSync(join(root, "dist")).filter((name) => /^sitemap.*\.xml$/.test(name))
   : [];
@@ -82,6 +99,8 @@ const report = {
     "required metadata and uniqueness",
     "built route, canonical, JSON-LD, and sitemap presence",
     "template download and preview assets",
+    "banned editorial phrases",
+    "published-resource manifest coverage",
   ],
   failures,
 };

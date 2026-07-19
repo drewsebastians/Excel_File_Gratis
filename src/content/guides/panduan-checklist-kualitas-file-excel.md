@@ -20,70 +20,27 @@ related_formulas: ["rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets"]
 ---
 
-## Masalah yang Diselesaikan
+Periksa formula, sumber data, tampilan, dan informasi yang ikut terbawa sebelum workbook dibagikan ke orang lain.
 
-File yang tampak benar dapat masih berisi data contoh, formula rusak, sheet tersembunyi, atau tautan eksternal.
+## Hasil yang Perlu Disiapkan
 
-## Hasil yang Diharapkan
-
-Kamu memiliki pemeriksaan berurutan dan catatan keputusan sebelum mengirim file.
-
-## Prasyarat
-
-- Workbook yang akan dibagikan
-- Daftar penerima atau tujuan file
-
-## Contoh Input
-
-```text
-Checklist: nama file, sheet aktif, formula error, filter, print preview, data pribadi, external links, dan versi.
-```
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **checklist kualitas file Excel**, bukan menambah rumus atau format yang belum diperlukan.
 
 ## Langkah Praktik
 
-1. Simpan salinan review dengan nama dan tanggal yang jelas.
-2. Cari error formula dan cek beberapa total secara manual.
-3. Periksa sheet tersembunyi, named range, external links, dan koneksi data.
-4. Buka Print Preview serta satu tampilan mobile/web bila file akan dibagikan lintas perangkat.
-5. Hapus data pribadi atau data contoh yang tidak boleh keluar.
-6. Catat hasil dan minta pemeriksaan kedua untuk file berisiko.
+1. Simpan salinan review dengan nama serta tanggal yang jelas.
+2. Cek beberapa total, error formula, sheet tersembunyi, dan link eksternal yang relevan.
+3. Lihat tampilan cetak atau tampilan tujuan distribusi yang benar-benar akan dipakai.
+4. Hapus data contoh atau informasi yang tidak boleh dikirim, lalu catat hasil pemeriksaan.
 
-## Mengapa Ini Bekerja
+## Cara Memeriksa Hasil
 
-Checklist memisahkan pemeriksaan isi, teknis, keamanan data, dan distribusi. Urutan ini mengurangi risiko mengirim file sebelum perubahan terakhir tersimpan.
+Pemeriksaan berurutan memisahkan masalah data, formula, tampilan, dan distribusi. Cari `#REF!` serta verifikasi input penting sebelum mengandalkan total.
 
-## Kesalahan Umum
+## Catatan dan Batasan
 
-- Hanya memeriksa tampilan tanpa menguji input dan formula.
-- Mengirim file sumber ketika seharusnya mengirim salinan hasil.
+Checklist tidak mengesahkan kebenaran angka bisnis; pemilik data tetap perlu menyetujui hasil.
 
-## Diagnosis
+## Lanjutkan dari Sini
 
-Gunakan Find untuk `#REF!`, buka Workbook Links, dan cek File > Info untuk Inspect Workbook.
-
-## Cara Memperbaiki
-
-Perbaiki error, putuskan apakah link eksternal perlu, bersihkan metadata, simpan salinan, dan ulangi checklist.
-
-## Kompatibilitas dan Alternatif Versi Lama
-
-Menu dan nama pemeriksaan berbeda antara Excel desktop, Excel web, dan Google Sheets. Jangan menganggap satu hasil berlaku untuk semua aplikasi.
-
-Alternatif untuk Excel lama: Gunakan checklist markdown atau sheet QA sederhana jika fitur Inspect Workbook tidak tersedia.
-
-## Batasan
-
-Checklist tidak membuktikan bahwa angka bisnis benar; pemilik data tetap harus menyetujui hasil.
-
-## Langkah Praktis Berikutnya
-
-Jadikan checklist ini bagian dari proses release dan simpan bukti untuk file penting.
-
-## Related Resources
-
-- Template: [Tracker Proyek Sederhana](/templates/produktivitas-kerja/template-tracker-proyek-sederhana/), [Notulen Rapat dan Action Item](/templates/produktivitas-kerja/template-notulen-rapat-action-item/)
-- Panduan: [Audit Rumus Excel](/panduan/pengolahan-data/panduan-audit-rumus-excel/), [Excel Table vs Range Biasa](/panduan/dasar-excel/panduan-excel-table-vs-range/)
-- Rumus: [IFERROR untuk Template Rapi](/rumus-excel/logika/rumus-iferror-template-rapi/)
-- Troubleshooting: [File Excel Berantakan saat Dibuka di Google Sheets](/masalah-excel/file-kompatibilitas/masalah-file-excel-berantakan-google-sheets/)
-
-Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
+[audit rumus Excel](/panduan/pengolahan-data/panduan-audit-rumus-excel/) dan [file Excel berantakan di Google Sheets](/masalah-excel/file-kompatibilitas/masalah-file-excel-berantakan-google-sheets/).

@@ -20,30 +20,26 @@ related_formulas: ["rumus-if-ifs-status-prioritas", "rumus-countifs-dashboard-st
 related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets", "masalah-sumifs-countifs-hasil-nol"]
 ---
 
-## Tujuan
+FILTER mengembalikan baris atau nilai yang memenuhi kondisi sehingga daftar hasil dapat berubah mengikuti data sumber.
 
-`FILTER` menampilkan semua baris yang memenuhi syarat tanpa menyalin data satu per satu. Hasilnya akan meluber ke sel di bawah atau samping, sehingga area hasil harus dibiarkan kosong.
+## Sintaks
 
-## Sintaks dan Argumen
+`=FILTER(array, include, [if_empty])`
 
-`array` adalah data yang ingin ditampilkan. `include` adalah pengujian TRUE atau FALSE dengan tinggi atau lebar yang sama. `if_empty` adalah hasil pengganti bila tidak ada baris yang cocok.
+## Arti Argumen
 
-## Contoh 1: Tugas dengan Status Tertentu
+- `array` adalah rentang hasil.
+- `include` adalah kondisi TRUE/FALSE dengan ukuran yang sesuai.
+- `if_empty` adalah nilai yang ditampilkan bila tidak ada hasil.
 
-Jika nama tugas ada di `D4:D200` dan status ada di `G4:G200`, gunakan `=FILTER(D4:D200,G4:G200="Dikerjakan","Tidak ada tugas")`. Formula menampilkan tugas Dikerjakan dan pesan singkat ketika tidak ada hasil.
+## Contoh
 
-## Contoh 2: Baris Lengkap per Pemilik
+Jika A2:A5 berisi status dan B2:B5 berisi tugas, `=FILTER(B2:B5,A2:A5="Aktif","Tidak ada tugas")` mengembalikan tugas yang statusnya Aktif.
 
-`=FILTER(A4:J200,E4:E200=M2,"Tidak ada data")` menampilkan seluruh kolom A sampai J ketika pemilik pada kolom E sama dengan nilai di M2. Pastikan rentang A4:J200 dan E4:E200 dimulai serta berakhir pada baris yang sama.
+## Periksa Saat Hasil Tidak Sesuai
 
-## Tepi Kasus
+Periksa ukuran `array` dan `include`. Formula ini tersedia pada versi Excel yang mendukung dynamic arrays; jangan mengasumsikan perilaku yang sama pada aplikasi lain.
 
-Jika area spill sudah berisi data, Excel dapat menampilkan `#SPILL!`. Kosongkan area hasil, bukan data sumbernya. Bila tidak ada hasil dan argumen ketiga tidak diisi, Excel dapat menghasilkan error kalkulasi. Gunakan teks seperti `"Tidak ada data"` bila itu memang pengalaman yang diinginkan pengguna.
+## Rumus dan Panduan Terkait
 
-## Kompatibilitas
-
-FILTER adalah fungsi array dinamis. Excel lama mungkin tidak memilikinya, sehingga file akan memerlukan alternatif seperti filter tabel biasa, kolom bantu, atau formula lain. Periksa versi sebelum membagikan workbook ke pengguna lain.
-
-## Sumber Resmi
-
-Microsoft menjelaskan sintaks dan perilaku spill pada [fungsi FILTER](https://support.microsoft.com/id-ID/Excel/functions/filter-function). Untuk daftar berbasis status, FILTER dapat dilengkapi dengan [IF dan IFS](/rumus-excel/logika/rumus-if-ifs-status-prioritas/).
+[task tracker Kanban](/templates/produktivitas-kerja/template-task-tracker-kanban-excel/) dan [XLOOKUP atau VLOOKUP](/rumus-excel/lookup-referensi/rumus-xlookup-vlookup-data/).

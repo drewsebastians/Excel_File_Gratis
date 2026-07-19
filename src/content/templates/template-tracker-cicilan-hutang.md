@@ -21,59 +21,34 @@ file_spec:
   sheets: 4
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Template hanya untuk pencatatan dan tidak memberi saran pelunasan, bunga, atau keputusan keuangan."
   - "Status jatuh tempo mengikuti tanggal perangkat saat file dihitung ulang."
 related_templates: ["template-budget-bulanan", "template-arus-kas-umkm"]
 ---
 
-Tracker ini dibuat untuk orang yang ingin menyimpan catatan cicilan atau hutang dalam satu file, bukan untuk memberi rekomendasi keuangan. Anda memasukkan data tagihan dan pembayaran, lalu file menghitung sisa per item serta totalnya.
+Simpan daftar cicilan atau hutang dan catat setiap pembayaran pada tabel terpisah. Tracker ini menghitung pembayaran tercatat serta sisa per item, sehingga kamu dapat membandingkan catatan dengan dokumen tagihan tanpa membuat hitungan kedua.
 
-## Fitur Utama
+## Isi Workbook
 
-Daftar Cicilan mencatat ID, pemberi tagihan, keterangan, nominal awal, jatuh tempo, pembayaran tercatat, sisa, dan status. Catatan Pembayaran menyimpan setiap pembayaran sebagai baris terpisah. Ringkasan mengumpulkan total nominal, total pembayaran, total sisa, jumlah item berjalan, item lewat jatuh tempo, serta grafik sisa per item.
+**Cara Pakai**, **Daftar Cicilan**, **Catatan Pembayaran**, dan **Ringkasan**. ID cicilan menghubungkan tagihan dengan setiap pembayaran.
 
-## Cara Pakai Tracker Cicilan
+## Cara Menggunakan Template
 
-1. Tambahkan satu baris pada **Daftar Cicilan** untuk tiap kewajiban yang ingin dicatat.
-2. Beri ID singkat yang unik, misalnya `CIC-005`.
-3. Masukkan setiap pembayaran pada **Catatan Pembayaran** dengan ID yang sama.
-4. Buka **Ringkasan** untuk memeriksa total sisa dan status.
-5. Cocokkan tanggal, nominal, dan status dengan dokumen atau pemberi tagihan yang sebenarnya.
+1. Tambahkan satu item pada **Daftar Cicilan** dan beri ID yang unik.
+2. Isi nominal awal serta jatuh tempo sesuai dokumen yang kamu pegang.
+3. Catat setiap pembayaran positif pada **Catatan Pembayaran** memakai ID yang sama.
+4. Buka **Ringkasan**, lalu cocokkan sisa dan status dengan sumber tagihan.
 
-## Contoh Alur Penggunaan
+## Yang Dihitung Workbook
 
-Contoh file berisi tiga item aktif dengan total nominal awal Rp2.500.000. Empat catatan pembayaran berjumlah Rp800.000, sehingga total sisa contoh menjadi Rp1.700.000. Setiap pembayaran akan dijumlahkan memakai ID cicilan yang sesuai.
+Workbook berisi dua Excel Table, dua data validation, dan 27 formula dengan `SUMIFS`, `SUM`, `COUNTIF`, `IF`, serta `TEXT`.
 
-## Rumus dan Logika
+## Batasan yang Perlu Diketahui
 
-Kolom Pembayaran Tercatat menggunakan `SUMIFS` untuk menjumlahkan nominal pembayaran berdasarkan ID. Sisa adalah nominal awal dikurangi pembayaran. Status menggunakan `IF`: Lunas jika sisa 0, Lewat jatuh tempo jika tanggal lewat dan masih ada sisa, atau Berjalan bila belum.
+File ini tidak menghitung bunga, denda, jadwal pelunasan, atau konsekuensi hukum. Status waktu bergantung pada perhitungan tanggal saat file dibuka; Google Sheets perlu diuji ulang.
 
-Gunakan [rumus SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) untuk memahami rekap per ID. Jika hasil formula terlihat tidak masuk akal karena sel kosong atau pembagian, baca [IFERROR untuk template yang lebih rapi](/rumus-excel/logika/rumus-iferror-template-rapi/).
+## Langkah Berikutnya
 
-## Tips Modifikasi
-
-Simpan ID secara konsisten; satu perbedaan huruf atau tanda minus membuat pembayaran tidak terhubung. Hindari memasukkan nominal pembayaran negatif. Bila sebuah pembayaran melebihi nominal awal, periksa kembali sebelum memakai ringkasan sebagai catatan.
-
-## Batasan Template
-
-Template tidak menghitung bunga, denda, jadwal pelunasan, atau hak dan kewajiban hukum. Status memakai tanggal perangkat dan perlu diperiksa ulang bila file dibuka di waktu yang berbeda.
-
-## Pertanyaan yang Sering Ditanyakan (FAQ)
-
-**Apakah file ini memberi strategi melunasi hutang?**
-
-Tidak. File hanya membantu mencatat data yang Anda masukkan.
-
-**Mengapa pembayaran saya belum mengurangi sisa?**
-
-Pastikan ID pada Catatan Pembayaran sama persis dengan ID pada Daftar Cicilan.
-
-**Apakah bisa menambah item baru?**
-
-Bisa. Salin baris terakhir, beri ID baru, lalu periksa formula dan statusnya.
-
-**Mengapa status dapat berubah saat dibuka lagi?**
-
-Status membandingkan jatuh tempo dengan tanggal perangkat saat formula dihitung ulang.
+[rumus SUMIFS untuk rekap](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) dan [template budget bulanan](/templates/keuangan-pribadi/template-budget-bulanan/).

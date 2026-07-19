@@ -21,51 +21,34 @@ file_spec:
   sheets: 4
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2021 atau lebih baru; Microsoft 365 direkomendasikan untuk tampilan Kanban dinamis"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Template ini untuk pelacakan tugas sederhana, bukan sistem manajemen proyek atau pelacakan waktu."
   - "Papan Kanban dinamis memakai FILTER; versi Excel lama dapat menampilkan formula tetapi tidak memperbarui kartu otomatis."
 related_templates: ["template-notulen-rapat-action-item", "template-kalender-planner-2026", "template-follow-up-pelanggan-excel"]
 ---
 
-Task tracker ini memakai satu sumber data: **Daftar Tugas**. Ketika status diubah dari Belum Dimulai ke Dikerjakan atau Selesai, tampilan **Papan Kanban** mengikuti status tersebut. Pendekatan ini mengurangi risiko dua daftar tugas saling berbeda.
+Masukkan tugas sekali di tabel sumber, pilih statusnya, lalu baca daftar itu sebagai papan Kanban dan ringkasan. Template task tracker ini membantu pelacakan sederhana ketika pekerjaan perlu terlihat menurut pemilik, prioritas, progres, dan tenggat.
 
-## Isi dan Fitur Workbook
+## Isi Workbook
 
-- **Cara Pakai** memberi langkah input singkat.
-- **Daftar Tugas** memuat ID, tugas, proyek, pemilik, status, prioritas, tanggal mulai, jatuh tempo, progres, hari tersisa, dan status keterlambatan.
-- **Papan Kanban** menampilkan tugas berdasarkan tiga status dengan rumus `FILTER`.
-- **Ringkasan** menghitung tugas per status, tugas lewat tenggat, tugas tanpa tenggat, dan jumlah tugas per pemilik.
+**Cara Pakai**, **Daftar Tugas**, **Papan Kanban**, dan **Ringkasan**. Daftar Tugas menjadi satu-satunya sumber data untuk papan dan angka ringkasan.
 
-## Cara Pakai Task Tracker Kanban
+## Cara Menggunakan Template
 
-1. Isi satu tugas per baris pada **Daftar Tugas**.
-2. Pilih Status dan Prioritas melalui dropdown. Jangan membuat variasi ejaan baru seperti `Sedang dikerjakan` karena papan hanya membaca status yang tersedia.
-3. Isi Progres dari 0 sampai 100.
-4. Tambahkan Jatuh Tempo bila tugas memiliki tenggat. Kolom Hari Tersisa akan kosong untuk tugas tanpa tanggal.
-5. Lihat **Papan Kanban** untuk pembacaan cepat dan **Ringkasan** untuk angka status serta pemilik.
+1. Tambahkan satu tugas per baris di **Daftar Tugas**.
+2. Pilih status serta prioritas dari dropdown yang tersedia.
+3. Isi progres dan tenggat hanya bila keduanya memang dipakai dalam proses kerja.
+4. Periksa **Papan Kanban** dan **Ringkasan** sebelum memperbarui status berikutnya.
 
-## Rumus dan Logika
+## Yang Dihitung Workbook
 
-Status keterlambatan tidak hanya membandingkan tanggal. Rumus juga memeriksa apakah tugas kosong, sudah selesai, atau belum memiliki tanggal jatuh tempo. Karena itu, tugas kosong dan tugas tanpa tenggat tidak salah ditandai sebagai terlambat.
+File memiliki satu Excel Table, tiga data validation, dan 21 formula. Formula yang terdeteksi mencakup `COUNTIF`, `COUNTIFS`, dan `IF`.
 
-Papan Kanban menggunakan `FILTER` untuk menyaring nama tugas berdasarkan Status. Rumus ini paling nyaman di Microsoft 365 atau Excel 2021. Untuk tabel status dan rekap yang kompatibel lebih luas, workbook juga memakai `COUNTIF` dan `COUNTIFS`.
+## Batasan yang Perlu Diketahui
 
-## Batasan Template
+Tidak ada automasi pengingat, pelacakan waktu, atau kolaborasi real-time. Google Sheets perlu diuji ulang sebelum dipakai; jangan mengasumsikan tampilan Kanban akan sama.
 
-Template tidak mengatur dependensi, kalender tim, pemberitahuan otomatis, atau histori perubahan. Gunakan [template notulen rapat dan action item](/templates/produktivitas-kerja/template-notulen-rapat-action-item/) bila tugas muncul dari rapat.
+## Langkah Berikutnya
 
-## FAQ
-
-**Papan Kanban tidak berubah setelah status diganti. Mengapa?**
-
-Periksa apakah Excel mendukung `FILTER` dan status ditulis melalui dropdown yang tersedia.
-
-**Apakah tugas selesai masih bisa memiliki tanggal lewat?**
-
-Tidak. Status keterlambatan menampilkan `Selesai` untuk tugas yang sudah selesai.
-
-**Apakah boleh membiarkan jatuh tempo kosong?**
-
-Boleh. Workbook menandainya sebagai `Tanpa jatuh tempo`, bukan sebagai keterlambatan.
-
+[notulen rapat dan action item](/templates/produktivitas-kerja/template-notulen-rapat-action-item/) dan [tracker proyek sederhana](/templates/produktivitas-kerja/template-tracker-proyek-sederhana/).

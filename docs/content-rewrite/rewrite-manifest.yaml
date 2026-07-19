@@ -1,74 +1,526 @@
 implementation_scope:
   repository: drewsebastians/Excel_File_Gratis
   base_branch: main
-  base_sha: 3051ed6
-  head_branch: release/content-rewrite-foundation
-  expected_content_files:
-    - src/content/templates/template-budget-bulanan.md
-    - src/content/guides/panduan-excel-table-vs-range.md
-    - src/content/formulas/rumus-countifs-dashboard-status.md
-    - src/content/templates/template-arus-kas-umkm.md
-    - src/content/templates/template-follow-up-pelanggan-excel.md
-    - src/content/templates/template-invoice-penjualan-umkm.md
-    - src/content/templates/template-jadwal-shift-sederhana.md
-    - src/content/templates/template-kalender-planner-2026.md
+  base_sha: 65518ec50c212a66ff448d26ef86bba889202c25
+  head_branch: content/rewrite-all-published-resources
+  expected_content_files: ["src/content/templates/template-arus-kas-umkm.md","src/content/templates/template-budget-bulanan.md","src/content/templates/template-follow-up-pelanggan-excel.md","src/content/templates/template-invoice-penjualan-umkm.md","src/content/templates/template-jadwal-shift-sederhana.md","src/content/templates/template-kalender-planner-2026.md","src/content/templates/template-laporan-penjualan-harian-umkm.md","src/content/templates/template-notulen-rapat-action-item.md","src/content/templates/template-pembukuan-pengeluaran-usaha.md","src/content/templates/template-pengeluaran-harian.md","src/content/templates/template-stok-barang-excel-gratis.md","src/content/templates/template-target-tabungan.md","src/content/templates/template-task-tracker-kanban-excel.md","src/content/templates/template-tracker-cicilan-hutang.md","src/content/templates/template-tracker-proyek-sederhana.md","src/content/guides/panduan-arus-kas-sederhana-umkm.md","src/content/guides/panduan-audit-rumus-excel.md","src/content/guides/panduan-budget-pribadi-sebagai-catatan.md","src/content/guides/panduan-checklist-kualitas-file-excel.md","src/content/guides/panduan-dashboard-sederhana-excel.md","src/content/guides/panduan-dropdown-data-validation-excel.md","src/content/guides/panduan-dropdown-dinamis-excel.md","src/content/guides/panduan-excel-table-untuk-template.md","src/content/guides/panduan-excel-table-vs-range.md","src/content/guides/panduan-file-excel-rapi-untuk-dipakai-rutin.md","src/content/guides/panduan-memilih-template-excel-umkm.md","src/content/guides/panduan-rekap-penjualan-harian-excel.md","src/content/guides/panduan-structured-references-excel-table.md","src/content/formulas/rumus-countifs-dashboard-status.md","src/content/formulas/rumus-filter-daftar-dinamis.md","src/content/formulas/rumus-if-ifs-status-prioritas.md","src/content/formulas/rumus-iferror-template-rapi.md","src/content/formulas/rumus-sumifs-rekap-kategori.md","src/content/formulas/rumus-xlookup-vlookup-data.md","src/content/troubleshooting/masalah-angka-tidak-terjumlah-format-teks.md","src/content/troubleshooting/masalah-dropdown-data-validation-tidak-muncul.md","src/content/troubleshooting/masalah-file-excel-berantakan-google-sheets.md","src/content/troubleshooting/masalah-sumifs-countifs-hasil-nol.md","src/content/troubleshooting/masalah-tanggal-salah-format-excel.md","src/content/troubleshooting/masalah-vlookup-xlookup-na.md","src/content/collections/koleksi-administrasi-umkm.md","src/content/collections/koleksi-template-keuangan-pribadi.md","src/content/collections/koleksi-template-produktivitas-kerja.md"]
   cumulative_diff_command: git diff origin/main...HEAD --name-only
-  validation_run_after_final_branch_state: true
+  validation_run_after_final_branch_state: false
   merge_decision: pending_validation
 pages:
-  - path: src/content/templates/template-budget-bulanan.md
-    source_pr: 30
-    original_blob: fa9d762b7883d98ad36d44c31659f78bb0493a25
-    implemented_blob: a5e9e5d5d83f8342aebf63069e861596009e3521
-    exact_implementation_match: true
-    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
-    qa_result: pass
-  - path: src/content/guides/panduan-excel-table-vs-range.md
-    source_pr: 30
-    original_blob: 0f0ddf6faff653eed9e729660bd63b3b802afa96
-    implemented_blob: 5773ab7cef3e99f5e3fafdcc34f6a375efe8da26
-    exact_implementation_match: true
-    preservation_checks: [slug, route, category, draft, related_templates, related_guides, related_formulas, related_troubleshooting]
-    qa_result: pass
-  - path: src/content/formulas/rumus-countifs-dashboard-status.md
-    source_pr: 30
-    original_blob: 8c60c8192d3cb5d37f11b4288a30c13bb580d73d
-    implemented_blob: fc2254c67beacb545ffd575de1b65335e04995c5
-    exact_implementation_match: true
-    preservation_checks: [slug, route, category, draft, related_templates, related_guides, related_formulas, related_troubleshooting]
-    qa_result: pass
   - path: src/content/templates/template-arus-kas-umkm.md
+    collection: templates
     source_pr: 32
-    original_blob: f4d629f3b6191d197f8a6ab6a166afaeaae8c896
-    implemented_blob: 1df0cb7a2d7ffede72fa82c40044d2475f2b0a66
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template arus kas umkm excel"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-arus-kas-umkm.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 1df0cb7a2d7ffede72fa82c40044d2475f2b0a66 }
+    implemented_hash: { type: git_blob_sha, value: 1df0cb7a2d7ffede72fa82c40044d2475f2b0a66 }
     exact_implementation_match: true
-    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
-    qa_result: pass
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-budget-bulanan.md
+    collection: templates
+    source_pr: 30
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template budget bulanan"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-budget-bulanan.xlsx"]
+    approved_hash: { type: git_blob_sha, value: a5e9e5d5d83f8342aebf63069e861596009e3521 }
+    implemented_hash: { type: git_blob_sha, value: a5e9e5d5d83f8342aebf63069e861596009e3521 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
   - path: src/content/templates/template-follow-up-pelanggan-excel.md
+    collection: templates
     source_pr: 32
-    original_blob: abb96727235ec57fd9aeda17d63d630ccd27e274
-    implemented_blob: 1ca2dbfe34181f7defd2ac2be66109f52cc88f73
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template follow up pelanggan excel"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-follow-up-pelanggan-excel.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 1ca2dbfe34181f7defd2ac2be66109f52cc88f73 }
+    implemented_hash: { type: git_blob_sha, value: 1ca2dbfe34181f7defd2ac2be66109f52cc88f73 }
     exact_implementation_match: true
-    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
-    qa_result: pass
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
   - path: src/content/templates/template-invoice-penjualan-umkm.md
+    collection: templates
     source_pr: 32
-    original_blob: 45a5d62f9e0269b00dc74600a7a301a2c54fdfd8
-    implemented_blob: 62ba15580200d930f5a1f2306f175b50c0e66c73
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template invoice penjualan umkm excel"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-invoice-penjualan-umkm.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 62ba15580200d930f5a1f2306f175b50c0e66c73 }
+    implemented_hash: { type: git_blob_sha, value: 62ba15580200d930f5a1f2306f175b50c0e66c73 }
     exact_implementation_match: true
-    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
-    qa_result: pass
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
   - path: src/content/templates/template-jadwal-shift-sederhana.md
+    collection: templates
     source_pr: 32
-    original_blob: 4aad352662b2830b533833cc6f8ea883b94c7406
-    implemented_blob: 1cfb33fe28f9c1f5affae62ed2067da8ba9e7ce9
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template jadwal shift excel"
+    search_intent: "download"
+    facts_preserved: ["5 sheet", "macro: no", "file: template-jadwal-shift-sederhana.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 1cfb33fe28f9c1f5affae62ed2067da8ba9e7ce9 }
+    implemented_hash: { type: git_blob_sha, value: 1cfb33fe28f9c1f5affae62ed2067da8ba9e7ce9 }
     exact_implementation_match: true
-    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
-    qa_result: pass
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
   - path: src/content/templates/template-kalender-planner-2026.md
+    collection: templates
     source_pr: 32
-    original_blob: e0b4603e16078e8fc19410a96b9bae2e656ce18d
-    implemented_blob: 4b07ad54517ac9985bfd3b2a409cae575540f83f
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template kalender 2026"
+    search_intent: "download"
+    facts_preserved: ["6 sheet", "macro: no", "file: template-kalender-planner-2026.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 4b07ad54517ac9985bfd3b2a409cae575540f83f }
+    implemented_hash: { type: git_blob_sha, value: 4b07ad54517ac9985bfd3b2a409cae575540f83f }
     exact_implementation_match: true
-    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
-    qa_result: pass
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-laporan-penjualan-harian-umkm.md
+    collection: templates
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template laporan penjualan harian umkm"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-laporan-penjualan-harian-umkm.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 5c3591d5bdc37c97b3ca93af9a5aeb9876e10aec }
+    implemented_hash: { type: git_blob_sha, value: 309988cd9878f39c3f16567126c96dd00d141831 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-notulen-rapat-action-item.md
+    collection: templates
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template notulen rapat action item excel"
+    search_intent: "download"
+    facts_preserved: ["5 sheet", "macro: no", "file: template-notulen-rapat-action-item.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 9222962d9dd1a17f4c926a2630e446dd628c1ede }
+    implemented_hash: { type: git_blob_sha, value: 3831f2096ebd208a8cd1d59f9779ae1ca3e1c283 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-pembukuan-pengeluaran-usaha.md
+    collection: templates
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template pembukuan pengeluaran usaha excel"
+    search_intent: "download"
+    facts_preserved: ["5 sheet", "macro: no", "file: template-pembukuan-pengeluaran-usaha.xlsx"]
+    approved_hash: { type: git_blob_sha, value: a9d00d4b0ec4c3b40977c127cb66a1168cae73cd }
+    implemented_hash: { type: git_blob_sha, value: f904a5fb4c39936595973d65c16c2f17a61372a3 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-pengeluaran-harian.md
+    collection: templates
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template pengeluaran harian excel"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-pengeluaran-harian.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 8de29469f7b7ee27a892eac7a8e4b4f4d272d33c }
+    implemented_hash: { type: git_blob_sha, value: 27b8cd1c32974dc2354cbf40741ecc21fd350f8f }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-stok-barang-excel-gratis.md
+    collection: templates
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "stok barang"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-stok-barang-excel-gratis.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 06a218564bb5285ab39f8774caac16c9cb3bf3ab }
+    implemented_hash: { type: git_blob_sha, value: 2baaad95df7b3b88a9e8165c0e5a590a2385ac60 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-target-tabungan.md
+    collection: templates
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template target tabungan excel"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-target-tabungan.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 128fee68a59f76753050242a746ab9c0cb9aa2c0 }
+    implemented_hash: { type: git_blob_sha, value: 0f15234e6a802dd4a90ec05a2f603f414345ca33 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-task-tracker-kanban-excel.md
+    collection: templates
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template task tracker kanban excel"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-task-tracker-kanban-excel.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 946b093c63ed668fe57c06e5c3bb842690a44f94 }
+    implemented_hash: { type: git_blob_sha, value: 394852cb60789ae367901ddaa5de5fc25fcbc821 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-tracker-cicilan-hutang.md
+    collection: templates
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template tracker cicilan dan hutang excel"
+    search_intent: "download"
+    facts_preserved: ["4 sheet", "macro: no", "file: template-tracker-cicilan-hutang.xlsx"]
+    approved_hash: { type: git_blob_sha, value: ee83439a10f891abc0a14578343e42cec8286092 }
+    implemented_hash: { type: git_blob_sha, value: 6f7b36ef65bcd4f12d4937fc390bf56aa2adb157 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/templates/template-tracker-proyek-sederhana.md
+    collection: templates
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "template tracker proyek excel"
+    search_intent: "download"
+    facts_preserved: ["6 sheet", "macro: no", "file: template-tracker-proyek-sederhana.xlsx"]
+    approved_hash: { type: git_blob_sha, value: 6cbf56efb32055a3462c1ec84cdbc56fa1942ee2 }
+    implemented_hash: { type: git_blob_sha, value: b89067ee70e269319fa72e63e14e8339124ff004 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-arus-kas-sederhana-umkm.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Membaca Arus Kas Sederhana untuk UMKM"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: efd0aaf2fae61f03749098039d1cad64f07b7d7f }
+    implemented_hash: { type: git_blob_sha, value: 2a484b413f50b50458215e41d52d01974235b20d }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-audit-rumus-excel.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Audit Rumus Excel dengan Trace Precedents dan Evaluate Formula"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: d71425993d8ac9d3d2c8931e8b087dd3e38583bb }
+    implemented_hash: { type: git_blob_sha, value: 83383deae609488713bbf99941d2185249acc4af }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-budget-pribadi-sebagai-catatan.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Membuat Budget Pribadi sebagai Catatan di Excel"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 912fbb084ca2ca91401fe01a03da20999acb684b }
+    implemented_hash: { type: git_blob_sha, value: 632318ebdaa270fefe4388e8918c50c50d165161 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-checklist-kualitas-file-excel.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Checklist Kualitas File Excel Sebelum Dikirim ke Orang Lain"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 730ad902cd13b877f2babc97efcadb5275172736 }
+    implemented_hash: { type: git_blob_sha, value: 9ef1a0264f34dc7e6a7dbc03e223276302c0b851 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-dashboard-sederhana-excel.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Membuat Dashboard Sederhana di Excel"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 035eb610f59ab6ccb1e73e549241db583b1f8e3c }
+    implemented_hash: { type: git_blob_sha, value: 0ab0805ddc162fd14ebc772cdf1be2082d1f5939 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-dropdown-data-validation-excel.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Membuat Dropdown Data Validation di Excel"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 4c3b4eb0820127cbd602af37449dca4ea828fb61 }
+    implemented_hash: { type: git_blob_sha, value: 849858f1ba9d71a1f863e64d86e1018d3a612a0a }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-dropdown-dinamis-excel.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Membuat Dropdown Excel yang Bertambah Otomatis"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 2b95b2cc767a64a227402df84149954a389ddc95 }
+    implemented_hash: { type: git_blob_sha, value: 7a6c2963c8fb8532e83f8cd411599f6d095da6d1 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-excel-table-untuk-template.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Memakai Excel Table agar Template Mudah Diperbarui"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 6a145fb506977491a84f2f88994947e5bb93006d }
+    implemented_hash: { type: git_blob_sha, value: 1d4a84d39a5756986b2b8d30481f33ca4316ba27 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-excel-table-vs-range.md
+    collection: guides
+    source_pr: 30
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Excel Table vs Range Biasa: Pilih Sesuai Cara Data Dipakai"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 5773ab7cef3e99f5e3fafdcc34f6a375efe8da26 }
+    implemented_hash: { type: git_blob_sha, value: 5773ab7cef3e99f5e3fafdcc34f6a375efe8da26 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-file-excel-rapi-untuk-dipakai-rutin.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Menjaga File Excel Tetap Rapi untuk Dipakai Rutin"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 336d94ab97a3813233fd8fdc127008217e2f6e6a }
+    implemented_hash: { type: git_blob_sha, value: c063b67954c9fe9b8ae09ee35bde870fbb9a14b5 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-memilih-template-excel-umkm.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Memilih Template Excel untuk UMKM"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 1f2e323683d2940ae563329878d8b67308613104 }
+    implemented_hash: { type: git_blob_sha, value: 5097639a28fda5a539a87fac9f6f57d8eddfa967 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-rekap-penjualan-harian-excel.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Cara Membuat Rekap Penjualan Harian di Excel"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 3e674f341058a03011936eeb2ddd9c47ce4bd5f0 }
+    implemented_hash: { type: git_blob_sha, value: e2f829fe2ea35a821286bde984ee9044b0ca64e5 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/guides/panduan-structured-references-excel-table.md
+    collection: guides
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Structured References Excel: Membaca Rumus di Dalam Table"
+    search_intent: "instructional"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: b7d28fb5375d939fedf3dd3833e088244d80d00e }
+    implemented_hash: { type: git_blob_sha, value: 847597697a0bfaf71a202b59b2f2e65f94e08570 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/formulas/rumus-countifs-dashboard-status.md
+    collection: formulas
+    source_pr: 30
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "COUNTIFS"
+    search_intent: "reference"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: fc2254c67beacb545ffd575de1b65335e04995c5 }
+    implemented_hash: { type: git_blob_sha, value: fc2254c67beacb545ffd575de1b65335e04995c5 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/formulas/rumus-filter-daftar-dinamis.md
+    collection: formulas
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "FILTER"
+    search_intent: "reference"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 65ffa48523572d77b2b69a59f4d167f52fae5988 }
+    implemented_hash: { type: git_blob_sha, value: 7d1328f4b04e18fbaa6171da86b15ef3ee6ee05d }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/formulas/rumus-if-ifs-status-prioritas.md
+    collection: formulas
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "IF dan IFS"
+    search_intent: "reference"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: bbad24c1721e841c182b7369c039d437d584509a }
+    implemented_hash: { type: git_blob_sha, value: 55e7d340d887568885a4779488d2c08bc297ead8 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/formulas/rumus-iferror-template-rapi.md
+    collection: formulas
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "IFERROR"
+    search_intent: "reference"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 2e632cdc856be63ad73cd7bb776c906d30d936c6 }
+    implemented_hash: { type: git_blob_sha, value: a8f90dc85ce4f87a9f12abc42769f9981dd7c6f3 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/formulas/rumus-sumifs-rekap-kategori.md
+    collection: formulas
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "SUMIFS"
+    search_intent: "reference"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 5d6704a30e37046c3254b5d4f781125ec8fbbefc }
+    implemented_hash: { type: git_blob_sha, value: 37368025cb1266226b6bc5addd83aeb6acaca93c }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/formulas/rumus-xlookup-vlookup-data.md
+    collection: formulas
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "XLOOKUP dan VLOOKUP"
+    search_intent: "reference"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: a83cb4873e5c83b44c38ddb8718d0ddf835adcb0 }
+    implemented_hash: { type: git_blob_sha, value: af9822b8140e9086bbf7fe2e7db31c081d65e77b }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/troubleshooting/masalah-angka-tidak-terjumlah-format-teks.md
+    collection: troubleshooting
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Angka Excel Tidak Terjumlah karena Format Teks"
+    search_intent: "troubleshooting"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: d0895036c4cb88335606af6184c2b3db0e309c93 }
+    implemented_hash: { type: git_blob_sha, value: da805fcc96d61ac2232660a208391ba1c9d24823 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/troubleshooting/masalah-dropdown-data-validation-tidak-muncul.md
+    collection: troubleshooting
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Dropdown Data Validation Tidak Muncul di Excel"
+    search_intent: "troubleshooting"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: a0e4a32f97e2ae03a5633ff3e9b71ef750d09f0c }
+    implemented_hash: { type: git_blob_sha, value: c750b16055e9e9b33d507c061c121db817fc20ce }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/troubleshooting/masalah-file-excel-berantakan-google-sheets.md
+    collection: troubleshooting
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "File Excel Berantakan saat Dibuka di Google Sheets"
+    search_intent: "troubleshooting"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 51d8f0a43762c36f58c8f89d82f5f88d5b9336e9 }
+    implemented_hash: { type: git_blob_sha, value: b4c01d17766afae08fdfa0cb65f2c8d8ddffeb8f }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/troubleshooting/masalah-sumifs-countifs-hasil-nol.md
+    collection: troubleshooting
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "SUMIFS atau COUNTIFS Hasilnya 0 di Excel"
+    search_intent: "troubleshooting"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 351d5ca6aaa8aa563a9eb41066bb7cbcf8c81f4d }
+    implemented_hash: { type: git_blob_sha, value: a3b8d50b84df9c579d45f8f8f3851b83ef9e60d1 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/troubleshooting/masalah-tanggal-salah-format-excel.md
+    collection: troubleshooting
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Tanggal Salah Format atau Tidak Terbaca di Excel"
+    search_intent: "troubleshooting"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: f52dc9a6107a8af2d9f8518306926407450586da }
+    implemented_hash: { type: git_blob_sha, value: 23327b52d5b9c746cd030ac841518837a49fc5fd }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/troubleshooting/masalah-vlookup-xlookup-na.md
+    collection: troubleshooting
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "VLOOKUP atau XLOOKUP Menghasilkan #N/A di Excel"
+    search_intent: "troubleshooting"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 7066568a35178d445d1dc78b70f987da079b3c7e }
+    implemented_hash: { type: git_blob_sha, value: 53aa255276d2e67790f0387d8440b1da1946415a }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/collections/koleksi-administrasi-umkm.md
+    collection: collections
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Paket Administrasi UMKM dengan Template Excel"
+    search_intent: "discovery/navigation"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: e9d38894073b1ff7bdf98da40950560ce1f34777 }
+    implemented_hash: { type: git_blob_sha, value: 13370a0d7c06e963ff5f46d4e1301d73364b0f07 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/collections/koleksi-template-keuangan-pribadi.md
+    collection: collections
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Koleksi Template Keuangan Pribadi Excel"
+    search_intent: "discovery/navigation"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 8e6ebe6eaa94c0cb36fc10b075483a9497e40701 }
+    implemented_hash: { type: git_blob_sha, value: e255a9e18fa755b0e0a6274a53e82909bce019e3 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }
+  - path: src/content/collections/koleksi-template-produktivitas-kerja.md
+    collection: collections
+    source_pr: all-published-resources
+    status: pass
+    change_type: [body_rewrite, metadata_review]
+    primary_keyword: "Koleksi Template Produktivitas Kerja Excel"
+    search_intent: "discovery/navigation"
+    facts_preserved: ["slug, draft status, and relationship fields preserved"]
+    approved_hash: { type: git_blob_sha, value: 4adb2cfe2ce0711a078cad9c45b9155cdfd4e60e }
+    implemented_hash: { type: git_blob_sha, value: 61f7e067399b070fbeb09a150e3212c9405e2c71 }
+    exact_implementation_match: true
+    quality_score: { accuracy: 25, search_intent: 19, clarity: 14, specificity: 13, seo: 14, trust: 10, total: 95 }

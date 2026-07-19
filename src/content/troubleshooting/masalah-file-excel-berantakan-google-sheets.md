@@ -18,30 +18,23 @@ related_formulas: ["rumus-filter-daftar-dinamis", "rumus-if-ifs-status-prioritas
 related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-tanggal-salah-format-excel"]
 ---
 
-## Mengapa Ini Terjadi
+Bila workbook terlihat berbeda setelah dibuka di Google Sheets, bandingkan fungsi, format, data validation, chart, dan proteksi sebelum menganggap file rusak.
 
-Excel dan Google Sheets memiliki banyak fungsi yang mirip, tetapi bukan aplikasi yang sama. Saat file `.xlsx` diimpor, beberapa fitur dapat diterjemahkan, disederhanakan, atau membutuhkan penyesuaian. Perubahan tampilan tidak selalu berarti data rusak, tetapi tetap perlu diperiksa sebelum file dipakai rutin.
+## Coba Ini Terlebih Dahulu
 
-## Periksa dalam Urutan Ini
+1. Simpan salinan asli sebelum mengunggah atau mengubah file.
+2. Buka workbook di Excel dan Google Sheets pada data contoh yang sama.
+3. Periksa formula penting, dropdown, chart, format tanggal, serta proteksi sheet.
+4. Catat bagian yang berbeda dan gunakan aplikasi asal untuk pekerjaan yang bergantung pada fitur tersebut.
 
-1. Buat salinan file Excel asli dan jangan menimpa file sumber.
-2. Periksa sheet yang berisi input, lalu cek dropdown kategori, status, atau anggota.
-3. Bandingkan beberapa hasil formula dan total rekap dengan file asli.
-4. Periksa tanggal, nominal, grafik, serta Table pada sheet ringkasan.
-5. Setelah melakukan perubahan di Google Sheets, ekspor salinan dan buka kembali di Excel bila file perlu dipakai silang aplikasi.
+## Penyebab yang Paling Sering
 
-## Area yang Sering Perlu Diuji
+Workbook Excel dapat memuat fitur atau perilaku yang tidak dipetakan sama persis oleh aplikasi lain. Tampilan yang berubah tidak selalu berarti angka sumber berubah.
 
-Formula modern seperti `FILTER`, format bersyarat, Data Validation, chart, dan Table dapat memiliki perilaku atau tampilan berbeda. Referensi antar-sheet, nama range, serta pemisah rumus juga layak diperiksa. Jangan berasumsi semua fungsi otomatis setara hanya karena file berhasil dibuka.
+## Sebelum Mengubah Data
 
-## Solusi yang Aman
+Jangan menyatakan kompatibilitas penuh tanpa pengujian file dan alur kerja yang spesifik.
 
-Untuk kebutuhan sederhana, pertahankan struktur tabel, formula yang mudah dibaca, dan daftar referensi yang jelas. Bila fitur tertentu berubah, putuskan apakah file akan dipelihara terutama di Excel atau terutama di Google Sheets, lalu uji ulang setelah setiap perubahan struktur. Hindari mengedit banyak formula sekaligus tanpa contoh pembanding.
+## Bantuan Terkait
 
-## Pencegahan
-
-Gunakan format tanggal konsisten, isi nominal sebagai angka, dan dokumentasikan sheet mana yang boleh diubah. [Panduan file rapi](/panduan/produktivitas/panduan-file-excel-rapi-untuk-dipakai-rutin/) membantu menyiapkan struktur yang lebih mudah dibawa antar aplikasi.
-
-## Batasan
-
-Tidak ada jaminan kesetaraan penuh antara Excel dan Google Sheets untuk setiap workbook. Untuk hasil yang penting, periksa file pada aplikasi yang akan dipakai pengguna akhir dan simpan salinan sumber sebelum mengimpor atau mengekspor ulang.
+[checklist kualitas file Excel](/panduan/produktivitas/panduan-checklist-kualitas-file-excel/) dan [audit rumus Excel](/panduan/pengolahan-data/panduan-audit-rumus-excel/).

@@ -16,22 +16,20 @@ formulas: ["rumus-countifs-dashboard-status", "rumus-filter-daftar-dinamis", "ru
 troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-file-excel-berantakan-google-sheets"]
 ---
 
-Koleksi ini menyatukan resource untuk pekerjaan operasional yang sederhana: mencatat tugas, menyusun jadwal, menindaklanjuti rapat, dan memantau proyek kecil. Tidak semua file perlu digunakan bersamaan. Pilih yang sesuai dengan alur kerja Anda saat ini.
+Koleksi ini membedakan tugas individu, tindak lanjut rapat, rencana kalender, dan proyek kecil agar kamu tidak memaksa satu daftar untuk semua proses kerja.
 
-## Mulai dari Kebutuhan Harian
+## Urutan Memilih Resource
 
-Gunakan [task tracker Kanban](/templates/produktivitas-kerja/template-task-tracker-kanban-excel/) untuk pekerjaan yang ingin dilihat per status. Gunakan [notulen rapat](/templates/produktivitas-kerja/template-notulen-rapat-action-item/) bila rapat menghasilkan keputusan dan action item. Gunakan [jadwal shift](/templates/produktivitas-kerja/template-jadwal-shift-sederhana/) untuk pembagian penugasan berdasarkan jam.
+1. Gunakan task tracker untuk daftar tugas dan status harian.
+2. Pakai notulen serta action item untuk tindak lanjut yang berasal dari rapat.
+3. Pilih tracker proyek ketika tugas dan milestone perlu dikelompokkan dengan ID proyek.
 
-## Saat Pekerjaan Menjadi Proyek Kecil
+## Pilihan yang Relevan
 
-Gunakan [tracker proyek sederhana](/templates/produktivitas-kerja/template-tracker-proyek-sederhana/) ketika beberapa tugas perlu dihubungkan ke satu proyek dan milestone. Jaga ID proyek serta status tetap konsisten agar dashboard tidak membaca baris yang salah.
+- [template task tracker Kanban](/templates/produktivitas-kerja/template-task-tracker-kanban-excel/)
+- [template notulen rapat](/templates/produktivitas-kerja/template-notulen-rapat-action-item/)
+- [template tracker proyek](/templates/produktivitas-kerja/template-tracker-proyek-sederhana/)
 
-## Artikel Pendukung
+## Catatan Pemakaian
 
-[Excel Table](/panduan/pengolahan-data/panduan-excel-table-untuk-template/) membantu data tumbuh tanpa merusak struktur. [Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/) menjaga pilihan status dan kategori. Untuk membuat daftar kerja yang berubah otomatis pada Excel versi baru, gunakan [FILTER](/rumus-excel/lookup-referensi/rumus-filter-daftar-dinamis/). Untuk label status, baca [IF dan IFS](/rumus-excel/logika/rumus-if-ifs-status-prioritas/).
-
-Jika dropdown hilang, mulai dari [diagnosis Data Validation](/masalah-excel/format-data/masalah-dropdown-data-validation-tidak-muncul/). Bila file dibuka di Google Sheets, periksa kembali formula, format, dan grafik melalui [catatan kompatibilitas](/masalah-excel/file-kompatibilitas/masalah-file-excel-berantakan-google-sheets/).
-
-## Batasan Koleksi
-
-Resource ini membantu pencatatan dan pembacaan kerja sederhana. Mereka bukan sistem manajemen proyek perusahaan, aplikasi absensi, alat penggajian, atau pengganti proses persetujuan dan komunikasi tim.
+Setiap template adalah alat pencatatan. Buka preview, baca struktur sheet serta batasannya, dan uji dengan data contoh sebelum menjadikannya proses rutin.

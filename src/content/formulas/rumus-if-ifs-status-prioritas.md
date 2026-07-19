@@ -20,30 +20,28 @@ related_formulas: ["rumus-countifs-dashboard-status", "rumus-iferror-template-ra
 related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul", "masalah-sumifs-countifs-hasil-nol"]
 ---
 
-## Tujuan
+IF mengembalikan satu hasil ketika kondisi benar dan hasil lain ketika salah; IFS dapat membaca beberapa kondisi berurutan.
 
-`IF` membantu membuat keputusan sederhana: jika kondisi benar, tampilkan satu hasil; jika salah, tampilkan hasil lain. `IFS` memeriksa kondisi dari kiri ke kanan dan mengembalikan hasil dari kondisi pertama yang bernilai TRUE.
+## Sintaks
 
-## Contoh 1: Status Keterlambatan dengan IF
+`=IF(logical_test, value_if_true, value_if_false)`
 
-`=IF(D4="","",IF(D4<TODAY(),"Lewat rencana","Aman"))` menampilkan kosong jika tanggal belum diisi. Jika ada tanggal yang lebih kecil dari hari ini, hasilnya Lewat rencana; selain itu Aman.
+`=IFS(logical_test1, value_if_true1, ...)`
 
-## Contoh 2: Prioritas dari Sisa Hari dengan IFS
+## Arti Argumen
 
-`=IFS(E4="","",E4<0,"Tinggi",E4<=2,"Sedang",TRUE,"Rendah")` memberi prioritas berdasarkan sisa hari pada E4. Kondisi paling ketat harus ditaruh lebih dulu, karena IFS berhenti pada TRUE pertama.
+- Kondisi dibandingkan secara berurutan.
+- Hasil harus sesuai dengan kondisi yang mendahuluinya.
+- Tambahkan kondisi cadangan bila semua kondisi sebelumnya tidak terpenuhi.
 
-## Contoh 3: Hindari Baris Kosong Ikut Dinilai
+## Contoh
 
-Sebelum menguji tanggal atau progress, cek sel identitas atau nama tugas. Contoh `=IF(B4="","",...)` mencegah baris siap pakai dibaca sebagai tugas terlambat. Pola ini dipakai pada [template tracker proyek](/templates/produktivitas-kerja/template-tracker-proyek-sederhana/).
+Contoh `=IF(C2>=80,"Prioritas tinggi","Prioritas normal")` memberi label dari nilai C2. Untuk kategori bertingkat, tempatkan ambang tertinggi lebih dulu.
 
-## Kesalahan Umum
+## Periksa Saat Hasil Tidak Sesuai
 
-Jangan menaruh kondisi umum sebelum kondisi khusus. Pada IFS, `TRUE,"Rendah"` sebaiknya menjadi pasangan terakhir sebagai hasil default. Jika tidak ada kondisi TRUE dan tidak ada default, hasilnya dapat menjadi `#N/A`.
+IFS tidak menyelesaikan data kosong atau teks yang tidak sesuai aturan. Uji setiap batas nilai dengan contoh kecil.
 
-## Kompatibilitas
+## Rumus dan Panduan Terkait
 
-IF tersedia lebih luas daripada IFS. Jika file perlu dipakai pada Excel lama, gunakan IF bertingkat yang pendek dan beri catatan jelas. Untuk pembagian status pada dashboard, gunakan [COUNTIFS](/rumus-excel/matematika/rumus-countifs-dashboard-status/) setelah label status tersedia.
-
-## Sumber Resmi
-
-Microsoft mendokumentasikan urutan kondisi dan hasil default pada [fungsi IFS](https://support.microsoft.com/en-us/excel/ifs-function).
+[COUNTIFS untuk status](/rumus-excel/matematika/rumus-countifs-dashboard-status/) dan [IFERROR untuk template rapi](/rumus-excel/logika/rumus-iferror-template-rapi/).

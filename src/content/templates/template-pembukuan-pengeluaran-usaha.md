@@ -21,56 +21,34 @@ file_spec:
   sheets: 5
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Template ini adalah catatan operasional sederhana, bukan laporan akuntansi atau laporan pajak."
   - "Nilai rekap bergantung pada tanggal, kategori, dan nominal yang dicatat dengan benar."
 related_templates: ["template-arus-kas-umkm", "template-laporan-penjualan-harian-umkm", "template-invoice-penjualan-umkm"]
 ---
 
-Gunakan template ini ketika usaha perlu melihat ke mana uang keluar, siapa penerimanya, dan bukti apa yang menyertainya. Satu baris mewakili satu pengeluaran. Dengan pola itu, rekap bulan dan grafik kategori mengambil angka dari catatan yang sama.
+Catat satu pengeluaran usaha per baris untuk melihat nominal, kategori, metode bayar, dan bukti transaksi tanpa menjumlahkan ulang. Rekap bulanan serta dashboard membaca tabel yang sama, sehingga total dapat ditelusuri kembali ke catatan sumber.
 
-## Isi dan Fitur Workbook
+## Isi Workbook
 
-- **Cara Pakai** berisi urutan pencatatan dan batasan penggunaan.
-- **Data Pengeluaran** mencatat tanggal, nomor bukti, vendor, kategori, metode, nominal, status, serta lampiran atau referensi.
-- **Kategori Pengeluaran** menyediakan daftar yang dapat disesuaikan untuk kategori, metode pembayaran, dan status.
-- **Rekap Bulanan** menghitung total serta jumlah bukti untuk bulan yang dipilih menggunakan `SUMIFS` dan `COUNTIFS`.
-- **Dashboard** menampilkan total pengeluaran, jumlah bukti, kategori terbesar, dan grafik batang.
+**Cara Pakai**, **Data Pengeluaran**, **Kategori Pengeluaran**, **Rekap Bulanan**, dan **Dashboard**. Daftar kategori menjadi sumber pilihan untuk data transaksi.
 
-## Cara Pakai Pembukuan Pengeluaran
+## Cara Menggunakan Template
 
-1. Sesuaikan daftar di **Kategori Pengeluaran** bila kategori contoh belum cocok.
-2. Isi tanggal dan nomor bukti pada **Data Pengeluaran**. Nomor bukti dapat berupa nomor struk, invoice vendor, atau kode internal.
-3. Pilih kategori, metode pembayaran, dan status dari dropdown.
-4. Masukkan nominal sebagai angka positif. Pengeluaran sudah dibedakan oleh konteks tabel, sehingga tidak perlu memakai angka minus.
-5. Buka **Rekap Bulanan** dan ubah nilai Bulan bila ingin membaca periode lain.
+1. Sesuaikan pilihan pada **Kategori Pengeluaran** bila diperlukan.
+2. Masukkan tanggal, nomor bukti, vendor, kategori, metode bayar, dan nominal di **Data Pengeluaran**.
+3. Pakai nominal positif karena tabel ini khusus mencatat pengeluaran.
+4. Pilih periode di **Rekap Bulanan** dan cocokkan angka dashboard dengan transaksi.
 
-## Rumus dan Logika
+## Yang Dihitung Workbook
 
-Kolom Bulan dibuat dari tanggal transaksi dengan `TEXT(tanggal,"yyyy-mm")`. Rekap memakai `SUMIFS` agar hanya nominal dengan bulan serta kategori yang sesuai yang dijumlahkan. Dashboard mengambil angka dari rekap, jadi tidak ada total kedua yang perlu diketik.
+Workbook memiliki dua Excel Table, empat data validation, dan 29 formula dengan `SUMIFS`, `COUNTIFS`, `INDEX`, serta `IF`.
 
-Untuk memahami pola tersebut, baca [rumus SUMIFS untuk rekap kategori](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) dan [cara membuat dashboard sederhana](/panduan/pengolahan-data/panduan-dashboard-sederhana-excel/). Bila rekap masih 0, lihat [diagnosis SUMIFS atau COUNTIFS](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/).
+## Batasan yang Perlu Diketahui
 
-## Contoh Alur Penggunaan
+Ini adalah catatan operasional, bukan laporan akuntansi atau pajak. Google Sheets perlu diuji ulang pada salinan file.
 
-Pada data contoh Juli 2026, belanja bahan, kemasan, promosi, pulsa, dan antar bahan tercatat sebagai lima bukti pengeluaran. Totalnya Rp315.000. Karena setiap baris memiliki kategori yang konsisten, dashboard dapat menunjukkan bahwa Bahan Baku adalah kategori terbesar pada periode contoh.
+## Langkah Berikutnya
 
-## Batasan Template
-
-File ini tidak menilai apakah suatu biaya dapat dikurangkan dari pajak, tidak menghitung laba, dan tidak menggantikan bukti transaksi asli. Periksa kembali data sumber secara berkala, terutama ketika vendor atau metode pembayaran baru ditambahkan.
-
-## FAQ
-
-**Apakah saya harus menyimpan file foto struk di workbook?**
-
-Tidak. Gunakan kolom Lampiran/Referensi untuk menulis lokasi, nama file, atau nomor bukti yang memudahkan penelusuran.
-
-**Mengapa kategori terbesar tidak berubah?**
-
-Pastikan kolom Bulan di Rekap Bulanan sesuai dengan tanggal transaksi yang ingin dilihat.
-
-**Apakah bisa dipakai untuk lebih dari satu usaha?**
-
-Bisa, tetapi sebaiknya gunakan file terpisah atau tambahkan kolom usaha secara konsisten agar rekap tidak tercampur.
-
+[rumus SUMIFS untuk rekap kategori](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) dan [template arus kas UMKM](/templates/bisnis-umkm/template-arus-kas-umkm/).

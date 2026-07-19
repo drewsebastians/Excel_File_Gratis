@@ -20,34 +20,25 @@ related_formulas: ["rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
 ---
 
-## Tujuan
+IFERROR mengganti hasil error dengan nilai alternatif setelah Excel mengevaluasi formula pertama.
 
-`IFERROR` menguji hasil formula. Bila hasilnya kesalahan seperti `#DIV/0!` atau `#N/A`, fungsi ini menampilkan nilai pengganti yang Anda tentukan.
+## Sintaks
 
-## Sintaks dan Argumen
+`=IFERROR(value, value_if_error)`
 
-`value` adalah formula yang ingin diuji. `value_if_error` adalah hasil yang ditampilkan bila formula pertama gagal. Gunakan 0 untuk perhitungan yang memang pantas dianggap nol, atau teks singkat bila pengguna perlu mengetahui data belum siap.
+## Arti Argumen
 
-## Contoh 1: Rata-rata Saat Tabel Masih Kosong
+- `value` adalah formula yang diuji.
+- `value_if_error` adalah hasil yang ditampilkan bila formula menghasilkan error.
 
-`=IFERROR(B3/B4,0)` menampilkan 0 jika jumlah transaksi B4 masih 0. Ini sesuai untuk kartu KPI pada dashboard yang belum memiliki data.
+## Contoh
 
-## Contoh 2: Lookup yang Belum Menemukan Data
+Contoh `=IFERROR(A2/B2,0)` menampilkan 0 bila pembagian menghasilkan error. Gunakan hanya bila 0 memang berarti hasil yang dapat dibaca.
 
-`=IFERROR(XLOOKUP(A2,Data!A:A,Data!B:B),"Belum ditemukan")` dapat menampilkan pesan jelas bila kode belum ada. Pastikan penyebabnya tetap diperiksa; pesan ini bukan bukti bahwa kodenya benar.
+## Periksa Saat Hasil Tidak Sesuai
 
-## Contoh 3: Persentase Realisasi
+Jangan memakai IFERROR untuk menyembunyikan masalah sumber data. Periksa penyebab `#N/A`, `#REF!`, atau pembagi nol sebelum memilih hasil pengganti.
 
-`=IFERROR(C2/B2,0)` menghindari `#DIV/0!` bila target B2 masih kosong atau 0. Formatkan hasil sebagai persentase setelah formula bekerja.
+## Rumus dan Panduan Terkait
 
-## Tepi Kasus dan Kesalahan Umum
-
-IFERROR akan menangkap semua jenis kesalahan, sehingga dapat menutupi `#REF!` akibat referensi rusak. Jangan membungkus formula penting dengan IFERROR sebelum memahami sumber kesalahannya. Untuk `SUMIFS` yang bernilai 0, IFERROR tidak dibutuhkan karena 0 adalah hasil sah.
-
-## Kompatibilitas dan Alternatif
-
-IFERROR tersedia di Excel modern dan Google Sheets. Bila hanya ingin menangani `#N/A`, gunakan `IFNA` agar kesalahan lain tetap terlihat. Untuk logika biasa tanpa error, gunakan `IF`.
-
-## Sumber Resmi
-
-Microsoft mendokumentasikan fungsi ini di [IFERROR function](https://support.microsoft.com/en-us/office/iferror-function-c526fd07-caeb-47b8-8bb6-63f3e417f611).
+[audit rumus Excel](/panduan/pengolahan-data/panduan-audit-rumus-excel/) dan [VLOOKUP atau XLOOKUP #N/A](/masalah-excel/formula/masalah-vlookup-xlookup-na/).

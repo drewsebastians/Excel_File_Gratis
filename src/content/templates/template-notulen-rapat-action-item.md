@@ -21,53 +21,34 @@ file_spec:
   sheets: 5
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Template ini membantu dokumentasi internal sederhana dan bukan berita acara hukum atau pengganti persetujuan peserta rapat."
   - "Status tindak lanjut bergantung pada pembaruan manual oleh pemilik tugas."
 related_templates: ["template-task-tracker-kanban-excel", "template-follow-up-pelanggan-excel", "template-kalender-planner-2026"]
 ---
 
-Notulen yang baik tidak berhenti pada daftar pembahasan. Template ini memisahkan **Informasi Rapat**, **Notulen dan Keputusan**, serta **Action Item** supaya keputusan dapat ditelusuri ke tindak lanjut yang jelas.
+Gunakan template notulen rapat ini untuk memisahkan informasi rapat, keputusan, dan tindak lanjut. Setiap action item memiliki pemilik, prioritas, tenggat, dan status sehingga rapat berikutnya dapat dimulai dari pekerjaan yang masih terbuka.
 
-## Isi dan Fitur Workbook
+## Isi Workbook
 
-- **Cara Pakai** menjelaskan alur pencatatan.
-- **Informasi Rapat** menyimpan ID, judul, tanggal, pemimpin, peserta, tujuan, dan catatan.
-- **Notulen dan Keputusan** mencatat agenda, poin diskusi, keputusan, risiko, dan pencatat.
-- **Action Item** menyimpan pekerjaan, pemilik, prioritas, tanggal jatuh tempo, status, hari tersisa, dan status keterlambatan.
-- **Ringkasan** memperlihatkan jumlah action item per status serta pekerjaan terbuka per pemilik.
+**Cara Pakai**, **Informasi Rapat**, **Notulen dan Keputusan**, **Action Item**, dan **Ringkasan**. Catatan keputusan dan daftar tindak lanjut tetap terpisah agar keduanya mudah diperiksa.
 
-## Cara Pakai Notulen dan Action Item
+## Cara Menggunakan Template
 
-1. Buat satu ID di **Informasi Rapat**, misalnya `RPT-003`.
-2. Gunakan ID yang sama pada baris agenda di **Notulen dan Keputusan**.
-3. Masukkan setiap tindak lanjut sebagai baris terpisah di **Action Item**.
-4. Pilih pemilik, prioritas, dan status dari dropdown.
-5. Buka **Ringkasan** sebelum rapat berikutnya untuk melihat pekerjaan yang belum selesai atau lewat jatuh tempo.
+1. Isi ID, tujuan, tanggal, dan peserta pada **Informasi Rapat**.
+2. Catat agenda, keputusan, dan risiko pada **Notulen dan Keputusan**.
+3. Buat satu baris per tindak lanjut pada **Action Item**.
+4. Pilih pemilik, prioritas, dan status, lalu gunakan **Ringkasan** untuk memeriksa action item yang belum selesai.
 
-## Rumus dan Logika
+## Yang Dihitung Workbook
 
-Kolom Hari Tersisa hanya menghitung bila action item dan tanggal jatuh tempo tersedia. Status keterlambatan juga memeriksa apakah pekerjaan selesai atau tidak memiliki tenggat, sehingga baris kosong tidak menghasilkan alarm palsu. Ringkasan memakai `COUNTIF` dan `COUNTIFS` dari tabel Action Item.
+File memakai tiga Excel Table, tiga data validation, dan 17 formula. Ringkasannya menggunakan `COUNTIF`, `COUNTIFS`, dan `IF`.
 
-## Contoh Alur Penggunaan
+## Batasan yang Perlu Diketahui
 
-Rapat operasional dapat memutuskan bahwa materi promosi perlu disiapkan dan stok kemasan perlu dicek. Tulis keputusan pada sheet notulen, lalu buat dua action item dengan pemilik berbeda. Saat salah satu selesai, ubah Status-nya; jumlah pada Ringkasan ikut berubah.
+Template ini tidak membuat pengingat atau persetujuan otomatis, dan tidak menggantikan berita acara atau dokumen hukum. Google Sheets perlu diuji ulang sebelum digunakan sebagai proses tim.
 
-## Batasan Template
+## Langkah Berikutnya
 
-Template tidak menggantikan berita acara, persetujuan resmi, atau pengingat otomatis. Pemilik dokumen tetap perlu mengonfirmasi isi keputusan dengan peserta rapat bila diperlukan.
-
-## FAQ
-
-**Apakah satu action item dapat dikaitkan dengan rapat lain?**
-
-Bisa. Gunakan ID Rapat yang sesuai pada kolom ID Rapat.
-
-**Mengapa action item ditandai lewat jatuh tempo?**
-
-Tanggalnya sudah lewat, statusnya belum Selesai, dan kolom tugas sudah terisi.
-
-**Apakah bisa dipakai untuk rapat bulanan?**
-
-Bisa. Tambahkan baris informasi rapat dan gunakan ID baru untuk tiap rapat.
+[task tracker Kanban](/templates/produktivitas-kerja/template-task-tracker-kanban-excel/) dan [tracker proyek sederhana](/templates/produktivitas-kerja/template-tracker-proyek-sederhana/).

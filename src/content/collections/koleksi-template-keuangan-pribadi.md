@@ -16,23 +16,20 @@ formulas: ["rumus-countifs-dashboard-status", "rumus-iferror-template-rapi"]
 troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks", "masalah-tanggal-salah-format-excel"]
 ---
 
-Koleksi ini menyatukan template dan artikel yang membantu pencatatan pribadi sederhana. Tidak perlu menggunakan semuanya. Mulailah dari pertanyaan yang paling sering muncul, misalnya "ke mana pengeluaran saya tercatat" atau "berapa setoran yang sudah masuk ke target".
+Pilih catatan berdasarkan pertanyaan yang ingin dijawab: pengeluaran sehari-hari, anggaran periode, target tabungan, atau sisa cicilan.
 
-## Mulai dari Kebutuhan Utama
+## Urutan Memilih Resource
 
-Gunakan [template budget bulanan](/templates/keuangan-pribadi/template-budget-bulanan/) bila ingin membandingkan rencana dan realisasi. Gunakan [template target tabungan](/templates/keuangan-pribadi/template-target-tabungan/) bila ingin mencatat saldo awal dan setoran untuk beberapa tujuan. Gunakan [tracker cicilan dan hutang](/templates/keuangan-pribadi/template-tracker-cicilan-hutang/) bila perlu mencatat kewajiban serta pembayaran yang sudah dilakukan.
+1. Catat pengeluaran harian bila kamu ingin melihat transaksi kecil.
+2. Gunakan budget bulanan untuk membandingkan rencana dan realisasi.
+3. Tambahkan target tabungan atau tracker cicilan ketika ada tujuan dan kewajiban yang perlu dipisahkan.
 
-## Urutan Pencatatan yang Sederhana
+## Pilihan yang Relevan
 
-1. Tentukan periode dan kategori yang masuk akal bagi Anda.
-2. Catat angka sumber secara konsisten.
-3. Periksa rekap pada akhir periode, bukan hanya saat ada masalah.
-4. Perbaiki kategori atau cara input bila data sulit dibaca.
+- [template pengeluaran harian](/templates/keuangan-pribadi/template-pengeluaran-harian/)
+- [template budget bulanan](/templates/keuangan-pribadi/template-budget-bulanan/)
+- [template target tabungan](/templates/keuangan-pribadi/template-target-tabungan/)
 
-## Artikel Pendukung
+## Catatan Pemakaian
 
-Baca [cara membuat budget pribadi sebagai catatan](/panduan/dasar-excel/panduan-budget-pribadi-sebagai-catatan/) untuk langkah awal. Dropdown dari [Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/) membantu status atau kategori tetap konsisten. Untuk dashboard status, gunakan pola [COUNTIFS](/rumus-excel/matematika/rumus-countifs-dashboard-status/).
-
-## Batasan Koleksi
-
-Resource ini untuk pencatatan dan pembacaan data pribadi. Mereka tidak memberikan rekomendasi investasi, prioritas pembayaran, kelayakan pinjaman, atau keputusan keuangan lain. Periksa angka sumber sebelum mengambil keputusan pribadi.
+Setiap template adalah alat pencatatan. Buka preview, baca struktur sheet serta batasannya, dan uji dengan data contoh sebelum menjadikannya proses rutin.

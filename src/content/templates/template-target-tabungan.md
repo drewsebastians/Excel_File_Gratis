@@ -21,52 +21,34 @@ file_spec:
   sheets: 4
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Template ini adalah alat pencatatan pribadi, bukan saran investasi atau rekomendasi produk keuangan."
   - "Status target dihitung dari data yang diisi dan tidak menjamin hasil atau kemampuan menabung."
 related_templates: ["template-budget-bulanan", "template-tracker-cicilan-hutang", "template-pembukuan-pengeluaran-usaha"]
 ---
 
-Template Target Tabungan membantu memisahkan target dan setoran yang sudah tercatat. Gunakan satu ID untuk satu target, kemudian pilih ID tersebut saat menambah setoran. Rumus akan menjumlahkan setoran tanpa perlu memindah angka ke ringkasan.
+Tulis target, saldo awal, dan setoran untuk melihat total terkumpul, sisa, progres, serta status tiap target. Template target tabungan ini adalah catatan pribadi: semua ringkasan berasal dari target dan setoran yang kamu masukkan sendiri.
 
-## Isi dan Fitur Workbook
+## Isi Workbook
 
-- **Cara Pakai** menjelaskan alur input dan batasan.
-- **Daftar Target** memuat nama target, nominal, tanggal, saldo awal, setoran, sisa, progres, status, dan peringatan input.
-- **Catatan Setoran** adalah log tanggal, ID target, metode, nominal, dan referensi.
-- **Ringkasan** menampilkan total target, total terkumpul, total sisa, jumlah target tercapai, target lewat tanggal, serta grafik progres.
+**Cara Pakai**, **Daftar Target**, **Catatan Setoran**, dan **Ringkasan**. Gunakan ID target yang sama pada daftar dan setoran.
 
-## Cara Pakai Target Tabungan
+## Cara Menggunakan Template
 
-1. Di **Daftar Target**, isi ID, nama target, nominal target, dan saldo awal bila ada.
-2. Isi tanggal target hanya bila memang ingin memantau batas waktu. Target tanpa tanggal akan diberi label yang jelas, bukan dianggap terlambat.
-3. Catat setoran positif di **Catatan Setoran** dan pilih ID target yang sama.
-4. Jangan mengubah kolom Setoran, Total Terkumpul, Sisa, Progres, atau Status karena kolom tersebut dihitung otomatis.
-5. Periksa **Ringkasan** untuk melihat gambaran seluruh target.
+1. Isi ID, nama, nominal target, dan saldo awal di **Daftar Target**.
+2. Masukkan tanggal target bila ingin memantau tenggat.
+3. Catat setoran positif di **Catatan Setoran** menggunakan ID yang sama.
+4. Buka **Ringkasan** untuk membaca total terkumpul dan sisa tiap target.
 
-## Rumus dan Logika
+## Yang Dihitung Workbook
 
-Setoran per target dihitung dengan `SUMIFS`. Total terkumpul adalah saldo awal ditambah setoran tercatat. Sisa memakai `MAX(0,Target-Total Terkumpul)` agar tampilan sisa tidak berubah menjadi negatif ketika setoran melebihi target. Status membedakan target kosong, target belum valid, tercapai, berjalan, lewat target, dan target tanpa tanggal.
+Workbook memakai dua Excel Table, lima data validation, dan 37 formula dengan `SUMIFS`, `SUM`, `COUNTIF`, serta `IF`.
 
-## Tepi Kasus yang Ditangani
+## Batasan yang Perlu Diketahui
 
-Nominal negatif dicegah oleh validasi input. Tanggal target yang kosong tidak memicu status terlambat. Bila target belum diisi, workbook menampilkan `Belum diisi` atau `Target belum valid`, sehingga baris kosong tidak terlihat seperti target yang gagal.
+File ini tidak memberi saran investasi atau keputusan keuangan. Google Sheets perlu diuji ulang sebelum digunakan rutin.
 
-## Batasan Template
+## Langkah Berikutnya
 
-Template ini tidak membuat rekomendasi jumlah setoran, tempat menyimpan uang, atau pilihan investasi. Ia hanya merangkum angka yang Anda catat. Untuk membiasakan catatan pengeluaran, gunakan juga [template budget bulanan](/templates/keuangan-pribadi/template-budget-bulanan/).
-
-## FAQ
-
-**Apakah saldo awal boleh nol?**
-
-Boleh. Isi 0 bila target belum memiliki saldo awal.
-
-**Mengapa target saya lewat tanggal?**
-
-Status tersebut muncul bila tanggal target sudah lewat, target belum tercapai, dan data target valid.
-
-**Bolehkah setoran melebihi target?**
-
-Boleh dicatat. Kolom peringatan akan memberi tahu bahwa total terkumpul sudah melebihi nominal target.
+[template budget bulanan](/templates/keuangan-pribadi/template-budget-bulanan/) dan [tracker cicilan dan hutang](/templates/keuangan-pribadi/template-tracker-cicilan-hutang/).

@@ -20,69 +20,27 @@ related_formulas: ["rumus-filter-daftar-dinamis"]
 related_troubleshooting: ["masalah-dropdown-data-validation-tidak-muncul"]
 ---
 
-## Masalah yang Diselesaikan
+Gunakan Excel Table dan defined name untuk membuat daftar pilihan yang mengikuti pertambahan kategori, lalu terapkan nama itu ke Data Validation.
 
-Dropdown berbasis rentang tetap sering lupa diperbarui ketika kategori baru ditambahkan.
+## Hasil yang Perlu Disiapkan
 
-## Hasil yang Diharapkan
-
-Daftar kategori berasal dari Table dan dapat dipakai konsisten pada kolom input.
-
-## Prasyarat
-
-- Excel Table untuk daftar kategori
-- Satu kolom input yang akan memakai dropdown
-
-## Contoh Input
-
-```text
-tblKategori[Kategori]: ATK, Konsumsi, Transportasi; input transaksi memakai salah satu pilihan tersebut.
-```
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **membuat dropdown Excel yang bertambah otomatis**, bukan menambah rumus atau format yang belum diperlukan.
 
 ## Langkah Praktik
 
-1. Buat Table `tblKategori` dengan header `Kategori`.
-2. Isi beberapa kategori dan beri nama Table melalui Table Design.
-3. Buat defined name `DaftarKategori` dengan formula `=tblKategori[Kategori]`.
-4. Pilih kolom input, buka Data Validation > List, lalu isi Source `=DaftarKategori`.
-5. Tambahkan kategori baru ke baris tepat di bawah Table dan uji dropdown.
+1. Buat Table untuk daftar kategori dan beri nama yang mudah dikenali.
+2. Tambahkan header serta nilai kategori di satu kolom.
+3. Buat defined name yang merujuk kolom Table tersebut.
+4. Gunakan defined name sebagai Source pada Data Validation dan uji setelah menambah kategori.
 
-## Mengapa Ini Bekerja
+## Cara Memeriksa Hasil
 
-Defined name menunjuk ke kolom Table, bukan alamat tetap. Saat Table meluas, sumber daftar ikut meluas tanpa mengubah rule setiap sel.
+Defined name dapat menjembatani Data Validation dengan kolom Table. Periksa Name Manager bila daftar tidak ikut berubah.
 
-## Kesalahan Umum
+## Catatan dan Batasan
 
-- Source ditulis `tblKategori[Kategori]` langsung pada dialog yang tidak menerima structured reference.
-- Nama Table atau defined name salah eja.
+Tidak semua dialog menerima structured reference langsung. Google Sheets memakai mekanisme dropdown serta named range yang berbeda.
 
-## Diagnosis
+## Lanjutkan dari Sini
 
-Periksa Formulas > Name Manager dan pastikan `DaftarKategori` mengarah ke kolom yang benar.
-
-## Cara Memperbaiki
-
-Buat defined name ulang, cek referensi Table, dan pastikan nilai kategori tidak memiliki spasi tersembunyi.
-
-## Kompatibilitas dan Alternatif Versi Lama
-
-Excel Table dan named range tersedia pada Excel modern. Google Sheets memakai named range dan dropdown dengan alur berbeda.
-
-Alternatif untuk Excel lama: Gunakan rentang absolut seperti `$H$2:$H$20` untuk daftar kecil yang jarang berubah.
-
-## Batasan
-
-Dropdown tidak otomatis membersihkan nilai lama yang sudah tidak ada di daftar.
-
-## Langkah Praktis Berikutnya
-
-Tambahkan satu kategori percobaan, lalu catat siapa yang boleh mengubah `tblKategori`.
-
-## Related Resources
-
-- Template: [Task Tracker Kanban](/templates/produktivitas-kerja/template-task-tracker-kanban-excel/), [Notulen Rapat dan Action Item](/templates/produktivitas-kerja/template-notulen-rapat-action-item/)
-- Panduan: [Dropdown Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/), [Structured References Excel](/panduan/dasar-excel/panduan-structured-references-excel-table/)
-- Rumus: [FILTER untuk Daftar Dinamis](/rumus-excel/lookup-referensi/rumus-filter-daftar-dinamis/)
-- Troubleshooting: [Dropdown Data Validation Tidak Muncul](/masalah-excel/format-data/masalah-dropdown-data-validation-tidak-muncul/)
-
-Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
+[dropdown Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/) dan [Excel Table untuk template](/panduan/pengolahan-data/panduan-excel-table-untuk-template/).

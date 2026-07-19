@@ -20,28 +20,27 @@ related_formulas: ["rumus-sumifs-rekap-kategori", "rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks", "masalah-sumifs-countifs-hasil-nol"]
 ---
 
-Arus kas menjawab pertanyaan sederhana: uang usaha masuk dari mana, keluar untuk apa, dan berapa yang tersisa dari catatan tersebut. Ini berbeda dari laba. Usaha bisa mencatat penjualan, tetapi uangnya belum tentu sudah diterima pada hari yang sama.
+Buat catatan uang masuk dan keluar, lalu cek saldo akhir tanpa menyamakannya dengan laba.
 
-## 1. Pisahkan Uang Masuk dan Keluar
+## Hasil yang Perlu Disiapkan
 
-Catat uang masuk saat uang benar-benar diterima, misalnya pembayaran pelanggan atau pengembalian dana. Catat uang keluar saat kas dibayarkan, misalnya belanja bahan, ongkir, atau biaya operasional. Jangan memakai tanda minus sebagai satu-satunya pembeda; gunakan kolom jenis arus agar rekap mudah diaudit.
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **membaca arus kas sederhana UMKM**, bukan menambah rumus atau format yang belum diperlukan.
 
-## 2. Mulai dengan Saldo Awal yang Jelas
+## Langkah Praktik
 
-Saldo awal adalah nilai kas yang dipilih sebagai titik mulai periode. Rumus sederhana adalah `saldo akhir = saldo awal + total masuk - total keluar`. Bila saldo berbeda dari uang nyata, jangan langsung mengubah angka ringkasan. Telusuri transaksi yang belum tercatat atau salah kategori terlebih dahulu.
+1. Pilih periode dan catat saldo awal yang dapat ditelusuri.
+2. Masukkan uang masuk saat benar-benar diterima dan uang keluar saat benar-benar dibayarkan.
+3. Kelompokkan transaksi dengan jenis arus dan kategori yang konsisten.
+4. Cocokkan total dengan bukti transaksi serta saldo yang tersedia.
 
-## 3. Baca Rekap per Kategori
+## Cara Memeriksa Hasil
 
-Kelompokkan pengeluaran yang memang berguna untuk usaha, seperti bahan baku dan operasional. Rekap kategori membantu melihat pola, tetapi bukan penilaian otomatis apakah biaya tersebut baik atau buruk. [SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) cocok untuk menjumlahkan nominal berdasarkan jenis arus dan kategori.
+Saldo akhir sederhana dapat dibaca sebagai saldo awal ditambah total masuk dikurangi total keluar. Penjualan yang belum dibayar bukan otomatis kas.
 
-## 4. Bedakan Penjualan, Piutang, dan Kas
+## Catatan dan Batasan
 
-Penjualan yang belum dibayar pelanggan dapat penting untuk usaha, tetapi belum menjadi kas. Simpan penanda atau catatan terpisah untuk piutang bila diperlukan. Jangan menambahkannya ke uang masuk hanya karena invoice sudah dibuat.
+Jangan memakai panduan ini sebagai laporan pajak, audit, atau saran akuntansi.
 
-## 5. Lakukan Pemeriksaan Berkala
+## Lanjutkan dari Sini
 
-Pada akhir minggu atau bulan, cocokkan jumlah dengan bukti transaksi dan saldo yang tersedia. Periksa tanggal, kategori, dan nominal sebelum memakai hasil rekap untuk percakapan operasional. Gunakan [template arus kas UMKM](/templates/bisnis-umkm/template-arus-kas-umkm/) untuk pola pencatatan awal.
-
-## Batasan
-
-Panduan ini bersifat edukasi pencatatan. Arus kas sederhana bukan laporan laba rugi, neraca, laporan pajak, audit, maupun saran akuntansi. Untuk kewajiban formal atau keputusan material, gunakan data sumber dan bantuan profesional yang sesuai.
+[template arus kas UMKM](/templates/bisnis-umkm/template-arus-kas-umkm/) dan [rumus SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/).

@@ -20,69 +20,27 @@ related_formulas: ["rumus-iferror-template-rapi","rumus-countifs-dashboard-statu
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol","masalah-angka-tidak-terjumlah-format-teks"]
 ---
 
-## Masalah yang Diselesaikan
+Telusuri angka yang mencurigakan dari sel hasil ke sel sumber menggunakan alat Formula Auditing di Excel desktop.
 
-Nilai total dapat salah karena referensi bergeser, angka tersimpan sebagai teks, atau kriteria tidak cocok.
+## Hasil yang Perlu Disiapkan
 
-## Hasil yang Diharapkan
-
-Kamu dapat menunjukkan sel sumber yang memengaruhi hasil dan mempersempit lokasi kesalahan.
-
-## Prasyarat
-
-- Workbook dengan beberapa rumus
-- Excel desktop untuk menu Formula Auditing
-
-## Contoh Input
-
-```text
-B2=120000, C2=3, D2=`=B2*C2`, E2=`=SUM(D2:D10)`
-```
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **audit rumus Excel**, bukan menambah rumus atau format yang belum diperlukan.
 
 ## Langkah Praktik
 
-1. Klik sel hasil yang mencurigakan, misalnya E2.
-2. Buka Formulas > Trace Precedents untuk melihat sel sumber.
-3. Gunakan Trace Dependents pada sel input untuk melihat hasil yang bergantung padanya.
-4. Buka Evaluate Formula dan jalankan evaluasi satu langkah demi satu langkah.
-5. Hapus panah audit setelah selesai agar workbook tetap bersih.
+1. Klik sel hasil yang perlu diperiksa.
+2. Pilih **Formulas > Trace Precedents** untuk melihat sumber langsungnya.
+3. Gunakan **Trace Dependents** bila ingin melihat hasil yang memakai sel tertentu.
+4. Jalankan **Evaluate Formula** satu langkah demi satu langkah dan bandingkan dengan hitungan sederhana.
 
-## Mengapa Ini Bekerja
+## Cara Memeriksa Hasil
 
-Trace menunjukkan hubungan referensi, sedangkan Evaluate Formula memperlihatkan urutan evaluasi ekspresi. Keduanya membantu membedakan salah data dari salah formula.
+Trace Precedents dan Dependents menunjukkan hubungan referensi. Evaluate Formula membantu melihat urutan evaluasi, tetapi tidak membuktikan bahwa definisi bisnis di balik angka sudah benar.
 
-## Kesalahan Umum
+## Catatan dan Batasan
 
-- Panah tidak muncul karena formula memakai referensi eksternal atau sel yang tidak dapat ditelusuri.
-- Evaluate Formula tidak menjelaskan seluruh query Power Query atau fungsi volatile secara visual.
+Sebelum mengubah rumus penting, simpan salinan workbook. Ketersediaan alat dapat berbeda di Excel web dan Google Sheets.
 
-## Diagnosis
+## Lanjutkan dari Sini
 
-Bandingkan formula bar, warna referensi, dan nilai input. Periksa apakah hasil antara sesuai hitungan manual pada satu baris.
-
-## Cara Memperbaiki
-
-Perbaiki referensi yang bergeser, ubah angka teks menjadi angka, lalu hitung ulang dengan F9.
-
-## Kompatibilitas dan Alternatif Versi Lama
-
-Formula Auditing dan Evaluate Formula terutama tersedia pada Excel desktop. Excel web memiliki dukungan menu yang lebih terbatas; Google Sheets memakai alat penelusuran berbeda.
-
-Alternatif untuk Excel lama: Salin formula dan input contoh ke workbook uji kecil, kemudian pecah rumus panjang menjadi kolom bantu.
-
-## Batasan
-
-Audit visual tidak membuktikan bahwa definisi bisnisnya benar; tetap perlukan review data dan kebutuhan pengguna.
-
-## Langkah Praktis Berikutnya
-
-Tambahkan satu kasus uji yang hasilnya sudah diketahui sebelum mengubah formula produksi.
-
-## Related Resources
-
-- Template: [Laporan Penjualan Harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/)
-- Panduan: [File Excel Rapi untuk Dipakai Rutin](/panduan/produktivitas/panduan-file-excel-rapi-untuk-dipakai-rutin/)
-- Rumus: [IFERROR untuk Template Rapi](/rumus-excel/logika/rumus-iferror-template-rapi/), [COUNTIFS untuk Dashboard](/rumus-excel/matematika/rumus-countifs-dashboard-status/)
-- Troubleshooting: [SUMIFS atau COUNTIFS Menghasilkan Nol](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/), [Angka Tidak Terjumlah karena Format Teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/)
-
-Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
+[checklist kualitas file Excel](/panduan/produktivitas/panduan-checklist-kualitas-file-excel/) dan [angka tersimpan sebagai teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/).

@@ -20,34 +20,26 @@ related_formulas: ["rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol", "masalah-angka-tidak-terjumlah-format-teks"]
 ---
 
-## Tujuan
+SUMIFS menjumlahkan nilai yang memenuhi beberapa kriteria, misalnya kategori dan bulan pada tabel transaksi.
 
-`SUMIFS` dipakai ketika Anda ingin menjumlahkan angka yang memenuhi syarat. Berbeda dari `SUMIF`, fungsi ini mendukung lebih dari satu pasangan rentang-kriteria.
+## Sintaks
 
-## Sintaks dan Argumen
+`=SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)`
 
-`sum_range` adalah kolom angka yang dijumlahkan. `criteria_range1` adalah kolom yang diuji, lalu `criteria1` adalah nilai atau kondisi yang dicari. Semua rentang harus mempunyai ukuran yang sama.
+## Arti Argumen
 
-## Contoh 1: Total per Kategori
+- `sum_range` adalah angka yang dijumlahkan.
+- Setiap `criteria_range` harus seukuran dengan sum_range.
+- Setiap `criteria` menentukan nilai, teks, atau kondisi yang dicari.
 
-`=SUMIFS($I$4:$I$80,$D$4:$D$80,A10)` menjumlahkan Total di I4:I80 bila Kategori di D4:D80 sama dengan teks pada A10. Pola ini dipakai oleh [laporan penjualan harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/).
+## Contoh
 
-## Contoh 2: Uang Keluar per Bulan
+Jika kolom C berisi kategori dan D berisi nominal, `=SUMIFS(D2:D10,C2:C10,"Transportasi")` menjumlahkan nominal Transportasi.
 
-`=SUMIFS($F$4:$F$120,$B$4:$B$120,"Keluar",$G$4:$G$120,"2026-07")` menjumlahkan Nominal hanya untuk arus Keluar pada Juli 2026.
+## Periksa Saat Hasil Tidak Sesuai
 
-## Contoh 3: Pembayaran per ID
+Hasil nol sering muncul karena teks kriteria berbeda, tanggal tidak berada pada periode yang diharapkan, atau angka tersimpan sebagai teks.
 
-`=SUMIFS($D$4:$D$80,$B$4:$B$80,A4)` menjumlahkan pembayaran pada Catatan Pembayaran yang ID-nya sama dengan A4. Pola ini dipakai pada [tracker cicilan](/templates/keuangan-pribadi/template-tracker-cicilan-hutang/).
+## Rumus dan Panduan Terkait
 
-## Tepi Kasus dan Kesalahan Umum
-
-SUMIFS mengembalikan 0 jika tidak ada baris yang cocok. Ini bukan selalu kesalahan. Namun, periksa ejaan kategori, spasi tambahan, ukuran rentang, dan apakah angka tersimpan sebagai teks. Untuk kriteria tanggal, gunakan nilai tanggal Excel yang valid atau kolom bantu bulan yang konsisten.
-
-## Kompatibilitas dan Alternatif
-
-SUMIFS tersedia di Excel modern serta Google Sheets. Jika hanya ada satu kriteria, `SUMIF` lebih ringkas. Untuk penyaringan daftar, bukan penjumlahan, pertimbangkan `FILTER` pada Excel yang mendukungnya.
-
-## Sumber Resmi
-
-Microsoft menjelaskan sintaks dan batasan `SUMIFS` di dokumentasi [SUMIFS function](https://support.microsoft.com/en-us/excel/functions/sumifs-function).
+[rekap penjualan harian](/panduan/pengolahan-data/panduan-rekap-penjualan-harian-excel/) dan [SUMIFS atau COUNTIFS bernilai nol](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/).
