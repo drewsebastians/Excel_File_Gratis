@@ -18,30 +18,23 @@ related_formulas: ["rumus-sumifs-rekap-kategori", "rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks"]
 ---
 
-## Gejala
+Mulai dari satu kriteria dan data sumber saat SUMIFS atau COUNTIFS mengembalikan 0, kemudian tambah kondisi satu per satu untuk menemukan bagian yang tidak cocok.
 
-Formula seperti `=SUMIFS(I4:I80,D4:D80,A10)` menampilkan 0, padahal Anda melihat transaksi berkategori sama. COUNTIFS dapat mengalami gejala serupa saat menghitung status atau tanggal.
+## Coba Ini Terlebih Dahulu
 
-## Kemungkinan Penyebab
+1. Pastikan sum range dan setiap criteria range memiliki ukuran yang sama.
+2. Uji kriteria dengan satu nilai yang terlihat persis di tabel.
+3. Periksa spasi, variasi ejaan, tanggal, dan angka yang tersimpan sebagai teks.
+4. Tambahkan kembali kriteria lain setelah hasil satu kondisi sudah benar.
 
-Hasil 0 bisa benar bila tidak ada data yang cocok. Bila tidak, penyebab umum adalah ejaan kriteria tidak sama, spasi tersembunyi, `sum_range` dan `criteria_range` berbeda panjang, nominal tersimpan sebagai teks, atau tanggal sebenarnya berisi waktu.
+## Penyebab yang Paling Sering
 
-## Langkah Diagnosis
+SUMIFS menjumlahkan dan COUNTIFS menghitung hanya ketika semua kriteria cocok. Teks serupa belum tentu sama, misalnya `Selesai` dan `selesai` dapat perlu diperiksa sesuai data.
 
-1. Uji satu kriteria dulu dengan `=COUNTIF(D4:D80,A10)`.
-2. Salin kriteria langsung dari sel data untuk menghilangkan kesalahan ketik.
-3. Bandingkan batas awal dan akhir semua rentang. `I4:I80` harus seukuran dengan `D4:D80`.
-4. Periksa `=ISNUMBER(I4)` pada kolom yang dijumlahkan.
-5. Untuk tanggal, tampilkan format tanggal dan waktu; nilai dengan waktu dapat gagal cocok dengan tanggal yang hanya berisi hari.
+## Sebelum Mengubah Data
 
-## Solusi Berdasarkan Penyebab
+Jangan memakai IFERROR untuk menyembunyikan nol yang belum dipahami. Perbaiki data atau kriteria sumbernya.
 
-Hapus spasi tambahan dengan `TRIM` pada kolom bantu bila teks berasal dari sumber lain. Samakan nama kategori di tabel dan rekap. Ubah nominal teks menjadi angka melalui langkah pada [angka tidak terjumlah karena format teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/). Untuk tanggal, pakai rentang kriteria, misalnya tanggal lebih besar atau sama dengan awal hari dan kurang dari hari berikutnya.
+## Bantuan Terkait
 
-## Pencegahan
-
-Gunakan dropdown untuk kategori atau metode pembayaran. [Template laporan penjualan](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/) dan [template arus kas](/templates/bisnis-umkm/template-arus-kas-umkm/) menyediakan pilihan tersebut agar nama kriteria tidak berubah-ubah.
-
-## Catatan Versi
-
-SUMIFS dan COUNTIFS tersedia pada Excel modern dan Google Sheets. Pemisah argumen dapat berupa koma atau titik koma sesuai regional, tetapi konsep rentang serta kriteria tetap sama. Lihat [referensi SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) untuk contoh formula yang lengkap.
+[rumus SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) dan [rumus COUNTIFS](/rumus-excel/matematika/rumus-countifs-dashboard-status/).

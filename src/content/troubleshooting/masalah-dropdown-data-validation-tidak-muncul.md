@@ -18,28 +18,23 @@ related_formulas: ["rumus-if-ifs-status-prioritas", "rumus-countifs-dashboard-st
 related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets", "masalah-sumifs-countifs-hasil-nol"]
 ---
 
-## Gejala
+Periksa rule Data Validation, rentang sumber, dan sel tujuan ketika panah dropdown tidak terlihat atau pilihannya kosong.
 
-Sel status, kategori, atau nama anggota tidak lagi menampilkan pilihan. Kadang nilai tetap bisa diketik, tetapi tulisan yang berbeda membuat rekap tidak konsisten.
+## Coba Ini Terlebih Dahulu
 
-## Langkah Diagnosis
+1. Pilih sel masalah lalu buka **Data > Data Validation**.
+2. Pastikan tipe rule adalah **List** dan opsi dropdown tidak disembunyikan.
+3. Periksa Source agar menunjuk daftar nilai, bukan header atau sel kosong yang tidak diinginkan.
+4. Uji pada satu sel baru dan pastikan rule diterapkan pada rentang input yang benar.
 
-1. Klik sel yang seharusnya memiliki dropdown, lalu buka **Data > Data Validation**.
-2. Pastikan bagian Allow atau Izinkan masih memakai **List** dan sumber daftar tidak kosong.
-3. Bandingkan dengan satu sel lain yang dropdown-nya masih berfungsi.
-4. Periksa apakah sheet terlindungi atau file dibagikan dengan pembatasan perubahan.
-5. Cek apakah sel pernah ditimpa lewat paste dari file lain.
+## Penyebab yang Paling Sering
 
-## Penyebab dan Solusi
+Dropdown bergantung pada rule sel dan sumber daftar. Nama range atau referensi Table yang salah dapat membuat daftar tidak tampil.
 
-Jika hanya baris baru yang tidak memiliki dropdown, salin validasi dari baris sebelumnya atau perluas aturan ke rentang input yang benar. Jika sumbernya menunjuk ke daftar yang dipindah atau dihapus, pilih ulang rentangnya. Jika sheet diproteksi, buka proteksi sesuai hak akses sebelum mengubah aturan.
+## Sebelum Mengubah Data
 
-Data Validation dapat berbeda saat file dibuka di aplikasi lain. Buka file di Excel desktop untuk memeriksa aturan asli, lalu simpan salinan sebelum mencoba perubahan besar. Jangan menghapus validasi hanya supaya input bisa masuk; itu dapat membuat kategori dan status tidak seragam.
+Jangan menghapus daftar referensi sebelum mengganti Source. Uji lagi bila file dipindahkan ke Google Sheets.
 
-## Pencegahan
+## Bantuan Terkait
 
-Simpan daftar pilihan di sheet **Referensi**, gunakan Table untuk data utama, dan hindari paste seluruh sel bila yang diperlukan hanya nilainya. Saat menambah status baru, perbarui daftar referensi serta formula rekap yang menggunakan nama status tersebut.
-
-## Sumber Resmi
-
-Microsoft menjelaskan cara menerapkan dan memeriksa validasi pada [Data Validation](https://support.microsoft.com/en-us/excel/get-started/apply-data-validation-to-cells). Gunakan kembali [panduan dropdown](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/) setelah aturan berhasil ditemukan.
+[membuat dropdown Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/) dan [dropdown dinamis](/panduan/pengolahan-data/panduan-dropdown-dinamis-excel/).

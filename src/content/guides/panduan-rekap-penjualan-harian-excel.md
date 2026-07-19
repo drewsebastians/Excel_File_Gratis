@@ -20,34 +20,27 @@ related_formulas: ["rumus-sumifs-rekap-kategori", "rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol", "masalah-angka-tidak-terjumlah-format-teks"]
 ---
 
-## Tujuan Pencarian
+Catat satu transaksi per baris, lalu buat total dan rekap kategori dari tabel yang sama agar angka penjualan harian dapat ditelusuri kembali.
 
-Panduan ini menunjukkan cara mengubah daftar transaksi menjadi rekap penjualan yang bisa diperiksa kembali, bukan sekadar mengetik total manual di akhir hari.
+## Hasil yang Perlu Disiapkan
 
-## Siapkan Tabel Transaksi
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **membuat rekap penjualan harian di Excel**, bukan menambah rumus atau format yang belum diperlukan.
 
-Buat kolom Tanggal, Nomor Invoice, Produk/Jasa, Kategori, Jumlah, Harga Satuan, Diskon, dan Total. Gunakan satu transaksi per baris. Di kolom Total, tulis `=F4*G4-H4` sesuai posisi kolom Anda, lalu salin formula ke bawah.
+## Langkah Praktik
 
-## Buat Rekap Kategori
+1. Buat kolom tanggal, nomor transaksi, kategori, dan nominal.
+2. Masukkan transaksi baru tanpa menyisipkan subtotal di tengah data.
+3. Gunakan `SUM` untuk total dan `SUMIFS` untuk total kategori atau periode.
+4. Cocokkan rekap dengan beberapa transaksi sumber sebelum memakai hasilnya.
 
-Di area ringkasan, tulis nama kategori seperti Makanan, Minuman, dan Lainnya. Di sebelahnya gunakan `=SUMIFS($I$4:$I$80,$D$4:$D$80,A10)`. Rumus itu menjumlahkan kolom Total hanya ketika Kategori sama dengan nama di A10. Untuk total semua transaksi, gunakan `=SUM(I4:I80)`.
+## Cara Memeriksa Hasil
 
-## Tambahkan Pemeriksaan Sederhana
+Rekap bergantung pada tanggal, kategori, dan nominal yang konsisten. `SUMIFS` memerlukan rentang serta kriteria yang sepadan.
 
-Jumlah transaksi dapat dihitung dengan `=COUNTA(B4:B80)`. Rata-rata transaksi dapat memakai `=IFERROR(total/jumlah_transaksi,0)` agar file tidak menampilkan kesalahan saat tabel masih kosong. Pastikan nilai yang dijumlahkan adalah angka, bukan teks.
+## Catatan dan Batasan
 
-## Contoh
+Rekap tidak membuktikan bahwa transaksi sudah lunas atau angka sudah sesuai dokumen sumber.
 
-Lima transaksi dapat menghasilkan Makanan Rp520.000, Minuman Rp324.000, dan Lainnya Rp75.000. Ketiga nilai ini harus sama dengan jumlah total transaksi Rp919.000. Jika tidak sama, cek diskon, kategori, dan rentang rumus.
+## Lanjutkan dari Sini
 
-## Kesalahan Umum dan Perbaikan
-
-Nama kategori yang berbeda sedikit, misalnya `Minuman` dan `minuman ` dengan spasi akhir, dapat membuat `SUMIFS` melewatkan data. Nilai `Rp 18.000` yang diketik sebagai teks juga tidak dijumlahkan. Lihat [SUMIFS atau COUNTIFS hasil 0](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/) untuk diagnosis bertahap.
-
-## Lanjutkan dengan Template
-
-Gunakan [template laporan penjualan harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/) bila ingin struktur tabel, dropdown, formula, dan dashboard sudah tersedia. Untuk visualisasi, lanjutkan ke [dashboard sederhana di Excel](/panduan/pengolahan-data/panduan-dashboard-sederhana-excel/).
-
-## Batasan
-
-Rekap ini adalah catatan operasional. Periksa kembali bukti transaksi dan jangan menyamakannya dengan laporan akuntansi atau pajak.
+[template laporan penjualan harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/) dan [rumus SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/).

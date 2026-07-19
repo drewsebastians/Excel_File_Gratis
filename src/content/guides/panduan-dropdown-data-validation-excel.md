@@ -20,26 +20,27 @@ related_formulas: ["rumus-countifs-dashboard-status", "rumus-sumifs-rekap-katego
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol", "masalah-vlookup-xlookup-na"]
 ---
 
-## Tujuan
+Buat pilihan untuk status, kategori, atau pemilik agar penulisan tetap konsisten dan rekap tidak kehilangan data karena variasi ejaan.
 
-Dropdown atau Data Validation cocok untuk kolom yang nilainya berulang: status, prioritas, kategori, metode pembayaran, atau pemilik. Pengguna dapat tetap mengetik catatan bebas di kolom lain, sementara kolom kunci memakai pilihan yang konsisten.
+## Hasil yang Perlu Disiapkan
 
-## 1. Tulis Daftar Referensi
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **membuat dropdown Data Validation di Excel**, bukan menambah rumus atau format yang belum diperlukan.
 
-Letakkan pilihan di area yang mudah ditemukan, misalnya sheet Referensi. Untuk Status Tugas, tulis Belum Dimulai, Dikerjakan, dan Selesai pada satu kolom. Hindari menulis daftar di dalam rumus panjang bila daftar itu kemungkinan akan berubah.
+## Langkah Praktik
 
-## 2. Terapkan Data Validation
+1. Tulis daftar pilihan pada area referensi yang mudah dirawat.
+2. Pilih sel input lalu buka **Data > Data Validation**.
+3. Pilih tipe **List** dan gunakan rentang daftar sebagai Source.
+4. Uji pilihan pada baris kosong serta cek apakah rekap membaca nilai yang dipilih.
 
-Pilih sel input, buka **Data > Data Validation**, lalu pilih **List**. Pada Source, pilih rentang daftar referensi. Terapkan ke beberapa baris yang disiapkan untuk input agar pengguna tidak perlu membuat dropdown ulang.
+## Cara Memeriksa Hasil
 
-## 3. Uji Pilihannya
+`COUNTIFS` dan `SUMIFS` memperlakukan teks berbeda sebagai kriteria berbeda. Dropdown membantu mencegah variasi seperti `Dikerjakan` dan `Sedang dikerjakan`.
 
-Klik salah satu sel dan pastikan pilihan tampil. Coba pilih nilai, lalu lihat apakah rumus rekap membaca status atau kategori tersebut. Jangan hanya menguji baris contoh; periksa satu baris kosong yang akan dipakai pengguna berikutnya.
+## Catatan dan Batasan
 
-## Mengapa Ini Penting untuk Rumus
+Periksa perilaku dropdown lagi jika file dipindahkan ke Google Sheets karena alur serta tampilannya dapat berbeda.
 
-`COUNTIFS` dan `SUMIFS` membandingkan teks secara tepat. `Dikerjakan` dan `Sedang dikerjakan` adalah dua nilai berbeda. Dropdown mengurangi variasi seperti itu. Baca [rumus COUNTIFS untuk dashboard status](/rumus-excel/matematika/rumus-countifs-dashboard-status/) untuk contoh rekapnya.
+## Lanjutkan dari Sini
 
-## Masalah Umum
-
-Jika dropdown tidak muncul, periksa apakah Source menunjuk ke rentang yang benar dan tidak menyertakan header. Jika nilai rekap tetap 0, cek ejaan lama yang mungkin sudah terlanjur diketik; panduan [SUMIFS atau COUNTIFS hasil 0](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/) membantu memeriksanya.
+[rumus COUNTIFS](/rumus-excel/matematika/rumus-countifs-dashboard-status/) dan [dropdown tidak muncul](/masalah-excel/format-data/masalah-dropdown-data-validation-tidak-muncul/).

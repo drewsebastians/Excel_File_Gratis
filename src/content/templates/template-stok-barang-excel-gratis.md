@@ -18,81 +18,33 @@ file_spec:
   sheets: 4
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel & Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Perhitungan stok akhir sepenuhnya bergantung pada kedisiplinan mencatat di sheet Log Transaksi — kalau ada transaksi yang lupa dicatat, angkanya otomatis meleset."
   - "Untuk UMKM dengan ratusan jenis barang, banyak cabang, atau kebutuhan integrasi kasir otomatis, template ini akan terasa terbatas dan lebih cocok digantikan software inventory khusus."
 ---
 
-Kalau selama ini stok barang cuma dicatat di buku tulis atau diingat-ingat saja, wajar kalau sering kejadian barang laris tiba-tiba habis atau sebaliknya menumpuk kelamaan di rak. Template stok barang Excel ini dibuat supaya UMKM bisa mencatat barang masuk, keluar, dan retur dengan rapi, lalu stok akhir serta nilai persediaan terhitung otomatis — tanpa perlu langganan aplikasi kasir atau software gudang.
+Catat data barang dan setiap transaksi masuk, keluar, atau retur pada template stok barang ini. Workbook menghitung stok akhir, status stok, dan nilai persediaan dari data tersebut sehingga kamu dapat memeriksa barang yang perlu ditinjau tanpa membuat rekap terpisah.
 
-## Kenapa Pencatatan Stok Barang Ini Penting untuk UMKM
+## Isi Workbook
 
-Banyak usaha kecil kehilangan uang bukan karena rugi jualan, tapi karena stok yang tidak terpantau: barang kadaluarsa karena kelamaan mengendap, modal terkunci di barang yang tidak laku, atau justru kehabisan barang best-seller di saat ramai pembeli. Pencatatan stok barang yang konsisten membantu pemilik usaha tahu persis kapan harus restock, barang mana yang paling banyak menyerap modal, dan apakah ada selisih yang perlu dicek (misalnya karena rusak atau hilang). Dengan data yang rapi, keputusan belanja stok jadi berbasis angka, bukan perkiraan.
+**Cara Pakai**, **Data Barang**, **Log Transaksi**, dan **Ringkasan Dashboard**. Data Barang memuat master item, sementara Log Transaksi menjadi sumber perubahan stok.
 
-## Spesifikasi File
+## Cara Menggunakan Template
 
-Template ini terdiri dari 4 sheet yang saling terhubung:
+1. Isi kode, nama, kategori, satuan, stok awal, minimum stok, dan harga beli di **Data Barang**.
+2. Tambahkan setiap barang masuk, keluar, atau retur sebagai satu baris di **Log Transaksi**.
+3. Pilih kode barang dan jenis transaksi dari daftar yang tersedia.
+4. Periksa stok akhir, status, dan dashboard; cocokkan dengan kondisi fisik bila ada selisih.
 
-- **Cara Pakai** — panduan singkat langkah demi langkah
-- **Data Barang** — master data barang lengkap dengan kategori, satuan, harga beli, dan perhitungan otomatis stok masuk/keluar/retur, stok akhir, status, serta nilai persediaan
-- **Log Transaksi** — catatan harian setiap transaksi barang masuk, keluar, dan retur, dalam format Excel Table agar mudah difilter dan disortir
-- **Ringkasan Dashboard** — ringkasan total nilai persediaan, jumlah barang yang perlu direstock, dan grafik distribusi nilai persediaan per kategori
+## Yang Dihitung Workbook
 
-Fitur teknis yang sudah tertanam: rumus SUMIFS untuk agregasi transaksi per barang, VLOOKUP untuk auto-isi nama barang dari kode, dropdown kategori dan jenis transaksi supaya input tetap konsisten, conditional formatting warna merah/hijau untuk status stok, grafik bar dan pie chart otomatis, serta proteksi ringan pada sel berisi rumus agar tidak sengaja terhapus. Format currency sudah diatur ke Rupiah dan kompatibel dibuka di Microsoft Excel maupun Google Sheets.
+Workbook berisi dua Excel Table, dua chart, tiga data validation, dua proteksi sheet, dan 266 formula. Formula yang terdeteksi mencakup `SUMIFS`, `SUMIF`, `SUM`, `COUNTIF`, `COUNTA`, `IFERROR`, serta `IF`.
 
-## Cara Pakai
+## Batasan yang Perlu Diketahui
 
-1. Buka sheet **Data Barang**, lalu isi kolom biru: kode barang, nama barang, kategori (pilih dari dropdown), satuan, stok awal, minimum stock, dan harga beli per unit.
-2. Setiap ada transaksi barang masuk, keluar, atau retur, tambahkan satu baris baru di sheet **Log Transaksi**. Pilih kode barang dan jenis transaksi dari dropdown, lalu isi jumlah dan keterangan singkat.
-3. Nama barang di Log Transaksi akan otomatis terisi begitu kode barang dipilih — tidak perlu ketik ulang.
-4. Kembali ke sheet **Data Barang** untuk melihat stok masuk, keluar, retur, stok akhir, status, dan nilai persediaan yang sudah terhitung otomatis.
-5. Buka sheet **Ringkasan Dashboard** untuk memantau total nilai persediaan dan grafik distribusi nilai per kategori barang.
+Stok hanya setepat transaksi yang dicatat. Tidak ada VBA, PivotTable, atau integrasi kasir. Google Sheets perlu diuji ulang karena perilaku formula, chart, dan proteksi dapat berbeda.
 
-## Contoh Isian Data
+## Langkah Berikutnya
 
-Berikut contoh isian di sheet Data Barang yang sudah disiapkan di dalam template sebagai referensi:
-
-| Kode Barang | Nama Barang | Kategori | Stok Awal | Min. Stock | Harga Beli/Unit |
-|---|---|---|---|---|---|
-| BRG001 | Beras 5kg | Bahan Baku | 50 | 10 | Rp 65.000 |
-| BRG003 | Minyak Goreng 1L | Bahan Baku | 80 | 15 | Rp 18.000 |
-| BRG007 | Kopi Bubuk 200g | Barang Jadi | 40 | 10 | Rp 12.000 |
-| BRG010 | Deterjen Bubuk 1kg | Lainnya | 35 | 10 | Rp 15.000 |
-
-Setelah beberapa transaksi masuk-keluar dicatat di Log Transaksi, kolom stok akhir dan status pada baris-baris ini akan otomatis menyesuaikan.
-
-## Tips Modifikasi
-
-- Untuk menambah barang baru, tambahkan baris baru di sheet Data Barang, lalu perbarui daftar dropdown kode barang di Log Transaksi lewat menu Data > Data Validation agar kode barang baru ikut muncul di pilihan.
-- Kalau kategori bisnis kamu berbeda (misalnya fashion atau elektronik), ganti saja daftar pilihan dropdown kategori sesuai jenis barang yang dijual — struktur rumus tidak perlu diubah.
-- Untuk usaha dengan banyak cabang, template ini bisa diduplikasi per cabang, lalu nilai persediaan dari tiap file digabung manual di rekap terpisah.
-
-## Batasan Template
-
-Template ini sangat bergantung pada kedisiplinan mencatat transaksi — kalau ada barang masuk atau keluar yang lupa dimasukkan ke Log Transaksi, angka stok akhir otomatis tidak akan mencerminkan kondisi sebenarnya. Selain itu, untuk UMKM dengan ratusan jenis barang, banyak cabang, atau yang butuh integrasi langsung dengan mesin kasir, template berbasis Excel ini akan terasa terbatas dan lebih cocok digantikan software inventory khusus.
-
-## Pertanyaan yang Sering Ditanyakan (FAQ)
-
-**Apakah template stok barang ini gratis?**
-Ya, template ini bisa diunduh dan dipakai gratis untuk kebutuhan pencatatan stok UMKM sehari-hari.
-
-**Apakah bisa dibuka di Google Sheets, bukan cuma Excel?**
-Bisa. Template ini dirancang agar rumus dan formatnya tetap berfungsi normal saat diunggah dan dibuka di Google Sheets.
-
-**Apakah cocok untuk toko dengan ratusan jenis barang?**
-Untuk puluhan hingga sekitar seratus jenis barang, template ini masih nyaman dipakai. Untuk skala yang jauh lebih besar, disarankan mempertimbangkan software inventory khusus.
-
-**Bagaimana kalau saya salah mencatat jumlah transaksi?**
-Cukup edit baris transaksi yang salah di sheet Log Transaksi — seluruh perhitungan di Data Barang dan Ringkasan Dashboard akan otomatis menyesuaikan.
-
-**Apakah perlu tahu rumus Excel untuk memakai template ini?**
-Tidak perlu. Semua rumus sudah disiapkan; kamu hanya perlu mengisi kolom berwarna biru dan mencatat transaksi seperti biasa.
-
-**Apakah template stok barang ini bisa dipakai untuk toko online?**
-Bisa. Template ini dapat digunakan untuk mencatat stok produk toko online, reseller, atau usaha kecil selama transaksi masuk dan keluar dicatat secara konsisten.
-
-**Apakah template ini bisa menghitung nilai persediaan?**
-Bisa. Nilai persediaan dihitung dari stok akhir dan harga beli per unit yang diisi di master data barang.
-
-Download template stok barang Excel gratis ini dan mulai pantau stok masuk, stok keluar, barang menipis, dan nilai persediaan UMKM-mu dengan lebih rapi.
+[cara membuat dropdown Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/) dan [penyebab SUMIFS atau COUNTIFS bernilai nol](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/).

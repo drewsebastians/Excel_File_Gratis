@@ -20,30 +20,27 @@ related_formulas: ["rumus-sumifs-rekap-kategori", "rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks", "masalah-sumifs-countifs-hasil-nol"]
 ---
 
-## Tujuan Pencarian
+Pilih template berdasarkan pekerjaan yang perlu dicatat, data yang sudah tersedia, dan batas proses kerja kamu, bukan hanya dari jumlah fitur yang terlihat di preview.
 
-Panduan ini untuk pemilik usaha kecil yang mencari template Excel, tetapi belum yakin apakah mereka membutuhkan invoice, log penjualan, arus kas, stok, atau follow-up pelanggan.
+## Hasil yang Perlu Disiapkan
 
-## Mulai dari Pekerjaan, Bukan Nama File
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **memilih template Excel untuk UMKM**, bukan menambah rumus atau format yang belum diperlukan.
 
-Tulis satu masalah yang berulang. Jika masalahnya membuat rincian pesanan, mulai dari [template invoice](/templates/bisnis-umkm/template-invoice-penjualan-umkm/). Jika transaksi harian sulit direkap, gunakan [laporan penjualan harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/). Jika uang masuk dan keluar bercampur, gunakan [arus kas UMKM](/templates/bisnis-umkm/template-arus-kas-umkm/). Stok dan pelanggan memiliki alur sendiri, sehingga lebih cocok memakai [template stok](/templates/bisnis-umkm/template-stok-barang-excel-gratis/) atau [follow-up pelanggan](/templates/bisnis-umkm/template-follow-up-pelanggan-excel/).
+## Langkah Praktik
 
-## Langkah Memilih
+1. Tentukan satu masalah utama, misalnya penjualan, kas, pengeluaran, atau stok.
+2. Buka preview dan baca nama sheet serta batasannya.
+3. Pastikan file memiliki tempat yang jelas untuk input sumber.
+4. Uji satu periode atau beberapa transaksi contoh sebelum menjadikannya catatan rutin.
 
-1. Tentukan satu kebiasaan yang ingin dicatat setiap hari atau setiap transaksi.
-2. Cek kolom inputnya. Jangan memilih file yang meminta data yang tidak pernah Anda miliki.
-3. Buka sheet Cara Pakai dan lihat contoh data sebelum menghapusnya.
-4. Uji dengan lima transaksi nyata, lalu cek apakah total dan status masuk akal.
-5. Gunakan satu sumber data utama. Misalnya, transaksi penjualan masuk ke log penjualan terlebih dahulu sebelum diringkas ke file lain.
+## Cara Memeriksa Hasil
 
-## Contoh Praktis
+Template yang baik tetap memerlukan data yang konsisten. Catat apakah rumus, dropdown, atau dashboard benar-benar sesuai proses kerja kamu.
 
-Kedai kecil sudah membuat invoice untuk pelanggan kantor, tetapi belum tahu penjualan per kategori. Invoice tetap dipakai untuk dokumen pelanggan, lalu setiap transaksi dicatat ke laporan penjualan. Setelah itu arus kas menerima angka uang masuk atau keluar yang benar-benar terjadi. Tiga file tersebut memiliki tujuan berbeda dan tidak perlu saling menggantikan.
+## Catatan dan Batasan
 
-## Kesalahan Umum
+Template bukan otomatis pembukuan formal, laporan pajak, atau sistem multi-pengguna.
 
-Jangan menghapus formula atau mengubah nama kategori tanpa memperbarui rekapnya. Jangan juga menganggap total pada spreadsheet sebagai bukti pajak atau laporan keuangan formal. Jika angka tidak ikut dihitung, periksa apakah nominal terbaca sebagai teks melalui [panduan masalah angka tidak terjumlah](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/).
+## Lanjutkan dari Sini
 
-## Batasan
-
-Template sederhana paling efektif untuk proses yang konsisten dan skala kecil. Kebutuhan banyak cabang, integrasi kasir, atau akses banyak pengguna mungkin memerlukan proses atau perangkat lain.
+[template arus kas UMKM](/templates/bisnis-umkm/template-arus-kas-umkm/) dan [template stok barang](/templates/bisnis-umkm/template-stok-barang-excel-gratis/).

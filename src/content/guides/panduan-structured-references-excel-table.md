@@ -20,70 +20,27 @@ related_formulas: ["rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
 ---
 
-## Masalah yang Diselesaikan
+Gunakan nama Table dan nama kolom dalam rumus agar sumber perhitungan lebih mudah dibaca daripada alamat sel panjang.
 
-Rumus seperti `=C2*D2` sulit dibaca ketika kolom bergeser dan sering perlu disalin ulang.
+## Hasil yang Perlu Disiapkan
 
-## Hasil yang Diharapkan
-
-Kolom Total memakai nama kolom Table dan tetap mengisi baris baru secara konsisten.
-
-## Prasyarat
-
-- Satu Excel Table bernama `tblPesanan`
-- Kolom Produk, Qty, Harga, dan Total
-
-## Contoh Input
-
-```text
-Produk | Qty | Harga
-Buku | 2 | 45000
-Pulpen | 5 | 6000
-```
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **structured references Excel Table**, bukan menambah rumus atau format yang belum diperlukan.
 
 ## Langkah Praktik
 
-1. Ubah data menjadi Table dan beri nama `tblPesanan`.
-2. Tambahkan kolom Total, lalu ketik `=[@Qty]*[@Harga]` pada baris pertama.
-3. Tambahkan baris baru dan pastikan formula kolom terisi otomatis.
-4. Di luar Table, gunakan `=SUM(tblPesanan[Total])` untuk total seluruh pesanan.
+1. Buat atau pilih Excel Table yang memiliki header jelas.
+2. Periksa nama Table pada menu Table Design.
+3. Gunakan nama Table dan kolom dalam rumus pada satu sel uji.
+4. Tambahkan baris data lalu periksa apakah hasil membaca rentang Table yang diharapkan.
 
-## Mengapa Ini Bekerja
+## Cara Memeriksa Hasil
 
-`[@Qty]` berarti nilai Qty pada baris aktif, sedangkan `tblPesanan[Total]` berarti seluruh kolom Total. Excel menjaga referensi itu saat baris Table bertambah.
+Structured reference merujuk struktur Table, misalnya nama kolom, bukan hanya alamat tetap. Ini berguna saat daftar berkembang.
 
-## Kesalahan Umum
+## Catatan dan Batasan
 
-- Nama header berubah sehingga structured reference ikut berubah.
-- Formula dimasukkan di luar Table sehingga tidak menjadi calculated column.
+Sintaks dan dukungan dapat berbeda di aplikasi lain. Uji workbook tujuan sebelum mengubah rumus produksi.
 
-## Diagnosis
+## Lanjutkan dari Sini
 
-Klik formula dan amati highlight kolom Table. Periksa Table Name dan header tanpa spasi ganda.
-
-## Cara Memperbaiki
-
-Perbaiki header, masukkan formula pada kolom Table, dan gunakan Insert Field bila sulit mengetik nama kolom.
-
-## Kompatibilitas dan Alternatif Versi Lama
-
-Structured reference tersedia pada Excel Table di Excel 2007 ke atas. Google Sheets mengimpor nilai, tetapi tidak selalu mempertahankan perilaku calculated column.
-
-Alternatif untuk Excel lama: Gunakan range biasa dengan referensi absolut seperti `=$C2*$D2`, lalu salin ke bawah.
-
-## Batasan
-
-Structured reference tidak menggantikan pemeriksaan tipe angka, duplikat ID, atau aturan bisnis.
-
-## Langkah Praktis Berikutnya
-
-Ganti satu rumus koordinat pada Table kerja kamu dengan structured reference dan bandingkan hasilnya.
-
-## Related Resources
-
-- Template: [Laporan Penjualan Harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/), [Stok Barang](/templates/bisnis-umkm/template-stok-barang-excel-gratis/)
-- Panduan: [Excel Table vs Range Biasa](/panduan/dasar-excel/panduan-excel-table-vs-range/), [Excel Table untuk Template](/panduan/pengolahan-data/panduan-excel-table-untuk-template/)
-- Rumus: [SUMIFS untuk Rekap Kategori](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/)
-- Troubleshooting: [SUMIFS atau COUNTIFS Menghasilkan Nol](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/)
-
-Google Sheets: uji ulang sintaks dan perilaku karena tidak semua fitur Excel tersedia.
+[Excel Table untuk template](/panduan/pengolahan-data/panduan-excel-table-untuk-template/) dan [Excel Table vs range](/panduan/dasar-excel/panduan-excel-table-vs-range/).

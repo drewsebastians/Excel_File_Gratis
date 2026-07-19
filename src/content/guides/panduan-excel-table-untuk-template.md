@@ -20,31 +20,27 @@ related_formulas: ["rumus-xlookup-vlookup-data", "rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol", "masalah-tanggal-salah-format-excel"]
 ---
 
-## Tujuan
+Ubah daftar berbaris menjadi Excel Table agar header, filter, dan referensi data lebih mudah dipelihara saat template dipakai berulang.
 
-Excel Table adalah cara mengubah rentang data biasa menjadi tabel terstruktur. Fitur ini berguna untuk template karena header, filter, dan area data lebih mudah dikelola ketika pengguna menambah baris baru.
+## Hasil yang Perlu Disiapkan
 
-## 1. Siapkan Header yang Jelas
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **menggunakan Excel Table untuk template**, bukan menambah rumus atau format yang belum diperlukan.
 
-Pastikan setiap kolom memiliki satu header, misalnya Tanggal, Kategori, Nominal, dan Catatan. Hindari header kosong atau dua baris judul di tengah data. Satu kolom sebaiknya menyimpan satu jenis informasi.
+## Langkah Praktik
 
-## 2. Buat Table
+1. Pastikan data memiliki satu baris header dan tidak ada header kosong.
+2. Klik salah satu sel pada data lalu buat Table melalui **Insert > Table** atau `Ctrl+T`.
+3. Periksa rentang serta centang bahwa data memiliki header bila memang sudah ada.
+4. Tambahkan satu baris baru dan pastikan format serta formula yang relevan ikut diterapkan.
 
-Pilih area data, lalu gunakan **Insert > Table** atau `Ctrl+T`. Pastikan pilihan `My table has headers` aktif bila baris pertama adalah header. Beri nama tabel yang menjelaskan fungsinya, misalnya `DataPengeluaran` atau `DaftarTugas`.
+## Cara Memeriksa Hasil
 
-## 3. Tambahkan Baris tanpa Merusak Rumus
+Excel Table memberi nama pada struktur data dan mendukung filter. Ini berbeda dari sekadar memberi warna pada rentang biasa.
 
-Saat mengetik pada baris tepat di bawah table, Excel biasanya memperluas table. Rumus yang ada pada kolom hitung dapat ikut terisi dengan pola yang sama. Ini lebih aman daripada menyalin formula secara manual ke rentang acak.
+## Catatan dan Batasan
 
-## 4. Gunakan Filter dan Referensi Terstruktur
+Jangan menganggap semua rumus atau fitur workbook lama akan berubah otomatis hanya karena rentangnya dijadikan Table.
 
-Filter pada header membantu membaca data tertentu, misalnya hanya transaksi satu kategori. Dalam rumus, Excel dapat memakai nama kolom table. Bentuknya mungkin terlihat baru, tetapi mudah diaudit karena nama kolom ikut terbaca.
+## Lanjutkan dari Sini
 
-## Contoh di Template
-
-[Template pembukuan pengeluaran usaha](/templates/bisnis-umkm/template-pembukuan-pengeluaran-usaha/) memakai Excel Table untuk baris transaksi. [Task tracker Kanban](/templates/produktivitas-kerja/template-task-tracker-kanban-excel/) memakai table sebagai sumber status dan rekap.
-
-## Batasan
-
-Table tidak otomatis memperbaiki data yang salah. Tanggal tetap harus berupa tanggal, kategori harus konsisten, dan rumus rekap perlu memakai kolom yang tepat. Bila rekap menghasilkan 0, baca [diagnosis SUMIFS/COUNTIFS](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/).
-
+[Excel Table vs range biasa](/panduan/dasar-excel/panduan-excel-table-vs-range/) dan [structured references](/panduan/dasar-excel/panduan-structured-references-excel-table/).

@@ -20,30 +20,28 @@ related_formulas: ["rumus-iferror-template-rapi", "rumus-countifs-dashboard-stat
 related_troubleshooting: ["masalah-vlookup-xlookup-na", "masalah-sumifs-countifs-hasil-nol"]
 ---
 
-## Tujuan
+Gunakan XLOOKUP atau VLOOKUP untuk mencari nilai dari tabel referensi, misalnya nama barang dari kode yang dipilih.
 
-Gunakan fungsi pencarian ketika Anda memiliki kode atau nama pada satu tabel dan ingin menampilkan informasi pasangannya dari tabel referensi. Contohnya, ID barang dapat mengambil Nama Barang atau kategori dari daftar master.
+## Sintaks
 
-## XLOOKUP
+`=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found])`
 
-Sintaks dasar: `=XLOOKUP(A2,$G$2:$G$20,$H$2:$H$20,"Tidak ditemukan")`. Rumus ini mencari nilai A2 di G2:G20 lalu mengembalikan nilai pada baris yang sama dari H2:H20. Argumen terakhir membuat hasil lebih jelas ketika nilai belum ada.
+`=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])`
 
-XLOOKUP dapat mencari ke kiri atau kanan karena rentang pencarian dan rentang hasil ditentukan terpisah. Fungsi ini tersedia di Microsoft 365 dan Excel 2021, tetapi tidak pada banyak versi Excel lama.
+## Arti Argumen
 
-## VLOOKUP
+- Nilai yang dicari harus ada pada sumber lookup.
+- XLOOKUP memisahkan kolom pencarian dan kolom hasil.
+- VLOOKUP mencari dari kolom paling kiri table_array; gunakan `FALSE` untuk exact match.
 
-Sintaks pencarian tepat: `=VLOOKUP(A2,$G$2:$I$20,2,FALSE)`. Rumus mencari A2 di kolom paling kiri rentang G:I, lalu mengembalikan kolom ke-2 dari rentang tersebut. Selalu gunakan `FALSE` untuk pencarian kode atau nama yang harus cocok persis.
+## Contoh
 
-VLOOKUP lebih cocok bila kolom pencarian memang berada paling kiri. Jika struktur tabel berubah, nomor kolom hasil perlu diperiksa kembali.
+Contoh `=XLOOKUP(A2,F2:F10,G2:G10,"Tidak ditemukan")` mengambil nilai di G berdasarkan kode di A. Untuk VLOOKUP exact match, gunakan `=VLOOKUP(A2,F2:G10,2,FALSE)`.
 
-## Memilih Rumus
+## Periksa Saat Hasil Tidak Sesuai
 
-Pilih XLOOKUP bila semua pengguna memakai Excel modern dan Anda ingin rumus yang lebih mudah dibaca. Pilih VLOOKUP bila file juga perlu dibuka pada Excel lama atau Google Sheets. Jangan memakai keduanya untuk satu kebutuhan yang sama tanpa alasan, karena pemeliharaan template akan lebih sulit.
+XLOOKUP tidak tersedia pada semua versi Excel. `#N/A` berarti pencarian belum menemukan kecocokan; jangan menutupinya tanpa memeriksa kode dan tabel referensi.
 
-## Kesalahan Umum
+## Rumus dan Panduan Terkait
 
-Hasil `#N/A` biasanya berarti nilai tidak ditemukan atau bentuk data berbeda, misalnya satu ID tersimpan sebagai angka dan lainnya sebagai teks. Lihat [VLOOKUP atau XLOOKUP menghasilkan #N/A](/masalah-excel/formula/masalah-vlookup-xlookup-na/) untuk langkah diagnosis.
-
-## Sumber Resmi
-
-Microsoft menjelaskan [XLOOKUP](https://support.microsoft.com/en-us/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929) dan [VLOOKUP](https://support.microsoft.com/en-us/office/vlookup-function-b78a17f4-3e7f-4f5f-8b54-7f3aeb7b586d) pada dokumentasi resminya.
+[dropdown Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/) dan [VLOOKUP atau XLOOKUP #N/A](/masalah-excel/formula/masalah-vlookup-xlookup-na/).

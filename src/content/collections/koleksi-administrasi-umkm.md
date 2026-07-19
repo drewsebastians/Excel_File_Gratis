@@ -16,22 +16,20 @@ formulas: ["rumus-sumifs-rekap-kategori", "rumus-iferror-template-rapi"]
 troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks", "masalah-sumifs-countifs-hasil-nol"]
 ---
 
-Paket ini menyatukan resource untuk satu tujuan nyata: mencatat transaksi usaha dengan lebih rapi, kemudian membaca ringkasannya. Tidak semua file harus dipakai sekaligus. Mulailah dari masalah yang paling sering mengganggu pekerjaan harian.
+Koleksi ini mengarahkan pekerjaan administrasi UMKM dari catatan transaksi sampai dokumen dan tindak lanjut yang perlu diperiksa kembali.
 
-## Urutan yang Disarankan
+## Urutan Memilih Resource
 
-1. Gunakan [panduan memilih template UMKM](/panduan/dasar-excel/panduan-memilih-template-excel-umkm/) untuk menentukan titik mulai.
-2. Buat dokumen pelanggan dengan [invoice penjualan UMKM](/templates/bisnis-umkm/template-invoice-penjualan-umkm/).
-3. Catat satu transaksi per baris pada [laporan penjualan harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/).
-4. Catat uang yang benar-benar masuk dan keluar pada [arus kas UMKM](/templates/bisnis-umkm/template-arus-kas-umkm/).
-5. Tambahkan [stok barang](/templates/bisnis-umkm/template-stok-barang-excel-gratis/) atau [follow-up pelanggan](/templates/bisnis-umkm/template-follow-up-pelanggan-excel/) bila proses tersebut memang ada di usaha Anda.
+1. Mulai dari catatan pengeluaran atau arus kas bila tujuanmu adalah membaca pergerakan uang.
+2. Gunakan laporan penjualan untuk transaksi, lalu invoice bila perlu dokumen per pelanggan.
+3. Pilih stok barang saat pekerjaan utamanya adalah mengawasi item fisik.
 
-## Cara Menghubungkan Resource
+## Pilihan yang Relevan
 
-Rekap kategori pada laporan penjualan dan arus kas menggunakan [SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/). Dashboard memakai angka dari rekap, bukan angka yang diketik terpisah. Bila formula belum memiliki data, [IFERROR](/rumus-excel/logika/rumus-iferror-template-rapi/) berguna untuk kasus terbatas seperti rata-rata dengan pembagi 0.
+- [template arus kas UMKM](/templates/bisnis-umkm/template-arus-kas-umkm/)
+- [template laporan penjualan](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/)
+- [template stok barang](/templates/bisnis-umkm/template-stok-barang-excel-gratis/)
 
-Jika nominal tidak ikut dijumlahkan, mulai dari [format teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/). Jika nilai SUMIFS tetap 0, lanjutkan ke [diagnosis SUMIFS/COUNTIFS](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/).
+## Catatan Pemakaian
 
-## Batasan Paket
-
-Resource ini membantu pencatatan sederhana. Mereka bukan software kasir, sistem inventaris multi-cabang, laporan pajak, atau laporan keuangan yang diaudit. Gunakan data sumber dan bukti transaksi sebagai rujukan utama.
+Setiap template adalah alat pencatatan. Buka preview, baca struktur sheet serta batasannya, dan uji dengan data contoh sebelum menjadikannya proses rutin.

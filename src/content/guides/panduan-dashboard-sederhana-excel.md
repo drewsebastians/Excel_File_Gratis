@@ -20,34 +20,27 @@ related_formulas: ["rumus-sumifs-rekap-kategori", "rumus-iferror-template-rapi"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol", "masalah-angka-tidak-terjumlah-format-teks"]
 ---
 
-## Tujuan Pencarian
+Bangun dashboard dari tabel sumber yang rapi agar total, rekap kategori, dan grafik menjawab pertanyaan yang sama tanpa angka diketik dua kali.
 
-Gunakan dashboard untuk membaca data yang sudah dicatat, bukan sebagai tempat memasukkan angka kedua kali. Panduan ini fokus pada total, jumlah transaksi, dan perbandingan kategori.
+## Hasil yang Perlu Disiapkan
 
-## 1. Mulai dari Data yang Rapi
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **membuat dashboard sederhana di Excel**, bukan menambah rumus atau format yang belum diperlukan.
 
-Buat tabel sumber dengan header jelas dan satu jenis data per kolom. Contoh laporan penjualan memiliki Kategori dan Total. Contoh arus kas memiliki Jenis Arus, Kategori, dan Nominal. Hindari baris kosong di tengah tabel.
+## Langkah Praktik
 
-## 2. Buat KPI
+1. Rapikan header dan pastikan satu jenis data berada di setiap kolom.
+2. Buat KPI dari kolom sumber, misalnya total atau jumlah transaksi.
+3. Susun rekap kategori kecil dengan `SUMIFS` sebagai sumber grafik.
+4. Bandingkan jumlah kategori dengan KPI total sebelum membagikan dashboard.
 
-Di sheet Dashboard, tampilkan Total Penjualan dengan `=SUM('Data Penjualan'!I4:I80)`. Tambahkan Jumlah Transaksi dengan `=COUNTA('Data Penjualan'!B4:B80)`. Untuk rata-rata, gunakan `=IFERROR(B3/B4,0)` agar dashboard tetap tenang ketika belum ada data.
+## Cara Memeriksa Hasil
 
-## 3. Rekap untuk Grafik
+Dashboard harus membaca tabel sumber. `IFERROR` dapat menangani keadaan pembagi kosong, tetapi tidak memperbaiki data sumber yang salah.
 
-Tuliskan kategori pada kolom kecil, lalu pasangkan `SUMIFS` untuk setiap kategori. Karena grafik harus mengambil data dari rekap ini, setiap perubahan transaksi akan ikut memperbarui grafik. Gunakan grafik batang untuk membandingkan kategori dan grafik donat hanya bila bagian terhadap keseluruhan memang penting.
+## Catatan dan Batasan
 
-## 4. Periksa Sebelum Dipakai
+Dashboard sederhana tidak menggantikan audit data. Uji chart dan formula lagi bila workbook dibuka di aplikasi lain.
 
-Bandingkan jumlah semua kategori dengan KPI total. Pastikan label kategori dan format Rupiah dapat dibaca tanpa terpotong. Jangan membuat grafik dari rentang yang mencakup baris header sebagai angka.
+## Lanjutkan dari Sini
 
-## Contoh
-
-Pada [template laporan penjualan harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/), dashboard memisahkan angka KPI dan grafik kategori. Pada [template arus kas](/templates/bisnis-umkm/template-arus-kas-umkm/), saldo akhir dan grafik pengeluaran menjawab pertanyaan yang berbeda, sehingga keduanya tidak saling menutupi.
-
-## Masalah Umum
-
-Jika grafik kosong, periksa apakah rumus rekap menghasilkan angka. Jika nilainya 0, cek [diagnosis SUMIFS](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/). Jika nominal tidak dijumlahkan, cek apakah kolomnya tersimpan sebagai teks melalui [panduan format teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/).
-
-## Batasan
-
-Dashboard sederhana tidak menggantikan audit data. Ia hanya sebaik tabel sumber dan aturan input yang digunakan.
+[template laporan penjualan harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/) dan [diagnosis SUMIFS bernilai nol](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/).

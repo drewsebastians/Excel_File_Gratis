@@ -20,31 +20,27 @@ related_formulas: ["rumus-countifs-dashboard-status", "rumus-iferror-template-ra
 related_troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks", "masalah-tanggal-salah-format-excel"]
 ---
 
-## Tujuan
+Gunakan budget sebagai catatan rencana dan realisasi supaya kamu dapat melihat kategori mana yang perlu diperiksa pada akhir periode.
 
-Budget pribadi di Excel dapat dipakai sebagai catatan: apa yang direncanakan, apa yang benar-benar terjadi, dan bagian mana yang perlu diperiksa lagi. Fokusnya bukan mencari angka sempurna, melainkan membuat data cukup rapi untuk dibaca pada akhir periode.
+## Hasil yang Perlu Disiapkan
 
-## 1. Tentukan Periode dan Kategori
+Sebelum mulai, siapkan data kecil yang dapat kamu cek kembali. Fokus panduan ini adalah **membuat budget pribadi di Excel**, bukan menambah rumus atau format yang belum diperlukan.
 
-Pilih satu periode yang jelas, misalnya Juli 2026. Buat kategori yang mudah dipahami seperti Makan, Transportasi, Tagihan, Kebutuhan Rumah, dan Lainnya. Hindari membuat banyak kategori pada hari pertama; daftar dapat ditambah setelah Anda melihat pola nyata.
+## Langkah Praktik
 
-## 2. Pisahkan Rencana dan Realisasi
+1. Tentukan satu periode dan daftar kategori yang singkat.
+2. Buat kolom Kategori, Rencana, Realisasi, dan Selisih.
+3. Ambil realisasi dari catatan transaksi, bukan angka perkiraan kedua.
+4. Periksa selisih lalu telusuri transaksi sebelum mengambil keputusan.
 
-Buat kolom `Kategori`, `Rencana`, `Realisasi`, dan `Selisih`. Selisih sederhana dapat memakai `=B2-C2`. Gunakan nilai positif untuk rencana dan realisasi, lalu biarkan kolom selisih menunjukkan perbedaan. Ini lebih mudah dibaca daripada mencampur tanda minus tanpa aturan.
+## Cara Memeriksa Hasil
 
-## 3. Catat Transaksi Sumber
+Rumus `=B2-C2` dapat memperlihatkan selisih bila kolom B adalah rencana dan C adalah realisasi. Nilai positif lebih mudah dipakai konsisten daripada mencampur aturan tanda.
 
-Budget lebih mudah dipercaya bila realisasi berasal dari catatan transaksi. Anda bisa memasukkan total per kategori secara berkala atau mencatat transaksi satu per satu pada sheet terpisah. [Template budget bulanan](/templates/keuangan-pribadi/template-budget-bulanan/) cocok sebagai titik mulai yang sederhana.
+## Catatan dan Batasan
 
-## 4. Baca Hasil Tanpa Membuat Kesimpulan Terlalu Jauh
+Panduan ini adalah cara mencatat, bukan saran investasi atau penilaian kemampuan membayar.
 
-Jika realisasi lebih tinggi daripada rencana, periksa transaksi dan kategori terlebih dahulu. Angka itu belum otomatis menjelaskan alasan atau tindakan yang tepat. Gunakan hasilnya untuk memperbaiki kebiasaan pencatatan pada periode berikutnya.
+## Lanjutkan dari Sini
 
-## Masalah Umum
-
-Nominal yang tersimpan sebagai teks tidak akan dijumlahkan dengan benar; lihat [cara menangani angka berformat teks](/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/). Untuk kategori yang konsisten, gunakan dropdown melalui [panduan Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/).
-
-## Batasan
-
-Panduan ini membahas pencatatan sederhana, bukan saran keuangan, investasi, atau penilaian kemampuan membayar. Gunakan angka yang Anda masukkan sendiri sebagai bahan evaluasi pribadi.
-
+[template budget bulanan](/templates/keuangan-pribadi/template-budget-bulanan/) dan [dropdown Data Validation](/panduan/dasar-excel/panduan-dropdown-data-validation-excel/).

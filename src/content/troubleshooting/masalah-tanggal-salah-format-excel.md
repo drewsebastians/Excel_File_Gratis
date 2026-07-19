@@ -18,23 +18,23 @@ related_formulas: ["rumus-countifs-dashboard-status", "rumus-sumifs-rekap-katego
 related_troubleshooting: ["masalah-angka-tidak-terjumlah-format-teks", "masalah-sumifs-countifs-hasil-nol"]
 ---
 
-## Gejala
+Periksa apakah Excel membaca nilai sebagai tanggal serial atau teks ketika tanggal sulit diurutkan, difilter, atau direkap per bulan.
 
-Tanggal tidak bisa diurutkan, formula rekap per bulan tidak menemukan transaksi, atau Excel menampilkan teks yang tampak seperti tanggal. Masalahnya sering berada pada tipe data, bukan hanya format tampilan.
+## Coba Ini Terlebih Dahulu
 
-## Periksa Nilai Tanggal
+1. Klik sel dan lihat formula bar untuk membandingkan nilai yang tersimpan.
+2. Uji satu sel dengan format Date yang sesuai.
+3. Pisahkan atau konversi teks tanggal pada salinan data bila sumbernya tidak konsisten.
+4. Urutkan data dan uji rekap periode setelah konversi.
 
-Pilih sel tanggal dan ubah formatnya sementara ke General. Tanggal Excel yang valid biasanya menjadi angka serial. Anda juga dapat memakai `=ISNUMBER(A2)`: hasil TRUE menandakan nilai tersebut dapat dipakai langsung oleh rumus tanggal.
+## Penyebab yang Paling Sering
 
-## Hari dan Bulan Tertukar
+Format tampilan hanya mengubah cara nilai terlihat. Jika tanggal tersimpan sebagai teks, fungsi tanggal dan kriteria periode mungkin tidak membacanya seperti tanggal Excel.
 
-Masukan seperti `03/07/2026` dapat dibaca berbeda tergantung pengaturan regional. Untuk input yang konsisten, gunakan format tampilan `yyyy-mm-dd`, misalnya `2026-07-03`. Format ini membuat urutan tahun, bulan, dan hari lebih jelas.
+## Sebelum Mengubah Data
 
-## Mengubah Tanggal Teks
+Buat salinan data terlebih dahulu, terutama bila format tanggal mengikuti lokal yang tidak jelas.
 
-Jika data berasal dari salinan sistem lain, gunakan **Data > Text to Columns** dengan pengaturan tanggal yang sesuai, atau buat kolom bantu dengan fungsi tanggal yang cocok dengan pola sumber. Selalu uji beberapa contoh sebelum mengganti seluruh kolom.
+## Bantuan Terkait
 
-## Dampak pada Rekap
-
-`SUMIFS` dan `COUNTIFS` tidak dapat membandingkan tanggal teks seperti tanggal asli. Template pengeluaran membuat kolom Bulan dari tanggal valid, sehingga rekap bulanan perlu tanggal yang benar sejak awal. Setelah memperbaiki data, periksa ulang [SUMIFS atau COUNTIFS hasil 0](/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/).
-
+[template pengeluaran harian](/templates/keuangan-pribadi/template-pengeluaran-harian/) dan [SUMIFS untuk rekap](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/).

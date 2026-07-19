@@ -18,29 +18,23 @@ related_formulas: ["rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
 ---
 
-## Gejala
+Jika `SUM` melewati angka tertentu, periksa apakah nilai tersebut disimpan sebagai teks sebelum mengubah rumusnya.
 
-Anda sudah melihat `18000` pada sel, tetapi `SUM` atau `SUMIFS` tidak menambahkannya. Kadang angka rata kiri, muncul indikator peringatan, atau formula menghasilkan 0 padahal baris tampak cocok.
+## Coba Ini Terlebih Dahulu
 
-## Kemungkinan Penyebab
+1. Klik sel yang tidak ikut dijumlahkan dan lihat perataan atau indikator errornya.
+2. Bandingkan dengan satu sel angka yang bekerja.
+3. Gunakan konversi yang sesuai, misalnya peringatan **Convert to Number** atau operasi angka pada salinan data.
+4. Jalankan ulang total dan cocokkan dengan beberapa baris sumber.
 
-Nilai mungkin ditempel dari chat, PDF, atau sistem lain sebagai teks. Bisa juga ada spasi tersembunyi, apostrof di awal, pemisah ribuan yang tidak cocok dengan pengaturan regional, atau kolom yang sebelumnya diformat sebagai Text.
+## Penyebab yang Paling Sering
 
-## Langkah Diagnosis
+Teks yang tampak seperti angka tidak selalu diperlakukan sebagai angka oleh Excel. Spasi tersembunyi, apostrof awal, dan pemisah desimal dapat menjadi penyebab.
 
-1. Klik sel lalu lihat apakah ada apostrof sebelum angka pada formula bar.
-2. Gunakan `=ISNUMBER(A2)` pada sel kosong. Hasil FALSE berarti A2 bukan angka numerik.
-3. Coba `=SUM(A2:A5)`. Jika hasilnya kurang dari jumlah yang terlihat, periksa setiap nilai dengan ISNUMBER.
-4. Pastikan tidak ada simbol Rp, titik, atau spasi yang menjadi bagian teks mentah.
+## Sebelum Mengubah Data
 
-## Solusi
+Buat salinan sebelum mengonversi data penting. Jangan mengganti nilai sumber tanpa mengetahui format asalnya.
 
-Untuk beberapa sel, pilih indikator peringatan lalu gunakan **Convert to Number**. Untuk satu kolom, gunakan Text to Columns dengan pengaturan yang sesuai atau kalikan nilai bersih dengan 1 di kolom bantu. Setelah itu, salin hasil sebagai nilai jika perlu. Jangan mengubah data asli tanpa salinan cadangan.
+## Bantuan Terkait
 
-## Pencegahan
-
-Masukkan nominal langsung sebagai angka dan terapkan format Rupiah dari menu format, bukan mengetik `Rp` sebagai bagian isi sel. Pada [template laporan penjualan](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/), isi Harga Satuan dan Diskon sebagai angka; format tampilan sudah menangani Rupiah.
-
-## Catatan Versi
-
-Nama menu dapat berbeda pada Excel desktop, web, dan Google Sheets, tetapi prinsipnya sama: ubah nilai menjadi angka sungguhan sebelum rekap. Lanjutkan ke [rumus SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) bila nilainya sudah numerik tetapi rekap masih tidak cocok.
+[rumus SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/) dan [audit rumus Excel](/panduan/pengolahan-data/panduan-audit-rumus-excel/).
