@@ -340,13 +340,43 @@ assert(resourceHelper.includes("resourceNavigationAvailable"), "Navigation avail
 assert(!allHtmlFiles.some((file) => /segera hadir|coming soon/i.test(read(file))), "Placeholder coming soon ditemukan pada halaman public.");
 const templateDetail = read(htmlPath("/templates/bisnis-umkm/template-stok-barang-excel-gratis/"));
 assert(templateDetail.includes("related_template_click"), "Event related-template Batch 1 tidak tersedia.");
-for (const [route, expectedText] of [
-  ["/templates/bisnis-umkm/template-invoice-penjualan-umkm/", "Cara Pakai Invoice"],
-  ["/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/", "Rumus dan Logika"],
-  ["/templates/bisnis-umkm/template-arus-kas-umkm/", "Cara Pakai Arus Kas"],
-  ["/templates/keuangan-pribadi/template-tracker-cicilan-hutang/", "Cara Pakai Tracker Cicilan"],
-]) {
-  assert(read(htmlPath(route)).includes(expectedText), `Konten detail template tidak ter-render: ${route}`);
+function escapeHtml(value) {
+  return value.replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;",
+  })[character]);
+}
+
+function getUsageSection(markdown) {
+  const headings = [...markdown.matchAll(/^##\s+(.+)$/gm)];
+  const index = headings.findIndex((heading) => /cara\s+(pakai|menggunakan)/i.test(heading[1]));
+  if (index === -1) return undefined;
+  const start = (headings[index].index || 0) + headings[index][0].length;
+  const end = headings[index + 1]?.index ?? markdown.length;
+  return markdown.slice(start, end).trim();
+}
+
+for (const file of templateFiles) {
+  const markdown = read(file);
+  const frontmatter = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] || "";
+  const data = YAML.parse(frontmatter) || {};
+  if (data.draft === true) continue;
+
+  const route = `/templates/${data.category}/${data.slug}/`;
+  const html = read(htmlPath(route));
+  const usageSection = getUsageSection(markdown);
+  const expectedHeading = data.usage_heading?.trim();
+
+  assert(Boolean(usageSection), `Section cara pakai tidak ditemukan: ${file}`);
+  assert(!html.includes("Download file template Excel."), `Fallback cara pakai ter-render: ${route}`);
+  if (expectedHeading) {
+    assert(html.includes(`<h2 id="usage-heading">${escapeHtml(expectedHeading)}</h2>`), `Heading cara pakai tidak sesuai frontmatter: ${route}`);
+  } else {
+    assert(/<h2 id="usage-heading">[^<]*cara\s+(pakai|menggunakan)[^<]*<\/h2>/i.test(html), `Heading cara pakai tidak valid: ${route}`);
+  }
 }
 
 for (const [path, expectedHash] of expectedAssetHashes) {

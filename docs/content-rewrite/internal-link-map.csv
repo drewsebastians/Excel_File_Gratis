@@ -1,0 +1,17 @@
+source_path,target_path,purpose,status
+src/content/templates/template-budget-bulanan.md,/panduan/dasar-excel/panduan-budget-pribadi-sebagai-catatan/,budget planning guidance,valid
+src/content/templates/template-budget-bulanan.md,/panduan/dasar-excel/panduan-dropdown-data-validation-excel/,category dropdown guidance,valid
+src/content/templates/template-budget-bulanan.md,/masalah-excel/format-data/masalah-angka-tidak-terjumlah-format-teks/,numeric format troubleshooting,valid
+src/content/guides/panduan-excel-table-vs-range.md,/panduan/pengolahan-data/panduan-excel-table-untuk-template/,next-step Table guidance,valid
+src/content/guides/panduan-excel-table-vs-range.md,/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/,workbook example,valid
+src/content/guides/panduan-excel-table-vs-range.md,/templates/bisnis-umkm/template-stok-barang-excel-gratis/,workbook example,valid
+src/content/formulas/rumus-countifs-dashboard-status.md,/masalah-excel/formula/masalah-sumifs-countifs-hasil-nol/,formula troubleshooting,valid
+src/content/templates/template-arus-kas-umkm.md,/panduan/pengolahan-data/panduan-arus-kas-sederhana-umkm/,cash-flow guidance,valid
+src/content/templates/template-arus-kas-umkm.md,/rumus-excel/matematika/rumus-sumifs-rekap-kategori/,formula explanation,valid
+src/content/templates/template-follow-up-pelanggan-excel.md,/rumus-excel/matematika/rumus-countifs-dashboard-status/,status counting pattern,valid
+src/content/templates/template-invoice-penjualan-umkm.md,/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/,sales recap next step,valid
+src/content/templates/template-invoice-penjualan-umkm.md,/templates/bisnis-umkm/template-arus-kas-umkm/,received-payment record,valid
+src/content/templates/template-jadwal-shift-sederhana.md,/templates/produktivitas-kerja/template-notulen-rapat-action-item/,handover/action follow-up,valid
+src/content/templates/template-jadwal-shift-sederhana.md,/masalah-excel/format-data/masalah-dropdown-data-validation-tidak-muncul/,dropdown troubleshooting,valid
+src/content/templates/template-kalender-planner-2026.md,/templates/produktivitas-kerja/template-task-tracker-kanban-excel/,detailed work status tracking,valid
+src/content/templates/template-kalender-planner-2026.md,/templates/produktivitas-kerja/template-notulen-rapat-action-item/,meeting agenda/action tracking,valid

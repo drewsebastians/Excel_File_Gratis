@@ -1,0 +1,9 @@
+path,primary_keyword,primary_intent,semantic_overlap,source_pr
+src/content/templates/template-budget-bulanan.md,template budget bulanan,download template untuk anggaran pemasukan pengeluaran dan tabungan,distinct from cash-flow tracking by household budgeting focus,#30
+src/content/guides/panduan-excel-table-vs-range.md,excel table vs range,instructional comparison untuk memilih struktur data,related to Excel Table guide but comparison intent is distinct,#30
+src/content/formulas/rumus-countifs-dashboard-status.md,rumus COUNTIFS Excel,direct formula reference untuk menghitung status dengan banyak kriteria,related to SUMIFS but count intent is distinct,#30
+src/content/templates/template-arus-kas-umkm.md,template arus kas UMKM Excel,download template untuk mencatat uang masuk keluar dan saldo,distinct from budget by business cash movement focus,#32
+src/content/templates/template-follow-up-pelanggan-excel.md,template follow up pelanggan Excel,download tracker untuk jadwal dan status prospek,distinct from task tracker by sales-prospect focus,#32
+src/content/templates/template-invoice-penjualan-umkm.md,template invoice penjualan UMKM Excel,download invoice untuk total pembayaran dan sisa tagihan,distinct from sales report by per-transaction document focus,#32
+src/content/templates/template-jadwal-shift-sederhana.md,template jadwal shift Excel,download shift planner untuk anggota jam dan durasi,distinct from calendar planner by workforce scheduling focus,#32
+src/content/templates/template-kalender-planner-2026.md,template kalender 2026,download annual calendar and planner with agenda tracking,distinct from shift planner by personal/work planning focus,#32
