@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the twenty draft workbooks using only the standard Python library.
+"""Audit release-candidate workbooks using only the standard Python library.
 
 The repository does not require Excel or LibreOffice to run CI. This audit
 therefore validates the portable OOXML package and records visual rendering as
@@ -74,7 +74,7 @@ def audit(slug: str):
     check("workbook_exists", path.is_file(), str(path))
     check("markdown_exists", md.is_file(), str(md))
     check("preview_exists", preview.is_file(), str(preview))
-    check("draft_true", meta.get("draft", "").lower() == "true", meta.get("draft", "missing"))
+    check("publication_status_declared", meta.get("draft", "").lower() in ("true", "false"), meta.get("draft", "missing"))
     normalized_slug = meta.get("slug", "").strip('"\'')
     normalized_file_name = meta.get("file_name", "").strip('"\'')
     check("metadata_slug_matches", normalized_slug == f"template-{slug}", meta.get("slug", "missing"))

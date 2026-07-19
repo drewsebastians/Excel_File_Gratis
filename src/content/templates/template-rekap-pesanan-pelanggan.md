@@ -7,7 +7,7 @@ focus_keyword: "rekap pesanan pelanggan"
 preview_image: "/assets/templates/template-rekap-pesanan-pelanggan.png"
 preview_alt: "Preview template rekap pesanan pelanggan excel gratis dengan ringkasan otomatis dan grafik status"
 featured: false
-draft: true
+draft: false
 category: "bisnis-umkm"
 tags: ["rekap pesanan pelanggan","template excel","excel gratis"]
 date: "2026-07-14"
@@ -22,11 +22,24 @@ file_spec:
   sheets: 3
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Template ini merekap pesanan dan tidak menggantikan invoice, stok, atau sistem kasir terintegrasi."
 related_templates: ["template-invoice-penjualan-umkm","template-laporan-penjualan-harian-umkm","template-arus-kas-umkm"]
 ---
+
+Template Rekap Pesanan Pelanggan Excel Gratis membantu mencatat nilai pesanan dalam format yang rapi. File berisi petunjuk, sheet Rekap Pesanan, dan ringkasan otomatis dengan data ilustrasi yang bisa diganti. Isi data pada sheet kerja yang relevan, lalu gunakan ringkasan sebagai pembacaan dari data sumber, bukan angka yang diketik ulang.
+
+## Mulai dengan Data Sumber
+
+1. Buka sheet **Cara Pakai** untuk melihat urutan input yang tersedia.
+2. Masukkan satu catatan per baris pada sheet kerja utama.
+3. Gunakan pilihan atau format yang sudah disediakan agar ringkasan dapat membaca data secara konsisten.
+4. Cocokkan hasil ringkasan dengan beberapa baris sumber sebelum menggunakannya.
+
+## Fakta File dan Batasan
+
+Workbook yang diperiksa memiliki 3 sheet, format xlsx, dan tidak memakai macro. Buka dan uji salinan file sebelum dipakai rutin, terutama bila menggunakan aplikasi spreadsheet selain Microsoft Excel.
 
 Template Rekap Pesanan Pelanggan Excel Gratis disiapkan untuk membantu pekerjaan rutin tanpa perlu membangun format dari nol. Ganti data contoh di sheet **Rekap Pesanan**, lalu gunakan **Ringkasan** untuk membaca kondisi data secara cepat.
 

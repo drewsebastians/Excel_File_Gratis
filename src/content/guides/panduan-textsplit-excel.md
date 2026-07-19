@@ -13,12 +13,18 @@ tags: ["TEXTSPLIT","import data","dynamic array"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-database-pelanggan-sederhana"]
 related_guides: ["panduan-dynamic-array-spill-excel","panduan-power-query-data-asli"]
 related_formulas: ["rumus-filter-daftar-dinamis"]
 related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets"]
 ---
+
+Memisahkan data impor berformat `kode|nama|kategori` menjadi kolom terstruktur dengan TEXTSPLIT dan pemeriksaan hasil. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 

@@ -13,12 +13,18 @@ tags: ["sparklines","dashboard excel","visualisasi"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-rekap-penjualan-bulanan"]
 related_guides: ["panduan-conditional-formatting-sebagai-alarm","panduan-checklist-kualitas-file-excel"]
 related_formulas: ["rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-file-excel-berantakan-google-sheets"]
 ---
+
+Menambahkan grafik mini pada ringkasan produk untuk melihat arah tren tanpa memenuhi dashboard dengan banyak chart. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 

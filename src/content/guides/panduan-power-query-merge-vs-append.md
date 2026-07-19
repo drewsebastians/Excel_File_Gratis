@@ -13,12 +13,18 @@ tags: ["merge append","Power Query","relasi data"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-database-pelanggan-sederhana","template-rekap-pesanan-pelanggan"]
 related_guides: ["panduan-power-query-append","panduan-power-query-data-asli"]
 related_formulas: ["rumus-xlookup-vlookup-data"]
 related_troubleshooting: ["masalah-vlookup-xlookup-na"]
 ---
+
+Membedakan Merge untuk mencocokkan kolom berdasarkan key dan Append untuk menumpuk baris laporan sejenis. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 

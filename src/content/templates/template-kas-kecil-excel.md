@@ -7,7 +7,7 @@ focus_keyword: "kas kecil"
 preview_image: "/assets/templates/template-kas-kecil-excel.png"
 preview_alt: "Preview template kas kecil excel gratis dengan ringkasan otomatis dan grafik status"
 featured: false
-draft: true
+draft: false
 category: "bisnis-umkm"
 tags: ["kas kecil","template excel","excel gratis"]
 date: "2026-07-14"
@@ -22,11 +22,24 @@ file_spec:
   sheets: 3
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Saldo menjadi akurat hanya bila semua penerimaan dan pengeluaran kas kecil dicatat."
 related_templates: ["template-invoice-penjualan-umkm","template-laporan-penjualan-harian-umkm","template-arus-kas-umkm"]
 ---
+
+Template Kas Kecil Excel Gratis membantu mencatat saldo kas kecil dalam format yang rapi. File berisi petunjuk, sheet Catatan Kas Kecil, dan ringkasan otomatis dengan data ilustrasi yang bisa diganti. Isi data pada sheet kerja yang relevan, lalu gunakan ringkasan sebagai pembacaan dari data sumber, bukan angka yang diketik ulang.
+
+## Mulai dengan Data Sumber
+
+1. Buka sheet **Cara Pakai** untuk melihat urutan input yang tersedia.
+2. Masukkan satu catatan per baris pada sheet kerja utama.
+3. Gunakan pilihan atau format yang sudah disediakan agar ringkasan dapat membaca data secara konsisten.
+4. Cocokkan hasil ringkasan dengan beberapa baris sumber sebelum menggunakannya.
+
+## Fakta File dan Batasan
+
+Workbook yang diperiksa memiliki 3 sheet, format xlsx, dan tidak memakai macro. Buka dan uji salinan file sebelum dipakai rutin, terutama bila menggunakan aplikasi spreadsheet selain Microsoft Excel.
 
 Template Kas Kecil Excel Gratis disiapkan untuk membantu pekerjaan rutin tanpa perlu membangun format dari nol. Ganti data contoh di sheet **Catatan Kas Kecil**, lalu gunakan **Ringkasan** untuk membaca kondisi data secara cepat.
 

@@ -13,12 +13,18 @@ tags: ["LET excel","rumus modern","formula"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-laporan-penjualan-harian-umkm"]
 related_guides: ["panduan-rumus-filter-laporan","panduan-audit-rumus-excel"]
 related_formulas: ["rumus-iferror-template-rapi","rumus-sumifs-rekap-kategori"]
 related_troubleshooting: ["masalah-sumifs-countifs-hasil-nol"]
 ---
+
+Memecah formula laporan penjualan menjadi nama variabel dengan LET agar perhitungan berulang lebih jelas dan mudah diuji. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 

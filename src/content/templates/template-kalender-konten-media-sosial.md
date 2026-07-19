@@ -7,7 +7,7 @@ focus_keyword: "kalender konten media sosial"
 preview_image: "/assets/templates/template-kalender-konten-media-sosial.png"
 preview_alt: "Preview template kalender konten media sosial excel gratis dengan ringkasan otomatis dan grafik status"
 featured: false
-draft: true
+draft: false
 category: "produktivitas-kerja"
 tags: ["kalender konten media sosial","template excel","excel gratis"]
 date: "2026-07-14"
@@ -22,11 +22,24 @@ file_spec:
   sheets: 3
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; Google Sheets perlu diuji ulang"
 batasan:
   - "Template hanya membantu perencanaan; performa konten dan penjadwalan otomatis dikelola di platform masing-masing."
 related_templates: ["template-follow-up-pelanggan-excel","template-kalender-planner-2026","template-task-tracker-kanban-excel"]
 ---
+
+Template Kalender Konten Media Sosial Excel Gratis membantu mencatat jumlah konten dalam format yang rapi. File berisi petunjuk, sheet Kalender Konten, dan ringkasan otomatis dengan data ilustrasi yang bisa diganti. Isi data pada sheet kerja yang relevan, lalu gunakan ringkasan sebagai pembacaan dari data sumber, bukan angka yang diketik ulang.
+
+## Mulai dengan Data Sumber
+
+1. Buka sheet **Cara Pakai** untuk melihat urutan input yang tersedia.
+2. Masukkan satu catatan per baris pada sheet kerja utama.
+3. Gunakan pilihan atau format yang sudah disediakan agar ringkasan dapat membaca data secara konsisten.
+4. Cocokkan hasil ringkasan dengan beberapa baris sumber sebelum menggunakannya.
+
+## Fakta File dan Batasan
+
+Workbook yang diperiksa memiliki 3 sheet, format xlsx, dan tidak memakai macro. Buka dan uji salinan file sebelum dipakai rutin, terutama bila menggunakan aplikasi spreadsheet selain Microsoft Excel.
 
 Template Kalender Konten Media Sosial Excel Gratis disiapkan untuk membantu pekerjaan rutin tanpa perlu membangun format dari nol. Ganti data contoh di sheet **Kalender Konten**, lalu gunakan **Ringkasan** untuk membaca kondisi data secara cepat.
 

@@ -13,12 +13,18 @@ tags: ["conditional formatting","produktivitas","belajar excel"]
 date: "2026-07-14"
 updated_date: "2026-07-14"
 featured: false
-draft: true
+draft: false
 related_templates: ["template-rencana-proyek-sederhana","template-jadwal-pembayaran-tagihan"]
 related_guides: ["panduan-checklist-kualitas-file-excel","panduan-excel-table-vs-range"]
 related_formulas: ["rumus-if-ifs-status-prioritas"]
 related_troubleshooting: ["masalah-tanggal-salah-format-excel"]
 ---
+
+Menandai tenggat lewat, stok rendah, dan status yang perlu ditindaklanjuti dengan aturan yang dapat dijelaskan. Panduan ini memulai dari hasil yang perlu diperiksa, lalu mengarahkan kamu ke langkah yang dapat diuji pada data kecil sebelum diterapkan ke workbook kerja.
+
+## Sebelum Menerapkan ke File Kerja
+
+Gunakan salinan data atau workbook uji terlebih dahulu. Periksa versi Excel, lokasi menu, dan hasil rumus pada kondisi yang kamu gunakan; perilaku Excel web, Mac, atau Google Sheets dapat berbeda dari Excel desktop.
 
 ## Masalah yang Diselesaikan
 
