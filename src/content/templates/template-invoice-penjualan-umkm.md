@@ -1,11 +1,11 @@
 ---
-title: "Template Invoice Penjualan UMKM Excel Gratis"
+title: "Template Invoice Penjualan UMKM Excel untuk Total dan Sisa Tagihan"
 meta_title: "Template Invoice Penjualan UMKM Excel Gratis"
-meta_description: "Download template invoice penjualan UMKM Excel gratis untuk membuat rincian barang, total tagihan, pembayaran diterima, dan sisa tagihan."
+meta_description: "Unduh template invoice penjualan UMKM Excel untuk mengisi barang atau jasa, menghitung total, mencatat pembayaran, dan memeriksa sisa tagihan."
 slug: "template-invoice-penjualan-umkm"
 focus_keyword: "template invoice penjualan umkm excel"
 preview_image: "/assets/templates/template-invoice-penjualan-umkm.png"
-preview_alt: "Tampilan sheet Invoice template penjualan UMKM dengan rincian barang dan total tagihan"
+preview_alt: "Sheet invoice penjualan UMKM dengan identitas pelanggan, rincian barang atau jasa, pembayaran diterima, dan sisa tagihan"
 featured: false
 draft: false
 category: "bisnis-umkm"
@@ -14,75 +14,64 @@ date: "2026-07-12"
 updated_date: "2026-07-12"
 file_name: "template-invoice-penjualan-umkm.xlsx"
 file_size: "9 KB"
-suggested_h1: "Template Invoice Penjualan UMKM Excel Gratis"
-usage_heading: "Cara Pakai Invoice"
-ringkasan_singkat: "Template invoice ini membantu UMKM menyiapkan rincian barang atau jasa, menghitung total tagihan, mencatat pembayaran diterima, dan melihat sisa tagihan. Data contoh dapat diganti langsung di sel berwarna biru."
+suggested_h1: "Template Invoice Penjualan UMKM Excel untuk Total dan Sisa Tagihan"
+usage_heading: "Cara Menggunakan Template Invoice Penjualan"
+ringkasan_singkat: "Isi identitas transaksi, rincian barang atau jasa, jumlah, harga, dan pembayaran yang diterima. Formula menghitung total per baris serta status pembayaran berdasarkan sisa tagihan, sementara sheet ringkasan menarik nilai utama dari invoice."
 file_spec:
   sheets: 4
   has_macro: false
   format: "xlsx"
-  kompatibilitas: "Microsoft Excel 2019 atau lebih baru dan Google Sheets"
+  kompatibilitas: "Microsoft Excel; penggunaan di Google Sheets perlu diuji ulang"
 batasan:
   - "Bukan faktur pajak atau dokumen legal; sesuaikan nomor, identitas usaha, dan ketentuan transaksi sendiri."
   - "Status pembayaran bergantung pada nilai pembayaran diterima yang diisi secara manual."
 related_templates: ["template-laporan-penjualan-harian-umkm", "template-arus-kas-umkm", "template-stok-barang-excel-gratis"]
 ---
 
-Invoice sederhana sering cukup untuk usaha yang ingin mengirim rincian pesanan dengan jelas tanpa membuat format dari nol setiap kali ada transaksi. File ini menyediakan satu invoice siap edit dengan contoh penjualan makanan dan jasa pengiriman.
+Isi identitas pelanggan dan rincian barang atau jasa pada sheet `Invoice`, lalu masukkan pembayaran yang diterima untuk memeriksa sisa tagihan. Template invoice penjualan UMKM Excel ini menghitung nilai per baris dan menampilkan status pembayaran berdasarkan saldo tersisa. Gunakan sebagai invoice komersial sederhana, bukan sebagai faktur pajak atau dokumen legal.
 
-## Kenapa Memakai Template Ini
+## Isi file template invoice
 
-Pemilik usaha dapat memisahkan nomor invoice, tanggal, data pelanggan, rincian pesanan, dan nilai pembayaran dalam satu tampilan. Kolom **Total** menghitung jumlah dikali harga satuan, sementara bagian ringkasan menampilkan subtotal, diskon, biaya tambahan, total invoice, pembayaran diterima, dan sisa tagihan.
+File `.xlsx` berukuran 9 KB ini memiliki empat sheet dan tidak memakai macro:
 
-## Struktur Workbook
+- **Cara Pakai** — petunjuk pengisian.
+- **Invoice** — halaman utama untuk identitas transaksi, rincian barang atau jasa, dan pembayaran.
+- **Data Pelanggan** — daftar pelanggan sederhana sebagai referensi.
+- **Ringkasan Pembayaran** — nilai utama invoice, pembayaran, sisa tagihan, dan status.
 
-- **Cara Pakai** berisi urutan pengisian dan batasan penggunaan.
-- **Invoice** adalah halaman utama untuk diisi dan dicetak atau disimpan sebagai salinan.
-- **Data Pelanggan** menyediakan daftar pelanggan sederhana sebagai referensi manual.
-- **Ringkasan Pembayaran** menarik nomor invoice, total, pembayaran, sisa, dan status dari sheet Invoice.
+Audit workbook menemukan dua Excel Table, data validation, dan 13 formula. Tidak ditemukan chart, PivotTable, named range, atau proteksi sheet.
 
-## Cara Pakai Invoice
+## Cara menggunakan template
 
-1. Ganti nomor invoice, tanggal, jatuh tempo, nama pelanggan, dan kontak pada sel biru di sheet **Invoice**.
-2. Isi identitas usaha, alamat, dan metode bayar. Metode bayar tersedia sebagai pilihan Tunai, Transfer, atau QRIS.
-3. Ganti contoh baris barang atau jasa. Isi jumlah dan harga satuan; kolom Total akan menghitung otomatis.
-4. Isi diskon, biaya tambahan, dan pembayaran diterima bila ada.
-5. Pastikan sisa tagihan dan status sudah sesuai sebelum mengirim invoice kepada pelanggan.
+1. **Ganti identitas transaksi.** Isi nomor invoice, tanggal, jatuh tempo, pelanggan, dan informasi usaha.
+2. **Masukkan rincian penjualan.** Isi nama barang atau jasa, jumlah, dan harga satuan.
+3. **Periksa total per baris.** Formula mengalikan jumlah dengan harga pada setiap baris rincian.
+4. **Isi pembayaran yang diterima.** Masukkan nilai pembayaran setelah memeriksa total invoice.
+5. **Cek sisa dan status.** Pastikan status sesuai sebelum menyimpan, mencetak, atau mengirim salinan invoice.
 
-## Contoh Alur Penggunaan
+Checkpoint: status hanya menjadi `Lunas` ketika sisa tagihan bernilai 0.
 
-Sebuah kedai menerima pesanan 3 kopi susu, 12 snack box, dan satu ongkir lokal. Setelah jumlah serta harga satuan diisi, subtotal contoh menjadi Rp335.000. Bila pelanggan baru membayar Rp100.000, ringkasan menunjukkan sisa tagihan Rp235.000 dan status **Belum Lunas**.
+## Contoh invoice sederhana
 
-## Rumus dan Logika
+Data berikut hanya ilustrasi:
 
-Setiap baris memakai perkalian sederhana `=Jumlah*Harga Satuan`. Subtotal memakai `SUM`, lalu total invoice dihitung dari subtotal dikurangi diskon ditambah biaya tambahan. Status menggunakan `IF`: status menjadi Lunas hanya ketika sisa tagihan bernilai 0.
+| Rincian | Jumlah | Harga Satuan | Total |
+|---|---:|---:|---:|
+| Paket snack | 10 | Rp25.000 | Rp250.000 |
+| Ongkir lokal | 1 | Rp35.000 | Rp35.000 |
 
-Untuk memahami rekap berbasis kriteria pada file penjualan, baca [rumus SUMIFS](/rumus-excel/matematika/rumus-sumifs-rekap-kategori/). Bila sebuah formula perlu menampilkan nilai cadangan tanpa menutupi masalah data, lihat [panduan IFERROR](/rumus-excel/logika/rumus-iferror-template-rapi/).
+Total ilustrasi adalah Rp285.000. Bila pembayaran yang diterima Rp100.000, sisa tagihan menjadi Rp185.000 dan status tetap `Belum Lunas`. Setelah pembayaran mencapai total invoice, sisa menjadi 0 dan status berubah menjadi `Lunas`.
 
-## Tips Modifikasi
+## Bagaimana formula bekerja
 
-Tambahkan baris rincian bila jumlah barang lebih banyak, lalu salin formula Total dari baris di atas. Untuk pelanggan berulang, isi sheet Data Pelanggan sebagai daftar referensi. Jangan menghapus sel rumus pada kolom Total atau bagian ringkasan.
+Baris rincian memakai perkalian jumlah dan harga satuan. Formula `IF` yang terdeteksi membaca sisa tagihan: nilai 0 menghasilkan `Lunas`, sedangkan nilai selain 0 menghasilkan `Belum Lunas`. `Ringkasan Pembayaran` mengambil nomor invoice, total, pembayaran, sisa, dan status dari sheet utama.
 
-## Batasan Template
+Setelah transaksi selesai, pindahkan nilainya ke [template laporan penjualan harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/) untuk rekap penjualan. Pembayaran yang benar-benar diterima dapat dicatat pada [template arus kas UMKM](/templates/bisnis-umkm/template-arus-kas-umkm/).
 
-Template ini tidak membuat nomor otomatis, tidak mengirim invoice, dan tidak menghitung pajak. Gunakan sebagai catatan transaksi sederhana, lalu sesuaikan detail yang memang diperlukan oleh usaha Anda.
+## Batasan yang perlu diketahui
 
-## Pertanyaan yang Sering Ditanyakan (FAQ)
+Template tidak menggantikan faktur pajak, kontrak, atau dokumen legal. Nomor invoice, ketentuan pembayaran, pajak, identitas usaha, dan bukti penerimaan tetap perlu disesuaikan serta diperiksa sendiri. Status pembayaran juga bergantung pada nilai pembayaran yang dimasukkan pengguna.
 
-**Apakah file ini mempunyai macro?**
+Kompatibilitas penuh dengan Google Sheets belum diverifikasi. Uji formula, data validation, format cetak, dan tampilan setelah mengimpor file.
 
-Tidak. File berformat `.xlsx` tanpa macro.
-
-**Apakah dapat dipakai untuk jasa?**
-
-Bisa. Ganti nama barang dengan nama jasa, lalu isi jumlah dan harga sesuai transaksi.
-
-**Mengapa status masih Belum Lunas?**
-
-Periksa nilai Pembayaran Diterima dan Sisa Tagihan. Status berubah menjadi Lunas hanya jika sisa bernilai 0.
-
-**Apakah ini faktur pajak?**
-
-Bukan. Template ini hanya membantu membuat invoice komersial sederhana.
-
-Lanjutkan dengan [laporan penjualan harian](/templates/bisnis-umkm/template-laporan-penjualan-harian-umkm/) untuk menggabungkan catatan transaksi invoice dalam satu rekap.
+Unduh `template-invoice-penjualan-umkm.xlsx`, buat satu invoice uji, lalu cocokkan total dan sisa tagihan sebelum memakai formatnya untuk pelanggan.

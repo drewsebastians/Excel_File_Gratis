@@ -1,0 +1,74 @@
+implementation_scope:
+  repository: drewsebastians/Excel_File_Gratis
+  base_branch: main
+  base_sha: 3051ed6
+  head_branch: release/content-rewrite-foundation
+  expected_content_files:
+    - src/content/templates/template-budget-bulanan.md
+    - src/content/guides/panduan-excel-table-vs-range.md
+    - src/content/formulas/rumus-countifs-dashboard-status.md
+    - src/content/templates/template-arus-kas-umkm.md
+    - src/content/templates/template-follow-up-pelanggan-excel.md
+    - src/content/templates/template-invoice-penjualan-umkm.md
+    - src/content/templates/template-jadwal-shift-sederhana.md
+    - src/content/templates/template-kalender-planner-2026.md
+  cumulative_diff_command: git diff origin/main...HEAD --name-only
+  validation_run_after_final_branch_state: true
+  merge_decision: pending_validation
+pages:
+  - path: src/content/templates/template-budget-bulanan.md
+    source_pr: 30
+    original_blob: fa9d762b7883d98ad36d44c31659f78bb0493a25
+    implemented_blob: a5e9e5d5d83f8342aebf63069e861596009e3521
+    exact_implementation_match: true
+    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
+    qa_result: pass
+  - path: src/content/guides/panduan-excel-table-vs-range.md
+    source_pr: 30
+    original_blob: 0f0ddf6faff653eed9e729660bd63b3b802afa96
+    implemented_blob: 5773ab7cef3e99f5e3fafdcc34f6a375efe8da26
+    exact_implementation_match: true
+    preservation_checks: [slug, route, category, draft, related_templates, related_guides, related_formulas, related_troubleshooting]
+    qa_result: pass
+  - path: src/content/formulas/rumus-countifs-dashboard-status.md
+    source_pr: 30
+    original_blob: 8c60c8192d3cb5d37f11b4288a30c13bb580d73d
+    implemented_blob: fc2254c67beacb545ffd575de1b65335e04995c5
+    exact_implementation_match: true
+    preservation_checks: [slug, route, category, draft, related_templates, related_guides, related_formulas, related_troubleshooting]
+    qa_result: pass
+  - path: src/content/templates/template-arus-kas-umkm.md
+    source_pr: 32
+    original_blob: f4d629f3b6191d197f8a6ab6a166afaeaae8c896
+    implemented_blob: 1df0cb7a2d7ffede72fa82c40044d2475f2b0a66
+    exact_implementation_match: true
+    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
+    qa_result: pass
+  - path: src/content/templates/template-follow-up-pelanggan-excel.md
+    source_pr: 32
+    original_blob: abb96727235ec57fd9aeda17d63d630ccd27e274
+    implemented_blob: 1ca2dbfe34181f7defd2ac2be66109f52cc88f73
+    exact_implementation_match: true
+    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
+    qa_result: pass
+  - path: src/content/templates/template-invoice-penjualan-umkm.md
+    source_pr: 32
+    original_blob: 45a5d62f9e0269b00dc74600a7a301a2c54fdfd8
+    implemented_blob: 62ba15580200d930f5a1f2306f175b50c0e66c73
+    exact_implementation_match: true
+    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
+    qa_result: pass
+  - path: src/content/templates/template-jadwal-shift-sederhana.md
+    source_pr: 32
+    original_blob: 4aad352662b2830b533833cc6f8ea883b94c7406
+    implemented_blob: 1cfb33fe28f9c1f5affae62ed2067da8ba9e7ce9
+    exact_implementation_match: true
+    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
+    qa_result: pass
+  - path: src/content/templates/template-kalender-planner-2026.md
+    source_pr: 32
+    original_blob: e0b4603e16078e8fc19410a96b9bae2e656ce18d
+    implemented_blob: 4b07ad54517ac9985bfd3b2a409cae575540f83f
+    exact_implementation_match: true
+    preservation_checks: [slug, route, category, draft, file_name, file_size, preview_image, related_templates]
+    qa_result: pass
